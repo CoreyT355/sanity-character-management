@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Low Sour",
+    "description": "Amongrel language that has developed in the years since the shattered post-Verdancy cultures started making contact with each other. Low Sour is the closest thing to a ‘common tongue’ on the waves.",
+    "lore": "Doesn't come with any particular lore or cultural knowledge besides what every wildsailor would know about the world they live in."
+  },
+  {
+    "name": "Chthonic",
+    "description": "An ancient human language once split into thousands of unique dialects spoken by different groups of ardent survivors and now slowly merging into one true tongue again.",
+    "lore": "Might include the details of ancient human rituals and spirit-knowledge as well as cultural information on the ardent."
+  },
+  {
+    "name": "Saprekk",
+    "description": "The thick rolling tongue of the ektus almost entirely unchanged despite hundreds of years of development on the wild waves.",
+    "lore": "For non-ektus to have learned even a smattering of Saprekk is often seen as a great mark of respect. Lore might include tales of deserts, heat, and winds, as well as cultural information on the ektus."
+  },
+  {
+    "name": "Gaudimm",
+    "description": "A chemical language of subtle twitches and soft clicks used by the gau.",
+    "lore": "Though the structure and grammar are surprisingly easy to learn, pheromonal bursts are required to communicate complex concepts. Lore might include detailed knowledge of caves, tunnels, and the progression of rot, as well as cultural information on the gau."
+  },
+  {
+    "name": "Knock",
+    "description": "The hissing, chittering voice of the tzelicrae hive-minds.",
+    "lore": "Many of the sounds are impossible for a single mouth to form, so most outsiders that learn Knock speak a simplified form, relying partly on gesture. Lore might include a deeper understanding of insects and arachnid habits, as well as cultural information on the tzelicrae."
+  },
+  {
+    "name": "Brasstongue",
+    "description": "A clipped and precise language used by experienced traders, adapted from the punch-cards of ancient ordinators.",
+    "lore": "Knowledge of Brasstongue is likely to garner respect among merchants and grifters. Lore might include cargo routes and tales of great sales or negotiation tactics."
+  },
+  {
+    "name": "Raka Spit",
+    "description": "The rapid patter of hunting-families and leviathaneers, known for its incredible depth of descriptive words.",
+    "lore": "Lore might include facts about the beasts and birds of the waves and great conquests of hunters across the wilds."
+  },
+  {
+    "name": "Lyre-Bite",
+    "description": "The lilting tongue of poets and songwriters across the wild waves, well-suited to performances and long-form poetry.",
+    "lore": "Might include ancient pre-verdant songs and a deeper understanding of whispers."
+  },
+  {
+    "name": "Old Hand",
+    "description": "An entirely gesture-based language with no spoken component, perfect for those naturally quiet types.",
+    "lore": "Has existed since before the Verdancy and has changed remarkably little despite the passage of years. Lore might include expansive descriptions of long-lost relics."
+  },
+  {
+    "name": "Signalling",
+    "description": "An unspoken code broadcast with flags, flares, or signal-lamps, often known by experienced travellers, military types, and smugglers. Relies partly on colour.",
+    "lore": "Might include information on various ships, weather types, and seagoing hazards."
+  }
+]

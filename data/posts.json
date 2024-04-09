@@ -1,0 +1,2001 @@
+[
+  {
+    "name": "Alchemist",
+    "summary": "An expert on the guts of the sea itself, a student of chemical smoke and the spatter of reactions, the roiling chaos of elements reimagined.",
+    "description": [
+      "Alchemists are masters of concoction and reaction, able to combine chemicals and arconautic knowledge with unexpected (and occasionally unstable) results. Some alchemists focus on the healing arts, some on transformation and understanding, and others on more… explosive pursuits.",
+      "Alchemists tend to dress in thick coverings to protect themselves when working with unpredictable ingredients, but even the best of them are marked with scars and burns from the inherent danger of their calling."
+    ],
+    "lore": [
+      {
+        "name": "A Deeper Understanding",
+        "description": "The core of the alchemist's skillset is understanding, a deeper knowledge of the sea's bounty and what it can be twisted into releasing. A char might take a pinwolf's meat as the base for a meal, a rattlehand its bones to fashion into a blade, but an alchemist can take any parts left over and pull out some of that brute, staccato, hungry essence and distill it into something useful."
+      },
+      {
+        "name": "Problems and Solutions",
+        "description": "The most powerful tool in an alchemist's arsenal is the ability to concoct solutions primed with crezzerin, potions containing some of the rapid-growth weirdness inherent to the waves. These concoctions can be drunk fresh, stored for later tinkering, or handed out to the crew when the right moment comes. Though they rarely come without side effects, the lure of power - even accompanied by pain, or discomfort, or the unexpected - is an intoxicating one."
+      }
+    ],
+    "questionsToConsider": [
+      "Do you specialize in certain ingredients or take whatever you find and do your best?",
+      "What was the worst unexpected side-effect you (or an unfortunate crewmember) ever experienced from one of your alchemical creations?",
+      "What draws you to such a specialized field of study? The lure of knowledge and understanding, or the power to change the world to your own design?"
+    ],
+    "alternatePresentations": "The alchemist already contains elements relating to the idea of a rogue scientist or chemical researcher, but these could be magnified to change the thrust of the post from one of practice to theory - a wandering scholar of burgeoning science, perhaps. Alternatively, the trappings of discipline and logic could be dropped to make something more akin to a hedge witch or cauldron-watcher, focusing on the manipulation of arconautic essences rather than the more traditional chemicals.",
+    "aspects": [
+      {
+        "name": "Component Scrounger",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "When one of your crewmates acquires an alchemically useful specimen, gain a copy of that specimen for yourself (once per scene)."
+      },
+      {
+        "name": "Alchemical Unearthing",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Whenever you discover a new location, choose a unique property (represented by a tag) to be easily found on specimens or salvage there."
+      },
+      {
+        "name": "Ulcerous Alembic",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You can swallow two alchemical components, concocting them internally and either benefiting immediately from the results or spitting the resulting solution out."
+      },
+      {
+        "name": "The Old Ways",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Increase impact when concocting using only bone, organs, or insect parts as components."
+      },
+      {
+        "name": "Pestle-Pound",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Use a task to grind a specimen into a powder, changing its form to a dust or salt and giving it the ‘Pure’ tag."
+      },
+      {
+        "name": "Baseline",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to briefly ignore any positive or negative effects stemming from a temporary benefit or injury. You are always immune to the negative effects of crezzerin."
+      },
+      {
+        "name": "Heady Vapours",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Mark to ruminate on a question and receive a confusing but accurate answer. Burn instead to receive instant clarity from that answer."
+      },
+      {
+        "name": "Chemicokinesis",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to levitate and control impure liquids."
+      },
+      {
+        "name": "Metabolize",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Consume a specimen to gain a brief burst of sensory information related to the specimen consumed (such as tremorsense by consuming a spider's web, for example)."
+      },
+      {
+        "name": "Syringiosquito",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "A diminutive alchemical construct designed to hold and drain fluids without being detected."
+      },
+      {
+        "name": "Living Liquid",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "Winds its way around your form, studded with broken glass. Deals CQ Acid or Keen damage."
+      },
+      {
+        "name": "Catalyst Belt",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A heavy work-pack containing reagents and catalysts, tried and tested. Mark to use a chemical from the belt in place of a specimen when concocting."
+      },
+      {
+        "name": "Explosive Vial",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "Not an endless supply, but potent and disorienting. Mark to deal LR Blast, Salt, Acid, or Toxin damage to multiple nearby foes."
+      },
+      {
+        "name": "Dilution Agent",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "When you create a concoction, the entire crew can gain the benefit it offers as a one-track temporary aspect."
+      },
+      {
+        "name": "Pressure-Sealed Linkage",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "Treat conflicts as triumphs when using at least one liquid as a resource for a concoction."
+      },
+      {
+        "name": "Accelerant Vial",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "Once per journey you may create a concoction during a montage without using your usual task to do so (though you must still roll to create the concoction as usual)."
+      }
+    ],
+    "quote": "Art or science, learning or inspiration, arconautic puissance or natural power...these are the binaries you must break from in order to truly appreciate the fundamentals of alchemy. -Ix Jaspero, ardent alchemist"
+  },
+  {
+    "name": "Char",
+    "summary": "For a char, the wildsea is an endless new frontier of excitement and discovery…in culinary terms, at least.",
+    "description": [
+      "Whenever you smell something delectable, there’s a good chance that a char is behind it. Chars are somewhere between chef and survivalist, with a dash of healer and vintner thrown in for good measure.",
+      "Many chars lack formal training, instead putting in years of trial and error until they come up with a set of flavour combinations that suit their unique tastes. A precious few do manage to study under one of the old culinary masters, spreading their patented recipes across the sea."
+    ],
+    "lore": [
+      {
+        "name": "The Value of Preparation",
+        "description": "Some would argue that the wildsea provides enough edible material, and in enough variety, that a skilled chef would be little more than an afterthought when a ship takes on crew. Not so - apart from the obvious benefits to taste and presentation that a char brings, their most basic techniques and seasoning blends work to counteract the low levels of crezzerin found in most wildsea meat and produce. This leads to better health, better sleep, happier crews, and more productive ships."
+      },
+      {
+        "name": "Food Without Flame",
+        "description": "Cookfires are, as you might expect, a rarity on the rustling waves...But meat needs to fry and tea needs to brew, so chars have found various ways around this limitation. Some eschew heat altogether, focusing on salts and pickling, spice-rubs, and sun- drying. Others treat the engine room as an extension of the galley, using engine warmth and pressure in place of actual flame. The most adventurous experiment with trained glowbugs, chemical hot-plates, and distilled sunlight."
+      }
+    ],
+    "questionsToConsider": [
+      "Do you have a signature dish and if so, how is it prepared?",
+      "No galley runs smoothly 100% of the time - what happened the last time you made the wrong culinary decision?",
+      "Have you ever had the luxury of cooking over an open fire? If so, how did it feel? Did the resulting taste outweigh the danger?"
+    ],
+    "alternatePresentations": "There are a lot of paths a char might walk that diverge significantly from 'ship's cook'. A char might be an obsessive gourmet, a travelling butcher or chop-station worker, or even some sort of wildsea confectioner, focusing more on the taste and presentation than the utility of their creations.",
+    "aspects": [
+      {
+        "name": "Only the Best",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Mark when gathering a specimen to give it the ‘Pure’ tag."
+      },
+      {
+        "name": "Spice Bandoleer",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A bandoleer containing your own secret blend of spices that never seems to run dry. Mark to create a rare resource, either Wilds Pepper, Hangman's Blend, or Smouldergrit."
+      },
+      {
+        "name": "Ingredient Scrounger",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "When one of your crewmates acquires a potentially delicious specimen, gain a copy of that specimen for yourself (once per scene)."
+      },
+      {
+        "name": "Golden Nose",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to identify a rare ingredient in your vicinity by scent alone."
+      },
+      {
+        "name": "Bountiful Discovery",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Whenever you discover a new location, choose a single specimen type to be easily found there."
+      },
+      {
+        "name": "Deep in the Barrel",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Increase impact when cooking with rotten or otherwise tainted ingredients. Meals made with these ingredients won’t sicken your crew."
+      },
+      {
+        "name": "Enough for Everybody",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Even a small meal can confer the benefits it offers as a one-track temporary aspect for the entire crew."
+      },
+      {
+        "name": "Taste Test",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You're immune to poisons and can determine their presence and characteristics by taste alone."
+      },
+      {
+        "name": "Flavour Engineer",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can treat salvage as specimens when creating meals. The results are still oddly edible."
+      },
+      {
+        "name": "Acid-Etched Cookpot",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "A hefty pot of near-unbreakable construction used to prepare and store food or hide under in a tense situation."
+      },
+      {
+        "name": "Mechanical Grinder",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Consume an additional specimen to create a lasting meal as an action (rather than the usual task)."
+      },
+      {
+        "name": "Trademark Herbs",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "The right seasoning can make anything taste good. Mark to treat conflict results as triumphs while cooking."
+      },
+      {
+        "name": "Seasoned Cleaver",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "As useful on the battlefield as it is in the galley. Deals CQ Hewing damage. Increase impact when acquiring dangerous or disruptive specimens."
+      },
+      {
+        "name": "Reef-Iron Pan",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A colossal implement. Deals CQ Blunt damage."
+      },
+      {
+        "name": "Husk-Leather Apron",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Toxin, Acid, Blast, Salt, Flame."
+      },
+      {
+        "name": "Sous Squirrel",
+        "trackType": "Companion",
+        "trackCount": 2,
+        "description": "A red-furred bundle of activity. Once per montage, gain a common insect specimen appropriate to the region (in addition to your usual task)."
+      }
+    ],
+    "quote": "Share my recipes? Without hesitation - it's not what goes into the pot that makes the meal, it's the one that puts it there. - Clattershot ironbound char"
+  },
+  {
+    "name": "Corsair",
+    "summary": "Fighters tasked with protecting their ships from the myriad dangers of the sea.",
+    "description": [
+      "Every wildsailor is expected to be able to take up arms in a crisis, but the corsair elevates combat to an art form. Tasked with protecting their ship in close combat, they often focus their training on blades, hammers, and axes.",
+      "Most corsairs follow the ancient wisdom that the best defence is a strong and punishing offence. It’s not unusual for them to switch between a mixture of esoteric fighting styles and acrobatic feats mid-combat to keep their foes off balance and under pressure."
+    ],
+    "lore": [
+      {
+        "name": "Pragmatic Elegance",
+        "description": "Whether it’s across thrashing branches, crumbling ruins, or the rolling deck of a ship mid-combat, most corsairs are constantly on the move. While there are those that weigh themselves down with salvage-hammered armour and heavier weapons, these are in the extreme minority - the constant threat of an unexpected tumble into the waves is a strong motivator for staying nimble."
+      },
+      {
+        "name": "The Tools of the Trade",
+        "description": "Given that corsairs tend to earn their place on a crew through the willingness and capacity to do violence, the weapons they carry are of paramount importance. Devoted, reliable weaponsmiths are uncommon across the waves, so for many corsairs their first ‘rite of passage’ is the creation of a tool that suits their purposes, or an array of them. Sabres and cutlasses are the obvious choice when it comes to blades, picked for ease of use and (sometimes) a sense of carrying on the old salt-sea legacies whispered about by the oldest ektus. Hammers and axes are another good choice, useful for breaking through doors and defences. Spears are rarely used, seen more as a hunter’s weapon, and daggers (though useful in a bar-brawl) have limited effect on many of the sea’s wilder creatures."
+      }
+    ],
+    "questionsToConsider": [
+      "Where did your weapons come from? Trade, inheritance, or long hours of toil?",
+      "What do you do in your spare time to keep yourself sharp or to train the rest of your crewmates to defend themselves more effectively?",
+      "What enemies have you made in your clashes with other ships - do they remember you, and if so, for what?"
+    ],
+    "alternatePresentations": "Given the shifting nature of wildsea alliances and fortunes, a corsair could just as easily be a reformed pirate or marauder as they could someone trained to defend against them. For a more classic fantasy take, pairing the corsair’s abilities with a dose of heavier armour could lead to an effective knight or paladin-style character.",
+    "aspects": [
+      {
+        "name": "Steel-Step Dance",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "The key to survival is mobility. They can't hurt you if they can't hit you."
+      },
+      {
+        "name": "Flashpowder Pouches",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Shake gently to produce temporary torchlight or mark to produce a blinding flash."
+      },
+      {
+        "name": "Stamp-Down Samba",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "The key to survival is solidity. You can take whatever they throw your way and stay standing."
+      },
+      {
+        "name": "Corsair’s Sabre",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A classic wildsea blade. Deals CQ Keen damage."
+      },
+      {
+        "name": "Dirty Fighter",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Treat conflicts as triumphs when attempting to trip, knock down, blind, or stun opponents."
+      },
+      {
+        "name": "Boarding Axe",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "A savage weapon used to chop through foes. Deals CQ Hewing damage. Increase impact when attacking ship objects and structures."
+      },
+      {
+        "name": "Surgical Strike",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can target attacks precisely (such as when aiming for a weak point) without cutting for difficulty."
+      },
+      {
+        "name": "Slinghammer",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A versatile weighted hammer with a fabric tether. Deals Blunt damage at CQ or LR."
+      },
+      {
+        "name": "Prowess",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to increase impact when attacking at close quarters."
+      },
+      {
+        "name": "Throwing Knives",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Perfectly weighted. Deals LR Keen or Spike damage."
+      },
+      {
+        "name": "Dangersense",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to hijack focus from a trap or ambush as it triggers."
+      },
+      {
+        "name": "Dragonfly Mantle",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You’re resistant to three damage types chosen from the list: Blunt, Keen, Spike, Hewing, Blast."
+      },
+      {
+        "name": "Chain Attack",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You can deal damage to multiple nearby opponents with a successful CQ attack."
+      },
+      {
+        "name": "Hooded Crow",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "A loyal bird trained to distract opponents in close-range combat. Mark to hijack focus from an enemy as they attempt to attack once per scene."
+      },
+      {
+        "name": "Scars That Tell Stories",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to gain a whisper based on damage or an injury you’ve just taken supplied by the Firefly."
+      },
+      {
+        "name": "Protective Beacon",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "Treat conflicts as triumphs when attempting to prevent harm being done to a member of the undercrew."
+      },
+      {
+        "name": "Berserker",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You’re immune to mire while in combat or any mire that would be caused by witnessing violence."
+      }
+    ],
+    "quote": "Next time give me a challenge. - Sumak Tzul, ketra corsair"
+  },
+  {
+    "name": "Crash",
+    "summary": "Sometimes things just need to be broken.",
+    "description": [
+      "While some people value the goods that can be dredged up, the crash isn’t worried about that. They are specialists when something needs to be cleared away, torn down, or simply turned to rubble.",
+      "The crash may rely on carefully calculated explosions to bring down a wall, or may simply throw themselves at it with reckless abandon. Whatever their methods, a crash can be recognized by the plume of dust that follows them."
+    ],
+    "lore": [
+      {
+        "name": "What About Pre-V Artefacts?",
+        "description": "For many, the thought of destroying pre-Verdant relics is somewhere between distasteful and sacrilegious; such rarities are things of value and should be preserved, or at least repurposed. The crash may or may not agree with these people, but they also realize that sometimes the old must be cleared away to make space for the new. This is not wanton destruction - this is pragmatic."
+      },
+      {
+        "name": "Untrusted by Some",
+        "description": "There are many people who understand the value a good crash can bring to a community. Given the destructive nature of their work, there are still some who regard the crash with some apprehension. For many, when they think of explosions, fire is also present. Nonetheless, the crash rarely has a hard time finding a niche for their unique set of skills."
+      }
+    ],
+    "questionsToConsider": [
+      "Where did you grow up and how did that colour your craft?",
+      "What is the most collateral damage you have created? What happened and who was affected?",
+      "Have you encountered someone who hated your craft? What was the outcome of the run-in?"
+    ],
+    "alternatePresentations": "The crash can be someone who is fundamentally interested in creation just as much as they are destruction. Like a sculptor, their focus could be in removing all the parts that do not belong in a piece of art or design. And with a more architectural bent in mind, communities on ridges are always in need of someone to create living space within mountains, ruins, and rock faces.",
+    "aspects": [
+      {
+        "name": "Thick Skin",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "A history of breaking yourself while breaking other things has toughened you up."
+      },
+      {
+        "name": "Crash Mask",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Favoured by those who work in dusty environments. You can see clearly through dust and smoke and resist the effects of spores and bad air."
+      },
+      {
+        "name": "Zero Days",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Once per scene, ignore any damage to yourself that comes as a result of your own destructive actions."
+      },
+      {
+        "name": "Baby Bombs",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Handheld explosives waiting to be thrown. Deals LR Blast damage to multiple nearby targets at once."
+      },
+      {
+        "name": "The Seams Bear Secrets",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Ancient buildings remember. Receive a whisper when you destroy an ancient structure."
+      },
+      {
+        "name": "Demolisher",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "An over-sized weapon, usually a hammer or pickaxe, dealing CQ Blunt or Spike damage. Increase impact when destroying architecture."
+      },
+      {
+        "name": "Load-Bearing Wall",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Use a task to identify hidden elements essential to the integrity of a structure."
+      },
+      {
+        "name": "Cannonball Dreams",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You jump headfirst into destruction, literally. You can use your own body as a projectile, dealing LR Blunt damage. You end up wherever you land."
+      },
+      {
+        "name": "Wrecker's Globe",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A large heavy ball on the end of a chain. Deals CQ Blunt damage. Useful for knocking foes back."
+      },
+      {
+        "name": "Torteaver",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "A small creature with a hard shell known for gnawing through wood and stone."
+      },
+      {
+        "name": "Padded Boilersuit",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You’re resistant to three damage types chosen from the list: Blunt, Spike, Hewing, Blast, Volt."
+      },
+      {
+        "name": "Burrowhip Colony",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "A small colony of burrowing insects. Mark to weaken a structure without destroying it."
+      },
+      {
+        "name": "Broken Points",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Increase impact when you break something as a show of strength or intimidation."
+      },
+      {
+        "name": "Blitceros",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "A quadruped large enough to be ridden. Tends to bring down barriers by charging into them horn-first."
+      },
+      {
+        "name": "Crude Tools",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Your solutions may not be clever, but they work. You may use the Break skill to construct simple tools."
+      },
+      {
+        "name": "Canis Box Detonator",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A simple detonator used to set off explosives from a (presumably) safe distance."
+      }
+    ],
+    "quote": "Nothing lasts forever. I make sure of that. -Renwick Quislino, ardent crash"
+  },
+  {
+    "name": "Dredger",
+    "summary": "Brave explorers with an eye for value.",
+    "description": [
+      "The art of dredging is a difficult and painful one to learn, but the benefits are well worth the struggle. Dredgers make their living by diving into the waves in search of valuable specimens and salvage, sifting through dangerous wrecks and exploring ancient ruins as part of their daily routine.",
+      "Dredgers traditionally dress as lightly as they can, leaving as much space as possible free to carry their finds back to their ships. Most dredgers are easily distinguished by the stained, seared skin of their hands and feet - the effects of long-term crezzerin exposure are hard to hide."
+    ],
+    "lore": [
+      {
+        "name": "Ancient Dangers",
+        "description": "The truth of the pre-verdant era is a mystery to the vast majority, but slightly less so to the dredger. Even the most inexperienced of their profession run across artefacts and oddities of those old days from time to time, snagging them for trophy-cases, bragging rights, or the ministrations of a ship's rattlehand."
+      },
+      {
+        "name": "What is Treasure Anyway?",
+        "description": "Different folks specialize in the retrieval of different things when they head below the surface. Some search exclusively for the massively valuable, the ruins of the old world and the mysteries they contain. Others, no less important, set their sights a little lower - on salvage pieces and wrecked hull-plating, a captain's old cutlass, or a cupboard brimming with charts. The sea is loath to let such items go, or at least that's how it feels, but salvage - as it's often said - is the lifeblood of civilization."
+      }
+    ],
+    "questionsToConsider": [
+      "What's the most valuable thing you've ever found and what did you end up doing with it once you reached the surface?",
+      "There are sights below the canopy that few see and fewer talk about. How have they shaped you?",
+      "Nobody gets through a career in such hostile territory without making a mistake now and then - what scars has your profession left on you? What great treasure did you glimpse but fail to acquire?"
+    ],
+    "alternatePresentations": "Dredgers can work well as more general looters and scavengers, but you can also twist the concept into a far stealthier direction by making them into some combination of cat-burglar and classic dungeoneer (relying on their aspects for working in dark conditions and gaining entry to places they shouldn't).",
+    "aspects": [
+      {
+        "name": "Seared Skin",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Resist the hazardous effects of crezzerin exposure (searing, hallucinations, mutation)."
+      },
+      {
+        "name": "Amber Lenses",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Goggles that allow you to see perfectly through smoke, mists, and spore clouds."
+      },
+      {
+        "name": "Master Salvager",
+        "trackCount": 1,
+        "trackType": "Trait",
+        "description": "Add a positive tag of your choice to any salvage you acquire from wrecks, reefs, and ruins."
+      },
+      {
+        "name": "Moth Lantern",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Uses luminous moths to illuminate a small area around you."
+      },
+      {
+        "name": "Mental Catalogue",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to discern the use or history of something ancient."
+      },
+      {
+        "name": "Springheel Boots",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Mark to make a prodigious leap and land safely without having to roll."
+      },
+      {
+        "name": "Lurid Cartography",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can use charts to find shipwrecks and disasters as well as the usual islands and oddities."
+      },
+      {
+        "name": "Tomb Hammer",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "As much a tool as it is a weapon. Deals CQ Blunt damage. Increase impact when smashing stonework and structures."
+      },
+      {
+        "name": "Devil May Care",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Treat conflicts as triumphs when avoiding traps and environmental hazards."
+      },
+      {
+        "name": "Arborofathometer",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A complex depth-gauge for measuring your precise distance from the Darkness-Under-Eaves. Increase your ship's Tilt rating by one when you're aboard."
+      },
+      {
+        "name": "Key-Tail Scorpion",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "A curious little beast with a skeleton-key stinger. Once per scene, you may open any mundane lock."
+      },
+      {
+        "name": "Sanctipede",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "Drawn to history and forgotten things. Consume a chart to identify and retrieve a piece of ancient and valuable salvage in your vicinity if possible."
+      },
+      {
+        "name": "Scrounge",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Whenever your crew gains a piece of cargo, gain a resource (likely salvage but perhaps a specimen or whisper) related to that cargo for yourself."
+      },
+      {
+        "name": "Tickerclick",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "A punchcard intelligence in a noisy construct body, the whirring and clanking of this mouse-like companion is useful for drawing attention away from your position."
+      },
+      {
+        "name": "Cramped Conditioning",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Ignore cut that would be imposed for taking actions in enclosed or architecturally unstable spaces."
+      },
+      {
+        "name": "Silkwire Coil",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "An ear-unbreakable coil of thick wire that is somehow soft to the touch. Can be re-coiled with a simple flick after being unwound."
+      }
+    ],
+    "quote": "Finding the stuff is the easy part, it's getting it back to the ship that takes an extra few sets of hands. - Zotse Xeker, tzelicrae dredger"
+  },
+  {
+    "name": "Hacker",
+    "summary": "The marks and scars of your profession are writ large on your skin.",
+    "description": [
+      "A hacker's job is to clear the way for settlements, ships, and exploration, plunging into the wilds to tear open paths and clearings.",
+      "The earliest hackers used fire, before quickly realizing that the ironwood boughs re-grew faster than they burned. Now they know, like every other survivor, that fire is more trouble than it’s worth. For the more modern of their kind, sharpened metal, chemicals, and honest sweat reign supreme; and worth is measured in snapped branches and rough-cut routes."
+    ],
+    "lore": [
+      {
+        "name": "Axe-Heads and Sawteeth",
+        "description": "A hacker's work is some of the most dangerous on the wildsea, the very nature of their job calling on them to plunge into the waves at a moment's notice. And, though the core of their work is checking for safe paths, soft-spots, and the kinds of hazard that don't show up on a map, they're also called upon to defend their ships from more mobile dangers when necessary."
+      },
+      {
+        "name": "Crezzerin Waves",
+        "description": "A danger for the average sailor, but a constant threat for a hacker. Crezzerin's searing, mutative liquidity isn't omnipresent, but it might be in any leaf or branch-tip they aim to cut. Even with their protective gear kept in peak condition, they'll suffer the effects before too long - crews with a dedicated hacker almost always find themselves in need of a dedicated surgeon as well before too long."
+      }
+    ],
+    "questionsToConsider": [
+      "Where do you watch the waves from on your ship? The prow ready to spring into action or somewhere higher for a more commanding view?",
+      "What's the biggest predatory plant you've ever bested and what marks did it leave on you in return?",
+      "Not every path can be cleared - what was your greatest failure and how did you make up for it once the sting had faded?"
+    ],
+    "alternatePresentations": "Though a hacker's usual presentation is one of pathfinding and threat detection, a less martial approach can also work - hackers make excellent harvesters and gardeners, able to withstand the waves long enough to bring in choice specimens of plantlife to supply a surgeon, alchemist, or char.",
+    "aspects": [
+      {
+        "name": "Scars Remember",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "The wildsea teaches harsh but useful lessons."
+      },
+      {
+        "name": "Chemical Censer",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Creates a small area of smoke that repels insects and lowers visibility."
+      },
+      {
+        "name": "Trailblazer",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Increases impact when finding routes and clearing paths through vegetation."
+      },
+      {
+        "name": "Wavestrider Jacket",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Resists the hazardous effects of crezzerin exposure, insect bites, and poisons."
+      },
+      {
+        "name": "Living Antidote",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Use a task to create a rare resource 'Pure Spit' or 'Pure Sweat'."
+      },
+      {
+        "name": "Jagserry",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "The archetypal hacker weapon, a sawtooth sabre that deals CQ Hewing or Serrated damage."
+      },
+      {
+        "name": "Wild Harvest",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Treat conflicts as triumphs when attacking or defending against plant-type hazards."
+      },
+      {
+        "name": "Sawtooth Chakram",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A set of sharpened circular blades made for throwing, dealing LR Keen or Serrated damage."
+      },
+      {
+        "name": "Crezzercamo",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to become undetectable to plant-type hazards and creatures for the duration of a scene."
+      },
+      {
+        "name": "Defoliant Grenades",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Explosive packets that burst when lobbed with force. Deals LR Acid or Salt damage."
+      },
+      {
+        "name": "Hard-Won Instincts",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can tell which branches will break and which will hold at a glance. Increase your ship's Saws rating by one when you're aboard."
+      },
+      {
+        "name": "Gyrewing Moths",
+        "trackCount": 5,
+        "trackType": "Companion",
+        "description": "A trained swarm of ragged insects. Burn to neutralize the effects of bad air and airborne spores for your crew for the rest of a scene."
+      },
+      {
+        "name": "Petalcrusher",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You ignore mire caused by plant-based hazards and horrors, and are resistant to acids, toxins, and hallucinatory effects caused by predatory plants."
+      },
+      {
+        "name": "Prow-Nose Porcupine",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "Not the easiest creature to pet, but you learn to live with it. Ignore cut caused by pain or discomfort."
+      },
+      {
+        "name": "Rusting-Leaf Ale",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Becomes more flavourful the more it gets jostled and shaken. Whenever you gain a benefit from a concoction or meal, increase its track by two boxes."
+      },
+      {
+        "name": "Grappling Chain",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Designed to find quick purchase in bark and boughs. Treat conflicts as triumphs when traversing the sea."
+      }
+    ],
+    "quote": "The waves will teach you, whether you're willing to listen or not. Luckily for all concerned, I was. - Motsje Morencja, ardent hacker"
+  },
+  {
+    "name": "Horizoneer",
+    "summary": "A fountain of facts about the sea and its cultures, its dangers and hidden places.",
+    "description": [
+      "Part scholar, part explorer, horizoneers make it their business to learn as much about the rustling waves as possible. They root out its secrets, study its beasts, and integrate almost seamlessly into its manifold cultures, mimicking even the most novel customs with ease.",
+      "Many horizoneers also take on the task of disseminating this gathered knowledge as effectively as possible; sometimes through the medium of songs and poems, sometimes lectures and manuscripts. If there’s one thing every horizoneer has in common, it’s a way with words."
+    ],
+    "lore": [
+      {
+        "name": "It's Not All Blood and Guts",
+        "description": "One of the defining elements of the horizoneer is a push toward peace and understanding rather than conflict and bloodshed. Even dire situations can often be defused by a few well-chosen words, and when you get down to it, even the wildest of beasts can be turned from their immediate predations with enough skill. This doesn't mean that a horizoneer is inherently a pacifist - a well-swung lute can leave a bruise as reliably as a stave - but it does mean that crews with a horizoneer are less likely to treat combat as the go-to option when presented with hostility."
+      },
+      {
+        "name": "Bardic Tradition",
+        "description": "While not every horizoneer carries an instrument, it's rare to find one without at least some musical inclination. Songs and poems have a way of sticking in the mind, a memory aid for the horizoneer themselves and something to help them draw crowds and create a sense of community in new places. It's not uncommon to visit a distant port and hear the strains of a familiar tune, evidence that a horizoneer has passed through at some point and left their musical mark on the place."
+      }
+    ],
+    "questionsToConsider": [
+      "Have you ever discovered a culture previously completely unknown to you? What did you learn or take away from your interactions with them?",
+      "When did you manage to turn your knowledge about one group into an advantage when dealing with another and how did the situation play out?",
+      "If you have an instrument, what is it and how did you come to own it?"
+    ],
+    "alternatePresentations": "The general feeling of a horizoneer can be skewed toward scholarly knowledge (by creating an antiquarian type, interested in the legacies and artefacts of the wildsea's scattered cultural enclaves) or enjoyable whimsy (by leaning into the idea of a bard or roving performer) with equal ease.",
+    "aspects": [
+      {
+        "name": "First Impressions",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Increase impact when communicating with an individual for the first time."
+      },
+      {
+        "name": "Silver Tongue",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "When communicating with a friendly individual in their natural language, treat conflict results as triumphs."
+      },
+      {
+        "name": "Hyperadaptive",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to learn a smattering of any language you hear and have no ranks in. This knowledge remains until you choose to mark and replace it with a new language."
+      },
+      {
+        "name": "Wealth of Knowledge",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to learn a secret of the sea related to one of your whispers (the whisper isn't consumed)."
+      },
+      {
+        "name": "Nothing Stays Buried",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to identify a hidden or forgotten space in your vicinity by gut feeling alone."
+      },
+      {
+        "name": "Open Hands Open Heart",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Whenever you or your crew successfully defuse a situation that was heading toward a fight, clear a mark of mire."
+      },
+      {
+        "name": "Exports Tell Stories",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Whenever your crew gains a piece of cargo, gain a whisper related to that cargo for yourself."
+      },
+      {
+        "name": "Watch and Learn",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Use a task to tag along with one of your crewmates, gaining a temporary rank in any skill they display. This rank lasts until you next use Watch and Learn."
+      },
+      {
+        "name": "Bait Bandoleer",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Intoxicating to certain species. Treat conflicts as triumphs when trying to distract, divert, or drive off a wildsea creature."
+      },
+      {
+        "name": "Sturdy Instrument",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Anything from a guitar to maracas, a hip drum to an accordion, a sitar to an ocarina. Can be played, but also acts as a CQ Blunt weapon in a pinch."
+      },
+      {
+        "name": "Spike Wine",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "An ektus delicacy that sharpens the palette. Whenever you or a crewmate gains a benefit from a meal or beverage, increase the track for the benefit by one box."
+      },
+      {
+        "name": "Tuning Fork",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Once per scene increase impact when engaged in a performance of some kind."
+      },
+      {
+        "name": "Padded Gauntlet",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Used to help train the wild creatures of the sea. You’re resistant to bite attacks, no matter the damage type."
+      },
+      {
+        "name": "Sheaf of a Hundred Stories",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Gain a whisper whenever you encounter a spectacle, horror, or new port during a journey."
+      },
+      {
+        "name": "Bundled Correspondence",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "When you enter a new port, mark to find a friendly contact you’ve exchanged letters with in the past."
+      }
+    ],
+    "quote": "The blossoms and boughs are beautiful no doubt but nothing compared to the stories of those that live upon them. -Gahon Kesstera, ardent horizoneer"
+  },
+  {
+    "name": "Hunter",
+    "summary": "Some hunt for food, others challenge. Yet others to reassure themselves that they are not the hunted.",
+    "description": [
+      "A hunter's role is to provide food and materials for the crew, usually in the form of animal parts. Some hunters prefer more complex prey, styling themselves as bounty hunters and roving the waves looking to bring down bounties for payment. Either way, stealthy movement and hidden snares often pay dividends."
+    ],
+    "lore": [
+      {
+        "name": "Hunts and Honour",
+        "description": "Several well-recognised groups iSeveral well-recognised groups in the wildsea base their culture and philosophies around hunting, and almost every settlement has citizens engaged in the practice. There's an undeniable thrill to the activity, the snapping-shut of a trap or the spray of blood from a piercing arrow, but despite this hunters are typically characterised as reclusive, sombre folk. It might be that the waves demand a certain level of respect - when you're in among the branches, in a world designed to aid your quarry and stymie you at every turn, you quickly learn your place in the grand scheme of things."
+      },
+      {
+        "name": "Bounties and Payment",
+        "description": "When you've got the skills to track down something that doesn't want to be found, it's natural that at some point you'll be asked to track down someone that doesn't want to be found. Not all hunters are willing to take the moral step required to target members of other bloodlines (or even their own), partly due to the extra risk involved and partly the lax attitude toward law that pervades across the wider waves."
+      }
+    ],
+    "questionsToConsider": [
+      "What's the most dangerous creature you've brought down without it ever knowing you were there?",
+      "Have you ever had to call off a hunt, and if so, why? Injury, exhaustion, or were you simply outclassed by your prey?",
+      "Have you ever been tempted by bounty hunting, and if so, did you ever actively engage in it?"
+    ],
+    "alternatePresentations": "While certain elements of a hunter's fiction point toward the possibility of bounty hunting, these can be taken to another level by using the post's long-range weapons and skill at concealment to create an assassin. Alternatively, a more classic rogue-type character could easily fit the hunter's archetype without too much trouble.",
+    "aspects": [
+      {
+        "name": "Ghost of the Wilds",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Choose either wild or urban areas. You leave barely any trace (and are almost impossible to track) when moving through your chosen area."
+      },
+      {
+        "name": "From Nowhere",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Increase impact when attacking from a hidden position, or attacking an unaware target."
+      },
+      {
+        "name": "Whisper on the Wind",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Consume a whisper to gain cryptic information on a target’s whereabouts and actions."
+      },
+      {
+        "name": "Bloodhound",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Your sense of smell is highly developed, allowing you to hunt and track by scent alone."
+      },
+      {
+        "name": "Boot-Knife",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Deal Keen damage to any creature that attacks you with their own body in close quarters (such as with tail or bite attacks)."
+      },
+      {
+        "name": "Running Quiet",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Your guidance allows your vessel to keep a lower profile, disturbing fewer creatures and leaving less of a telltale trail. Increase your ship's Stealth rating by one when you're aboard."
+      },
+      {
+        "name": "Jawspear",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Long-bladed spear with cruelly curving teeth, dealing CQ Serrated damage."
+      },
+      {
+        "name": "Manifold Bow",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "A finely crafted bow paired with an expansive quiver. Can deal LR damage of three types chosen from the following list: Spike, Toxin, Blast, Volt, Salt."
+      },
+      {
+        "name": "Rare Musk",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Collected from sleeping leviathans, apparently. Burn to drive a beast or insect of the waves into an intense instinctual behaviour (such as fear, hunger, or frenzy)."
+      },
+      {
+        "name": "Snare Set",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Count conflicts as triumphs when readying traps, snares, or ambushes."
+      },
+      {
+        "name": "Venomous Trophy",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Use a task to create a resource, Paralyzing Venom."
+      },
+      {
+        "name": "Masterwork Leathers",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "When you take this trait choose either beasts, plants, or insects. You're resistant to all damage from your chosen source."
+      },
+      {
+        "name": "Slacker's Line",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "A fishing rod designed to be left unattended. Once per journey, gain a live specimen appropriate to the area you're travelling through."
+      },
+      {
+        "name": "Butchery Kit",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You can butcher dangerous specimens without risk or cutting for difficulty, and increase impact when gathering resources from a creature you’ve hunted."
+      },
+      {
+        "name": "Target Dragonfly",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "Every moment of its life is a hunt. Mark to identify a weak point or weakness of a creature you can see."
+      }
+    ],
+    "quote": "I've never found a creature I couldn't hunt, but that just means I obviously have more to learn. -Olem-Orn gau hunter"
+  },
+  {
+    "name": "Mesmer",
+    "summary": "An explorer of the mind, dabbling in the mysteries of memory and the power of thought.",
+    "description": [
+      "The waves are an illusion, a rustling dream lain across ironwood spindles. Crewmates are bundles of thought and emotion, impulse and memory. A ship is a carcass, a nebula, a home.",
+      "To a mesmer the world is a tangled pattern to be unfolded, a veil hiding deeper mysteries within. With a combination of subtle trickery, self-control, and arconautic know-how, no secret stays buried for long."
+    ],
+    "lore": [
+      {
+        "name": "Not Just The Power of the Mind",
+        "description": "A mesmer’s own mind is their most important tool and, with enough dedication, it becomes strong enough to impose its will on the outside world. But it can’t get there without help, and each mesmer has their own way of augmenting or expanding their own inner power - some use mantras and dances, others cryptic hand-gestures and pre-verdant tongues. Some draw arconautic power from the denizens of the waves, taking trophies from naturally mesmeric beasts and plants. And some, of course, rely on a healthy appetite for unhealthy vices, usually in the form of massive amounts of psychotropic drugs."
+      },
+      {
+        "name": "The Limits of Control",
+        "description": "There are mutterings around the junction-house when mesmers are mentioned, of stolen minds and sleeper agents, of people puppeteered. What could drive someone to practice such arts, those whispers continue - what kind of a person could do something like that? Well, luckily for those concerned, the answer is ‘none’. While mesmers are adept at rooting out information that some would prefer stay hidden, their ability to actually control another sentient individual is limited. As a general rule, existing emotions and impulses are key to the more manipulative side of their art."
+      }
+    ],
+    "questionsToConsider": [
+      "How disciplined is your mind? Do your powers come from a natural calm and self- possession or a diligent study of your own inner workings?",
+      "What secret have you discovered that changed your life for better or worse?",
+      "How open are you with displays of your talents, given the natural prejudice many hold against those of your particular skillset? Do you embrace their fear or work to ameliorate it?"
+    ],
+    "alternatePresentations": "Mesmer abilities can lead to roles such as classic psychics, mysterious magicians, stage-magicians, rabble-rousers, or con artists, depending on the focus on arconautic or non-arconautic sides.",
+    "aspects": [
+      {
+        "name": "Autohypnosis",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "You’ve learned to meditate rather than sleep, allowing you to stay far more aware while resting than most."
+      },
+      {
+        "name": "Meditative Healing",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Using a task to meditate in a peaceful environment allows you to heal each of your damaged traits or each of your injury tracks by one."
+      },
+      {
+        "name": "An Uncomfortable Understanding",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Burn to clear one of a crewmate's mire tracks entirely."
+      },
+      {
+        "name": "Empty the Mind",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Ignore cut from pain, hallucination and distractions while trying to act."
+      },
+      {
+        "name": "Knowing The Unknown",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to identify a target’s secret fear, or burn to accurately evaluate the truth of a statement."
+      },
+      {
+        "name": "Parasite Thought",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "A living thought that’s taken root in your mind, invisible but able to interact with the world. Allows you to hold and manipulate more objects than usual."
+      },
+      {
+        "name": "Intricate Tattoos",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You’re immune to confusion and hallucinations that you don't invite or create yourself."
+      },
+      {
+        "name": "Shard of Dream-Soaked Amber",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Consume a specimen to experience a thought or memory from a nearby individual."
+      },
+      {
+        "name": "Seven-Eye Scrawl",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Eyes are daubed across your body, each of them able to perceive the world in a different way. Mark to gain a specialized form of sight for a brief time (such as the ability to see ghosts, or heat, or magnetism)."
+      },
+      {
+        "name": "Smoked-Glass Hookah",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Releases a steady stream of wispy smoke. Mark to control smoke or vapours."
+      },
+      {
+        "name": "Chromiguana",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "Slow-moving and sleepy, usually found curled up around your shoulders or at the bottom of a bag. A surprisingly relaxing presence - treat conflicts as triumphs when trying to calm yourself or others."
+      },
+      {
+        "name": "Pinned Butterfly",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "Mark to wake the butterfly for a brief time. While awake, the hypnotic patterns of the butterfly’s wings induce drowsiness in those that catch sight of them."
+      },
+      {
+        "name": "Staredown",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "Locking eyes with an opponent allows you to assail their mind with unwanted sensation, manifesting as LR Salt damage. Only works on creatures with sight."
+      },
+      {
+        "name": "Chameleon Veil",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Use a task to hold still and blend in with your surroundings, becoming almost impossible to notice until you move again."
+      }
+    ],
+    "quote": "If the mind is a maze, mine is positively labyrinthine. -Dream of Claws, ardent mesmer"
+  },
+  {
+    "name": "Navigator",
+    "summary": "A bridge between the waves and the ship itself.",
+    "description": [
+      "Overlooked by youngbloods and praised by the old hands, navigators make sure a ship can get from A to B with the minimum of trouble and the maximum of opportunity.",
+      "Navigators have had a connection to the dancing fireflies of the wildsea since the earliest days of sailing, but there are many that eschew this ‘weirder’ side of their ways and focus on the accurate use and creation of maps and charts. Even with the changing topographies of the rustling waves, a good chart can mean the difference between port and death."
+    ],
+    "lore": [
+      {
+        "name": "Cartography and Changing Waves",
+        "description": "The uninitiated often wonder how maps can be of much use given the ever-growing, ever-changing topography of the canopy. The truth is that maps are often outdated, but even an outdated map is more useful than no map at all - even after the grand shifts caused by rootquakes, the largest ironroots, ports, and structures rarely change position, meaning navigators spend much of their time correcting and updating maps as they travel. An average navigator’s logbook is as much a record of history as of direction."
+      },
+      {
+        "name": "Augurs",
+        "description": "Hex-touched navigators that have moved beyond compass and chart, augurs eschew the mundane and delve straight into the embrace of the weird. Routes are divined through the movement of insects, the whispers of spirits, or the reading storm-patterns, and the augur develops an intense, unique connection to the ship they serve on. Despite the different approaches of the various disciplines, most have a healthy respect for each other and the unique skills they call upon."
+      }
+    ],
+    "questionsToConsider": [
+      "How do you read the waves and with what tools? Is navigation a discipline of learning for you, or more of a process of instinct and gut feeling?",
+      "Have you ever discovered an entirely new location or charted a route to a place once thought inaccessible?",
+      "Where do you keep your charts, and how do you update them?"
+    ],
+    "alternatePresentations": "A navigator’s aspects and skills lend themselves quite well to a character filling the role of a scholar or historian, but can also be used to create an effective travelling merchant- type. Devoting yourself to the arconautic side of the navigator’s options can easily create a ship-centric psychic.",
+    "aspects": [
+      {
+        "name": "In the Firefly’s Glow",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You know the secret paths of the fireflies. Mark to discover a location without using a chart (once per scene)."
+      },
+      {
+        "name": "Years at Sea",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to request an omen of the future (supplied by the Firefly)."
+      },
+      {
+        "name": "Wildlung",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You resist the effects of bad air, and are imune to airborne spores."
+      },
+      {
+        "name": "Revelatory",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "When you discover a new route or location, uncover a secret about that area as well."
+      },
+      {
+        "name": "Hullsight",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "While aboard your ship you can see as though you had eyes at any point across the outer hull."
+      },
+      {
+        "name": "At The Right Moment",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Whenever your crew take a montage during a journey, choose one crewmember to perform an extra task of their choice (you can’t choose yourself)."
+      },
+      {
+        "name": "Journeys Unfinished",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to learn the never-reached destination or port of origin for any wreck you come across. Burn to learn it for a ship still travelling."
+      },
+      {
+        "name": "Skoinesis",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "You have uncanny control over nearby ropes and rigging, which twist and move according to your will."
+      },
+      {
+        "name": "Gale Flute",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A simple musical instrument at first glance, playing the gale flute has the curious property of bringing favourable winds your way."
+      },
+      {
+        "name": "Cartographika",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A map-maker’s ordinator. Use a task to create a rare resource, Chart of the Rustling Waves."
+      },
+      {
+        "name": "Bundled Charts",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "When you uncover a new route or location, you can mark this aspect. If you do so, the Firefly will inform you of a second route or location at the same time."
+      },
+      {
+        "name": "Ornate Spyglass",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A spyglass that allows you to see much further and in greater clarity than the average wildsailor. When you have a commanding view, mark to learn a secret of the surrounding waves."
+      },
+      {
+        "name": "Flare Pistol",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "A small sidearm loaded with chemical flares. Deals LR Acid damage. Can also be used to shed light over extremely large areas at will."
+      },
+      {
+        "name": "Scout Falcon",
+        "trackType": "Companion",
+        "trackCount": 2,
+        "description": "Once per journey allows a crewmember to roll 2d6 when on watch, then pick the preferred result. Also deals LR Keen damage."
+      },
+      {
+        "name": "Weatherbug",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "Mark to accurately predict the weather for the next few days."
+      }
+    ],
+    "quote": "They say the waves are impossible to chart, their paths impossible to number. Doesn't sound like wisdom to me. -Jarl Nodesku, ektus navigator"
+  },
+  {
+    "name": "Rattlehand",
+    "summary": "Everything breaks eventually, but most of it can be repaired.",
+    "description": [
+      "Hull-iron rusts. Sawteeth blunt. Engines cough and struggle. In a world of salvage and barter, nothing lasts forever… unless you have a good rattlehand on your side.",
+      "A rattlehand is somewhere between an engineer, a blacksmith, and an artist, able to use the scrap of the seas to repair, reinforce, and create. Many rattlehands excel in crafting new and unique gear for their crewmates, perfectly suited to the troubles they face."
+    ],
+    "lore": [
+      {
+        "name": "A Second-Hand World",
+        "description": "The first thing almost every rattlehand learns is how to make the best of a bad situation; relying on imprecise tools, twisted salvage, and broken machinery to ply their trade. The lack of wide-scale mining and ore processing makes metal shortage an unfortunate reality, so those that balk at the idea of repurposing the same wreckage for the twentieth time often turn to wood or bone as a stand-in."
+      },
+      {
+        "name": "Salvage or Specimens?",
+        "description": "Salvage is by far the easiest material for a rattlehand to work with, tried-and-true pieces of wood or metal that stood the test of time (at least for a while). As most materials on the wildsea are second-hand, using fragments of old machines and discarded pieces of ship-stuff is a natural part of the job. But some rattlehands like a challenge, particularly those that spend a lot of time around the unusual creatures of the wider waves. These engineers combine the coldly artificial with the unpalatably organic, using plant and animal specimens alongside more traditional materials to create effective (but occasionally unsettling) products."
+      }
+    ],
+    "questionsToConsider": [
+      "Most rattlehands have a favored material to work with - what's yours?",
+      "Which experiment or repair job of yours failed spectacularly at just the wrong moment, and what were the consequences?",
+      "What was your crowning glory technologically speaking? A new technique, a grand machine, or unlocking a pre-verdant industrial secret?"
+    ],
+    "alternatePresentations": "Alternate rattlehand presentations are as diverse as rattlehands themselves; you might want to aim for a dockside engineer or ship-builder called to the waves, a blacksmith struggling in a world without forges, a technology-focused scientist, or even an artist or sculptor that works in salvage.",
+    "aspects": [
+      {
+        "name": "Mastercraft",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Choose wood, metal, or bone. Increase impact when crafting or repairing with your chosen material."
+      },
+      {
+        "name": "Made to Last",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "When you craft, the resulting creation’s track is three boxes longer than usual."
+      },
+      {
+        "name": "Multitasker",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can use a task to work on repairing up to three pieces of gear or mechanical companions at a time."
+      },
+      {
+        "name": "Surefire Smith",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Count conflicts as triumphs when repairing gear and mechanical companions."
+      },
+      {
+        "name": "Deckside Engineer",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Tiny, incremental adjustments that you make without thinking keep your vessel's hull and superstructure in remarkable shape. Increase your ship's Armour rating by one when you're aboard."
+      },
+      {
+        "name": "Breakdown Specialist",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "When a crafted benefit's track is fully marked, gain a piece of salvage related to it before removing the benefit."
+      },
+      {
+        "name": "Inkstamp Mechanism",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Consume a chart to quickly create a set of schematics for a machine or mechanism you can see (represented by a new chart). All actions to create such a machine yourself gain increased impact while you have this new chart."
+      },
+      {
+        "name": "Toolbelt",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Once per scene, swiftly craft a one-track creation without needing to roll."
+      },
+      {
+        "name": "Salvage Kit",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Contains salvage useful for crafting. Mark to use the contents in place of a resource when crafting."
+      },
+      {
+        "name": "Multi-Lens Goggles",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You gain ferrosight, the ability to see electric and magnetic fields."
+      },
+      {
+        "name": "Wolf-Skin Gloves",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "You never cut for difficulty when including specimens in your crafting, no matter how grisly or unpalatable the process is."
+      },
+      {
+        "name": "Volt-Rail",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "An insulated grip around a crackling, rudimentary cattleprod. Deals CQ Volt damage, and you're immune to Volt damage yourself."
+      },
+      {
+        "name": "Vortex Box",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A concertina-like weapon that compresses and fires air. Deals LR Blast damage."
+      },
+      {
+        "name": "Hazard Suit",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Spike, Acid, Blast, Volt, Flame."
+      },
+      {
+        "name": "Artillery Spider",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "A self-made automaton designed to offer fire support. Deals LR Blast damage."
+      },
+      {
+        "name": "Autocrawler",
+        "trackType": "Companion",
+        "trackCount": 2,
+        "description": "A nimble little scavenging construct. Once per scene, add a positive tag of your choice onto any piece of salvage you acquire."
+      }
+    ],
+    "quote": "Broken, you say? Give me a roll of leather, a set of screws, and a firefly bulb - it won't stay broken for long. -Hizero mothryn, rattlehand"
+  },
+  {
+    "name": "Screw",
+    "summary": "A disciplined manipulator of unseen forces.",
+    "description": [
+      "Metal is a common sight across the rustling waves, spat or dredged up from the darkness of the Under-Eaves or mined and refined in the shadowed depths of the last remaining mountains. For most it’s a weighty trade good, a means of repair or crafting.",
+      "But the screw sees metal in an entirely different way.",
+      "Screws are masters of an ancient pre-verdant technique, a branch of arconautics rarely seen in the wild world - ferrokinesis, the uncanny control of metals and magnetism. Iron is commonly the screw’s tool of choice, though the economy of salvage and scarcity across the waves has led some screws to adapt their techniques to other, less common metals."
+    ],
+    "lore": [
+      {
+        "name": "Ferrous & Free",
+        "description": "Most of the screw's unique abilities revolve around the manipulation of metal, at least to the layman, but it's often more a case of magnetic field manipulation. Screws tend to have serious trouble with certain metals, such as lead, and also feel their powers tend to be less controllable in areas already full of strong magnetic forces."
+      },
+      {
+        "name": "Do Machines Have Souls?",
+        "description": "Some screws are more than happy to rip a machine apart to suit their needs, but others are hesitant - there's life in the even the most basic of constructs, they say, not the cold intelligence of punchcard functions, but something paradoxically organic. To break a machine for its pieces... would it then be tantamount to murder?"
+      }
+    ],
+    "questionsToConsider": [
+      "What is your favoured material to work with? Iron, cobalt, perhaps nickel? Or even one of the more 'difficult' metals?",
+      "Do you feel like the power comes from you, or that you're merely a conduit for something deeper and greater?",
+      "What's the largest, heaviest thing you've ever moved? How did it feel to exert those arconautic muscles, and did it leave any lasting damage?"
+    ],
+    "alternatePresentations": "A screw's metal-manoeuvring aspects could be represented as the powers of an old- school psychic type, a product of mind over matter rather than arconautic application. You could also change the materials a screw works with to create a mancer focused on earth or stone, or even water (if you can find enough of the stuff).",
+    "aspects": [
+      {
+        "name": "Ferrokinesis",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to control or reshape exposed metal."
+      },
+      {
+        "name": "Deconstructor",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Ignore cut when attempting to damage, break, or deconstruct a machine or mechanism made of metal."
+      },
+      {
+        "name": "Heart of Ore",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Choose a single type of metal (such as iron or copper). Increase impact when repairing, crafting, or using arconautics with your metal of choice."
+      },
+      {
+        "name": "Iron-Ring Jacket",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You’re resistant to three damage types, chosen from the following list: Blunt, Spike, Serrated, Toxin, Volt."
+      },
+      {
+        "name": "Ironsight",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can sense nearby metals, see magnetic fields, and always know the direction of true north."
+      },
+      {
+        "name": "Chaff Pouch",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Mark to produce a cloud of metal fragments, obscuring vision around you."
+      },
+      {
+        "name": "Smart Repulsion",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Treat conflicts as triumphs when dodging or blocking attacks from constructs or metal weapons."
+      },
+      {
+        "name": "Magnetic Levitation",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can manipulate your own magnetic field, allowing you to fly for short periods when close to dense masses of metal (such as a ship’s hull or kinetic anchor)."
+      },
+      {
+        "name": "Kinetic Anchor",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A large mass of metal shaped to make it easy to carry, often used to enable ferrokinesis in places otherwise empty of metal. Deals CQ Blunt damage."
+      },
+      {
+        "name": "Rivet Swarm",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "A cloud of floating debris you can direct with a flick of the wrist. Deals LR Spike or Keen damage."
+      },
+      {
+        "name": "Reactive Riveter",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Deal Spike damage to any creature that attacks you with their own body in close quarters (such as with tail or bite attacks)."
+      },
+      {
+        "name": "Field Charge",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Once per scene, give any piece of salvage you acquire the Magnetic tag."
+      },
+      {
+        "name": "Pre-V Ingot",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Worn as a simple decoration, but holds incredible magnetic potential. Burn to briefly move a massive amount of metal, up to the size of a ship."
+      }
+    ],
+    "quote": "It's a dance, the way it moves - pieces glittering in the sunlight as they defy the laws that would hold them in place; as we defy those laws together. -Samaen ketra, screw"
+  },
+  {
+    "name": "Slinger",
+    "summary": "Distance fighters that announce themselves with a cacophony of gunfire.",
+    "description": [
+      "Usually found keeping a watch on the sea from the tallest vantage points on their ships, slingers are the first line of defence against attacks from pirates and wild beasts. Lightly armoured and possessing heavy firepower, their aim is usually to drop their targets before they even get close enough to fight.",
+      "Though most slingers use hammerpin and blackpowder to make their mark on the world, traditionalists exist - bows, crossbows, and even slingshots can all be just as deadly in the right hands."
+    ],
+    "lore": [
+      {
+        "name": "Unwieldy Ammunition",
+        "description": "With wide-scale machining an almost unthinkable rarity, there's no standard size or calibre of ammunition used in wildsea weapons. Firearms are created to be as generous as possible in terms of what they'll load and propel, but jams are still common and maintenance is a must. Many slingers craft (or at least alter) their own weapons and ammunition in their own time, or keep spare weapons to hand in case their favoured tool jams or backfires."
+      },
+      {
+        "name": "Lawbringers",
+        "description": "In many of the more frontier-style settlements, slingers are often contracted to work as short-term lawbringers, outside forces that care little for local conflicts but much for the chance of earning some scratch. This practice has earned a lot of slingers respect in places they wouldn't expect it...and ire in places they would."
+      }
+    ],
+    "questionsToConsider": [
+      "What's the most desperate situation you've gotten yourself out of with clever gunplay and well-timed trickery?",
+      "Have you ever taken on lawbringer work for one of the smaller settlements? If so, were there any long-term repercussions?",
+      "Are you the type to hunt down gunsmiths and pay exorbitant amounts for custom- made pieces and ammunition to suit them, or the type to cobble together weapons in your downtime and load them with whatever comes to hand?"
+    ],
+    "alternatePresentations": "Slingers fit well into the ranger archetype already, but can also work when flavoured more along the lines of a traditional cowboy or gunslinger. Alternatively, re-flavouring some aspects can give you a monk-like fighter with a focus on ranged energy blasts, if you're craving a full-fantasy approach.",
+    "aspects": [
+      {
+        "name": "Gunslinger’s Poise",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "You’re hard to shake, no matter what comes your way."
+      },
+      {
+        "name": "Precision Denial",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Once per scene, you may instantly hijack focus when targeted by a ranged attack."
+      },
+      {
+        "name": "Trigger Discipline",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "When attacking at long range, mark to count a conflict result as a triumph."
+      },
+      {
+        "name": "Barrage",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You can deal damage to multiple distant opponents with a successful LR attack."
+      },
+      {
+        "name": "Deadeye",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can target attacks precisely (such as when aiming for a weak point) without cutting for difficulty."
+      },
+      {
+        "name": "From On High",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "A true eagle's view. Increase impact when attacking from an elevated position."
+      },
+      {
+        "name": "Thunder",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to increase impact when attacking at long range."
+      },
+      {
+        "name": "Trick Shot",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "Burn to attack a target you can’t see or don’t have line of sight to."
+      },
+      {
+        "name": "Amateur Gunsmith",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Extend the track of any temporary LR weapon you craft for yourself by two boxes."
+      },
+      {
+        "name": "Toe to Toe",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You can use LR weapons in close quarters combat and tight engagements without cutting for difficulty."
+      },
+      {
+        "name": "Essence Grinder",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Consume a specimen to add a thematically appropriate damage type to one of your existing LR weapons. This added damage type persists until you use essence grinder again."
+      },
+      {
+        "name": "Smoke Bombs",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "Mark to produce a cloud of smoke, obscuring vision in your area for others, but not for you."
+      },
+      {
+        "name": "Hammerpin Revolver",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A heavy revolver with a rotating cylinder. Deals LR Blunt or Blast damage."
+      },
+      {
+        "name": "Bolt-Action Rifle",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "A long-barrelled rifle with an amber-lensed scope. Deals LR Blast damage. Increase impact when attacking from a hidden position."
+      },
+      {
+        "name": "Copper Sawn-Off",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A sawn-off shotgun that can be loaded with shrapnel or salt rounds. Deals LR Blast or Salt damage."
+      }
+    ],
+    "quote": "I could have joined a marauder crew, but where's the fun in that? Better morals here. Better food too. - Lace DeCastin, ardent slinger"
+  },
+  {
+    "name": "Steep",
+    "summary": "Beveragiers who connect you to the deeper mysteries of the wildsea with but a sip.",
+    "description": [
+      "Food and water are nourishing to the body; concoctions feed the spirit. A steep is the hand by which concoctions are mixed. Steeps provide all sorts of solutions to a group of wildsailors, their curiosity and imagination limited only by their ingredients.",
+      "As drinks come in many forms, so do steeps. Whether hot or cold, hard or soft, drinks made by a steep leave you feeling a bit more. Whether more courageous, more relaxed, warmer, taller, more discerning, more perceiving, how your 'more' tastes all depends on the steep. All steeps leave you more in one more way or another because they are more deeply understanding how the veil parts with every swallow. Theirs or yours."
+    ],
+    "lore": [
+      {
+        "name": "The Warmths Within",
+        "description": "The first organized gatherings before and after the Verdancy were centered around drink. Water is more than a necessity. It is an ingredient in the recipe for community. Warmth, comfort, and wonder are instilled around a steep as they distill. As with all recipes, they'll vary individually. Invariably they'll be indivisible when considering the connections they forge. Steeps have not always been, but there have always been steeps. A steep persists wherever companions do, whether their presence is present, or solely their gifts. Crewmates share tales over ales, but when a steep joins in the telling, the well from which they all draw grows deeper. Perspectives can fuse in the mull, whether the"
+      }
+    ],
+    "questionsToConsider": [
+      "What is your signature beverage, not necessarily one you invented but one you have perfected? Is there anyone who doesn't like it, or anyone who can't get enough?",
+      "What personal rituals surround your brews, what do you do before, during, and after creation? For whom do you change them, for whom do you make accommodations (whether adding or removing ingredients or something else)?",
+      "What mysteries have your drinks revealed? How do you ponder them, and with whom?"
+    ],
+    "alternatePresentations": "The steep already fits the role of ship's morale officer reasonably well, but that's by no means a limit. Leaning into the spiritual aspects and flavouring of the steep will give you a serviceable wildsea seer.",
+    "aspects": [
+      {
+        "name": "Anima Presence",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Spirits can always see and hear you, and you can always see and hear them."
+      },
+      {
+        "name": "Rite of Bloom",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Old flavours burst in novel ways. Consume a whisper when an ally imbibes one of your concoctions and benefit from an aspect of theirs until the concoction has worn off."
+      },
+      {
+        "name": "Potion of Youth",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "Your body doesn’t look it, but you are far older than you seem. You have learned many tricks to keep it so."
+      },
+      {
+        "name": "Steeping Reality",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Tangible things steep and disperse their essence through the Physical Realm. Mark to know the past of an object."
+      },
+      {
+        "name": "Not a Drop Wasted",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "A steep never spills. Once per journey, a crewmate may suffer your disaster to add a box and a word to a benefit you brewed. If there was no twist, you both may alter a word in a whisper."
+      },
+      {
+        "name": "Reading the Remains",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Whether leaves, grounds, draff, or bones, all concoctions leave remnants. Consume a specimen to ask a question and read an omen in your remnants."
+      },
+      {
+        "name": "The Winning Wishbone",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Given the proper time and equipment, a steep can brew a hearty stock using this arm-length wishbone chunk. Triumphs on rolls made to brew heal one mark of damage for all crewmates who share in the result."
+      },
+      {
+        "name": "Crezzagrean Kantharos",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "A vessel ancient even in the pre-Verdancy, used to infuse more than just flavour into a mull. While brewing with this vessel, cut 1 to add a 1 rank of a skill or language you know as an additional boon to the benefit provided."
+      },
+      {
+        "name": "Ossein Kettles",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "This heirloom, eternities old, is used to create beverages that warm more than your body. Triumphs on Concoct rolls grant a whisper."
+      },
+      {
+        "name": "Salamini",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "Like a salamax, just smaller. Their boiling spit is just the perfect temperature for a mull. Their scalding saliva deals CQ Flame damage."
+      },
+      {
+        "name": "Steam-Familiar",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "Warmth, wonder, and moisture are familiar to a steep, and sometimes the spirits they call linger on to comfort others. Mark to neutralize the effects of bad air, spores, or cold."
+      },
+      {
+        "name": "Zephyrous Stir-Spoon",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "The cooling breezes carried by this lengthy stir spoon always reach the bottom of the pot. It'll carry you, haltingly, too. Mark to poorly fly upon it for the duration of the scene."
+      },
+      {
+        "name": "Coterie Drugget",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A place setting made of woven complexities. Allies may mark an aspect to benefit from one of your concoctions (with reduced impact)."
+      }
+    ],
+    "quote": "Sit down. Relax. It'll be ready in good time. Let us warm your spirit along with your body. - Batrava Botay, mothryn steep"
+  },
+  {
+    "name": "Surgeon",
+    "summary": "Experts in shattered bone and split vegetable matter few turn down their ministrations out on the waves.",
+    "description": [
+      "The surgeon combines the skills of a traditional portside doctor, a therapist, a scholar of research, and a butcher into one terrifying package. Expert at mending broken parts and curing illnesses, taking the surgeon’s post on a ship tends to ensure that you’ll be welcome wherever you end up - nobody wants to offend the one that might be saving their life in the future.",
+      "Portside surgeons train for long years in what passes, in the post-Verdant world, for the halls of academia... But ship-posted surgeons have to learn on the job."
+    ],
+    "lore": [
+      {
+        "name": "It Won't Be Pretty",
+        "description": "The wildsea is a world of aches and scars, imperfect healing and old breaks. Surgeons do what they can to stem the tide of spilled blood and broken bones, but they're often left working with inexact materials and under trying circumstances. If you take a serious injury on the seas, there's a good chance it's going to leave a scar. Luckily for the average crew, the lingering sight of past trauma has little to do with the standard of care received. Those living with scars tend more to focus on the 'living' part than the 'scar' part, and that first part is almost always thanks to the ministrations of an overworked surgeon."
+      }
+    ],
+    "questionsToConsider": [
+      "What's the worst injury you've treated and did your patient survive?",
+      "Have you ever been forced to operate on yourself either with or without the assistance of anaesthetic or crewmates? If so, what happened?",
+      "Are you the type that studies and researches potential maladies to come up with preventative medicines, or that reacts solely to the problems right in front of you?"
+    ],
+    "alternatePresentations": "Perhaps the most terrifying presentation of the surgeon is as a last resort, the enthusiastic amateur that's the best you're going to get while away from a friendly port. For a less worrying take, a wilds pharmacist or biological researcher would be a good bet.",
+    "aspects": [
+      {
+        "name": "Surgical Spectacles",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Mark to identify one of a target’s weak points."
+      },
+      {
+        "name": "Bonesaw",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Works just as well on foes as it does patients. Deals CQ Serrated damage."
+      },
+      {
+        "name": "Whisperspit Leech",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "Mark mire to drain the falsehood out of a statement, hearing the truth behind it. You gain a whisper based on the excised lies."
+      },
+      {
+        "name": "Vigilance",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "You scrub, clean, and de-spore surfaces with regularity. Whenever you or one of your crew takes an injury, reduce the injury track by one box."
+      },
+      {
+        "name": "Ceaseless Tending",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can use a task to work on healing up to three traits, injuries, or companions at a time."
+      },
+      {
+        "name": "Leviathan-Blood Infusion",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Hard to get hold of but terrifyingly potent. Burn to give you or a crewmate resistance to all damage for the duration of a scene or increased impact on all attacks for the duration of a scene."
+      },
+      {
+        "name": "Wilds Theoretician",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Consume a whisper to discern the properties of a mysterious illness or injury."
+      },
+      {
+        "name": "In the Absence of Journals",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You receive a whisper whenever a crewmate fully heals from an injury."
+      },
+      {
+        "name": "Biological Maestro",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Choose a bloodline. When healing a member of that bloodline, treat conflict results as triumphs."
+      },
+      {
+        "name": "Doctor's Trusty Satchel",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "Mark to acquire one of three resources, Hungry Leeches, Soporific Draught or Medicinal Herbs."
+      },
+      {
+        "name": "The Limits of the Crew",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "Mark to allow a crew-mate to benefit from a fully- marked trait or companion for the duration of a scene."
+      },
+      {
+        "name": "Spice-Nosed Mask",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "You’re immune to disease, and resist the effects of bad air and airborne spores."
+      },
+      {
+        "name": "Evolving Techniques",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Increase impact when healing others in a safe, stable environment."
+      },
+      {
+        "name": "Herbal Sealing-Wax",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "An odd-smelling unguent for spreading on a vessel's doorways, dispensed liberally as a matter of course. Increase your ship's Seals rating by one when you're aboard."
+      },
+      {
+        "name": "First Aid",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "When a nearby ally takes damage, hijack focus to immediately heal one point of that damage (once per scene)."
+      }
+    ],
+    "quote": "“Am I a specialist? Well, let me put it this way, only one member of the crew apart from me has blood, one's made of wood, and one's made of spiders. What do you think?” -Betse Lora, ardent surgeon"
+  },
+  {
+    "name": "Tempest",
+    "summary": "Your blood crackles with sparks, your heart beats with thunder.",
+    "description": [
+      "Internalising the wild power of a storm is no small feat, but it's not impossible - either through technological application or obscure arconautic methods, tempests have managed to embed the essence of lightning within themselves.",
+      "Holding onto such raw power is difficult even for the most disciplined, and many find themselves the subject of wild moods and sleepless nights as thunder roams their minds. Only the most dedicated tempests manage to typify that dangerous, deadly calm of thunderheads massing on the horizon."
+    ],
+    "lore": [
+      {
+        "name": "A Fragment of Storm",
+        "description": "The most common road to becoming a tempest is to hunt down a living storm and capture some of its lightning for yourself, but it's far from the only way. Some tempests pierce themselves with the spines of an ironjaw ray, or cultivate colonies of voltaic moss along their arms, or befriend a potently electric wildsea creature in order to borrow its puissance. Whatever the precise method, one fact holds true in all cases - a tempest's own body is the host of their power."
+      },
+      {
+        "name": "Lightning Without Thunder",
+        "description": "...Well, almost all cases. It's extremely rare, but there are tempests out on the waves whose mastery of electricity comes from purely technological means (as a result of accident, endeavour, or self-experimentation). These artificial tempests are often more akin to rattlehands in their approach to the art, treating voltage as a resource for crafting and repair rather than a source of combat prowess, but they're no less powerful than their storm-blooded kin."
+      }
+    ],
+    "questionsToConsider": [
+      "How did you attain the power of storms? Through theft, alchemy, injury, or some other wildsea weirdness?",
+      "To what extent are you in control of the lightning within you? In what ways have you unintentionally released it?",
+      "Do you resonate with the world around you, and how does this manifest? Crawling sparks, misfiring engines, gathering clouds?"
+    ],
+    "alternatePresentations": "The easiest non-standard interpretation of the tempest is as some kind of elemental magic user, a mage-type with power over lightning drawn from nothing but training. Alternatively, the tempest aspects can be adapted mechanically to represent other wildsea damage types - an arconautic user of frost, for example, or even (and this is definitely not recommended) flame.",
+    "aspects": [
+      {
+        "name": "Storm-Stride",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to float for a brief time, electricity crackling around you as you do so."
+      },
+      {
+        "name": "Mesh Relay",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Deal Volt damage to any creature that attacks you with their own body in close quarters (such as with tail or bite attacks)."
+      },
+      {
+        "name": "The Pulse",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can sense nearby electrical fields, such as those produced by living organisms."
+      },
+      {
+        "name": "Voltomotive Interfacing",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You can act as an additional (or main) engine for your ship, powering its bite with your mere presence. Increase your ship's Speed rating by one when you're aboard."
+      },
+      {
+        "name": "Bolt-Switch",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to instantly switch places with a willing crewmate within sight, or burn to switch with them and hijack focus at the same time."
+      },
+      {
+        "name": "Voltaic Lantern",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A simple light source that runs off of your own internal charge. Mark to deplete a nearby source of electricity, absorbing it into the lantern for a brighter glow."
+      },
+      {
+        "name": "Old Accord",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Use a task and mark to quiet or banish a storm, or use a task and burn to summon one."
+      },
+      {
+        "name": "The Skies Agree",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Increase impact when dealing Volt or Blast damage during an electrical storm or heavy rainfall."
+      },
+      {
+        "name": "Thunder’s Tone",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can raise your voice to an ear-splitting shout, dealing CQ Blast damage and being easily heard over long distances."
+      },
+      {
+        "name": "Lightning’s Call",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can direct bursts of voltaic energy through your palms or fingers, dealing LR Volt damage."
+      },
+      {
+        "name": "Ground Zero Overload",
+        "trackCount": 1,
+        "trackType": "Trait",
+        "description": "Mark to deal Volt damage to all nearby foes, or burn to increase it to massive Volt damage."
+      },
+      {
+        "name": "Singed Coat",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You’re resistant to three damage types, chosen from the following list: Frost, Flame, Salt, Blast, Volt."
+      },
+      {
+        "name": "Internal Battery",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Mark to kickstart a machine, charge a depleted power source, or temporarily increase the effectiveness of an engine."
+      },
+      {
+        "name": "Squallkitten",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "A small, playful feline made of roiling stormclouds. Gives your entire crew resistance to Volt damage."
+      },
+      {
+        "name": "Sparking-Eel",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "Winds around limbs and under clothes, always moving. Mark to identify the nearest source of potent electricity, no matter the distance."
+      },
+      {
+        "name": "Ironjaw Seven-String",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "A guitar-like instrument carved from the bones of an ironjaw ray. Produces a harsh, buzzing tone when played that seems to awaken the spirit of rebellion in some."
+      }
+    ],
+    "quote": "It's not something to be taken lightly, that kind of power. It changes you in ways you won't be prepared for. I know I wasn't. -Ropperly ketra, tempest"
+  },
+  {
+    "name": "Wordbearer",
+    "summary": "The routes may be longer and a lot more dangerous than in the pre-verdant times, but the post still needs to get from A to B.",
+    "description": [
+      "Some think the position of wordbearer is little more than a ridiculous affectation - how can a sender be sure their message will be delivered with the waves so unpredictable? How can one be trusted with words in a world where they're known to latch parasitically into the mind? With trained crows and dragonfly-messengers, who even sends letters to be delivered by hand anymore?",
+      "But that mockery and disbelief falls to a hush when an actual wordbearer walks by, laden with twine and packages, charts and envelopes and cages. Their scars speak volumes, their gazes (if they are the sort with eyes, at least) tell stories, and their lips shape secrets only meant to pass from one mind to another. They are the personification of whisper, the wordbearers - conveyors of quiet truth."
+    ],
+    "lore": [
+      {
+        "name": "The Oath",
+        "description": "Four words: This Will Be Delivered. A wordbearer's oath is a powerful force; some say as powerful as the wildest whisper. Most of their role on a ship is to pick up packages and missives from whatever junctions they stop at, to take messages from crews far from home, to commit phrases and well- wishes to memory for those that lack ink. People pay for their services, and for the trust they've earned. In more isolated regions, to impersonate a wordbearer and take the deliveries for yourself would be something approaching blasphemy."
+      },
+      {
+        "name": "Not Rain Nor Snow",
+        "description": "Implacable is a word often used in connection with this post, and for extremely good reason. Wordbearers have a well-earned reputation for taking their oaths of delivery seriously, sometimes seriously enough to travel for months in order to hand over a single letter. It can hardly be a practical way to live, but it's the path they've chosen."
+      }
+    ],
+    "questionsToConsider": [
+      "What was the first thing you delivered and what was special about it?",
+      "Have you ever broken the wordbearer's oath? If so, was it by accident or by design?",
+      "Is there any missive you won't carry, any material you refuse to transport? Why, and what experiences led to this personal rule?"
+    ],
+    "alternatePresentations": "The wordbearer can make a fantastic diplomatic type, the trustworthy face of a crew in their interactions with strangers. On the flipside, a lot of their secret-keeping aspects can lend themselves well to the role of a spy or saboteur, and if you want to stick to a particularly nautical theme an oathbearer would make an excellent smuggler.",
+    "aspects": [
+      {
+        "name": "Respect Runs Deep",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Your clothes, your posture, your look - wordbearers are afforded a rare respect. Treat conflicts as triumphs when commanding authority in a settlement with a junction."
+      },
+      {
+        "name": "The Words Always Know",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Once per scene you can gain a fragment of accurate information on the whereabouts of any individual you're trying to deliver to."
+      },
+      {
+        "name": "The Safest Wrapping",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Use a task to convert a spoken or physical message of some kind into a whisper (if the message was a resource, you keep it in addition to gaining the whisper)."
+      },
+      {
+        "name": "Rightful Owner",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Increase impact when defending your deliveries, and when attempting to retrieve something stolen from yourself or your crew."
+      },
+      {
+        "name": "Oathbound",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You're immune to chemical, arconautic, and mesmeric effects designed to draw information from you."
+      },
+      {
+        "name": "Weatherbeaten",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You’re resistant to three damage types, chosen from the following list: Blast, Acid, Toxin, Frost, Flame."
+      },
+      {
+        "name": "Promise-Twine",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "When a resource you're trying to deliver would be destroyed or lost it degrades instead, gaining a negative tag (if it already has a negative tag, it is consumed as normal)."
+      },
+      {
+        "name": "Glyph Flares",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A set of chemical fireworks that burst in bright, recognisable glyph shapes."
+      },
+      {
+        "name": "Pattern-Reader",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A miniature gramophone for playing scribed cylinders of wax, ceramics, or cured bark. Mark to record a fragment of conversation or sound you can hear, to be played back at a later time."
+      },
+      {
+        "name": "Undeliverables",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "Sometimes the oath is broken by the death of a receiver. You carry those undelivered letters and parcels around as a memorial, or possibly a penance."
+      },
+      {
+        "name": "Canvas Sling",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A simple but effective weapon. Deals LR Blunt damage, and increases impact on CQ actions made to trip or restrain a target."
+      },
+      {
+        "name": "Sortomaton",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "A wheezing machine used for the sorting and categorizing of mail. You count as fluent in all languages, but only when reading addresses, listening to directions, or commiting a sender's message to memory."
+      },
+      {
+        "name": "Retired Courier Dragonfly",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "Still swift, but lacking stamina. Mark to gain a resource from your surroundings with some kind of text as a component, such as a chart or painted sign."
+      },
+      {
+        "name": "Courier's Cage",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Consume a specimen to call a nearby messenger creature to you safely, and retrieve both the creature and whatever message they're holding as resources."
+      }
+    ],
+    "quote": "This will be delivered, I said, and she laughed. But six months, three reaches, and two leviathans later, it was. - Half-Ghost Galway, ketra wordbearer"
+  }
+]

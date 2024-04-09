@@ -1,0 +1,697 @@
+[
+  {
+    "name": "Amberclad",
+    "summary": "After three centuries of dream, the world you wake to is not the one you left.",
+    "description": [
+      "The Verdancy was an explosion of plantlife, a ripple across the waves - the amberclad are those that were caught on the crest of that wave, drowned in crezzer-soaked sap and left in an uncanny sleep after it hardened into amber.",
+      "Once freed into the wild world, an amberclad has almost no idea of their former life or who they were, but no understanding of the world around them either. The weight of dreams is heavy on them, no matter how they try to shake it off."
+    ],
+    "lore": [
+      {
+        "name": "Prized or Prisonbroken?",
+        "description": "Most amberclad are found by accident, within the bark of split ironroots or lying atop the waves after a rootquake. Breaking them out of their organic prisons is a tough process, and keeping them alive while doing so is tougher - fatal accidents make an already rare phenomenon of survival ever rarer. Good-natured crews take these confused individuals under their wing, teaching them the ways and dangers of the new wild world until they're confident enough to strike out on their own (or stay on with the crew as a member). But charity only runs so deep, and some unscrupulous sorts never open the prison at all - instead they haul the amber whole, then sell it to collectors of curiosities and pre-verdant researchers."
+      },
+      {
+        "name": "In Mourning",
+        "description": "Some amberclad never get over the loss, not only of the lives they used to lead, but the faded memories of that life - they're haunted by the idea of friends lying dead for centuries, of the uncertain fates of family members, or of their own names and achievements long-forgotten. These lost and mournful souls sometimes return to dream, hoping to sleep away the memory of their lost memories... It never takes."
+      }
+    ],
+    "questionsToConsider": [
+      "What scraps of the pre-verdant world do you remember? For that matter, what do you remember of yourself from the time before your long and unexpected sleep?",
+      "How did you wake into the wildsea? Was your prison broken open by reclaimers, by accident, or did you wake and force your own way out?",
+      "ew amberclad escape their slumber without a fragmentation of their own body - where are you broken, and can you even feel it?"
+    ],
+    "alternatePresentations": "To gain the same essential feeling of pre-verdant life maintained, an amberclad character could be divorced from the concept of amber (or even the natural world) entirely. Instead they might be a scientist or test-subject from a technologically advanced past, the result of an experiment in slowed aging, cryogenics, or even chronological displacement.",
+    "aspects": [
+      {
+        "name": "Endless Golden Age",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "You didn't age throughout your imprisonment, and you don't seem to be aging now that you're free either. A blessing, but a curious one."
+      },
+      {
+        "name": "All So Familiar",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Muscle memory takes over. Treat conflicts as triumphs when interacting with newly uncovered pre-Verdant artefacts."
+      },
+      {
+        "name": "Unbroken Family Line",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You may have been asleep for hundreds of years, but some of your kin have been thriving. Burn to tie an individual or settlement to your family in some way."
+      },
+      {
+        "name": "Ambervein",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You’re weak to Blunt damage, but immune to the harmful effects of crezzerin."
+      },
+      {
+        "name": "Dream-Dredge",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "There are impressions of a forest-less world, but grasping them is like holding onto a dream. Use a task to gain a sliver of Pre-V information."
+      },
+      {
+        "name": "Resokinesis",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to gain a measure of control over sap, resins, and amber."
+      },
+      {
+        "name": "Just a Scratch",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to produce a resource Warm Amber Shards or Dripping Resin."
+      },
+      {
+        "name": "Fragmented Limb",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Cracked and floating just free of your body. When you take this gear, decide whether it deals CQ Blunt, Keen, or Spike damage (you can change this damage type by using a task)."
+      },
+      {
+        "name": "Heart of Resin",
+        "trackCount": 1,
+        "trackType": "Gear",
+        "description": "Burn to create a perfect copy of yourself in living amber and drift into a deep sleep. You control the copy until it dies or you choose to destroy it, upon which time you wake with its memories and experiences as dreams."
+      },
+      {
+        "name": "Half-Clogged Firearm",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A double-barreled pre-verdant shotgun, one of the firing chambers hopelessly clogged. Deals LR Blast damage."
+      },
+      {
+        "name": "Shard-Cloak",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "You’re resistant to three damage types, chosen from the following list: Keen, Spike, Serrated, Hewing, Salt."
+      },
+      {
+        "name": "Shattered Eye",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Something you usually use to see is broken, ambered and still lingering in sleep. You can see glimpses of a person's recent dreams clinging to them if you concentrate."
+      },
+      {
+        "name": "Pre-V Pet",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "A faithful friend from the old times that was trapped, and freed, alongside you. Not particularly suited to the wild world, but most likely revelling in it."
+      }
+    ],
+    "quote": "That history they speak of? I was there, I lived it, but it's no less a dream to me than it is a legend to them. An entire life lost to sleep. Who might I have been back then? What have I lost? - Moll Corvenus, ardent amberclad"
+  },
+  {
+    "name": "Anchored",
+    "summary": "Your body was claimed by the Under-Eaves but your soul refused to follow.",
+    "description": [
+      "Even on the weird waves of the wildsea, death is usually the end of your direct interaction with the material world. Most ancestral spirits and honour-bound ghosts require a boost from the spiritually sensitive in some way for them to affect reality.",
+      "Not so the anchored, a tangible, physical presence on the waves despite being, by almost all definitions, very much dead. These souls are given substance by their anchor, a single physical object that was left at the surface when their body fell. It might be a memento, a favoured weapon, a chart pointing the way home - whatever it is, it was enough of a tether to keep them from passing over, and to confer a level of impressive material control."
+    ],
+    "lore": [
+      {
+        "name": "A Whispered Theory",
+        "description": "There are some who swear blind that the anchored aren't quite what they seem to be; those that knew someone both in life and death, and noticed the smallest changes in their moods and memories that stood out like a sore thumb. Are the anchored truly ghosts, they ask, or are they stories? The narrative of a sailor's life given form, a living postscript after the final chapter? There are no hard answers, of course... But there are suspicions."
+      },
+      {
+        "name": "Anchors Broken",
+        "description": "The precise mechanics of death may be a mystery on the rustling waves, but one thing's for sure - you can die twice if you're unlucky enough. An anchored that loses their reference point to the world deteriorates rapidly, shredded and scattered to the winds. With speed, quick thinking, and some spiritual know-how it's possible to slow the process, but an anchored needs their anchor as surely as an ardent needs air."
+      }
+    ],
+    "questionsToConsider": [
+      "Do you remember your death? If so, what caused it?",
+      "To what extent do you feel connected to the world around you, now that you don't follow quite the same rules of physicality as most?",
+      "Have you ever come close to losing your anchor? If so, what happened?"
+    ],
+    "alternatePresentations": "The usual presentation of an anchored is that the soul of a once-living individual attaches itself to an object after their death, but what if an anchored was never living at all? An anchored character could be a genius loci, a spirit grown organically from a place or thing, or even the personification of a concept or idea.",
+    "aspects": [
+      {
+        "name": "By a Thread",
+        "trackCount": 1,
+        "trackType": "Trait",
+        "description": "Your grip on the world is tentative, but that does come with certain benefits. You are weak to Salt and Volt damage, but immune to Blunt, Keen, and Spike."
+      },
+      {
+        "name": "Phantom Blade",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "The ghost of a sword hovering at your hip. Deals CQ Salt damage, and doesn't have to be held to be used."
+      },
+      {
+        "name": "Spectral Variance",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to become insubstantial for a short time, allowing you to float and pass through solid objects."
+      },
+      {
+        "name": "Anchor Fragment",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A smaller piece hewed from a greater whole. Burn to immediately and completely heal any one of your injuries."
+      },
+      {
+        "name": "Mortal Needs",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Though you can do so if you choose, you have no real need to eat, drink, sleep, or breathe."
+      },
+      {
+        "name": "Resonant Tether",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "Spirits and the spectral realm become more visible and tangible to your entire crew in your presence."
+      },
+      {
+        "name": "Ethereal Healing",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "When being healed or having your gear repaired, resources used are not consumed as normal - instead they degrade, giving them a negative tag (if they already have a negative tag, they’re consumed as normal)."
+      },
+      {
+        "name": "Battered Ajna",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A stringed instrument meant to be played in tandem by the living and the dead, but you can play both parts. Empowers nearby spirits when played."
+      },
+      {
+        "name": "Touch of the Beyond",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Once per scene, when your crew gains a resource, you can choose to give it the 'Spectral' tag."
+      },
+      {
+        "name": "Tempered Anchor",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "Your anchor to the world is reinforced against damage and tampering, a wise move for a fleeting ghost."
+      },
+      {
+        "name": "Geist Hand",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can manipulate nearby objects without touching them, though the heavier they are, the harder it is."
+      },
+      {
+        "name": "Faithful Spirit",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "Loyal to the grave and beyond. Mark to ignore the effects of an active mire for the rest of the scene."
+      },
+      {
+        "name": "Death Mask",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Some anchored prefer to hide their face, letting the memories of their time among the living fade. Treat conflicts as triumphs when attempting to unnerve or unsettle."
+      },
+      {
+        "name": "Siphoning Fork",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Whenever your crew gains a piece of cargo, gain a whisper related to it (or its previous owners) for yourself."
+      }
+    ],
+    "quote": "I've died once already. What fear do you think it holds for me now? - Calsey Calabrakta, ketra anchored"
+  },
+  {
+    "name": "Ridgeback",
+    "summary": "Raised on a mesa or mountaintop island, solid ground but far from safe.",
+    "description": [
+      "In the earliest days of the Verdancy, many mountain-dwelling folk considered themselves divinely spared from the forest that ate the world. Unfortunately, their sanctuaries quickly turned to graveyards; the harsher weather and lack of food meant that many died from exposure and disease, and those that clung on too often found dark solace in cults or cannibalism.",
+      "Those days are over now, for the most part, but their influence still shows. Those raised on the ridgebacks are built larger and stronger than their kin, and often worship strange, tenuous godlings."
+    ],
+    "lore": [
+      {
+        "name": "Sturdy Ground",
+        "description": "Unlike most on the wildsea, children growing up in ridgeback communities did so with solid ground under their feet and interaction with the waves around them as an option rather than a necessity. Despite their colonies being larger than most they produce comparatively few sailors, with most drawn to tasks making use of their unique environment - mining, stoneworking, smithing, and cattle-herding."
+      },
+      {
+        "name": "Gods for the Godless",
+        "description": "While many small settlements (and even some larger cultures) have deities and godlings that they worship or sacrifice to, organised religion is a rarity on the rustling waves. Ridgeback communities are more likely than most to have preserved the pre- verdant idea of warring higher powers and omnipotent watchers, but even these ideas become corrupt or debase over time. Bestial iconography is common, as are stories of divine punishment."
+      }
+    ],
+    "questionsToConsider": [
+      "Did you settle a mountaintop island post-Verdancy, or did your ancestors flee to one in the chaos of the event itself?",
+      "The ridgeback life is often tough and uncompromising. What lasting scar do you have from what you thought would be a harmless task?",
+      "What animals are tended to on your safe-stone home, and why? For milk, meat, wool, or something else entirely?"
+    ],
+    "alternatePresentations": "To keep the 'stable ground' feeling of the ridgeback while divorcing it from the mountains, consider the hide or carapace of a slow moving leviathan as foundation for a community. On the other hand, running with the concept of life being a superstitious struggle, a ridgeback community could easily exist on a spire of rock trapped at the edge of a rift or shankfall, a great empty darkness perpetually beneath them.",
+    "aspects": [
+      {
+        "name": "Barrel-Chested",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "You may not be built fancy, but you are built sturdy."
+      },
+      {
+        "name": "Whispering Charm",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Consume a whisper to learn a secret about a nearby individual (supplied by the Firefly)."
+      },
+      {
+        "name": "Stone Hearted",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Once per scene, increase impact on any successful action taken while on ancient ground."
+      },
+      {
+        "name": "Hexed Tooth",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Mark to levitate and control exposed bone."
+      },
+      {
+        "name": "Search for Omens",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to ask a question and receive an omen to interpret in return (supplied by the Firefly)."
+      },
+      {
+        "name": "Great Beast Horns",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "These might have deep ceremonial meaning, or just cut an impressive silhouette - either way these horns deal CQ Spike damage, and you ignore cut when defending yourself against charging opponents."
+      },
+      {
+        "name": "Thick Skin",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You're resistant to three damage types chosen from the list: Blunt, Toxin, Cold, Salt, Volt."
+      },
+      {
+        "name": "Crushing Blows",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Your fists and feet are the only weapons you need. They deal CQ Blunt damage."
+      },
+      {
+        "name": "Fragments Like Gods",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Whenever you gain a stone-based resource, give it the 'Sacred' tag."
+      },
+      {
+        "name": "Archaeodermis",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "Your skin (or whatever you have as an outer covering) mimics the mountain you were raised on. You're immune to Keen damage as well as bites and stings from small creatures."
+      },
+      {
+        "name": "Shamanic Idol",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Holds a sliver of power from a not-quite-god. Deals LR Salt damage."
+      },
+      {
+        "name": "Swift Hawk",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "A surly, vicious bird that can deal LR Keen damage. Once per scene, hijack focus to temporarily blind or distract an attacking opponent."
+      },
+      {
+        "name": "Mountain Snouter",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "An ill-tempered boar with cruel tusks. Deals CQ Spike damage and is large enough to ride."
+      },
+      {
+        "name": "Chipping Tools",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Treat conflicts as triumphs when altering or working with stone or bone."
+      },
+      {
+        "name": "Leviathan Furs",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "You never mark mire when confronted with an unknown or terrifying beast, no matter the size."
+      },
+      {
+        "name": "Ritual Mask",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You can clearly see spirits and the spectral realm."
+      }
+    ]
+  },
+  {
+    "name": "Rootless",
+    "summary": "Born into the wild sailor’s life on a ship or floating colony.",
+    "description": [
+      "In a world where solid ground is hard-won and reliable clean water scarce, nomads are common. The rootless are those that have fully embraced the nomadic lifestyle, drifting from place to place on family-owned ships handed down from one generation to the next. For many rootless, family ties are forever… but the call of the horizon is strong.",
+      "Rootless tend to be hardy sorts, raised among the perils of the open sea - they have no illusions about the waves, understanding their danger and their beauty in equal parts."
+    ],
+    "lore": [
+      {
+        "name": "Fleet Families",
+        "description": "Rootless families aren't decided by who shares blood, but rather who shares a ship - serve on a vessel for long enough and you become more than just crew. There are no distinctions between bloodlines, no tests to pass or arduous examinations. All a fleetfamily is, at its heart, is a group of people who have sailed the same waves and come to both respect and rely on each other. Large galleys, shared sleeping spaces, and communal eating areas are all entirely normal."
+      },
+      {
+        "name": "A Roving Lifestyle",
+        "description": "You go where the waves take you - it's a common adage among the rootless, but life is rarely as simple as that. Rootless ships choose their destinations based on need; perhaps for medical supplies, or a certain foodstuff, a trade opportunity, or a bout of nostalgia."
+      }
+    ],
+    "questionsToConsider": [
+      "Were you born on your fleet family's ship, destined for inclusion?",
+      "What port have you visited that left a mark on you, for good or ill? Were you ever tempted to stay behind as your ship left?",
+      "Have you ever offered a place in the family to an orphan, an unfortunate, or a runaway? If so, do you still see them now?"
+    ],
+    "alternatePresentations": "Rather than focus on a roving lifestyle, rootless colonies could take on elements of the trade-ships of old, cutting precise paths between multiple settlements repeated year after year. You could even remove the concept of movement altogether but keep the proximity to the sea, treating the rootless as wreck- or reef-dwellers.",
+    "aspects": [
+      {
+        "name": "Family Ties",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "When you make a discovery during a journey, mark to tie it to your family in some way (such as a blood relative, fleet family member, or family friend)."
+      },
+      {
+        "name": "Fishing Lure",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Add a positive tag to any living specimen you acquire while fishing."
+      },
+      {
+        "name": "Hull Hearted",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Once per scene, increase impact on any successful action taken whilst aboard a ship you own or crew."
+      },
+      {
+        "name": "Wild Words",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to remember a rumour or folktale pertinent to your situation (supplied by the Firefly)."
+      },
+      {
+        "name": "Shortspear",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Traditionally used for deckside defence. Deals CQ Spike damage."
+      },
+      {
+        "name": "Needs Must",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You never mark mire for consuming food or drink, no matter the source or condition."
+      },
+      {
+        "name": "Born to Sail",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You always know true North and ignore cut on movement-related actions caused by adverse seas or damage to your ship."
+      },
+      {
+        "name": "Sundew Senses",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You can instantly identify the presence and potential dangers of nearby predatory plants, no matter how well they're camouflaged."
+      },
+      {
+        "name": "Slingshot",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A simple slingshot loaded with anything from stones to scrap to seeds. Deals LR Blunt or Blast damage."
+      },
+      {
+        "name": "Tarscale Armour",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Resist the hazardous effects of crezzerin exposure (searing, hallucinations, mutation)."
+      },
+      {
+        "name": "Springfox",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "A nimble wild sea vulpine known to dance in the wake of larger ships. Once per journey, you may treat the outcome of a watch roll as peace, no matter the result."
+      },
+      {
+        "name": "Fleetfamily Scarf",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A beautifully made sporescarf passed from traveller to seasoned traveller. You're immune to the effects of bad air and airborne spores."
+      },
+      {
+        "name": "Nomad's Phrasebook",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "Whenever you take a montage, you can study your phrasebook (in addition to your usual task), gaining a smattering of any one language until your next montage."
+      },
+      {
+        "name": "Mechanical Limb",
+        "trackType": "Gear",
+        "trackCount": 5,
+        "description": "A rusting prosthetic that feels no pain."
+      },
+      {
+        "name": "Ring-Tailed Rabble-Rouser",
+        "trackType": "Companion",
+        "trackCount": 4,
+        "description": "A pugnacious lemur companion with a natural curiosity when it comes to the running of a wildsea vessel."
+      }
+    ],
+    "quote": "There's no better dawn than a dawn over new waves, no better sunset than one seen from the prow. - Kion Se, ardent rootless"
+  },
+  {
+    "name": "Shankling",
+    "summary": "A youth spent leaping branch to branch high above the rustling waves.",
+    "description": [
+      "Tallshanks are trees titanic even by the standards of the wildsea, their trunks spearing up through the waves, their crowns rarely less than half a mile wide.",
+      "The shanklings saw potential in the lofty reaches of these crowns, a separation from the predators of the wider waves below. Their cities and airship high-ports sprawl across the branches, old ruins dredged from the depths now hanging from sturdy chains and linked by ropes and bridges. Shankling citizens tend to be elegant, decisive, and entirely unfazed by heights, typically dressed in clothes styled to resemble the birds and feathered lizards of their towering homes."
+    ],
+    "lore": [
+      {
+        "name": "It's a Long Way Down",
+        "description": "There are dangers inherent to living at such a height, and it's not uncommon to find visitors to shankling settlements clinging to guard-rails and guide-ropes for dear life. For the inhabitants, it's a different story; growing up aware of the risks (and with the occasional plummeting-related death as a reminder), few are daredevils but most move with a simple confidence around dizzying drops that a wave-level citizen never could."
+      },
+      {
+        "name": "High Fashion",
+        "description": "Perhaps inspired by the birds they share their homes with, shanklings have a reputation for using bright, vibrant colours for everything from shop-fronts to clothing, bridge-ropes to hull plating. Aesthetic is important in most shankling communities, and fashions grow and wither with the seasons."
+      }
+    ],
+    "questionsToConsider": [
+      "Why fly the nest? What was it about the waves that brought you down from your perch to explore among the thrash?",
+      "What's your personal aesthetic, and how (if at all) do your clothes call to mind the realities of your home environment?",
+      "Did you ever fall from the boughs of your tall shank home? If so, what saved you?"
+    ],
+    "alternatePresentations": "While most shanklings present as colourful, elegant, and bird-inspired, the aspects and general theme of the origin would work just as well with shanklings mimicking mammalian tree-dwellers like raccoons or squirrels. You could also replace the theme of branch-based living with one of trunk-based living, having shankling communities burrow their way into tall shank interiors and take cultural inspiration from beetles.",
+    "aspects": [
+      {
+        "name": "Head for Heights",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You're immune to vertigo, nausea, and mire caused by heights and precarious positions."
+      },
+      {
+        "name": "Raptor's Claw",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A talon-like gauntlet inspired by the hunting patterns of wingless birds. Deals CQ Hewing damage and can be used to make controlled descents down vertical surfaces."
+      },
+      {
+        "name": "Skybridge Step",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "An elegant defensive dance that keeps you out of harm’s way."
+      },
+      {
+        "name": "Broadwood Bow",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "Exquisitely crafted. Deals LR Spike or Toxin damage."
+      },
+      {
+        "name": "High Ground",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Once per scene, increase impact on any successful action taken whilst you have the high ground."
+      },
+      {
+        "name": "Feathered Mantle",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You're resistant to three damage types chosen from the list: Blunt, Serrated, Toxin, Frost, Salt."
+      },
+      {
+        "name": "Rising Meteor",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Mark to sprint up a surface that would usually require you to climb it, even if it’s unstable."
+      },
+      {
+        "name": "From Bough to Brain",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "Use a task to study a tree (of any size) and learn its secrets, age, and condition (supplied by the Firefly)."
+      },
+      {
+        "name": "Hawksight",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You can see much further and in greater clarity than the typical wild sailor."
+      },
+      {
+        "name": "Sentinel Skywing",
+        "trackCount": 2,
+        "trackType": "Companion",
+        "description": "A watchful bird often used for scouting remote areas. Mark to learn a secret of the surrounding waves."
+      },
+      {
+        "name": "Bark-Peeling Ferret",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "Expert at routing hidden bugs, even from the mighty iron roots. Mark or use a task to gain an insect specimen from an nearby branch or tree trunk."
+      },
+      {
+        "name": "Feathered Raptor",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "A beautifully feathered lizard, the result of generations of careful breeding to engender a modicum of sociability (still not quite there yet). Deals CQ Hewing damage and is large enough to ride."
+      },
+      {
+        "name": "Grappling Hook",
+        "trackCount": 2,
+        "trackType": "Gear",
+        "description": "When the hook is thrown and anchored, it allows you to swing over chasms and climb sheer surfaces. Treat conflicts as triumphs when climbing or swinging."
+      },
+      {
+        "name": "Glider's Cloak",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You can land safely after any prepared fall."
+      },
+      {
+        "name": "Balancing Staff",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Both a weapon and an acrobatic aid. Deals CQ Blunt damage."
+      }
+    ],
+    "quote": "Height and hubris will forever be intertwined, but one of the other things you realize when living so high is how damn small you are in the vastness of the wider waves. - Hondagra ektus, shankling"
+  },
+  {
+    "name": "Spit-Born",
+    "summary": "Born on a spit of land dragged to the surface by the ever-growing boughs of the sea.",
+    "description": [
+      "The spit-born are raised in temporary port-colonies, often built around the wavetop ruins and remnants of the old world. Their lives are full of life of struggle and trade, suspicion and tenacity - for such isolated places, strangers bring both opportunity and danger.",
+      "Spits rarely last a lifetime, and a healthy knowledge that their entire home could be swallowed by the waves at any point encourages most spit-born to live without many possessions and to travel light, often keeping everything they own close at hand."
+    ],
+    "lore": [
+      {
+        "name": "Hubs of Corruption",
+        "description": "The cramped conditions and lack of renewable resources that typify most spits mean their residents grow up with few illusions about what a struggle life can be. Street gangs are common among the youth, and those that don't find something productive to move onto often graduate to low-level mob activity and black-marketeering. The most successful of these groups tend to gain a healthy level of fear from the spit's other inhabitants, but some win their respect too - a cut-throat attitude can do wonders when it comes to securing important trade deals and smuggling opportunities."
+      },
+      {
+        "name": "Time to Move On",
+        "description": "There are many signs that a spit might be on the verge of being reclaimed by the sea's deeper layers, ranging from changes in local animal behaviour to sudden cracks in architecture. When a spit is on the verge of collapse each of the residents has a choice to make - reinforce and prolong the fall or trade for passage on a ship to get out as fast as possible. Both have their benefits, but the latter is almost always the safer option."
+      }
+    ],
+    "questionsToConsider": [
+      "What was the main material that made up your spit? Temple-stone, ancient architecture, ship-wreckage, or something else entirely?",
+      "How was your youth on the streets of a spit? Were you part of a gang, and if so, did your inevitable rowdiness progress to genuine criminal activity?",
+      "Does your home spit still stand above the waves? Do you even know?"
+    ],
+    "alternatePresentations": "'Spit' is a broad term on the wild sea, which can cover anything from a shard of stone to a raised ruin or a leviathan's skull. The spit-born presented here are assumed to have a reasonably dirty, cramped, and urban life, representing the general overcrowding most spits face, but this needn't be the case - consider a more monastic or ascetic existence as a possibility, or dive deeper into grit, gutters, and gang warfare.",
+    "aspects": [
+      {
+        "name": "Pit-Fight Survivor",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "You learn how to take a beating and stay standing."
+      },
+      {
+        "name": "Urban Exploration",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to discover a friendly lead on services or information when in a port or city."
+      },
+      {
+        "name": "Cobble Hearted",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Once per scene, increase impact on any successful action taken whilst in a port or city."
+      },
+      {
+        "name": "Every Street Tells a Story",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to learn a secret of a port or city you’re docked at."
+      },
+      {
+        "name": "Through the Throng",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Treat conflicts as triumphs when moving through crowds, herds, and swarms."
+      },
+      {
+        "name": "Shrewd Marketeer",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Treat conflict as triumphs when haggling over an exchange of cargo or resources."
+      },
+      {
+        "name": "Spit & Polish",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Use a task to remove a negative tag (such as 'Rusted' or 'Broken') from any piece of salvage."
+      },
+      {
+        "name": "Docker Threads",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Resist the hazardous effects of crezzerin exposure (searing, hallucinations, mutation)."
+      },
+      {
+        "name": "Brass Knuckle",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A brute but reliable weapon for street fights. Deals CQ Blunt damage."
+      },
+      {
+        "name": "Black-Market Pistol",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A firearm sourced from unsavoury types. Deals LR Blast damage."
+      },
+      {
+        "name": "Trained Ratroach",
+        "trackCount": 1,
+        "trackType": "Companion",
+        "description": "A gutter-scavenger by nature, now working on your behalf. Once per montage, gain a small salvage or specimen resource with a negative tag (in addition to your usual task)."
+      },
+      {
+        "name": "Calico Slink",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "A semi-spectral cat winds its way around your legs. You have the ability to see clearly without light."
+      },
+      {
+        "name": "Pangopod",
+        "trackCount": 4,
+        "trackType": "Companion",
+        "description": "Half pangolin, half squid. Surprisingly cute."
+      },
+      {
+        "name": "Life of Scraps",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "When gaining a benefit from a meal or alchemical concoction, ignore any associated negative effects."
+      },
+      {
+        "name": "Scrutineer Eyepiece",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "You can tell a fake, forgery, or counterfeit item at a glance."
+      },
+      {
+        "name": "Acrid Long-Stem",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A spice-filled pipe made to burn its contents with acid rather than flame. Injury tracks you become subject to are one box shorter than normal."
+      }
+    ],
+    "quote": "Permanence is overrated, I say - take what space you can, what food you can, and what joy you can in the moment. - Waxen Simica, ardent spit-born"
+  }
+]

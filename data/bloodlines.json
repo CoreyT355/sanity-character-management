@@ -1,0 +1,844 @@
+[
+  {
+    "name": "Ardent",
+    "summary": "The weathered remnants of the ancient human race.",
+    "description": [
+      "The ardent are the wildsea form of the human race, the descendants of those that survived the Verdancy and lived through the harsh years that came after. They are ethnically and culturally diverse, although in recent years have begun banding together to form trade partnerships, military alliances and fledgling nations.",
+      "The ardent are human in appearance, but with a genetic tendency toward looking and being rough, sinewy, and weathered. Even the weakest of the ardent are still far better suited to the world of the wildsea than their human ancestors."
+    ],
+    "lore": [
+      {
+        "name": "Carved by the Waves",
+        "description": "Though the changes from their ancestral stock may be minimal in terms of appearance, they run far deeper than the surface - the ardent excel in sheer survivability, with even their souls clinging tenaciously to the material realm after death. The poisons and plagues of the rustling waves seem to pass them by, and even simpler hazards like spoiled food are easily ignored."
+      },
+      {
+        "name": "Ancestral Echoes",
+        "description": "The ardent are far from the only creatures of the post-verdant world to have a connection to the more spiritual side of existence, but theirs might be the most curious - spirits bonded to family lines, offering wisdom and aid to those that listen. Different ardent cultures and groups interact with these spirits to varying degrees, but it's rare to find one that ignores or denies their existence completely."
+      }
+    ],
+    "questionsToConsider": [
+      "How far back can you trace your ancestry? Do your family still tell tales of those that fled to the mountains, or were trapped in broken architecture as it rose on branch and wave?",
+      "To what extent does the spiritual side of your bloodline affect your life? When your ancestors contact you, what form does it take?",
+      "What pushed you toward the life of a wildsailor? Was it something you felt born to be, or a choice that became clear due to some happening or event?"
+    ],
+    "alternatePresentations": "Perhaps the most obvious alternate interpretation of the ardent would be to cast them as true humans, clinging on to existence in the wake of the Verdancy without having undergone the adaptations noted in their fiction. The aspects presented could also work very well to represent a more bestial character, a humanesque individual that draws from other mammalian concepts.",
+    "aspects": [
+      {
+        "name": "Tough as Nails",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "You’re a natural survivor. Rolls made to heal an injury you're suffering from treat conflicts as triumphs."
+      },
+      {
+        "name": "Ghostsight",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "You can clearly see and easily communicate with spirits and the spectral realm, and can identify spirit-anchored objects by sight."
+      },
+      {
+        "name": "Strong Stomach",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Reduce the impact of poisons, diseases and sickness."
+      },
+      {
+        "name": "Ironclad Mind",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "You are immune to hallucinations, mesmerics and mental compulsions."
+      },
+      {
+        "name": "Guide My Hands",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Burn to borrow a measure of an ancestor’s competency, gaining two ranks in any skill for the duration of a scene."
+      },
+      {
+        "name": "Ancestral Spirit",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "You’re haunted by a benevolent spirit. Mark to learn a secret from the spectral realm (once per scene)."
+      },
+      {
+        "name": "Sporescarf",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "Thickly-woven fibres sealed with tar. Resist the effects of bad air and airborne spores."
+      },
+      {
+        "name": "Pre-Verdant Heirloom",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A vestige of the long-buried past. When you would mark mire you can choose to mark this instead."
+      },
+      {
+        "name": "Segmented Torc",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "Crafted from reclaimed wreckage, said to hold the luck that others lack. Whenever you gain a temporary benefit, increase that benefit’s track by one box."
+      },
+      {
+        "name": "Ajna",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A stringed instrument designed to be played by a duo of the living and the dead, one using a bow and one plucking with spectral fingers. Mark to allow all present to see and communicate with spirits and the spectral realm for the duration of a song."
+      },
+      {
+        "name": "Scimitar",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A curved blade that deals CQ Keen damage."
+      },
+      {
+        "name": "Machete",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "A trusty blade used as a tool as often as it is a weapon. Deals CQ Hewing damage. Increase impact when clearing vegetation with this gear."
+      },
+      {
+        "name": "Hand Crossbow",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A compact crossbow. Deals LR Spike damage."
+      },
+      {
+        "name": "Ragged Longcoat",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Blunt, Keen, Spike, Hewing, Serrated."
+      },
+      {
+        "name": "Watch-Wolf",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "A loyal lupine companion that will defend you to the death. Deals CQ Spike damage."
+      },
+      {
+        "name": "Grizzled Ratter",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "A sly ship-born feline, adept at pursuing tiny creatures. Mark to create a resource, Hunter’s Offering."
+      }
+    ],
+    "quote": "My kin are proud of what I've become, both those I can touch and those I can only honour with words. - Tirik Zethenya, ardent hacker"
+  },
+  {
+    "name": "Ektus",
+    "summary": "Proud cactoid wanderers from the Eaten East.",
+    "description": [
+      "Fibrous and towering, the ektus embody pride and stability in the face of hardship. Though their ancestral deserts were lost to the hunger of the Verdancy’s roots they survived, and some of their oldest kings still remember the days of sand and soil.",
+      "The typical ektus is cactoid, long-limbed, and weighty, their thick skin decorated with spines, blooms, and rough-healed scars. Though they lack identifiable facial features, each ektus is set apart from their fellows by size, posture, bloom-scatter, and head-shape. Despite this, the flowers growing on an ektus are far from decorative, and many double as sensory organs."
+    ],
+    "lore": [
+      {
+        "name": "Ancient Culture Preserved",
+        "description": "The ektus are the longest-lived of the bloodlines and many of the oldest specimens claim to remember the time before the wildsea's arrival. This has kept various ektus enclaves culturally homogenous."
+      },
+      {
+        "name": "The Eaten Desert",
+        "description": "Many ektus hold a strong connection to the Icterine, a blazing hot reach of ironspine cacti far to the East, not for its current state but for its history as the site of a huge pre-verdant empire."
+      }
+    ],
+    "questionsToConsider": [
+      "What is your connection to ektus history, or the eaten desert? Is it a legend you hold in your heart, or a ghost of the past you're trying to move on from?",
+      "Do you trim your spines for the benefit of those around you or leave them long to scratch and catch on your fellows?",
+      "Though lacking a mouth, ektus still eat by crushing food in their hands and absorbing the juices. What delicacies have you discovered on your travels that keep you coming back for more?"
+    ],
+    "alternatePresentations": "Ektus are treated as singular cactoid entities by the rules, but their cultural focus on grafting might be played up by creating an individual composed of many cactus specimens grown together, working in harmony. Alternatively, the spined element could be downplayed to make a more traditional plant-based bloodline - an ektus based on intertwined bromeliads perhaps, or lilies, or roses.",
+    "aspects": [
+      {
+        "name": "Towering",
+        "trackType": "Trait",
+        "trackCount": 5,
+        "description": "You stand head and shoulders above most others."
+      },
+      {
+        "name": "1000 Needles",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Deal Spike damage to any creature that attacks you with their own body in close quarters (such as with tail or bite attacks)."
+      },
+      {
+        "name": "Iris Blossom",
+        "trackType": "Trait",
+        "trackCount": 2,
+        "description": "You can see heat the way others see colour."
+      },
+      {
+        "name": "Heliovore",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Heal a mark of damage on any one of your traits after spending a day in strong sunlight."
+      },
+      {
+        "name": "Cactus-Flesh Filtration",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Use a task to give any liquid resource the ‘Pure’ tag."
+      },
+      {
+        "name": "Longspine",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "Your body is covered in iron-hard spines that deal CQ Spike damage."
+      },
+      {
+        "name": "Tar-Scrawl Tattoos",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "Resist the effects of bad air and airborne spores."
+      },
+      {
+        "name": "Solid Footing",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "Treat conflicts as triumphs when attempting to avoid being tripped, pushed, or forcefully moved."
+      },
+      {
+        "name": "Grafted Limb",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "An ancient seal of trade and fealty. Burn to call attention to this trophy and request a favor from another non-hostile ektus - it should not be refused."
+      },
+      {
+        "name": "Stone-Bound Histories",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A tattered tome of ancient stories handed down by the eldest ektus survivors of the pre-verdant days. Use a task to gain a sliver of Pre-V information."
+      },
+      {
+        "name": "Zephyrskin Drums",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A set of hip-drums decorated with Saprekk-influenced patterns. Zephyrskin drums heat the air around them when played."
+      },
+      {
+        "name": "Tower Shield",
+        "trackType": "Gear",
+        "trackCount": 5,
+        "description": "An immense shield of wood and iron, built to last."
+      },
+      {
+        "name": "Wedge Axe",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A long-handled axe that deals CQ Hewing damage."
+      },
+      {
+        "name": "Heavy Chakram",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A set of weighty throwing blades, dealing LR Keen or Hewing damage."
+      },
+      {
+        "name": "Desert Harness",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Spike, Hewing, Serrated, Frost, Flame."
+      },
+      {
+        "name": "Catekora",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "A quilled, fibrous feline with a penchant for firing spines when provoked. Deals LR Spike damage."
+      },
+      {
+        "name": "Burrowing Bees",
+        "trackType": "Companion",
+        "trackCount": 2,
+        "description": "Flightless desert bees that crawl across your body, fiercely territorial. You are immune to damage and effects caused by swarms."
+      }
+    ],
+    "quote": "No matter how far I travel, no matter what sights I see, the deserts will always call me home in the end. - Oren Galga, ektus horizoneer"
+  },
+  {
+    "name": "Gau",
+    "summary": "Fungal explorers gifted freedom by the rustling waves.",
+    "description": [
+      "The Verdancy was a death knell for many cultures, but for the gau it was a flourishing - an opportunity to leave the warm, safe darkness of their mycosanctums and explore a new world of rot and growth.",
+      "Most gau have flexible limbs and mottled fungal flesh, but the differences between various families are vast. Some gau lack eyes while others have many, some sprout tendrils, others spore-sacs, while yet others are sculpted remarkably close to an elfin visage of humanity lost."
+    ],
+    "lore": [
+      {
+        "name": "Mycosanctums",
+        "description": "Somewhere between a ship, a spawning-ground, and a fortress, a mycosanctum is a living construction of protective fungus (sometimes miles across). In the pre-Verdant times, they were usually located in shadowed marshes and mountain caverns but, much like their inhabitants, they've gained a lot more mobility since the world-forest came."
+      },
+      {
+        "name": "Yearning Growth",
+        "description": "Gau biology is something of a puzzle even to the most learned scholars and surgeons. While each family has certain traits that are passed on over the generations, an individual gau also seems to change and adapt to fit their environment at an impressive pace. This may not seem unusual on the surface in a world of mutative crezzerin, but it's the process that makes it unique - an ironbound might build their own body, or a tzelicrae craft their preferred skin, but the fungal form of a gau adapts to what the individual wants it to be without training or conscious effort."
+      }
+    ],
+    "questionsToConsider": [
+      "How many of your family traits show in your form and how much of you is a response to the yearning growth?",
+      "Did you grow within the confines of a mycosanctum and if so, what was it from the outside world that tugged at you to leave?",
+      "How much kinship do you feel with other gau out on the waves, especially those with vastly different lives to your own?"
+    ],
+    "alternatePresentations": "Gau physiology is already extremely flexible. A gau colony or character could be based not so much around mushrooms but instead mold or lichen, or even something far less common to the wildsea like seaweed or coral.",
+    "aspects": [
+      {
+        "name": "Luminous Patches",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "You can shed light at will."
+      },
+      {
+        "name": "Unfurling Flare",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "A flexing mantle of myconic flesh that unfurls to increase your physical size. Treat conflicts as triumphs when intimidating smaller targets."
+      },
+      {
+        "name": "Camouflage Mottle",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Increase impact when using stealth in either a natural or urban environment (choose which environment when you take this trait)."
+      },
+      {
+        "name": "Fungal Tendril",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "You have an additional tendril-like limb allowing you to hold and manipulate more objects than usual."
+      },
+      {
+        "name": "Mycofiltration",
+        "trackType": "Trait",
+        "trackCount": 2,
+        "description": "You can see perfectly within sporeclouds and you resist the effects of bad air and airborne spores."
+      },
+      {
+        "name": "Spore-Sacs",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "Mark to obscure your current area with a dense cloud of sight-blocking spores that persist until carried away by the wind."
+      },
+      {
+        "name": "Naturally Hallucinogenic",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Your sheddings have mild psychotropic properties. Mark to create a rare resource Hallucinogenic Spores."
+      },
+      {
+        "name": "Fungal Fortress",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types chosen from the following list: Keen, Hewing, Toxin, Acid, Frost."
+      },
+      {
+        "name": "Proliferation",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Burn to grant an ally a copy of any one of your aspects (other than this one) as a temporary benefit. The benefit’s track is equal to the original aspect’s track."
+      },
+      {
+        "name": "Medicine Pouch",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "Others rarely ask where the medicines are collected. Use a task to create a rare resource, Medicinal Herbs."
+      },
+      {
+        "name": "Nurturing Pitch-Jar",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "A blackened glass jar that holds an eager colony of ironroot mold. Use a task to create a specimen copy of any piece of salvage you own, with the ‘Fungal’ tag."
+      },
+      {
+        "name": "Jag-Lash",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A leather cord studded with teeth or salvaged metal. Deals CQ Serrated damage."
+      },
+      {
+        "name": "Spore-Slinger",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A sling-like contraption for lobbing spore-bombs, dealing LR Toxin or Blast damage."
+      },
+      {
+        "name": "Pangoshroom",
+        "trackType": "Companion",
+        "trackCount": 4,
+        "description": "A slow-moving but well-armoured fungal companion that wants nothing more than to keep you safe."
+      },
+      {
+        "name": "Sporehound",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "A loyal companion that deals CQ Toxin damage."
+      },
+      {
+        "name": "Cordysect",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "A slow-flying beetle riddled with fungal growths. Mark to gain a burst of dense sensory information from its surroundings, revealing oddities and secrets."
+      }
+    ],
+    "quote": "The waves are a freedom many of us never thought we would have. To grow, to explore... to be more than we were in the dark. - Elgos, gau horizoneer"
+  },
+  {
+    "name": "Ironbound",
+    "summary": "Seafaring automatons, ship-made spirits gone rogue.",
+    "description": [
+      "Everybody knows the legend of mawships, the vessels gone wild after too long out on the crezzerin-drenched waves. Far fewer know what happens to their crews, and fewer still have ever considered the fate of the loyal constructs that once served alongside them.",
+      "An ironbound straddles the line between ghost and machine, an animated presence in a shell of ship-stuff. With no childhood to speak of, the personality of an ironbound develops over time from the moment of their awakening. Many strike out alone, defining their new lives by their actions, yet most eventually find themselves drawn back in some way to the rustling waves."
+    ],
+    "lore": [
+      {
+        "name": "Of Gears and Ghosts",
+        "description": "There are two main types of ironbound - those born of a construct or simulacrum and those that assemble themselves from the detritus of shipwrecks and ruins. The first of these tend to augment themselves a little, but mostly keep to the basic shape they were fashioned in. The second are far more varied in their appearance, often combining unusual materials and using whatever useful salvage is at hand."
+      },
+      {
+        "name": "Personality",
+        "description": "Those unfamiliar with the ironbound are often surprised by the complexity of their thoughts, expecting the logical simplicity of a golem or machine, but the ironbound aren’t driven by commands. Their souls and minds are their own, growing along with their experiences and needs. Ironbound personalities develop just like those of any other bloodline, and are just as distinct."
+      }
+    ],
+    "questionsToConsider": [
+      "Are you a rescued construct or a self-organized collection of wreckage? Are you perhaps something in between the two?",
+      "Are you a soul first and foremost, a ghost in a shell, or is your body just as much a part of you as your soul?",
+      "How much of your previous existence do you remember? Your travels, your experiences, the laughter and chatter of the crew you served with?"
+    ],
+    "alternatePresentations": "An ironbound can work well as an animated ruin with very little to do with ships and travel - a section of city street, a forge given life and self-organized, all of these things could easily exist using the ironbound as a basis. You could also go the route of the traditional golem, or a complex clockwork automaton.",
+    "aspects": [
+      {
+        "name": "Titanic",
+        "trackType": "Trait",
+        "trackCount": 5,
+        "description": "You’re an imposing presence, a weight on the world."
+      },
+      {
+        "name": "Prowhammer",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "A ship’s prow, refashioned into a massive bludgeoning weapon. Deals CQ Blunt damage."
+      },
+      {
+        "name": "Ghost-Heart",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "You count as fluent when communicating with ghosts, spirits, and other ironbound, regardless of languages used."
+      },
+      {
+        "name": "Monument to Travel",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "Whenever you gain a chart, mark to gain a related whisper as well."
+      },
+      {
+        "name": "Fruiting Limb",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Use a task to create a resource, Keel-Fruit."
+      },
+      {
+        "name": "Attenuate",
+        "trackType": "Trait",
+        "trackCount": 2,
+        "description": "Your animating spark can leave your body for a short time, becoming ghost-like and insubstantial, but still capable of movement."
+      },
+      {
+        "name": "Structural Integration",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Once per journey you may repair a mark of damage on your ship without rolling."
+      },
+      {
+        "name": "Vocal Recovery",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "You can dredge up the voices of sailors long-lost, changing your pitch, tone, and accent on a whim. Burn to speak the truth of a lost sailor."
+      },
+      {
+        "name": "Spotlight Lantern",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "Flameless, but terribly bright nonetheless. Consume a resource as fuel to allow your entire crew to see perfectly in darkness, sporeclouds, and general murk."
+      },
+      {
+        "name": "Ancient Tar-Seals",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "You’re immune to the effects of crezzerin."
+      },
+      {
+        "name": "Living Workshop",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "Your own wreck-salvaged body contains an array of useful tools - all crewmates gain an automatic 2d6 advantage on rolls taken to create temporary gear and machinery when in your presence."
+      },
+      {
+        "name": "Ornate Cannon",
+        "trackType": "Gear",
+        "trackCount": 2,
+        "description": "A huge ship’s cannon loaded with explosive shells. Deals LR Blast damage. Increase impact when targeting a horde or swarm of targets."
+      },
+      {
+        "name": "Broadwood Carapace",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Blunt, Keen, Serrated, Acid, Volt."
+      },
+      {
+        "name": "Reef-Iron Plating",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Spike, Hewing, Serrated, Frost, Flame."
+      },
+      {
+        "name": "Shipside Symbiote",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "When your ship would take damage to any of its ratings, you may mark boxes equal to that damage on this companion instead."
+      },
+      {
+        "name": "Sailghast",
+        "trackType": "Companion",
+        "trackCount": 4,
+        "description": "A mass of living canvas capable of flight. Mark to have it tangle around a target, restricting their movement."
+      }
+    ],
+    "quote": "My lost crew stand with me against the waves even now, just as I stood with them while their bright lights shone. -Tar On Tar ironbound mesmer"
+  },
+  {
+    "name": "Ketra",
+    "summary": "Humanity skewed, rising from the depths.",
+    "description": [
+      "For centuries after the Verdancy it was assumed that everything below the canopy-line was lost, chewed up and used for fuel by the growing wilds. The recent emergence of the ketra laid that assumption to rest, and heralded a renewed interest in delving deeper into the rustling waves.",
+      "The ketra are the descendants of those fragments of ancient humanity trapped in tunnels and sturdy temple complexes, mineshafts, and mountain-seams. Like the ardent, they have adapted to face the post-Verdant world, but with a far more dramatic biological change - tentacular mantles, translucent flesh, and swirling, ever-moving inkblot patternings are common. Many ketra reinforce their malleable forms with self-made skeletons of salvaged driftwood or repurposed scrap-metal."
+    ],
+    "lore": [
+      {
+        "name": "Out of the Dark",
+        "description": "Ketra 'settlements' have historically been more like prisons, enclosed areas beneath the treeline that they managed to eke out an existence in as crezzerin worked its mutative malignancy upon them. Rough, utilitarian, and almost always pitch-black, there are few stories of the brute choices that had to be made by those trapped before they adapted."
+      },
+      {
+        "name": "Self-Made Skeletons",
+        "description": "The process of replacing a bone in a ketra's skeleton isn't exactly a painless one, but their malleable flesh and adaptable musculature make it a lot easier than it would be for an ardent. The most traditional bone replacement is driftwood or metal, but some use animal bones, stone, or other, weirder materials for internal support. Ketra wildsailors have also been known to replace their bones with functional tools, like grappling hooks or concealed weaponry, to get an unexpected edge out on the waves."
+      }
+    ],
+    "questionsToConsider": [
+      "Have you spent any time in the 'ancestral' ketra places and, if so, how did you find their dark, crampled confines?",
+      "How original is your skeleton, and if you've replaced parts of it yourself, what new materials do you rely on for support?",
+      "Were you passed down any stories of your family's old human days, or is your pre-verdant lineage lost to history?"
+    ],
+    "alternatePresentations": "An interesting alternate take on the ketra could be the result of playing up either of their main thematic components to the extreme - treating them as a lich-like skeleton controlled by an organic, slug-like core or an entirely gelatinous mass with only the barest suggestion of a skeletal structure (or even none at all).",
+    "aspects": [
+      {
+        "name": "Gelatinous Form",
+        "trackType": "Trait",
+        "trackCount": 5,
+        "description": "You have an inherent weakness to Salt damage, but can squeeze and compress your body enough to move through spaces much smaller than expected."
+      },
+      {
+        "name": "Sensory Stalks",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "A rare mutation that hones sight, allowing to see clearly without light."
+      },
+      {
+        "name": "Crawling Pattern",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "The glowing patches on your flesh crawl at your command, even onto others nearby. Mark this track to create a dim but lasting light on you or a nearby target."
+      },
+      {
+        "name": "Tunnel-Wise",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Treat conflicts as triumphs when navigating or moving through enclosed areas."
+      },
+      {
+        "name": "Whispers in the Dark",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "While in a dimly lit or unlit area, mark to learn a secret from the darkness (once per scene)."
+      },
+      {
+        "name": "Scrapper Enzymes",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "You can use salvage as a component when concocting a potion or chemical mixture, no matter its form."
+      },
+      {
+        "name": "Voltaic Mantle",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "The tendrils of your mantle crackle with lightning as they strike, dealing CQ Volt damage."
+      },
+      {
+        "name": "Driftwood Core",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Blunt, Spike, Toxin, Frost, Volt."
+      },
+      {
+        "name": "Rebreather Mask",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You have a short supply of clean air you can tap into when you need to, and you also resist the effects of bad air and airborne spores."
+      },
+      {
+        "name": "Climbing Hooks",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "Attached to a harness or embedded in your gelatinous flesh. Ignore cut while climbing, as long as you're moving with care."
+      },
+      {
+        "name": "Driving-Chain",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "A rusted chain from a long-dead machine, now wielded as a weapon dealing Blunt damage at CQ or LR."
+      },
+      {
+        "name": "Scrap-Metal Skeleton",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "The internal structures you’ve collected can store biovoltaic energy. Use a task to create a resource, Scrap-Bone Battery."
+      },
+      {
+        "name": "Old Ore Piercings",
+        "trackType": "Gear",
+        "trackCount": 1,
+        "description": "You’re immune to the usual effects of crezzerin. Concentrated sources of crezzerin heal rather than harm you."
+      },
+      {
+        "name": "Oiljelly",
+        "trackType": "Companion",
+        "trackCount": 4,
+        "description": "A slick, symbiotic slime-like creature bonded with your body."
+      },
+      {
+        "name": "Drone Attendant",
+        "trackType": "Companion",
+        "trackCount": 3,
+        "description": "A simple punchcard-driven repair construct. Increase impact when repairing or tinkering with other machines."
+      }
+    ],
+    "quote": "The tunnels are a comfort but they can also be a curse. There's a new world waiting up there and I intend to see as much of it as I possibly can. - Jask ketra rootless"
+  },
+  {
+    "name": "Mothryn",
+    "summary": "Vibrant and chaotic blurs of swift insect colour.",
+    "description": [
+      "The mothryn empires of the pre-verdant world remain an area of mystery to modern scholars - what little information has been gathered on them paints a picture of staunch, drab isolationism, with common references to ‘the Rationing of Colour’.",
+      "But those days are long gone and root-eaten, and the mothryn of the new wilds could not be more different to their ancestors. Widely respected for their bursts of ingenuity, creativity, and flair, mothryn tend to live elegant but erratic lives of adventure and discovery. Most revel proudly in this reputation of fierce individualism, decorating their wings, clothes, and skin with stylized renderings of their triumphs and failures alike."
+    ],
+    "lore": [
+      {
+        "name": "The Lost Art of Flight",
+        "description": "Mothryn wings are delicate, beautiful, and sadly mostly for show - though their distant ancestors were small and light enough for their wings to allow for true flight, modern mothryn are generally capable of little more than a controlled glide. Many mothryn cultures now treat them as a canvas for self-expression, using a mixture of dyes and piercings to create intricate, personalized designs (though the harsh environment of the rustling waves tends to leave them tattered and torn before long)."
+      },
+      {
+        "name": "Repupation",
+        "description": "With an average lifespan of little over twenty years, the mothryn are depressingly short- lived compared to many of the other bloodlines... Or at least they would be, without the option of repupation. A risky but rewarding process, repupation allows a mothryn nearing the end of its life to return to the cocoon, breaking themselves down and reforming into a fresher, younger individual. This new mothryn shares a name and a smattering of memories with their pre-pupated self, but that's about it - they often vary massively in terms of personality, attitudes, and appearance."
+      }
+    ],
+    "questionsToConsider": [
+      "What patterns and pictures do you decorate your clothes and wings with? Depictions of personal achievements, mementos of family, perhaps geometric designs?",
+      "eards and complex hair ornamentation are common among the mothryn - do you follow any particular fashion or style?",
+      "Have you repupated, and if so how many times? How much of your previous lives do you remember, and to what extent do they influence you?"
+    ],
+    "alternatePresentations": "If you hew close to the original concept, then the mothryn aspects work just as well for butterfly or dragonfly-inspired humanoids. A bat or bird-inspired presentation could work equally well.",
+    "aspects": [
+      {
+        "name": "Dust and Paper",
+        "trackType": "Trait",
+        "trackCount": 5,
+        "description": "Your form is slim, light, and deceptively difficult to land a solid hit on."
+      },
+      {
+        "name": "Elegant Wings",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Though most mothryn wings now serve as decoration, yours are uncommonly strong. You can glide with ease or mark for a short burst of elegant flight."
+      },
+      {
+        "name": "Scatterscale",
+        "trackType": "Trait",
+        "trackCount": 2,
+        "description": "Mark to create a cloud of fine dust that refracts light and distorts perception - your own senses are unaffected."
+      },
+      {
+        "name": "Thick Fur",
+        "trackType": "Trait",
+        "trackCount": 4,
+        "description": "You’re weak to Flame but resist the effects of bad air and airborne spores."
+      },
+      {
+        "name": "Elaborate Beard-Braids",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Your beard is a rich, intertwining mass of fur and braids, perfect for concealing small objects. Burn to gain a new piece of salvage or specimen from within it (that you might conceivably have stashed there)."
+      },
+      {
+        "name": "Prismatic Antennae",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "Dense clusters of sensory fronds grow from your antennae, letting you see clearly without light and through clouds of dust or spores."
+      },
+      {
+        "name": "I Used to Know This",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "You can treat a conflict as a triumph when rolling for an action without a skill adding to your dice pool (once per scene)."
+      },
+      {
+        "name": "Chaos Dancing",
+        "trackType": "Trait",
+        "trackCount": 3,
+        "description": "A fighting style that makes use of wing-edges and scything kicks. Deals CQ Keen or Spike damage."
+      },
+      {
+        "name": "Ceremonial Patterning",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "Your wings are a riot of colour and style. Mark to increase impact when trying to impress or convince."
+      },
+      {
+        "name": "Marks of Where We've Been",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "Chart-like decorations cover your wings and fur. Mark to use this aspect in place of a chart, but only when travelling through an area you've visited before."
+      },
+      {
+        "name": "Flowing Fabrics",
+        "trackType": "Gear",
+        "trackCount": 3,
+        "description": "You’re resistant to three damage types, chosen from the following list: Keen, Blast, Acid, Frost, Salt."
+      },
+      {
+        "name": "Wing-Studs",
+        "trackType": "Gear",
+        "trackCount": 4,
+        "description": "Can be launched like shrapnel with a deft twist, dealing LR Blunt damage."
+      },
+      {
+        "name": "Silkspire Byx",
+        "trackType": "Companion",
+        "trackCount": 4,
+        "description": "A living golem of beautifully spun silks, usually in vaguely lupine shape."
+      },
+      {
+        "name": "Tolycat",
+        "trackType": "Companion",
+        "trackCount": 2,
+        "description": "A domesticated felinesque insect that sheds medicinally potent scale-dust. Your entire crew has resistance against infections and diseases."
+      }
+    ],
+    "quote": "Some say that our lives are short, too short by far. I say that twenty years of exuberance, exploration, and experience are longer than eighty years of simply waiting for the Eaves. - Ellevente, mothryn rootless"
+  },
+  {
+    "name": "Tzelicrae",
+    "summary": "Spider-colonies wrapped in humanesque skins; thousands of tiny arachnid minds threaded like beads on a string to produce a full, rich sapience.",
+    "description": [
+      "Becoming amore common sight across the wildsea by the year the tzelicrae are spider colonies raised to sapience through an unknown and mysterious process. Though technically thousands of individual minds and bodies working together most tzelicrae think of themselves as asingular being. Tzelicrae are no more or less likely to be dangerous than any other denizens of the wildsea but fear and distrust of them runs deep in many communities due to their unsettling attempts at mimicry."
+    ],
+    "lore": [
+      {
+        "name": "Self-Made Swarms",
+        "description": "In their youngest form the tzelicrae are a coherent swarm, arachnid masses with little in the way of a defined shape. As their minds develop with age they naturally incorporate parts of their surroundings into the swarm, most often rags, canvas, and pieces of salvage. These, combined with spidersilk, serve as the foundation of the adult tzelicrae’s body - a shell to protect the swarm within. From this point a tzelicrae is considered mature, but self-improvement is a constant process. Some test the limits of their control by adding additional limbs or unusual materials, others by adopting additional spiders into their colony to increase their mass and weight. Many adopt the shapes and mannerisms of other wildsea creatures, particularly of the other common bloodlines - a very lucky few of these win the Lottery of Skin, obtaining and inhabiting a cast-off body to puppeteer."
+      },
+      {
+        "name": "Hive-Mind Perspective",
+        "description": "The level of individuality a colony settles at varies from tzelicrae to tzelicrae. Some refer to themselves as a collective ‘we’, organizing and compartmentalizing their minds to allow different areas to consider alternate viewpoints at the same time. Others revel in the singular ‘I’, with every component spider working and thinking in perfect harmony."
+      }
+    ],
+    "questionsToConsider": [
+      "What are you made of in terms of outer layer? Bone and silk canvas and brass stolen skin or something else entirely?",
+      "Have you ever had atrue disagreement with yourself atopic or opinion on which your colony is split?",
+      "Have you incorporated spiders from other tzelicrae throughout your life or adopted foundlings? What memories have such additions gifted you?"
+    ],
+    "alternatePresentations": "Though tzelicrae are arachnid by default there’sno reason yours has to be. Ahive-mind colony of termites or bees would work just as well or perhaps even of something even more bizarre -squirrels maybe or miniature machines?",
+    "aspects": [
+      {
+        "name": "Arachnid Mobility",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You never cut for difficulty when climbing."
+      },
+      {
+        "name": "The Lottery of Skin",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "Choose either ardent, ektus or gau. You can pass as a member of this species under casual inspection."
+      },
+      {
+        "name": "Ersatz Limbs",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You have one or more additional arms, allowing you to hold and manipulate many objects at once."
+      },
+      {
+        "name": "Tremorsense",
+        "trackCount": 2,
+        "trackType": "Trait",
+        "description": "You can feel even the smallest vibrations in the air and ground around you."
+      },
+      {
+        "name": "Gossamercraft",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "Mark to produce a resource 'Silk-Like Web' (either dry or sticky)."
+      },
+      {
+        "name": "Manifold Linguist",
+        "trackCount": 3,
+        "trackType": "Trait",
+        "description": "You count as fluent when communicating with intelligent insects, hive-minds, and other Tzelicrae, regardless of languages used."
+      },
+      {
+        "name": "Motley Carapace",
+        "trackCount": 5,
+        "trackType": "Gear",
+        "description": "You’ve incorporated an assortment of discarded armour pieces into your skin."
+      },
+      {
+        "name": "Hush-Silk Garments",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "Your clothes are woven of fine silk that naturally dampens sound, making even your dramatic movements almost entirely silent."
+      },
+      {
+        "name": "Iron Satchel",
+        "trackCount": 4,
+        "trackType": "Gear",
+        "description": "A secure wearable lockbox that can only be opened by a single specific spider within you."
+      },
+      {
+        "name": "Blade of Husks",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "A ritual weapon made from the chitin of lost colony-members. Deals CQ Keen or Salt damage."
+      },
+      {
+        "name": "Swarm-Scout",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "A single spider you can send ahead as a scout, allowing you to see and hear at a distance."
+      },
+      {
+        "name": "Rogue Doomsayer",
+        "trackCount": 3,
+        "trackType": "Companion",
+        "description": "An unsettled fragment of personality. Mark to request a dark and unbidden (but likely pertinent) thought from the Firefly."
+      },
+      {
+        "name": "Spiderbite",
+        "trackCount": 4,
+        "trackType": "Trait",
+        "description": "You have a set of fangs that can deal CQ Toxin damage."
+      },
+      {
+        "name": "Shirk the Skin",
+        "trackCount": 5,
+        "trackType": "Trait",
+        "description": "Burn to leave your skin for a short period. When outside your skin you are a mass of moving spiders and can easily move through small spaces and climb any surface."
+      },
+      {
+        "name": "Shroom Hookah",
+        "trackCount": 3,
+        "trackType": "Gear",
+        "description": "You’re resistant to three damage types, chosen from the following list: Keen, Spike, Serrated, Hewing, Toxin."
+      }
+    ],
+    "quote": "I remember the shadows under branches, the mad flight from voracious sparrows, the glistening tangle of dew-licked webs. I miss it, sometimes... but I’m happy with what I’ve become. - Tazik Che, tzelicrae shankling"
+  }
+]

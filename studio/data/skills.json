@@ -1,0 +1,200 @@
+[
+  {
+    "name": "Brace",
+    "description": "A skill of defence, hard-headedness, and immobility.",
+    "exampleUses": [
+      "Clinging to life in the toughest situations",
+      "Shrugging off attempts to manipulate or confuse you",
+      "Blocking or parrying an incoming attack",
+      "Keeping your footing through a storm or rootquake",
+      "Shouldering your way through a crowd"
+    ]
+  },
+  {
+    "name": "Break",
+    "description": "A skill of fragments, shockwaves, and hammer-blows.",
+    "exampleUses": [
+      "Reducing a building or obstacle to rubble",
+      "Charting a course through ruins and wreckage",
+      "Relying on hammers and fists in a skirmish",
+      "Assessing a structure's stability and weak points",
+      "Setting and disarming explosives"
+    ]
+  },
+  {
+    "name": "Concoct",
+    "description": "A skill of reactions, essences, and deeper understanding.",
+    "exampleUses": [
+      "Creating and administering potions and poisons",
+      "Catalyzing unstable alchemical elements",
+      "Mulling hearty brews for healing or relaxation",
+      "Analyzing and altering potential ingredients",
+      "Parsing the essence of the crezzer-tinged"
+    ]
+  },
+  {
+    "name": "Cook",
+    "description": "A skill of spices and speculation, meats and fruits, and heat.",
+    "exampleUses": [
+      "Using specimens to create meals and beverages",
+      "Developing bolstering dishes to prepare for danger",
+      "Turning spices and seasoning into weapons of war",
+      "Handling heat sources safely in tense situations",
+      "Butchering, rendering, and storing specimens"
+    ]
+  },
+  {
+    "name": "Delve",
+    "description": "A skill of dust, remnants, and forgotten ways.",
+    "exampleUses": [
+      "Abseiling down a collapsing passageway",
+      "Squeezing through narrow spaces and collapses",
+      "Cracking locks and disarming ancient traps",
+      "Scrambling through wreckage and detritus at speed",
+      "Interpreting pre-verdant art and artefacts"
+    ]
+  },
+  {
+    "name": "Flourish",
+    "description": "A skill of showmanship, rhythm, and performance.",
+    "exampleUses": [
+      "Playing songs or telling stories with dramatic flair",
+      "Dressing or acting to stand out and be noticed",
+      "Moving with poise, flow, and balance",
+      "Creating art that stirs the soul",
+      "Inking skin with memories of triumph and loss"
+    ]
+  },
+  {
+    "name": "Hack",
+    "description": "A skill of sweat, sap, and serrated blades.",
+    "exampleUses": [
+      "Chopping or slicing your way through the wilds",
+      "Charting a course through snarled confusing waves",
+      "Rushing into combat with axes, saws, and blades",
+      "Identifying the hazards of an unknown plant",
+      "Spinning tales of petalled leviathans and living rifts"
+    ]
+  },
+  {
+    "name": "Harvest",
+    "description": "A skill of reaping, gleaning, and culling.",
+    "exampleUses": [
+      "Locating and collecting useful specimens",
+      "Identifying plants and their properties at a glance",
+      "Noticing breaks and oddities in the wilds around you",
+      "Understanding and exploiting natural phenomena",
+      "Shepherding spores, sprouts, and insects"
+    ]
+  },
+  {
+    "name": "Hunt",
+    "description": "A skill of observation, marksmanship, and precise action.",
+    "exampleUses": [
+      "Tracking effectively across hostile terrain",
+      "Lining up shots from afar in a fight",
+      "Reeling off information about beasts you've bested",
+      "Rendering kills into useful specimens",
+      "Showing off trophies and hard-won scars"
+    ]
+  },
+  {
+    "name": "Outwit",
+    "description": "A skill of shadows and secrets well-kept.",
+    "exampleUses": [
+      "Moving quickly and quietly",
+      "Surprising opponents before melting away again",
+      "Infiltrating spaces that are definitely off limits",
+      "Disguising your voice, scent, or even your whole self",
+      "Talking smoothly and lying disarmingly"
+    ]
+  },
+  {
+    "name": "Rattle",
+    "description": "A skill of mending, maintenance, and adaptation.",
+    "exampleUses": [
+      "Using salvage to repair damaged gear",
+      "Understanding schematics and blueprints",
+      "Spewing confusing jargon or incisive questions",
+      "Crafting temporary gear with odds and ends",
+      "Patching up a ship to keep it running 'til next port"
+    ]
+  },
+  {
+    "name": "Scavenge",
+    "description": "A skill of searching, spit, and polish.",
+    "exampleUses": [
+      "Locating and collecting useful salvage",
+      "Weighing the worth of an object or trade",
+      "Using damaged mechanisms effectively",
+      "Turning the environment to your benefit in a brawl",
+      "Identifying the properties of refuse and oddities"
+    ]
+  },
+  {
+    "name": "Sense",
+    "description": "A skill of glances, insight, and intuition.",
+    "exampleUses": [
+      "Honing one of your senses to gather information",
+      "Reacting to an unseen or unexpected attack",
+      "Detecting and defining nascent whispers",
+      "Becoming aware of attention focused your way",
+      "Empathizing effectively with others"
+    ]
+  },
+  {
+    "name": "Study",
+    "description": "A skill of meticulous recording and focused investigation.",
+    "exampleUses": [
+      "Creating a chart as you travel a new area",
+      "Discovering evidence in the aftermath of an event",
+      "Slowly improving your knowledge of a language",
+      "Determining a pattern, flaw, or weakness",
+      "Gleaning information from cryptic notes"
+    ]
+  },
+  {
+    "name": "Sway",
+    "description": "A skill of convincing, arguing, and capitulating with aplomb.",
+    "exampleUses": [
+      "Convincing others to change their minds on a topic",
+      "Making friends and influencing people",
+      "Taking the reins of a crowd's emotion",
+      "Bandying words while absorbing information",
+      "Threatening through inference"
+    ]
+  },
+  {
+    "name": "Tend",
+    "description": "A skill of healing, sustenance, and recovery.",
+    "exampleUses": [
+      "Using specimens to heal an injured crewmate",
+      "Growing fruits, herbs, and spices",
+      "Calming and understanding the emotions of others",
+      "Devising and discussing new medical treatments",
+      "Communicating your intentions to beasts and birds"
+    ]
+  },
+  {
+    "name": "Vault",
+    "description": "A skill of dizzying heights and impressive acrobatics.",
+    "exampleUses": [
+      "Scaling rigging, walls, or leviathan-hides",
+      "Landing safely after falling from a great height",
+      "Dodging away from incoming damage",
+      "Leaping from rooftop to rooftop during a chase",
+      "Controlling a glider as you soar through the skies"
+    ]
+  },
+  {
+    "name": "Wavewalk",
+    "description": "A skill of seared soles, brachiation, and animalistic elegance.",
+    "exampleUses": [
+      "Leaping from branch to branch as they sway",
+      "Swinging on vines or grappling-ropes",
+      "Passing through foliage without fear of crezzerin",
+      "Brachiating as fast as others can sprint",
+      "Discovering the secrets of the surrounding waves"
+    ]
+  }
+]

@@ -1,0 +1,174 @@
+[
+  {
+    "name": "Salvage",
+    "summary": "Inorganic material from wrecks, ruins, and corpses.",
+    "description": "Salvage includes torn canvas, metal shards, curious artefacts, and poorly-made weaponry, acquired mainly through scavenging or looting.",
+    "uses": [
+      "Repair damaged gear",
+      "Craft new temporary gear",
+      "Attack foes without a dedicated weapon"
+    ],
+    "tags": [
+      {
+        "name": "Sturdy",
+        "description": "Clears an extra mark when used to repair damage to an aspect track or an injury."
+      },
+      {
+        "name": "Ornate",
+        "description": "Has far more worth than usual."
+      },
+      {
+        "name": "Broken",
+        "description": "Almost useless for its intended purpose."
+      }
+    ],
+    "examples": [
+      "Broken Ship's Wheel",
+      "Moth Lantern",
+      "Bronze Rings",
+      "Cat's-Eye Topaz",
+      "Ancient Sawn-Off",
+      "Mouldering Tome",
+      "Inscribed Hatchet",
+      "Stone Cube",
+      "Ancestor's Ceramic Mug"
+    ]
+  },
+  {
+    "name": "Scratch",
+    "summary": "Small odds and ends used for minor barter.",
+    "description": "Scratch is made up of leftover bits like fruit seeds, amber fragments, and insect wings, used to cover basic amenities without tracking resources.",
+    "uses": [
+      "Pay for low-cost items or services"
+    ],
+    "tags": [],
+    "examples": []
+  },
+  {
+    "name": "Specimens",
+    "summary": "Organic bounty from the wildsea.",
+    "description": "Specimens include meats, organs, chitinous shells, spices, fruits, fungus, or bones, useful for various crafting and healing purposes.",
+    "uses": [
+      "Heal damaged traits",
+      "Cook fortifying meals",
+      "Attack foes without a dedicated weapon"
+    ],
+    "tags": [
+      {
+        "name": "Pure/Medicinal",
+        "description": "Clears an extra mark when used to heal damage to an aspect track or an injury."
+      },
+      {
+        "name": "Heirloom",
+        "description": "Has far more worth than usual."
+      },
+      {
+        "name": "Rotten",
+        "description": "Makes you sick if you eat it."
+      }
+    ],
+    "examples": [
+      "Springfox Ruff",
+      "Scorpion Stinger",
+      "Nasturtium Peppers",
+      "Green Strawberries",
+      "Pouch of Salt",
+      "Beast-Blood",
+      "Snowspice",
+      "Curving Bones",
+      "Tiger Limes"
+    ]
+  },
+  {
+    "name": "Whispers",
+    "summary": "Wild secrets with the power to change the narrative.",
+    "description": "Whispers are parasitic words that exist in minds and are lost when spoken, capable of revealing secrets or altering reality.",
+    "uses": [
+      "Discover secret information",
+      "Twist the narrative in your favor",
+      "Force a change with high-impact twists"
+    ],
+    "tags": [
+      {
+        "name": "Echoing",
+        "description": "Can be used twice before fading."
+      },
+      {
+        "name": "Hungry",
+        "description": "Removes an element of the world rather than adding one."
+      }
+    ],
+    "examples": [
+      "Ravenous",
+      "All's Well that Ends",
+      "Tree of Souls",
+      "Damned by Fate",
+      "Cut to the Quick",
+      "Soft Melodies",
+      "Sped and Bundled",
+      "Sparks on the Breeze",
+      "New Wave Carriageway",
+      "Forgotten"
+    ]
+  },
+  {
+    "name": "Charts",
+    "summary": "Documents for navigation and exploration.",
+    "description": "Charts record locations, hazards, and routes, essential for planning journeys and discovering new places.",
+    "uses": [
+      "Discover new locations",
+      "Record safe routes"
+    ],
+    "tags": [
+      {
+        "name": "Faded",
+        "description": "Almost impossible to read."
+      },
+      {
+        "name": "Detailed",
+        "description": "Shows far more information than normal."
+      }
+    ],
+    "examples": [
+      "Red-Ink Trademap",
+      "Journal of Old Routes",
+      "Channeler's Song-Sheet",
+      "Dredge Record",
+      "Silken Chart",
+      "Promise-Tattooed Hand",
+      "Route-Inscribed Plating",
+      "Low Star Chart"
+    ]
+  },
+  {
+    "name": "Cargo",
+    "summary": "Large or abundant resources, treated differently.",
+    "description": "Cargo includes resources too large or too plentiful to carry, recorded on the ship sheet and used for barter or repairs.",
+    "uses": [
+      "Barter for ship upgrades",
+      "Disassemble into smaller resources",
+      "Repair structural damage to the ship"
+    ],
+    "tags": [
+      {
+        "name": "Time-Sensitive",
+        "description": "Will go off and lose value before too long."
+      },
+      {
+        "name": "Dangerous/Ornery",
+        "description": "Poses a risk to crew or is difficult to handle."
+      }
+    ],
+    "examples": [
+      "Free-Standing Clock",
+      "Crate of Spike-Wine",
+      "Makadrill Carcass",
+      "Collection of Statues",
+      "Fruiting Lemon Tree",
+      "Tamed Springfox",
+      "Chest of Icterine Tobacco",
+      "Canting Spore Colony",
+      "Barrel of Ancient Whisky"
+    ]
+  }
+]
