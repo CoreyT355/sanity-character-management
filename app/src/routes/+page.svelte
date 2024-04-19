@@ -13,9 +13,9 @@
   ];
 </script>
 
-<section>
-  <Tabs.Root>
-    <Tabs.List class="grid w-full grid-cols-3">
+<section class="mx-auto max-w-8xl">
+  <Tabs.Root class="flex flex-col flex-1">
+    <Tabs.List class="grid w-full grid-cols-1 md:grid-cols-3">
       {#each tabs as tab}
         <Tabs.Trigger value={tab.value}>{tab.label}</Tabs.Trigger>
       {/each}

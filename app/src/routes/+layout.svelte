@@ -6,18 +6,18 @@
 </script>
 
 <ModeWatcher />
-<div class="flex-col md:flex">
-  <div class="flex h-16 items-center border-b p-6">
+<div class="flex flex-col">
+  <div class="flex items-center border-b py-3 px-6 justify-between">
     <!-- <TeamSwitcher /> -->
     <MainNav />
-    <div class="ml-auto flex items-center gap-4">
+    <div class="flex items-center gap-4">
       <ModeToggle />
       <div class="flex h-8 w-8 justify-center rounded-full bg-slate-500 align-middle">
         <div>ct</div>
       </div>
     </div>
   </div>
-  <div class="p-6">
+  <main class="p-6">
     <slot />
-  </div>
+  </main>
 </div>

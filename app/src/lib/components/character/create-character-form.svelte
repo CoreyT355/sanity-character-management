@@ -88,10 +88,10 @@
   </div>
 {/if}
 
-<div class="flex h-full flex-row gap-2">
+<div class="flex h-full flex-row gap-2 max-w-8xl">
   <div class="flex justify-center py-4 align-middle">
     <!-- <Separator class="" orientation="vertical" /> -->
-    <div class="flex w-full flex-col items-center justify-between gap-4">
+    <div class="flex flex-col w-full items-center justify-between gap-4">
       {#each steps as _, i}
         <div class={cn(i + 1 === step ? 'flex-1' : '', 'transition-all duration-500')}>
           <Badge class={cn(i + 1 === step ? 'bg-purple-500' : '', 'w-28 rounded-sm')}>
@@ -105,11 +105,11 @@
     </div>
   </div>
 
-  <form class="w-full flex flex-col" method="post" use:enhance>
+  <form class="flex flex-col w-full" method="post" use:enhance>
     {#if step === 1}
       <div
         class="h-full"
-        transition:slide={{ delay: 100, duration: 500, easing: quintOut, axis: 'y' }}
+        
       >
         <Form.Field {form} name="name">
           <Form.Control let:attrs>
@@ -139,7 +139,7 @@
     {:else if step === 2}
       <div
         class="h-full"
-        transition:slide={{ delay: 100, duration: 1500, easing: quintOut, axis: 'y' }}
+        
       >
         <CharacterOptionSelect
           {form}
@@ -153,7 +153,7 @@
     {:else if step === 3}
       <div
         class="h-full"
-        transition:slide={{ delay: 100, duration: 1500, easing: quintOut, axis: 'y' }}
+        
       >
         <CharacterOptionSelect
           {form}
@@ -167,7 +167,7 @@
     {:else if step === 4}
       <div
         class="h-full"
-        transition:slide={{ delay: 100, duration: 1500, easing: quintOut, axis: 'y' }}
+        
       >
         <CharacterOptionSelect
           {form}
