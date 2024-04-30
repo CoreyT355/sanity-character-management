@@ -4,40 +4,29 @@ export default defineType({
   name: "resource",
   title: "Resource",
   type: "document",
-  icon: () => '📚',
+  icon: () => '🔪',
   fields: [
     defineField({
       name: "name",
       title: "Name",
-      type: "string",
+      type: "string"
     }),
     defineField({
-      name: "summary",
-      title: "Summary",
-      type: "string",
+      name: "type",
+      title: "Type",
+      type: "reference",
+      to: [{type: 'resourceType'}]
+    }),
+    defineField({
+      name: "tags",
+      title: "Tag(s)",
+      type: "array",
+      of: [{type: 'reference', to: [{type: 'keyValuePair'}]}]
     }),
     defineField({
       name: "description",
       title: "Description",
-      type: "text",
-    }),
-    defineField({
-      name: "uses",
-      title: "Uses",
-      type: 'array',
-      of: [{type: 'text'}]
-    }),
-    defineField({
-      name: "tags",
-      title: "Tags",
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'keyValuePair'}]}]
-    }),
-    defineField({
-      name: "examples",
-      title: "Examples",
-      type: 'array',
-      of: [{type: 'string'}]
+      type: "text"
     })
-  ],
+  ]
 });

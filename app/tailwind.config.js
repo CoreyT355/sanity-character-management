@@ -47,6 +47,26 @@ const config = {
         card: {
           DEFAULT: 'hsl(var(--card) / <alpha-value>)',
           foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
+        },
+        success: {
+          DEFAULT: 'hsl(var(--success) / <alpha-value>)',
+          foreground: 'hsl(var(--success-foreground) / <alpha-value>)'
+        },
+        info: {
+          DEFAULT: 'hsl(var(--info) / <alpha-value>)',
+          foreground: 'hsl(var(--info-foreground) / <alpha-value>)'
+        },
+        warning: {
+          DEFAULT: 'hsl(var(--warning) / <alpha-value>)',
+          foreground: 'hsl(var(--warning-foreground) / <alpha-value>)'
+        },
+        violet: {
+          DEFAULT: 'hsl(var(--violet) / <alpha-value>)',
+          foreground: 'hsl(var(--violet-foreground) / <alpha-value>)'
+        },
+        indigo: {
+          DEFAULT: 'hsl(var(--indigo) / <alpha-value>)',
+          foreground: 'hsl(var(--indigo-foreground) / <alpha-value>)'
         }
       },
       borderRadius: {

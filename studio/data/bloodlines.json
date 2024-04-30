@@ -120,7 +120,26 @@
         "description": "A sly ship-born feline, adept at pursuing tiny creatures. Mark to create a resource, Hunter’s Offering."
       }
     ],
-    "quote": "My kin are proud of what I've become, both those I can touch and those I can only honour with words. - Tirik Zethenya, ardent hacker"
+    "quote": "My kin are proud of what I've become, both those I can touch and those I can only honour with words. - Tirik Zethenya, ardent hacker",
+    "edges": ["Iron", "Teeth", "Tides"],
+    "skills": ["Harvest", "Hunt", "Sense", "Sway", "Tend", "Wavewalk", "Vault"],
+    "languages": ["Chthonic", "Old Hand", "Raka Spit"],
+    "resources": [
+      { "name": "Stone Fragments", "type": "Salvage" },
+      { "name": "Highwood Planks", "type": "Salvage" },
+      { "name": "Caged Bird", "type": "Specimens" },
+      { "name": "Milkweed", "type": "Specimens" },
+      { "name": "Grove of Twisted Trees", "type": "Whispers" },
+      { "name": "A Copper-Coloured Chart", "type": "Charts" }
+    ],
+    "drives": [
+      "Solve problems in ardent settlements",
+      "Make amends for an ancestor’s wrongs"
+    ],
+    "mires": [
+      "The call of the Under-Eaves grows strong",
+      "Your ancestors whisper of their disappointment"
+    ]
   },
   {
     "name": "Ektus",
@@ -249,7 +268,26 @@
         "description": "Flightless desert bees that crawl across your body, fiercely territorial. You are immune to damage and effects caused by swarms."
       }
     ],
-    "quote": "No matter how far I travel, no matter what sights I see, the deserts will always call me home in the end. - Oren Galga, ektus horizoneer"
+    "quote": "No matter how far I travel, no matter what sights I see, the deserts will always call me home in the end. - Oren Galga, ektus horizoneer",
+    "edges": ["Iron", "Sharps", "Tides"],
+    "skills": ["Brace", "Break", "Delve", "Hack", "Harvest", "Sense", "Wavewalk"],
+    "languages": ["Saprekk", "Brasstongue", "Highvin"],
+    "resources": [
+      { "name": "Porous Stone", "type": "Salvage" },
+      { "name": "Bronze Locket", "type": "Salvage" },
+      { "name": "Scarab Shell", "type": "Specimens" },
+      { "name": "Iron-Hard Needles", "type": "Specimens" },
+      { "name": "A Desert Lost to Time", "type": "Whispers" },
+      { "name": "A Dusty Chart", "type": "Charts" }
+    ],
+    "drives": [
+      "Solve problems in ektus settlements",
+      "Seek out relics of the eaten desert"
+    ],
+    "mires": [
+      "Your thorns cut, scratch and catch",
+      "Your vision dims, your blooms wilting"
+    ]
   },
   {
     "name": "Gau",
@@ -372,7 +410,26 @@
         "description": "A slow-flying beetle riddled with fungal growths. Mark to gain a burst of dense sensory information from its surroundings, revealing oddities and secrets."
       }
     ],
-    "quote": "The waves are a freedom many of us never thought we would have. To grow, to explore... to be more than we were in the dark. - Elgos, gau horizoneer"
+    "quote": "The waves are a freedom many of us never thought we would have. To grow, to explore... to be more than we were in the dark. - Elgos, gau horizoneer",
+    "edges": ["Grace", "Instinct", "Veils"],
+    "skills": ["Concoct", "Flourish", "Harvest", "Outwit", "Tend", "Wavewalk", "Vault"],
+    "languages": ["Gaudimm", "Raka Spit", "Old Hand"],
+    "resources": [
+      { "name": "Fluted Stone", "type": "Salvage" },
+      { "name": "Fossilized Fungus", "type": "Salvage" },
+      { "name": "Fat-Bodied Beetle", "type": "Specimens" },
+      { "name": "Sourvine Extract", "type": "Specimens" },
+      { "name": "Mycosanctum Rumblings", "type": "Whispers" },
+      { "name": "A Chart of Many Colours", "type": "Charts" }
+    ],
+    "drives": [
+      "Solve problems in gau settlements",
+      "Help other gau explore the wider waves"
+    ],
+    "mires": [
+      "Your flesh turns brittle, making it harder to move",
+      "You leave a trail of spores as you move"
+    ]
   },
   {
     "name": "Ironbound",
@@ -495,7 +552,26 @@
         "description": "A mass of living canvas capable of flight. Mark to have it tangle around a target, restricting their movement."
       }
     ],
-    "quote": "My lost crew stand with me against the waves even now, just as I stood with them while their bright lights shone. -Tar On Tar ironbound mesmer"
+    "quote": "My lost crew stand with me against the waves even now, just as I stood with them while their bright lights shone. -Tar On Tar ironbound mesmer",
+    "edges": ["Iron", "Teeth", "Tides"],
+    "skills": ["Brace", "Break", "Delve", "Hack", "Rattle", "Scavenge", "Wavewalk"],
+    "languages": ["Old Hand", "Signalling", "Raka Spit"],
+    "resources": [
+      { "name": "Sawprow Teeth", "type": "Salvage" },
+      { "name": "Defused Shells", "type": "Salvage" },
+      { "name": "Crezzerin'd Leaves", "type": "Specimens" },
+      { "name": "Rooted Fungus", "type": "Specimens" },
+      { "name": "Woken to Thought", "type": "Whispers" },
+      { "name": "An Old Tradeway", "type": "Charts" }
+    ],
+    "drives": [
+      "Rescue an abandoned ship",
+      "Free a shackled ship-construct"
+    ],
+    "mires": [
+      "The world away from the waves is quiet, distant",
+      "Your body cracks and splits, weakness spreading"
+    ]
   },
   {
     "name": "Ketra",
@@ -612,7 +688,27 @@
         "description": "A simple punchcard-driven repair construct. Increase impact when repairing or tinkering with other machines."
       }
     ],
-    "quote": "The tunnels are a comfort but they can also be a curse. There's a new world waiting up there and I intend to see as much of it as I possibly can. - Jask ketra rootless"
+    "quote": "The tunnels are a comfort but they can also be a curse. There's a new world waiting up there and I intend to see as much of it as I possibly can. - Jask ketra rootless",
+    "edges": ["Iron", "Sharps", "Veils"],
+    "skills": ["Concoct", "Delve", "Outwit", "Scavenge", "Sense", "Sway", "Vault"],
+    "languages": ["Chthonic", "Raka Spit", "Signalling"],
+    "resources": [
+      { "name": "Ceremonial Dynamite", "type": "Salvage" },
+      { "name": "Old Driftwood", "type": "Salvage" },
+      { "name": "Luminescent Bone", "type": "Specimens" },
+      { "name": "Curled Centipede", "type": "Specimens" },
+      { "name": "The Comforting Dark", "type": "Whispers" },
+      { "name": "All Tunnels End", "type": "Whispers" },
+      { "name": "A Faded Schematic", "type": "Charts" }
+    ],
+    "drives": [
+      "Raise a pre-verdant structure",
+      "Hoard treasures of the wider waves"
+    ],
+    "mires": [
+      "Sparks and jolts course through your extremities",
+      "Your inkblot patterns whirl dizzyingly"
+    ]
   },
   {
     "name": "Mothryn",
@@ -723,7 +819,28 @@
         "description": "A domesticated felinesque insect that sheds medicinally potent scale-dust. Your entire crew has resistance against infections and diseases."
       }
     ],
-    "quote": "Some say that our lives are short, too short by far. I say that twenty years of exuberance, exploration, and experience are longer than eighty years of simply waiting for the Eaves. - Ellevente, mothryn rootless"
+    "quote": "Some say that our lives are short, too short by far. I say that twenty years of exuberance, exploration, and experience are longer than eighty years of simply waiting for the Eaves. - Ellevente, mothryn rootless",
+    "edges": ["Grace", "Tides", "Veils"],
+    "skills": ["Cook", "Flourish", "Hunt", "Sense", "Study", "Wavewalk", "Vault"],
+    "languages": ["Raka Spit", "Knock", "Signalling"],
+    "resources": [
+      { "name": "Bolt of Fabric", "type": "Salvage" },
+      { "name": "Damaged Scrap-Flute", "type": "Salvage" },
+      { "name": "Berry Pigment", "type": "Specimens" },
+      { "name": "Raw Silk", "type": "Specimens" },
+      { "name": "Rationing Ended", "type": "Whispers" },
+      { "name": "Vibrant Riot", "type": "Whispers" },
+      { "name": "A Tapestry Map", "type": "Charts" },
+      { "name": "A Painted Wing-Scale", "type": "Charts" }
+    ],
+    "drives": [
+      "Throw yourself into dire situations with vigour",
+      "Solve baffling problems with style"
+    ],
+    "mires": [
+      "Your elegance evaporates, leaving you clumsy",
+      "The rationing returns - your colours and stories fade"
+    ]
   },
   {
     "name": "Tzelicrae",
@@ -839,6 +956,25 @@
         "description": "You’re resistant to three damage types, chosen from the following list: Keen, Spike, Serrated, Hewing, Toxin."
       }
     ],
-    "quote": "I remember the shadows under branches, the mad flight from voracious sparrows, the glistening tangle of dew-licked webs. I miss it, sometimes... but I’m happy with what I’ve become. - Tazik Che, tzelicrae shankling"
+    "quote": "I remember the shadows under branches, the mad flight from voracious sparrows, the glistening tangle of dew-licked webs. I miss it, sometimes... but I’m happy with what I’ve become. - Tazik Che, tzelicrae shankling",
+    "edges": ["Grace", "Teeth", "Veils"],
+    "skills": ["Concoct", "Delve", "Flourish", "Outwit", "Scavenge", "Wavewalk", "Vault"],
+    "languages": ["Chthonic", "Knock", "Saprekk", "Gaudimm"],
+    "resources": [
+      { "name": "Frayed Ropes", "type": "Salvage" },
+      { "name": "Patterned Canvas", "type": "Salvage" },
+      { "name": "Spider Husks", "type": "Specimens" },
+      { "name": "Venom Extract", "type": "Specimens" },
+      { "name": "A Prison of Skin", "type": "Whispers" },
+      { "name": "A Port Manifest in Knock", "type": "Charts" }
+    ],
+    "drives": [
+      "Solve problems in tzelicrae settlements",
+      "Show others they are wrong to fear your kind"
+    ],
+    "mires": [
+      "Spiders escape your skin, striving for individuality",
+      "Your movements are staccato, disturbing"
+    ]
   }
 ]

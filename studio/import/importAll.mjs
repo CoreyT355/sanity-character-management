@@ -3,7 +3,7 @@ import { importEdges } from "./edges.mjs";
 import { importLanguages } from "./languages.mjs";
 import { importOrigins } from "./origins.mjs";
 import { importPosts } from "./posts.mjs";
-import { importResources } from "./resources.mjs";
+import { importResourceTypes } from "./resource-types.mjs";
 import { importSkills } from "./skills.mjs";
 
 const sleep = (ms) => {
@@ -13,7 +13,7 @@ const sleep = (ms) => {
 const allFuncs = [
   importEdges(),
   importLanguages(),
-  importResources(),
+  importResourceTypes(),
   importSkills(),
   importBloodlines(),
   importOrigins(),

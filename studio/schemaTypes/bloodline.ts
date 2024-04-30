@@ -63,11 +63,46 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'aspect'}]}]
     }),
     defineField({
-      name: "quickstart",
-      title: "Quickstart",
+      name: "edges",
+      title: "Edges",
       group: "mechanics",
-      type: 'reference',
-      to: [{type: 'quickstartRules'}]
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'edge'}]}]
+    }),
+    defineField({
+      name: "skills",
+      title: "Skills",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'skill'}]}]
+    }),
+    defineField({
+      name: "languages",
+      title: "Languages",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'language'}]}]
+    }),
+    defineField({
+      name: "resource",
+      title: "Resources",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'resource'}]}]
+    }),
+    defineField({
+      name: "mire",
+      title: "Mires",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'text'}]
+    }),
+    defineField({
+      name: "drive",
+      title: "Drives",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'text'}]
     })
   ]
 });

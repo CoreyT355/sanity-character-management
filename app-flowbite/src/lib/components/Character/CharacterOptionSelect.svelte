@@ -20,35 +20,33 @@
   };
 </script>
 
-<div class="h-full">
-  <span>Select a {optionType}</span>
-  <div class="flex flex-row gap-2 h-full">
-    <nav class="grid gap-3 w-60 ">
+<div class="h-full bg-gray-50 text-gray-900 dark:bg-slate-800 dark:text-white">
+  <!-- <span>Select a {optionType}</span> -->
+  <div class="flex h-full flex-row gap-2 py-4">
+    <nav class="flex flex-col px-3 overflow-y-auto h-[600px] w-60 gap-3">
       {#each options as option}
-        <Button
-          color="green"
-          class="text-base"
-          on:click={() => selectOption(option)}
-        >
+        <Button color="green" class="text-base focus-within:ring-0" on:click={() => selectOption(option)}>
           <!-- <Icon icon="ph:arrow-left-light" class="h-5 w-5" /> -->
           {option}
         </Button>
       {/each}
     </nav>
-    {#if $selectedOption.name}
-      <Card size="lg">
-        <div class="flex flex-row justify-between items-center">
+
+    <Card
+      size="xl"
+      class="h-[600px] divide-gray-200 rounded-lg border border-gray-200 bg-white p-4 text-gray-900 shadow-md sm:p-6 dark:divide-gray-700 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+    >
+      {#if $selectedOption.name}
+        <div class="flex flex-row items-center justify-between">
           <div class="text-2xl font-medium capitalize">{$selectedOption.name}</div>
           <div class="font-light italic">{$selectedOption.summary}</div>
         </div>
         <div class="flex flex-col gap-2">
           <PortableText value={$selectedOption.description} />
         </div>
-      </Card>
-    {:else}
-      <Card size="lg">
+      {:else}
         <div class="text-3xl capitalize">Please Select a {optionType}</div>
-      </Card>
-    {/if}
+      {/if}
+    </Card>
   </div>
 </div>

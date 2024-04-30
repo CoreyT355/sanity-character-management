@@ -32,3 +32,11 @@ export const characterSchemaStep3 = characterSchemaStep2.extend({
 export const characterSchemaStep4 = characterSchemaStep3.extend({
   post: postsEnum.default('')
 });
+
+// export const characterSchemaStep5 = (edgesList) => characterSchemaStep4.extend({
+//   edges: z.enum(edgesList).array().min(3).max(3)
+// });
+
+// export const characterSchemaStep6 = (skillsLanguages) => characterSchemaStep5.extend({
+//   edges: z.enum(edgesList).array().min(3).max(3)
+// });

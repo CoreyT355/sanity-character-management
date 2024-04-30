@@ -5,8 +5,8 @@
   $: activeUrl = $page.url.pathname;
 </script>
 
-<Navbar let:NavContainer>
-  <NavContainer>
+<Navbar fluid let:NavContainer>
+  <NavContainer fluid>
     <NavUl {activeUrl}>
       <NavLi href="/" class="text-base">Home</NavLi>
       <NavLi href="/rules" class="text-base">Rules</NavLi>

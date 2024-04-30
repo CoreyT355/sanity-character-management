@@ -1,0 +1,17 @@
+"edges": ["Grace", "Teeth", "Veils"],
+"skills": ["Harvest", "Hunt", "Sense", "Sway", "Tend", "Wavewalk", "Vault"],
+"languages": ["Chthonic", "Old", "Raka"],
+"resources": [
+  { "name": "", "type": "Salvage" },
+  { "name": "", "type": "Salvage" },
+  { "name": "", "type": "Specimens" },
+  { "name": "", "type": "Specimens" },
+  { "name": "", "type": "Whispers" },
+  { "name": "", "type": "Charts" }
+],
+"drives": [
+  
+],
+"mires": [
+  
+]

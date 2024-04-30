@@ -5,16 +5,20 @@
   export let data: PageData;
 </script>
 
-<div class="m-2 flex flex-col gap-2 rounded-md border bg-slate-600 p-4 text-gray-200">
-  <div class="flex flex-row justify-between items-center">
-    <h3 class="capitalize text-3xl font-medium">
-      {data._type} - {data.name}
-    </h3>
-    <div class="font-light italic">
-      {data.summary}
+<div class="flex flex-col items-center p-4">
+  <div
+    class="flex w-full gap-3 max-w-screen-2xl flex-col divide-gray-200 rounded-lg border border-gray-200 bg-white p-4 text-gray-900 shadow-md sm:p-6 dark:divide-gray-700 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+  >
+    <div class="flex flex-row items-center justify-between">
+      <h3 class="text-3xl font-medium capitalize">
+        {data._type} - {data.name}
+      </h3>
+      <div class="font-light italic">
+        {data.summary}
+      </div>
     </div>
-  </div>
-  <div class="space-y-3">
-    <PortableText value={data.description} />
+    <div class="space-y-3">
+      <PortableText value={data.description} />
+    </div>
   </div>
 </div>

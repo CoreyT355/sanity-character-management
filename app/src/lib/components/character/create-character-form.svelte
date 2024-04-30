@@ -1,6 +1,6 @@
 <script lang="ts">
   import * as Form from '$lib/components/ui/form';
-  import { Badge } from '$lib/components/ui/badge';
+  import { Stepper, StepperItem } from '$lib/components/ui/stepper';
   import { Input } from '$lib/components/ui/input';
   import {
     characterSchemaStep1,
@@ -17,13 +17,18 @@
   import Icon from '@iconify/svelte';
   import type { Bloodline } from '$lib/types/sanity.types';
   import { type Writable, writable } from 'svelte/store';
-  import CharacterOptionSelect from '../character-option-select.svelte';
+  import CharacterOptionSelect from './character-option-select.svelte';
+  import { z } from 'zod';
 
   export let bloodlines: string[];
   export let origins: string[];
   export let posts: string[];
 
   export let data;
+
+  let skillsAndLanguages = ['Grace', 'Teeth', 'Veils', 'Instincts'];
+
+
 
   const steps = [
     {
@@ -32,7 +37,14 @@
     },
     {
       stepName: 'Bloodline',
-      validator: zod(characterSchemaStep2)
+      validator: zod(characterSchemaStep2),
+      children: [
+        { stepName: 'Edges', validator: null },
+        { stepName: 'Skills / Languages', validator: null },
+        { stepName: 'Resources', validator: null },
+        { stepName: 'Drives', validator: null },
+        { stepName: 'Edges', validator: null },
+      ]
     },
     {
       stepName: 'Origin',
@@ -41,12 +53,34 @@
     {
       stepName: 'Post',
       validator: zod(characterSchemaStep4)
+    },
+    {
+      stepName: 'Skills / Languages',
+      validator: zod(characterSchemaStep4.extend({
+        skillsLanguages: z.enum(skillsAndLanguages).array().min(3).max(3)
+      }))
+    },
+    {
+      stepName: 'Edges',
+      validator: null
+    },
+    {
+      stepName: 'Resources',
+      validator: null
+    },
+    {
+      stepName: 'Drives',
+      validator: null
+    },
+    {
+      stepName: 'Mires',
+      validator: null
     }
   ];
 
-  let step = 1;
+  let step = 0;
 
-  $: options.validators = steps[step - 1].validator;
+  $: options.validators = steps[step].validator ?? undefined;
 
   const form = superForm(data, {
     dataType: 'json',
@@ -86,36 +120,32 @@
 {/if}
 
 <div class="max-w-8xl flex h-full flex-row gap-2">
-  <div class="flex justify-center align-middle">
-    <!-- <Separator class="" orientation="vertical" /> -->
-    <div class="flex w-full flex-col items-center justify-between gap-4">
-      {#each steps as _, i}
-        <div class={cn(i + 1 === step ? 'flex-1' : '', 'transition-all duration-500')}>
-          <Badge class={cn(i + 1 === step ? 'bg-purple-500' : '', 'w-28 rounded-sm')}>
-            <div class="flex flex-col gap-1">
-              <div class="text-base">{_.stepName}</div>
-              <div class="text-sm">{$formData[_.stepName.toLocaleLowerCase()]}</div>
-            </div>
-          </Badge>
+  <Stepper>
+    {#each steps as _, i}
+      <StepperItem label={_.stepName} active={i === step} completed={i < step}>
+        <div class="text-muted-foreground text-sm">
+          {$formData[_.stepName.toLocaleLowerCase()] || `Select ${_.stepName}`}
         </div>
-      {/each}
-    </div>
-  </div>
+      </StepperItem>
+    {/each}
+  </Stepper>
 
-  <form class="flex flex-col w-full h-full" method="post" use:enhance>
-    {#if step === 1}
-      <div class="h-full">
+  <form class="flex h-full w-full flex-col px-4" method="post" use:enhance>
+    <div class="h-[500px]">
+      {#if step === 0}
         <Form.Field {form} name="name">
           <Form.Control let:attrs>
-            <Form.Label>Name:</Form.Label>
-            <Input {...attrs} bind:value={$formData.name} placeholder="Enter your character's name" />
+            <Input
+              {...attrs}
+              bind:value={$formData.name}
+              placeholder="Enter your character's name"
+            />
           </Form.Control>
-          <Form.Description>The name for this character</Form.Description>
           <Form.FieldErrors />
         </Form.Field>
         <Form.Field {form} name="characterType">
           <Form.Control let:attrs>
-            <RadioGroup.Root bind:value={$formData.characterType}>
+            <RadioGroup.Root class="flex flex-col space-y-1" bind:value={$formData.characterType}>
               <div class="flex items-center space-x-2">
                 <RadioGroup.Item value="freeform" id="freeform" />
                 <Label for="freeform">Freeform Character</Label>
@@ -129,57 +159,59 @@
           <Form.Description>Choose the type of character you want to create</Form.Description>
           <Form.FieldErrors />
         </Form.Field>
-      </div>
-    {:else if step === 2}
-      <div class="h-full">
+      {:else if step === 1}
         <CharacterOptionSelect
-          {form}
           options={bloodlines}
           optionType="bloodline"
           on:select={(e) => {
             $formData['bloodline'] = e.detail;
           }}
         />
-      </div>
-    {:else if step === 3}
-      <div class="h-full">
+      {:else if step === 2}
         <CharacterOptionSelect
-          {form}
           options={origins}
           optionType="origin"
           on:select={(e) => {
             $formData['origin'] = e.detail;
           }}
         />
-      </div>
-    {:else if step === 4}
-      <div class="h-full">
+      {:else if step === 3}
         <CharacterOptionSelect
-          {form}
           options={posts}
           optionType="post"
           on:select={(e) => {
             $formData['post'] = e.detail;
           }}
         />
-      </div>
-    {/if}
+      {:else if step === 4}
+        <CharacterOptionSelect
+          options={skillsAndLanguages}
+          optionType="skill"
+          on:select={(e) => {
+            $formData['skill'] = e.detail;
+          }}
+        />
+      {/if}
+    </div>
 
-    <div class="flex justify-between py-4">
-      {#if step === steps.length}
+    <div class="mt-4 flex justify-between py-4">
+      {#if step === steps.length - 1}
         <Form.Button class="space-x-1 text-base" on:click={() => step--}>
-          <Icon icon="ph:arrow-left-light" class="h-5 w-5" />
+          <Icon icon="ph:arrow-left-light" class="mr-2 h-5 w-5" />
           Back
         </Form.Button>
-        <Form.Button class="space-x-1 bg-green-500 text-base" {disabled}>Create</Form.Button>
+        <Form.Button variant="success" class="space-x-1 text-base" {disabled}>
+          <Icon icon="ph:check-light" class="mr-2 h-5 w-5" />
+          Create
+        </Form.Button>
       {:else}
-        <Form.Button class="space-x-1 text-base" disabled={step === 1} on:click={() => step--}>
-          <Icon icon="ph:arrow-left-light" class="h-5 w-5" />
+        <Form.Button class="space-x-1 text-base" disabled={step === 0} on:click={() => step--}>
+          <Icon icon="ph:arrow-left-light" class="mr-2 h-5 w-5" />
           Back
         </Form.Button>
         <Form.Button class="space-x-1 text-base" {disabled}>
           Next
-          <Icon icon="ph:arrow-right-light" class="h-5 w-5" />
+          <Icon icon="ph:arrow-right-light" class="ml-2 h-5 w-5" />
         </Form.Button>
       {/if}
     </div>

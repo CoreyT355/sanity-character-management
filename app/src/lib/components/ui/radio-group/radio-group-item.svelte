@@ -14,7 +14,7 @@
 <RadioGroupPrimitive.Item
   {value}
   class={cn(
-    'border-primary text-primary ring-offset-background focus-visible:ring-ring aspect-square h-4 w-4 rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+    'border-primary text-primary ring-offset-background focus-visible:ring-ring aspect-square h-5 w-5 rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
     className
   )}
   {...$$restProps}
@@ -22,7 +22,7 @@
 >
   <div class="flex items-center justify-center">
     <RadioGroupPrimitive.ItemIndicator>
-      <Icon icon="ph:circle" class="h-2 w-2 fill-current text-white" />
+      <Icon icon="ph:check-bold" class="h-3 w-3 fill-current text-current" />
     </RadioGroupPrimitive.ItemIndicator>
   </div>
 </RadioGroupPrimitive.Item>
