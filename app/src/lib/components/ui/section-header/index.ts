@@ -7,6 +7,7 @@ const sectionHeaderVariants = tv({
     variant: {
       default: 'bg-slate-800 text-destructive-foreground',
       destructive: 'bg-destructive text-destructive-foreground',
+      primary: 'bg-primary text-primary-foreground',
       secondary: 'bg-secondary text-secondary-foreground',
       success: 'bg-success text-success-foreground',
       info: 'bg-info text-info-foreground',

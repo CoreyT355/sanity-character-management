@@ -6,7 +6,7 @@
 </script>
 
 <ModeWatcher />
-<div class="root-layout flex flex-col w-screen h-screen">
+<div class="root-layout flex flex-col h-screen">
   <div class="flex items-center border-b py-3 px-6 justify-between">
     <!-- <TeamSwitcher /> -->
     <MainNav />
