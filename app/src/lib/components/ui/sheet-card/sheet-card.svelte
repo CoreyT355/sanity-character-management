@@ -7,7 +7,7 @@
   export let label: string;
 </script>
 
-<div class={cn($$props.class)}>
+<div class={cn($$props.class, 'tacocat')}>
   <SectionHeader variant={variant} {label} />
   <div class={cn(sheetCardVariants({ variant, ...$$props.class }), 'h-full')}>
     <slot />

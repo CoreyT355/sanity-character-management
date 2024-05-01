@@ -1,4 +1,4 @@
-import SheetCard from "./sheet-card.svelte"
+import SheetCard from './sheet-card.svelte';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const sheetCardVariants = tv({
@@ -22,11 +22,7 @@ const sheetCardVariants = tv({
 type Variant = VariantProps<typeof sheetCardVariants>['variant'];
 
 type Props = {
-  variant?: Variant
+  variant?: Variant;
 };
 
-export {
-  SheetCard,
-  type Props,
-  sheetCardVariants
-}
+export { SheetCard, type Props, sheetCardVariants };

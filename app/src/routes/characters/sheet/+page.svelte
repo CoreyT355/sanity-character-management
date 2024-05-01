@@ -13,8 +13,6 @@
   import Mire from '$lib/components/ui/mire/mire.svelte';
 </script>
 
-<h2 class="text-3xl uppercase">The Wildsea</h2>
-<div class="flex h-full flex-col gap-3 md:flex-row">
   <div class="h-full w-full space-y-4 md:w-5/12">
     <!-- <SectionHeader class="mb-3" label="How to play" />
      <div class="grid grid-cols-2 gap-3">
@@ -305,4 +303,3 @@
       </div>
     </div>
   </div>
-</div>

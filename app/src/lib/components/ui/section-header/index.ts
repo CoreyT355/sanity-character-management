@@ -17,13 +17,14 @@ const sectionHeaderVariants = tv({
   },
   defaultVariants: {
     variant: 'default'
-  }
+  },
 });
 
 type Variant = VariantProps<typeof sectionHeaderVariants>['variant'];
 
 type Props = {
-  variant?: Variant
+  variant?: Variant,
+  href?: string
 };
 
 export {

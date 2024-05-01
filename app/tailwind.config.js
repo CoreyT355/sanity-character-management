@@ -75,7 +75,7 @@ const config = {
         sm: 'calc(var(--radius) - 4px)'
       },
       fontFamily: {
-        sans: [...fontFamily.sans]
+        sans: ['Roboto', ...fontFamily.sans]
       },
       maxWidth: {
         '8xl': '90rem'
