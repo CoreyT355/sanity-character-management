@@ -88,7 +88,7 @@ export default defineType({
       title: "Resources",
       group: "mechanics",
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'resource'}]}]
+      of: [{type: 'reference', to: [{type: 'characterResource'}]}]
     }),
     defineField({
       name: "mire",

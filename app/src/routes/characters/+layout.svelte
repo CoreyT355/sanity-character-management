@@ -1,3 +1,3 @@
-<div class="character-layout h-[calc(100vh-115px)]">
+<div class="character-layout">
   <slot />
 </div>

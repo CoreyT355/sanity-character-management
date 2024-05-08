@@ -1,0 +1,13 @@
+*[_type == 'playerCharacter' && name == $name][0]{
+  ...,
+  "bloodline": bloodline->name,
+  "origin": origin->name,
+  "post": post->name,
+  aspects[]->,
+  "salvage": count(resources[]),
+  "test": resources[]->{name,type->},
+  "resources": resources[]->{name, "type": type->name},
+  "skills": skills[]->{ranks, "name": attribute->name},
+  "languages": languages[]->{ranks, "name": attribute->name},
+  "edges": edges|order(name asc)->.name
+}

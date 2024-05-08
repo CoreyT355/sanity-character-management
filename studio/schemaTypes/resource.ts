@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "resource",
-  title: "Resource",
+  name: "characterResource",
+  title: "Character Resource",
   type: "document",
   icon: () => '🔪',
   fields: [

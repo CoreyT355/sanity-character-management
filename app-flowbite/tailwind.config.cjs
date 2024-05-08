@@ -1,33 +1,38 @@
+import { fontFamily } from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config}*/
 const config = {
-	content: [
-		'./src/**/*.{html,js,svelte,ts}',
-		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
-	],
-	darkMode: 'class',
-	theme: {
-		extend: {
-			colors: {
-				primary: {
-					50: '#faf5ff',
-					100: '#f3e8ff',
-					200: '#e9d5ff',
-					300: '#d8b4fe',
-					400: '#c084fc',
-					500: '#a855f7',
-					600: '#9333ea',
-					700: '#7e22ce',
-					800: '#6b21a8',
-					900: '#581c87'
-				}
-			},
-			maxWidth: {
-				'8xl': '90rem'
-			}
-		}
-	},
+  content: [
+    './src/**/*.{html,js,svelte,ts}',
+    './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          200: '#a7f3d0',
+          300: '#6ee7b7',
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+          700: '#047857',
+          800: '#065f46',
+          900: '#064e3b'
+        }
+      },
+      fontFamily: {
+        sans: ['Roboto', ...fontFamily.sans]
+      },
+      maxWidth: {
+        '8xl': '90rem'
+      }
+    }
+  },
 
-	plugins: [require('flowbite/plugin')]
+  plugins: [require('flowbite/plugin')]
 };
 
 module.exports = config;

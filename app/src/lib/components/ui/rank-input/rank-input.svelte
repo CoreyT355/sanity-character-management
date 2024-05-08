@@ -8,7 +8,7 @@
   export let currentRank = 0;
 </script>
 
-<div class="w-min">
+<div class={cn('w-min', $$props.class)}>
   <div class="flex flex-row">
     {#each { length: maxRanks } as _, i}
       {#if i + 1 <= currentRank}

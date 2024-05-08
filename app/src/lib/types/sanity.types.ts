@@ -131,20 +131,32 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type Skill = {
+export type CharacterResource = {
   _id: string;
-  _type: "skill";
+  _type: "characterResource";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   name?: string;
+  type?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "resourceType";
+  };
+  tags?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "keyValuePair";
+  }>;
   description?: string;
-  exampleUses?: Array<string>;
 };
 
-export type Resource = {
+export type ResourceType = {
   _id: string;
-  _type: "resource";
+  _type: "resourceType";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -169,6 +181,7 @@ export type PlayerCharacter = {
   _updatedAt: string;
   _rev: string;
   name?: string;
+  player?: string;
   bloodline?: {
     _ref: string;
     _type: "reference";
@@ -194,26 +207,45 @@ export type PlayerCharacter = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "edge";
   }>;
-  skillsAndLanguages?: Array<{
+  skills?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "skill";
-  } | {
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterAttribute";
+  }>;
+  languages?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "language";
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterAttribute";
   }>;
   resources?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "resource";
+    [internalGroqTypeReferenceTo]?: "characterResource";
   }>;
-  drive?: Array<string>;
-  mire?: Array<string>;
+  drives?: Array<string>;
+  mires?: Array<string>;
+  aspects?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterAspect";
+  }>;
+  majorMilestones?: Array<string>;
+  minorMilestones?: Array<string>;
+  temporaryTracks?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterAspect";
+  }>;
 };
 
 export type Post = {
@@ -259,6 +291,36 @@ export type Post = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "aspect";
   }>;
+  edges?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "edge";
+  }>;
+  skills?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "skill";
+  }>;
+  languages?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "language";
+  }>;
+  resource?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterResource";
+  }>;
+  mire?: Array<string>;
+  drive?: Array<string>;
 };
 
 export type Origin = {
@@ -304,6 +366,36 @@ export type Origin = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "aspect";
   }>;
+  edges?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "edge";
+  }>;
+  skills?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "skill";
+  }>;
+  languages?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "language";
+  }>;
+  resource?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterResource";
+  }>;
+  mire?: Array<string>;
+  drive?: Array<string>;
 };
 
 export type Bloodline = {
@@ -349,21 +441,6 @@ export type Bloodline = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "aspect";
   }>;
-  quickstart?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "quickstartRules";
-  };
-};
-
-export type QuickstartRules = {
-  _id: string;
-  _type: "quickstartRules";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
   edges?: Array<{
     _ref: string;
     _type: "reference";
@@ -371,37 +448,29 @@ export type QuickstartRules = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "edge";
   }>;
-  skillsAndLanguages?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "skill";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "language";
-  }>;
-  resources?: Array<{
+  skills?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "resource";
+    [internalGroqTypeReferenceTo]?: "skill";
   }>;
-  drive?: Array<string>;
+  languages?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "language";
+  }>;
+  resource?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterResource";
+  }>;
   mire?: Array<string>;
-};
-
-export type Language = {
-  _id: string;
-  _type: "language";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  description?: string;
-  lore?: string;
+  drive?: Array<string>;
 };
 
 export type KeyValuePair = {
@@ -421,6 +490,7 @@ export type Edge = {
   _updatedAt: string;
   _rev: string;
   name?: string;
+  displayName?: string;
   summary?: string;
   description?: string;
 };
@@ -469,6 +539,81 @@ export type CharacterOption = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "aspect";
   }>;
+};
+
+export type CharacterAttribute = {
+  _id: string;
+  _type: "characterAttribute";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  attribute?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "skill";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "language";
+  };
+  ranks?: number;
+};
+
+export type Language = {
+  _id: string;
+  _type: "language";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  displayName?: string;
+  description?: string;
+  lore?: string;
+};
+
+export type Skill = {
+  _id: string;
+  _type: "skill";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  displayName?: string;
+  description?: string;
+  exampleUses?: Array<string>;
+};
+
+export type CharacterAspect = {
+  _id: string;
+  _type: "characterAspect";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  trackLength?: number;
+  currentTRack?: Array<number>;
+  type?: "companion" | "gear" | "trait";
+  isComplex?: boolean;
 };
 
 export type Aspect = {

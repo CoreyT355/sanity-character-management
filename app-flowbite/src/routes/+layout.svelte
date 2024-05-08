@@ -1,14 +1,23 @@
 <script>
   import MainNav from '$lib/components/MainNav/MainNav.svelte';
-import '../app.pcss';
+  import { fly } from 'svelte/transition';
+  import '../app.pcss';
+
+  export let data;
 </script>
 
 <header>
   <MainNav />
 </header>
 
-<div class="flex overflow-hidden">
-  <div class=" h-full w-full">
-    <slot />
+{#key data.url}
+  <div
+    class="flex overflow-hidden"
+    in:fly={{ x: -200, duration: 200, delay: 50 }}
+    out:fly={{ x: 200, duration: 200 }}
+  >
+    <div class=" h-full w-full">
+      <slot />
+    </div>
   </div>
-</div>
+{/key}

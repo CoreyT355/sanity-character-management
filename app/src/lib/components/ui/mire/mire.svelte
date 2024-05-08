@@ -2,10 +2,12 @@
   import Label from "../label/label.svelte";
   import Track from "../track/track.svelte";
 
-  export let text: string;
+  export let description: string;
+  export let currentTrack: number[];
+  let trackLength: number = 2;
 </script>
 
 <div class="flex flex-row justify-between gap-1">
-  <Label class="text-base font-light">{text}</Label>
-  <Track trackCount={2} currentCount={0} />
+  <Label class="text-base font-light">{description}</Label>
+  <Track {trackLength} {currentTrack} />
 </div>

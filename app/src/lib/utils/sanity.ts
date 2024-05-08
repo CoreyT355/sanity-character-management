@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client';
 import groq from 'groq';
-import type { Bloodline, Language, Origin, Post, Skill } from '$lib/types/sanity.types';
+import type { Bloodline, Edge, Language, Origin, PlayerCharacter, Post, Skill, internalGroqTypeReferenceTo } from '$lib/types/sanity.types';
 
 import { PUBLIC_SANITY_DATASET, PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 
@@ -60,8 +60,7 @@ export async function getBloodline(name: string): Promise<Bloodline> {
     name == $name][0]{
       ...,
       lore[]->,
-      aspects[]->,
-      quickstart->
+      aspects[]->
     }`,
     {
       name
@@ -89,11 +88,51 @@ export async function getPost(name: string): Promise<Post> {
   });
 }
 
-export async function getSkillsAndLanguages(name: string): Promise<string[]> {
+export async function getAttributes(type: string): Promise<Edge[] | Skill[] | Language[]> {
   return await client.fetch(
-    groq`*[_type == 'quickstartRules']{ skillsAndLanguages[]->{name, _type} } | order(name asc)`,
+    groq`*[_type == $type] | order(name asc)`,
+    {
+      type
+    }
+  );
+}
+
+export async function getAttribute(name: string, type: string): Promise<Edge | Skill | Language> {
+  return await client.fetch(
+    groq`*[_type == $type && name == $name][0]`,
+    {
+      name,
+      type
+    }
+  );
+}
+
+export async function getPlayerCharacter(name: string) {
+  const playerCharacter = await client.fetch(
+    groq`*[_type == 'playerCharacter' && name == $name][0]{
+      ...,
+      "bloodline": bloodline->{name,_id},
+      "origin": origin->{name,_id},
+      "post": post->{name,_id},
+      aspects[]->,
+      "resources": resources[]->{name, "type": type->name, "typeId": type->_id},
+      "skills": skills[]->{ranks, "name": attribute->name, "_id": attribute->_id},
+      "languages": languages[]->{ranks, "name": attribute->name, "_id": attribute->_id},
+      "edges": edges|order(name asc)->{name, _id}
+    }`,
     {
       name
     }
   );
+
+  const pObj = {
+    name: playerCharacter.name,
+    player: playerCharacter.player,
+    bloodline: playerCharacter.bloodline,
+    origin: playerCharacter.origin,
+    post: playerCharacter.post,
+
+  };
+
+  return playerCharacter;
 }

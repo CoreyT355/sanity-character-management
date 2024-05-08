@@ -4,6 +4,7 @@ import languagesJson from '../data/languages.json' assert { type: 'json' };
 const languages = languagesJson.map((language) => ({
   _id: nameToId(language.name, 'language'),
   _type: 'language',
+  displayName: language.name,
   ...language
 }));
 

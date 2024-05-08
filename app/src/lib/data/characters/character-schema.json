@@ -1,0 +1,72 @@
+{
+  "name": "",
+  "player": "",
+  "bloodline": "",
+  "origin": "",
+  "post": "",
+  "edges": [],
+  "skills": {
+    "brace": 0,
+    "break": 0,
+    "concoct": 0,
+    "cook": 0,
+    "delve": 0,
+    "flourish": 0,
+    "hack": 0,
+    "harvest": 0,
+    "hunt": 0,
+    "outwit": 0,
+    "rattle": 0,
+    "sense": 0,
+    "study": 0,
+    "sway": 0,
+    "tend": 0,
+    "vault": 0,
+    "wavewalk": 0
+  },
+  "languages": {
+    "lowsour": 3,
+    "chthonic": 0,
+    "brasstongue": 0,
+    "saprekk": 0,
+    "gaudimm": 0,
+    "knock": 0,
+    "rakaspit": 0,
+    "lyrebite": 0,
+    "oldhand": 0,
+    "signalling": 0,
+    "highvin": 0,
+    "raolin": 0
+  },
+  "drives": [],
+  "mires": [
+    { "description": "", "currentTrack": [] }
+  ],
+  "salvage": [],
+  "specimens": [],
+  "whispers": [],
+  "charts": [],
+  "majorMilestones": [],
+  "minorMilestones": [],
+  "temporaryTracks": [
+    {
+      "name": "",
+      "details": "",
+      "type": "",
+      "trackLength": 0,
+      "currentCount": 0,
+      "isComplex": false
+    }
+  ],
+  "aspects": [
+    {
+      "name": "",
+      "description": "",
+      "type": "",
+      "trackLength": 0,
+      "currentTrack": [],
+      "isComplex": false
+    }
+  ],
+  "notes": []
+}

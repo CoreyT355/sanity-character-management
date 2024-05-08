@@ -1,8 +1,8 @@
 <script>
-  import { goto } from "$app/navigation";
-  import { Button } from "flowbite-svelte";
+  import { CharacterSheetNav } from '$lib/components/CharacterSheetNav';
 </script>
 
 <div class="flex flex-col p-6">
-  <Button size="md" on:click={() => goto('/characters/create')}>Create New Character</Button>
+  <!-- <Button size="md" on:click={() => goto('/characters/create')}>Create New Character</Button> -->
+  <CharacterSheetNav />
 </div>

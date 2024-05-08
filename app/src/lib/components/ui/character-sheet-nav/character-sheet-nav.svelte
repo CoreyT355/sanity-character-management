@@ -1,6 +1,7 @@
 <script lang="ts">
   import { SectionHeader } from "../section-header";
   import { page } from "$app/stores";
+  import Button from "../button/button.svelte";
 
   let currentPath = $page.url.pathname.substring($page.url.pathname.lastIndexOf('/'));
 </script>

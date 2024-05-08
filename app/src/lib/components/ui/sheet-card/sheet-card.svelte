@@ -4,11 +4,12 @@
   import { sheetCardVariants, type Props } from ".";
 
   export let variant: Props['variant'] = 'default';
+  export let isEditable: Props['isEditable'] = false;
   export let label: string;
 </script>
 
-<div class={cn($$props.class, 'tacocat')}>
-  <SectionHeader variant={variant} {label} />
+<div class={cn($$props.class)}>
+  <SectionHeader {variant} {label} {isEditable} />
   <div class={cn(sheetCardVariants({ variant, ...$$props.class }), 'h-full')}>
     <slot />
   </div>
