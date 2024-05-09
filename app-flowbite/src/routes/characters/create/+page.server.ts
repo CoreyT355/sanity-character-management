@@ -2,7 +2,7 @@
 // import { superValidate } from 'sveltekit-superforms';
 // import { characterSchemaStep4 as lastStep } from '$lib/schema/create-character';
 // import { zod } from 'sveltekit-superforms/adapters';
-import { getCharacterOptionNames } from '$lib/utils/sanity';
+import { getCharacterOptionNames } from '$lib/server/sanity';
 
 export const load = async () => {
 

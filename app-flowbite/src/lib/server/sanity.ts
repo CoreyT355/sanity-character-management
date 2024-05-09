@@ -3,6 +3,7 @@ import groq from 'groq';
 import type { Bloodline, Edge, Language, Origin, Post, Skill } from '$lib/types/sanity.types';
 
 import { PUBLIC_SANITY_DATASET, PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
+import { API_TOKEN } from '$env/static/private';
 
 if (!PUBLIC_SANITY_PROJECT_ID || !PUBLIC_SANITY_DATASET) {
   throw new Error('Did you forget to run sanity init --env?');
@@ -11,8 +12,10 @@ if (!PUBLIC_SANITY_PROJECT_ID || !PUBLIC_SANITY_DATASET) {
 export const client = createClient({
   projectId: PUBLIC_SANITY_PROJECT_ID,
   dataset: PUBLIC_SANITY_DATASET,
+  token: API_TOKEN,
   useCdn: false, // `false` if you want to ensure fresh data
-  apiVersion: '2023-03-20' // date of setup
+  apiVersion: '2023-03-20', // date of setup
+  perspective: 'published'
 });
 
 export async function getCharacterOptions(type: string): Promise<Bloodline[] | Origin[] | Post[]> {
@@ -89,25 +92,56 @@ export async function getPost(name: string): Promise<Post> {
 }
 
 export async function getAttributes(type: string): Promise<Edge[] | Skill[] | Language[]> {
-  return await client.fetch(
-    groq`*[_type == $type] | order(name asc)`,
-    {
-      type
-    }
-  );
+  return await client.fetch(groq`*[_type == $type] | order(name asc)`, {
+    type
+  });
 }
 
 export async function getAttribute(name: string, type: string): Promise<Edge | Skill | Language> {
+  return await client.fetch(groq`*[_type == $type && name == $name][0]`, {
+    name,
+    type
+  });
+}
+
+export async function getCharactersByUser(userId: string) {
   return await client.fetch(
-    groq`*[_type == $type && name == $name][0]`,
-    {
+    groq`*[_type == 'playerCharacter']{
+      _id,
       name,
-      type
+      player,
+      "bloodline": bloodline->name,
+      "origin": origin->name,
+      "post": post->name
+    }`,
+    {
+      userId
     }
   );
 }
 
-export async function getPlayerCharacter(name: string) {
+export async function getPlayerCharacterById(id: string) {
+  const playerCharacter = await client.fetch(
+    groq`*[_type == 'playerCharacter' && _id == $id][0]{
+      ...,
+      "bloodline": bloodline->{name,_id},
+      "origin": origin->{name,_id},
+      "post": post->{name,_id},
+      aspects[]->,
+      "resources": resources[]->{name, "type": type->name, "typeId": type->_id},
+      "skills": skills[]->{ranks, "name": attribute->name, "_id": attribute->_id},
+      "languages": languages[]->{ranks, "name": attribute->name, "_id": attribute->_id},
+      "edges": edges|order(name asc)->{name, _id}
+    }`,
+    {
+      id
+    }
+  );
+
+  return playerCharacter;
+}
+
+export async function getPlayerCharacterByName(name: string) {
   const playerCharacter = await client.fetch(
     groq`*[_type == 'playerCharacter' && name == $name][0]{
       ...,
@@ -125,14 +159,9 @@ export async function getPlayerCharacter(name: string) {
     }
   );
 
-  const pObj = {
-    name: playerCharacter.name,
-    player: playerCharacter.player,
-    bloodline: playerCharacter.bloodline,
-    origin: playerCharacter.origin,
-    post: playerCharacter.post,
-
-  };
-
   return playerCharacter;
+}
+
+export async function savePlayerCharacter(playerCharacter: PlayerCharacter) {
+  return await client.createIfNotExists(playerCharacter);
 }

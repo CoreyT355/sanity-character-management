@@ -2,6 +2,7 @@
   import MainNav from '$lib/components/MainNav/MainNav.svelte';
   import { fly } from 'svelte/transition';
   import '../app.pcss';
+  import Footer from '$lib/components/Footer/Footer.svelte';
 
   export let data;
 </script>
@@ -21,3 +22,6 @@
     </div>
   </div>
 {/key}
+
+
+<Footer />

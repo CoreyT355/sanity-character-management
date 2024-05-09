@@ -32,6 +32,7 @@
 		"flowbite": "^2.3.0",
 		"flowbite-svelte": "^0.45.1",
 		"groq": "^3.38.0",
+		"lodash-es": "^4.17.21",
 		"postcss": "^8.4.32",
 		"postcss-load-config": "^5.0.2",
 		"prettier": "^3.1.1",
@@ -44,6 +45,7 @@
 		"tailwindcss": "^3.3.6",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
+		"uuid": "^9.0.1",
 		"vite": "^5.0.3"
 	},
 	"type": "module"

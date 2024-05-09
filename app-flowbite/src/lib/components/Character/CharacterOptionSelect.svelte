@@ -1,22 +1,17 @@
 <script lang="ts">
-  import { PortableText } from '@portabletext/svelte';
   import { Button, Card } from 'flowbite-svelte';
   import { createEventDispatcher } from 'svelte';
   import { writable, type Writable } from 'svelte/store';
-  import type { Bloodline, Origin, Post } from '$lib/types/sanity.types';
-  import { getCharacterOption } from '$lib/utils/sanity';
 
   export let options: string[];
   export let optionType: 'bloodline' | 'origin' | 'post';
 
   const dispatch = createEventDispatcher();
 
-  let selectedOption: Writable<Bloodline | Origin | Post> = writable(
-    {} as Bloodline | Origin | Post
-  );
+  let selectedOption: Writable<string> = writable('');
   const selectOption = async (option: string) => {
-    selectedOption.set((await getCharacterOption(optionType, option)) as Bloodline | Origin | Post);
-    dispatch('select', $selectedOption.name);
+    selectedOption.set(option);
+    dispatch('select', option);
   };
 </script>
 
@@ -36,14 +31,14 @@
       size="xl"
       class="h-[600px] divide-gray-200 rounded-lg border border-gray-200 bg-white p-4 text-gray-900 shadow-md sm:p-6 dark:divide-gray-700 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
     >
-      {#if $selectedOption.name}
+      {#if $selectedOption}
         <div class="flex flex-row items-center justify-between">
-          <div class="text-2xl font-medium capitalize">{$selectedOption.name}</div>
-          <div class="font-light italic">{$selectedOption.summary}</div>
+          <div class="text-2xl font-medium capitalize">{$selectedOption}</div>
+          <!-- <div class="font-light italic">{$selectedOption.summary}</div> -->
         </div>
-        <div class="flex flex-col gap-2">
+        <!-- <div class="flex flex-col gap-2">
           <PortableText value={$selectedOption.description} />
-        </div>
+        </div> -->
       {:else}
         <div class="text-3xl capitalize">Please Select a {optionType}</div>
       {/if}

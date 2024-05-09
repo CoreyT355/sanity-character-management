@@ -2,14 +2,25 @@
   import Icon from '@iconify/svelte';
   import { cn } from '$lib/utils';
   import { rankInputVariants, type Props } from '.';
+  import { createEventDispatcher } from 'svelte';
 
   export let variant: Props['variant'] = 'default';
   export let maxRanks = 3;
   export let currentRank = 0;
   export let disabled = true;
 
+  const dispatch = createEventDispatcher();
+
   const handleRankClick = (rank: number) => {
-    currentRank = rank === 0 ? (currentRank === 0 ? 1 : 0) : rank + 1;
+    if (rank === 0 && currentRank === 0) {
+      currentRank = 1;
+    } else if (rank === 0 && currentRank > 0) {
+      currentRank = 0;
+    } else {
+      currentRank = rank + 1;
+    }
+
+    dispatch('click', currentRank);
   };
 </script>
 

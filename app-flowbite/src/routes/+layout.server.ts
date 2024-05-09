@@ -1,5 +1,5 @@
 import type { Edge, Language, Skill } from "$lib/types/sanity.types";
-import { getAttributes, getCharacterOptions } from "$lib/utils/sanity";
+import { getAttributes, getCharacterOptions } from "$lib/server/sanity";
 import type { LayoutServerLoad } from "./$types";
 
 const bloodlines = await getCharacterOptions('bloodline');

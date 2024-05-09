@@ -5,54 +5,30 @@
   import { RankInput } from '$lib/components/RankInput';
   import Mire from '$lib/components/Mire/Mire.svelte';
   import { isEditing } from '$lib/store/characters.js';
+  import { unionWith } from 'lodash-es';
+  import { beforeNavigate } from '$app/navigation';
 
   export let data;
 
+  beforeNavigate(() => {
+    isEditing.set(false);
+  });
+
   const { bloodlines, edges, languages, origins, posts, skills, characterFromSanity } = data;
+
+  // $: console.log('CHARACTER UPDATE', characterFromSanity);
+
+  const handleRankClick = (type: string, _id: string, name: string, ranks: number) => {
+    characterFromSanity[type] = unionWith(
+      [{ _id, name, ranks }],
+      characterFromSanity[type],
+      (updatedLanguage, currentLanguage) => updatedLanguage.name === currentLanguage.name
+    );
+  };
 </script>
 
 <!-- Left Column -->
 <div class="h-full w-full space-y-4 md:w-5/12">
-  <!-- <SectionHeader class="mb-3" label="How to play" />
-     <div class="grid grid-cols-2 gap-3">
-      <SheetCard variant="info" label="Roll">
-        <div class="flex flex-col">
-          <div class="flex flex-row justify-between">
-            <span>Edge</span>
-            <span>(1d6)</span>
-          </div>
-          <div class="flex flex-row justify-between">
-            <span>Skill</span>
-            <span>(Up to 3d6)</span>
-          </div>
-          <div class="flex flex-row justify-between">
-            <span>Advantage</span>
-            <span>(Up to 2d6)</span>
-          </div>
-        </div>
-      </SheetCard>
-      <SheetCard variant="info" label="Results">
-        <div class="flex flex-col">
-          <div class="flex flex-row justify-between">
-            <span>Triumph</span>
-            <span>[6]</span>
-          </div>
-          <div class="flex flex-row justify-between">
-            <span>Conflict</span>
-            <span>[5/4]</span>
-          </div>
-          <div class="flex flex-row justify-between">
-            <span>Disaster</span>
-            <span>[3/2/1]</span>
-          </div>
-          <div class="flex flex-row justify-between">
-            <span>Twist</span>
-            <span>[Doubles]</span>
-          </div>
-        </div>
-      </SheetCard>
-    </div> -->
-
   <!-- First Row -->
   <div class="flex flex-col gap-4 lg:flex-row">
     <!-- Edges -->
@@ -63,10 +39,12 @@
             <span class="text-base leading-none">
               {edge.displayName}
             </span>
+            <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip>
             <RankInput
               disabled={!$isEditing}
               maxRanks={1}
               currentRank={characterFromSanity.edges.map((e) => e.name).includes(edge.name) ? 1 : 0}
+              on:click={({ detail }) => handleRankClick('edges', edge._id, edge.name, detail)}
             />
           </div>
         {/each}
@@ -76,13 +54,16 @@
     <SheetCard class="h-full w-full lg:w-9/12" variant="info" label="Languages">
       <div class="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-2">
         {#each languages as language}
-          <div class="flex max-w-64 flex-row items-center justify-between">
+          <div class="flex max-w-72 flex-row items-center justify-between">
             <span class="capitalize">{language.displayName}</span>
+            <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{language.description}</Tooltip>
             <RankInput
               disabled={!$isEditing}
               maxRanks={3}
               currentRank={characterFromSanity.languages.find((l) => l.name === language.name)
                 ?.ranks}
+              on:click={({ detail }) =>
+                handleRankClick('languages', language._id, language.name, detail)}
             />
           </div>
         {/each}
@@ -95,10 +76,15 @@
       {#each skills as skill}
         <div class="flex max-w-64 flex-row items-center justify-between">
           <span class="capitalize">{skill.name}</span>
+          <Tooltip defaultClass="py-2 px-3 w-80 z-10 flex flex-col gap-3">
+            <div><span class="text-base font-bold">Description:</span> {skill.description}</div>
+            <div><span class="text-base font-bold">Examples:</span> {skill.exampleUses}</div>
+          </Tooltip>
           <RankInput
             maxRanks={3}
             disabled={!$isEditing}
             currentRank={characterFromSanity.skills.find((s) => s.name === skill.name)?.ranks}
+            on:click={({ detail }) => handleRankClick('skills', skill._id, skill.name, detail)}
           />
         </div>
       {/each}
@@ -141,6 +127,7 @@
         <span class="w-24 text-base">Bloodline</span>
         <Select
           disabled={!$isEditing}
+          placeholder="Select a Bloodline..."
           items={bloodlines.map((b) => ({ name: b.name || '', value: b._id }))}
           bind:value={characterFromSanity.bloodline._id}
         />
@@ -157,6 +144,7 @@
         <span class="w-24 text-base">Origin</span>
         <Select
           disabled={!$isEditing}
+          placeholder="Select an Origin..."
           items={origins.map((origin) => ({ name: origin.name || '', value: origin._id }))}
           bind:value={characterFromSanity.origin._id}
         />
@@ -165,6 +153,7 @@
         <span class="w-24 text-base">Post</span>
         <Select
           disabled={!$isEditing}
+          placeholder="Select a Post..."
           items={posts.map((p) => ({ name: p.name || '', value: p._id }))}
           bind:value={characterFromSanity.post._id}
         />

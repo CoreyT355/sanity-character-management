@@ -14,7 +14,7 @@
     <NavUl {activeUrl}>
       <NavLi href="/" class="text-base">Home</NavLi>
       <NavLi href="/rules" class="text-base">Rules</NavLi>
-      <NavLi href="/characters/sheet" class="text-base">Characters</NavLi>
+      <NavLi href="/characters" class="text-base">Characters</NavLi>
       <NavLi href="/campaigns" class="text-base">Campaigns</NavLi>
       <NavLi href="/settings" class="text-base">Settings</NavLi>
     </NavUl>
