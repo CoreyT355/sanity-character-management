@@ -1,4 +1,3 @@
-<div class="flex flex-col">
-  <h2>Characters</h2>
+<div class="character-layout">
   <slot />
 </div>

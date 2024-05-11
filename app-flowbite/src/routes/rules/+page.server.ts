@@ -1,13 +1,13 @@
-import { getCharacterOptions } from '$lib/utils/sanity';
+import { getCharacterOptions } from '$lib/server/sanity';
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from '../$types';
 
 export const load = (async () => {
   const bloodlines = await getCharacterOptions('bloodline');
   const origins = await getCharacterOptions('origin');
   const posts = await getCharacterOptions('post');
 
-  if (bloodlines) {
+  if (bloodlines && origins && posts) {
     return {
       bloodlines,
       origins,
@@ -16,4 +16,4 @@ export const load = (async () => {
   }
 
   throw error(404, 'Not found');
-}) satisfies PageLoad;
+}) satisfies PageServerLoad;

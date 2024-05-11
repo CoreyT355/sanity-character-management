@@ -1,6 +1,6 @@
 <script lang="ts">
   import * as Form from '$lib/components/ui/form';
-  import { Badge } from '$lib/components/ui/badge';
+  import { Stepper, StepperItem } from '$lib/components/ui/stepper';
   import { Input } from '$lib/components/ui/input';
   import {
     characterSchemaStep1,
@@ -11,13 +11,14 @@
   import SuperDebug, { superForm } from 'sveltekit-superforms';
   import { zod } from 'sveltekit-superforms/adapters';
   import * as RadioGroup from '$lib/components/ui/radio-group';
-  import * as Select from '$lib/components/ui/select';
   import Label from '$lib/components/ui/label/label.svelte';
   import { page } from '$app/stores';
   import { cn } from '$lib/utils';
   import Icon from '@iconify/svelte';
-  import { string } from 'zod';
-  import { getCharacterOption } from '$lib/utils/sanity';
+  import type { Bloodline } from '$lib/types/sanity.types';
+  import { type Writable, writable } from 'svelte/store';
+  import CharacterOptionSelect from './character-option-select.svelte';
+  import { z } from 'zod';
 
   export let bloodlines: string[];
   export let origins: string[];
@@ -25,16 +26,61 @@
 
   export let data;
 
+  let skillsAndLanguages = ['Grace', 'Teeth', 'Veils', 'Instincts'];
+
+
+
   const steps = [
-    zod(characterSchemaStep1),
-    zod(characterSchemaStep2),
-    zod(characterSchemaStep3),
-    zod(characterSchemaStep4)
+    {
+      stepName: 'Name',
+      validator: zod(characterSchemaStep1)
+    },
+    {
+      stepName: 'Bloodline',
+      validator: zod(characterSchemaStep2),
+      children: [
+        { stepName: 'Edges', validator: null },
+        { stepName: 'Skills / Languages', validator: null },
+        { stepName: 'Resources', validator: null },
+        { stepName: 'Drives', validator: null },
+        { stepName: 'Edges', validator: null },
+      ]
+    },
+    {
+      stepName: 'Origin',
+      validator: zod(characterSchemaStep3)
+    },
+    {
+      stepName: 'Post',
+      validator: zod(characterSchemaStep4)
+    },
+    {
+      stepName: 'Skills / Languages',
+      validator: zod(characterSchemaStep4.extend({
+        skillsLanguages: z.enum(skillsAndLanguages).array().min(3).max(3)
+      }))
+    },
+    {
+      stepName: 'Edges',
+      validator: null
+    },
+    {
+      stepName: 'Resources',
+      validator: null
+    },
+    {
+      stepName: 'Drives',
+      validator: null
+    },
+    {
+      stepName: 'Mires',
+      validator: null
+    }
   ];
 
-  let step = 1;
+  let step = 0;
 
-  $: options.validators = steps[step - 1];
+  $: options.validators = steps[step].validator ?? undefined;
 
   const form = superForm(data, {
     dataType: 'json',
@@ -62,7 +108,9 @@
 
   $: disabled = initialStepData == $formData || !!$allErrors.length;
 
-  let selectedBloodline;
+  let selectedBloodline: Writable<Bloodline> = writable({} as Bloodline);
+  let selectedOrigin: Writable<Bloodline> = writable({} as Bloodline);
+  let selectedPost: Writable<Bloodline> = writable({} as Bloodline);
 </script>
 
 {#if $message}
@@ -71,137 +119,102 @@
   </div>
 {/if}
 
-<form method="post" use:enhance>
-  <div class="mt-[15px] flex border-t py-4">
-    <div class="-mt-[37px] flex w-full flex-row items-center justify-between gap-4">
-      {#each steps as _, i}
-        <div class={cn(i + 1 === step ? 'flex-1' : '', 'transition-all duration-500')}>
-          <Badge class={cn(i + 1 === step ? 'bg-purple-800' : '')}>
-            {i + 1}
-          </Badge>
+<div class="max-w-8xl flex h-full flex-row gap-2">
+  <Stepper>
+    {#each steps as _, i}
+      <StepperItem label={_.stepName} active={i === step} completed={i < step}>
+        <div class="text-muted-foreground text-sm">
+          {$formData[_.stepName.toLocaleLowerCase()] || `Select ${_.stepName}`}
         </div>
-      {/each}
+      </StepperItem>
+    {/each}
+  </Stepper>
+
+  <form class="flex h-full w-full flex-col px-4" method="post" use:enhance>
+    <div class="h-[500px]">
+      {#if step === 0}
+        <Form.Field {form} name="name">
+          <Form.Control let:attrs>
+            <Input
+              {...attrs}
+              bind:value={$formData.name}
+              placeholder="Enter your character's name"
+            />
+          </Form.Control>
+          <Form.FieldErrors />
+        </Form.Field>
+        <Form.Field {form} name="characterType">
+          <Form.Control let:attrs>
+            <RadioGroup.Root class="flex flex-col space-y-1" bind:value={$formData.characterType}>
+              <div class="flex items-center space-x-2">
+                <RadioGroup.Item value="freeform" id="freeform" />
+                <Label for="freeform">Freeform Character</Label>
+              </div>
+              <div class="flex items-center space-x-2">
+                <RadioGroup.Item value="quickStart" id="quickStart" />
+                <Label for="quickStart">Quickstart Character</Label>
+              </div>
+            </RadioGroup.Root>
+          </Form.Control>
+          <Form.Description>Choose the type of character you want to create</Form.Description>
+          <Form.FieldErrors />
+        </Form.Field>
+      {:else if step === 1}
+        <CharacterOptionSelect
+          options={bloodlines}
+          optionType="bloodline"
+          on:select={(e) => {
+            $formData['bloodline'] = e.detail;
+          }}
+        />
+      {:else if step === 2}
+        <CharacterOptionSelect
+          options={origins}
+          optionType="origin"
+          on:select={(e) => {
+            $formData['origin'] = e.detail;
+          }}
+        />
+      {:else if step === 3}
+        <CharacterOptionSelect
+          options={posts}
+          optionType="post"
+          on:select={(e) => {
+            $formData['post'] = e.detail;
+          }}
+        />
+      {:else if step === 4}
+        <CharacterOptionSelect
+          options={skillsAndLanguages}
+          optionType="skill"
+          on:select={(e) => {
+            $formData['skill'] = e.detail;
+          }}
+        />
+      {/if}
     </div>
-  </div>
 
-  {#if step === 1}
-    <Form.Field {form} name="name">
-      <Form.Control let:attrs>
-        <Form.Label>Name:</Form.Label>
-        <Input {...attrs} bind:value={$formData.name} />
-      </Form.Control>
-      <Form.Description>The name for this character</Form.Description>
-      <Form.FieldErrors />
-    </Form.Field>
-    <Form.Field {form} name="characterType">
-      <Form.Control let:attrs>
-        <RadioGroup.Root bind:value={$formData.characterType}>
-          <div class="flex items-center space-x-2">
-            <RadioGroup.Item value="freeform" id="freeform" />
-            <Label for="freeform">Freeform Character</Label>
-          </div>
-          <div class="flex items-center space-x-2">
-            <RadioGroup.Item value="quickStart" id="quickStart" />
-            <Label for="quickStart">Quickstart Character</Label>
-          </div>
-        </RadioGroup.Root>
-      </Form.Control>
-      <Form.Description>Choose the type of character you want to create</Form.Description>
-      <Form.FieldErrors />
-    </Form.Field>
-  {:else if step === 2}
-    <Form.Field {form} name="bloodline">
-      <Form.Control let:attrs>
-        <Form.Label>Bloodline:</Form.Label>
-        <Select.Root
-          selected={$formData.bloodline}
-          onSelectedChange={(v) => {
-            v && ($formData.bloodline = v.value);
-          }}
-        >
-          <Select.Trigger {...attrs} class="w-44">
-            <Select.Value placeholder="Select a Bloodline" />
-          </Select.Trigger>
-          <Select.Content>
-            {#each bloodlines as bloodline}
-              <Select.Item value={bloodline} />
-            {/each}
-          </Select.Content>
-        </Select.Root>
-      </Form.Control>
-      <Form.Description>
-        {selectedBloodline}
-      </Form.Description>
-      <Form.FieldErrors />
-    </Form.Field>
-  {:else if step === 3}
-    <Form.Field {form} name="origin">
-      <Form.Control let:attrs>
-        <Form.Label>Origin:</Form.Label>
-        <Select.Root
-          selected={$formData.origin}
-          onSelectedChange={(v) => {
-            v && ($formData.origin = v.value);
-          }}
-        >
-          <Select.Trigger {...attrs} class="w-44">
-            <Select.Value placeholder="Select an Origin" />
-          </Select.Trigger>
-          <Select.Content>
-            {#each origins as origin}
-              <Select.Item value={origin} />
-            {/each}
-          </Select.Content>
-        </Select.Root>
-      </Form.Control>
-      <Form.Description>The Origin of this character</Form.Description>
-      <Form.FieldErrors />
-    </Form.Field>
-  {:else if step === 4}
-    <Form.Field {form} name="post">
-      <Form.Control let:attrs>
-        <Form.Label>Post:</Form.Label>
-        <Select.Root
-          selected={$formData.post}
-          onSelectedChange={(v) => {
-            v && ($formData.post = v.value);
-          }}
-        >
-          <Select.Trigger {...attrs} class="w-44">
-            <Select.Value placeholder="Select a Post" />
-          </Select.Trigger>
-          <Select.Content>
-            {#each posts as post}
-              <Select.Item value={post} />
-            {/each}
-          </Select.Content>
-        </Select.Root>
-      </Form.Control>
-      <Form.Description>The Post of this character</Form.Description>
-      <Form.FieldErrors />
-    </Form.Field>
-  {/if}
-
-  <div class="flex justify-between py-4">
-    {#if step === steps.length}
-      <Form.Button class="text-base space-x-1" on:click={ () => step-- }>
-        <Icon icon="ph:arrow-left-light" class="h-5 w-5" />
-        Back
-      </Form.Button>
-      <Form.Button class="text-base space-x-1 bg-green-500" disabled={disabled}>
-        Create
-      </Form.Button>
-    {:else}
-      <Form.Button class="text-base space-x-1" disabled={step === 1} on:click={ () => step-- }>
-        <Icon icon="ph:arrow-left-light" class="h-5 w-5" />
-        Back
-      </Form.Button>
-      <Form.Button class="text-base space-x-1" disabled={disabled}>
-        Next
-        <Icon icon="ph:arrow-right-light" class="h-5 w-5" />
-      </Form.Button>
-    {/if}
-  </div>
-
-  <SuperDebug data={$formData} />
-</form>
+    <div class="mt-4 flex justify-between py-4">
+      {#if step === steps.length - 1}
+        <Form.Button class="space-x-1 text-base" on:click={() => step--}>
+          <Icon icon="ph:arrow-left-light" class="mr-2 h-5 w-5" />
+          Back
+        </Form.Button>
+        <Form.Button variant="success" class="space-x-1 text-base" {disabled}>
+          <Icon icon="ph:check-light" class="mr-2 h-5 w-5" />
+          Create
+        </Form.Button>
+      {:else}
+        <Form.Button class="space-x-1 text-base" disabled={step === 0} on:click={() => step--}>
+          <Icon icon="ph:arrow-left-light" class="mr-2 h-5 w-5" />
+          Back
+        </Form.Button>
+        <Form.Button class="space-x-1 text-base" {disabled}>
+          Next
+          <Icon icon="ph:arrow-right-light" class="ml-2 h-5 w-5" />
+        </Form.Button>
+      {/if}
+    </div>
+    <SuperDebug data={$formData} />
+  </form>
+</div>

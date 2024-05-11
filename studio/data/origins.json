@@ -102,7 +102,25 @@
         "description": "A faithful friend from the old times that was trapped, and freed, alongside you. Not particularly suited to the wild world, but most likely revelling in it."
       }
     ],
-    "quote": "That history they speak of? I was there, I lived it, but it's no less a dream to me than it is a legend to them. An entire life lost to sleep. Who might I have been back then? What have I lost? - Moll Corvenus, ardent amberclad"
+    "quote": "That history they speak of? I was there, I lived it, but it's no less a dream to me than it is a legend to them. An entire life lost to sleep. Who might I have been back then? What have I lost? - Moll Corvenus, ardent amberclad",
+    "edges": ["Grace", "Sharps", "Tides"],
+    "skills": ["Break", "Delve", "Outwit", "Scavenge", "Sense", "Study", "Tend"],
+    "languages": ["Old Hand", "Highvin"],
+    "resources": [
+      {"name": "Amber Chips", "type": "Salvage"},
+      {"name": "Tarnished Memento", "type": "Salvage"},
+      {"name": "Strong Coffee", "type": "Specimens"},
+      {"name": "Gold-Winged Bee", "type": "Specimens"},
+      {"name": "The Longest Sleep", "type": "Whispers"},
+      {"name": "Clear Coffin", "type": "Whispers"},
+      {"name": "A Book-Block", "type": "Charts"},
+      {"name": "A Crisp Sketch-Page", "type": "Charts"}
+    ],
+    "drives": ["Discover remnants of your old life", "Free other amberclad from their prisons"],
+    "mires": [
+      "Sleep pulls at your mind, an old and dangerous friend",
+      "Your blood slows, your skin cracks, your heart creaks"
+    ]
   },
   {
     "name": "Anchored",
@@ -213,7 +231,24 @@
         "description": "Whenever your crew gains a piece of cargo, gain a whisper related to it (or its previous owners) for yourself."
       }
     ],
-    "quote": "I've died once already. What fear do you think it holds for me now? - Calsey Calabrakta, ketra anchored"
+    "quote": "I've died once already. What fear do you think it holds for me now? - Calsey Calabrakta, ketra anchored",
+    "edges": ["Iron", "Tides", "Veils"],
+    "skills": ["Brace", "Delve", "Hack", "Hunt", "Outwit", "Sense", "Wavewalk"],
+    "languages": ["", "Old Hand", "Signalling"],
+    "resources": [
+      {"name": "Old Memento", "type": "Salvage"},
+      {"name": "Broken Locket", "type": "Salvage"},
+      {"name": "Glowing Plasm", "type": "Specimens"},
+      {"name": "Spectral Flower", "type": "Specimens"},
+      {"name": "Back from Beyond", "type": "Whispers"},
+      {"name": "Drowned and Not", "type": "Whispers"},
+      {"name": "A Sketch of Shadowed Paths", "type": "Charts"}
+    ],
+    "drives": ["Send other spirits to a peaceful rest", "Reconnect with your friends and family"],
+    "mires": [
+      "Your material control wavers erratically",
+      "Visions of your past death are difficult to banish"
+    ]
   },
   {
     "name": "Ridgeback",
@@ -335,6 +370,23 @@
         "trackType": "Gear",
         "description": "You can clearly see spirits and the spectral realm."
       }
+    ],
+    "quote": "Timbers, bonds, and bones all break, but mountains? Mountains stand forever. - Norit, ardent ridgeback",
+    "edges": ["Grace", "Iron", "Teeth"],
+    "skills": ["Brace", "Break", "Cook", "Harvest", "Rattle", "Tend", "Vault"],
+    "languages": ["Chthonic", "Brasstongue", "Old Hand"],
+    "resources": [
+      {"name": "Knucklebone Dice", "type": "Salvage"},
+      {"name": "Sharpened Stones", "type": "Salvage"},
+      {"name": "Giant Wolf Jaw", "type": "Specimens"},
+      {"name": "Gorse Root", "type": "Specimens"},
+      {"name": "Caves Beneath", "type": "Whispers"},
+      {"name": "A Fadded Almanac", "type": "Charts"}
+    ],
+    "drives": ["Climb the highest peaks", "Discover and claim an unknown mountain-top"],
+    "mires": [
+      "The roll of the waves sickens you",
+      "Your mind turns to sacrifice in times of trouble"
     ]
   },
   {
@@ -452,7 +504,20 @@
         "description": "A pugnacious lemur companion with a natural curiosity when it comes to the running of a wildsea vessel."
       }
     ],
-    "quote": "There's no better dawn than a dawn over new waves, no better sunset than one seen from the prow. - Kion Se, ardent rootless"
+    "quote": "There's no better dawn than a dawn over new waves, no better sunset than one seen from the prow. - Kion Se, ardent rootless",
+    "edges": ["Grace", "Instinct", "Tides"],
+    "skills": ["Delve", "Flourish", "Harvest", "Rattle", "Scavenge", "Sway", "Wavewalk"],
+    "languages": ["Brasstongue", "Raka Spit", "Signalling"],
+    "resources": [
+      {"name": "Rusted Cogs", "type": "Salvage"},
+      {"name": "Sailcloth", "type": "Salvage"},
+      {"name": "Wormapple", "type": "Specimens"},
+      {"name": "Firefly Bulbs", "type": "Specimens"},
+      {"name": "A Welcoming Fleet", "type": "Whispers"},
+      {"name": "A Many-Folded Chart", "type": "Charts"}
+    ],
+    "drives": ["Aid rootless ships and colonies", "Solve the problems of your family members"],
+    "mires": ["The open sky is wide, oppressive", "Outsiders are difficult to trust"]
   },
   {
     "name": "Shankling",
@@ -569,7 +634,23 @@
         "description": "Both a weapon and an acrobatic aid. Deals CQ Blunt damage."
       }
     ],
-    "quote": "Height and hubris will forever be intertwined, but one of the other things you realize when living so high is how damn small you are in the vastness of the wider waves. - Hondagra ektus, shankling"
+    "quote": "Height and hubris will forever be intertwined, but one of the other things you realize when living so high is how damn small you are in the vastness of the wider waves. - Hondagra ektus, shankling",
+    "edges": ["Grace", "Tides", "Veils"],
+    "skills": ["Flourish", "Hack", "Harvest", "Hunt", "Study", "Wavewalk", "Vault"],
+    "languages": ["Knock", "Signalling"],
+    "resources": [
+      {"name": "Ancient Stone", "type": "Salvage"},
+      {"name": "Length of Chain", "type": "Salvage"},
+      {"name": "Broadwood Branch", "type": "Specimens"},
+      {"name": "Crowning Leaf", "type": "Specimens"},
+      {"name": "Sunset Through Branches", "type": "Whispers"},
+      {"name": "An Etched Branch-Map", "type": "Charts"}
+    ],
+    "drives": ["Climb the highest shanks", "Establish a high-port"],
+    "mires": [
+      "Branches break and bend beneath you",
+      "The opposite of vertigo, a deck-level queasiness"
+    ]
   },
   {
     "name": "Spit-Born",
@@ -692,6 +773,25 @@
         "description": "A spice-filled pipe made to burn its contents with acid rather than flame. Injury tracks you become subject to are one box shorter than normal."
       }
     ],
-    "quote": "Permanence is overrated, I say - take what space you can, what food you can, and what joy you can in the moment. - Waxen Simica, ardent spit-born"
+    "quote": "Permanence is overrated, I say - take what space you can, what food you can, and what joy you can in the moment. - Waxen Simica, ardent spit-born",
+    "edges": ["Iron", "Sharps", "Veils"],
+    "skills": ["Break", "Cook", "Delve", "Outwit", "Rattle", "Study", "Sway"],
+    "languages": ["Brasstongue", "Highvin"],
+    "resources": [
+      {"name": "Engine Piping", "type": "Salvage"},
+      {"name": "Ancient Glass", "type": "Salvage"},
+      {"name": "Hog Bones", "type": "Specimens"},
+      {"name": "Chicken Feathers", "type": "Specimens"},
+      {"name": "A Newly-Risen Spit", "type": "Whispers"},
+      {"name": "A Cryptic Map", "type": "Charts"}
+    ],
+    "drives": [
+      "Supply spit-born colonies with food and fresh water",
+      "Deal harshly with gangs and grifters"
+    ],
+    "mires": [
+      "A keen fear of shakes and quakes",
+      "A ravenous hunger for novel and exotic foodstuffs"
+    ]
   }
 ]

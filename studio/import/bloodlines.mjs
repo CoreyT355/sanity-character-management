@@ -35,7 +35,6 @@ const transformBloodline = (bloodline) => {
   const bloodlineInfo = {
     _id: nameToId(bloodline.name, 'bloodline'),
     _type: 'bloodline',
-    // type: 'bloodline',
     ...bloodline,
     description: bloodline.description.map((desc) => ({
       _type: 'block',

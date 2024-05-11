@@ -10,18 +10,6 @@ export default defineType({
     { name: "mechanics", title: "Mechanics" },
   ],
   fields: [
-    // defineField({
-    //   name: "type",
-    //   title: "Type",
-    //   type: "string",
-    //   options: {
-    //     list: [
-    //       { title: "Bloodline", value: "bloodline" },
-    //       { title: "Origin", value: "origin" },
-    //       { title: "Post", value: "post" },
-    //     ]
-    //   }
-    // }),
     defineField({
       name: "name",
       title: "Name",
@@ -74,5 +62,47 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: [{type: 'aspect'}]}]
     }),
+    defineField({
+      name: "edges",
+      title: "Edges",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'edge'}]}]
+    }),
+    defineField({
+      name: "skills",
+      title: "Skills",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'skill'}]}]
+    }),
+    defineField({
+      name: "languages",
+      title: "Languages",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'language'}]}]
+    }),
+    defineField({
+      name: "resource",
+      title: "Resources",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'characterResource'}]}]
+    }),
+    defineField({
+      name: "mire",
+      title: "Mires",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'text'}]
+    }),
+    defineField({
+      name: "drive",
+      title: "Drives",
+      group: "mechanics",
+      type: 'array',
+      of: [{type: 'text'}]
+    })
   ]
 });

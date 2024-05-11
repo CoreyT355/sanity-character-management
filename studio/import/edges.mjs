@@ -4,6 +4,7 @@ import edgesJson from '../data/edges.json' assert { type: 'json' };
 const edges = edgesJson.map((edge) => ({
   _id: nameToId(edge.name, 'edge'),
   _type: 'edge',
+  displayName: edge.name,
   ...edge
 }));
 
