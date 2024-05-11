@@ -7,6 +7,7 @@
   import { isEditing } from '$lib/store/characters.js';
   import { unionWith } from 'lodash-es';
   import { beforeNavigate } from '$app/navigation';
+  import { v4 as uuidv4 } from 'uuid';
 
   export let data;
 
@@ -16,7 +17,7 @@
 
   const { bloodlines, edges, languages, origins, posts, skills, characterFromSanity } = data;
 
-  // $: console.log('CHARACTER UPDATE', characterFromSanity);
+  $: console.log('CHARACTER UPDATE', characterFromSanity);
 
   const handleRankClick = (type: string, _id: string, name: string, ranks: number) => {
     characterFromSanity[type] = unionWith(
@@ -88,24 +89,28 @@
           />
         </div>
       {/each}
-    </div></SheetCard
-  >
+    </div>
+  </SheetCard>
   <!-- Drives -->
   <SheetCard class="w-full" label="Drives">
     <div class="flex flex-col gap-2">
-      {#each characterFromSanity.drives as drive}
-        <Input disabled={!$isEditing} bind:value={drive} />
+      {#each characterFromSanity.drives || [] as drive}
+        <Input disabled={!$isEditing} bind:value={drive} placeholder="Enter a Drive..." />
         {#if !$isEditing}
           <Tooltip>{drive}</Tooltip>
         {/if}
+      {:else}
+        <span>No Drives Yet</span>
       {/each}
     </div>
   </SheetCard>
   <!-- Mires -->
   <SheetCard class="w-full" label="Mires">
     <div class="flex flex-col gap-4">
-      {#each characterFromSanity.mires as mire}
-        <Mire disabled={!$isEditing} description={mire} currentTrack={[0, 0]} />
+      {#each characterFromSanity.mires || [] as mire}
+        <Mire disabled={!$isEditing} description={mire.text} currentTrack={[0, 0]} />
+      {:else}
+      <span>No Mires Yet</span>
       {/each}
     </div>
   </SheetCard>
@@ -166,8 +171,8 @@
     <div class="flex w-full gap-4">
       <SheetCard class="h-full w-full" label="Salvage">
         <div class="space-y-3">
-          {#each characterFromSanity.resources.filter((r) => r.type === 'Salvage') as salvage}
-            <Input disabled={!$isEditing} bind:value={salvage.name} />
+          {#each characterFromSanity.resources?.filter((r) => r.type === 'Salvage') || [] as salvage}
+            <Input disabled={!$isEditing} bind:value={salvage.text} />
             {#if !$isEditing}
               <Tooltip>{salvage.name}</Tooltip>
             {/if}
@@ -176,7 +181,7 @@
       </SheetCard>
       <SheetCard class="h-full w-full" label="Specimens">
         <div class="space-y-3">
-          {#each characterFromSanity.resources.filter((r) => r.type === 'Specimens') as specimen}
+          {#each characterFromSanity.resources?.filter((r) => r.type === 'Specimens') || [] as specimen}
             <Input disabled={!$isEditing} bind:value={specimen.name} />
             {#if !$isEditing}
               <Tooltip>{specimen.name}</Tooltip>
@@ -188,7 +193,7 @@
     <div class="mt-4 flex w-full gap-4">
       <SheetCard class="h-full w-full" label="Whispers">
         <div class="space-y-3">
-          {#each characterFromSanity.resources.filter((r) => r.type === 'Whispers') as whisper}
+          {#each characterFromSanity.resources?.filter((r) => r.type === 'Whispers') || [] as whisper}
             <Input disabled={!$isEditing} bind:value={whisper.name} />
             {#if !$isEditing}
               <Tooltip>{whisper.name}</Tooltip>
@@ -198,7 +203,7 @@
       </SheetCard>
       <SheetCard class="h-full w-full" label="Charts">
         <div class="space-y-3">
-          {#each characterFromSanity.resources.filter((r) => r.type === 'Charts') as chart}
+          {#each characterFromSanity.resources?.filter((r) => r.type === 'Charts') || [] as chart}
             <Input disabled={!$isEditing} bind:value={chart.name} />
             {#if !$isEditing}
               <Tooltip>{chart.name}</Tooltip>

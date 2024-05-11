@@ -12,7 +12,7 @@ export const load = (async ({ params, url }) => {
 
   if (url.searchParams.get('new')) {
     playerCharacter = <PlayerCharacter>{
-      _type: 'playerCharacter',
+      _type: 'playerCharacterV2',
       _id: params.id,
       languages: [],
       edges: [],

@@ -12,7 +12,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@iconify/svelte": "^3.1.6",
+		"@iconify/svelte": "^4.0.2",
 		"@portabletext/svelte": "^2.1.11",
 		"@portabletext/types": "^2.0.13",
 		"@sanity/client": "^6.15.19",
@@ -30,7 +30,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
 		"flowbite": "^2.3.0",
-		"flowbite-svelte": "^0.45.1",
+		"flowbite-svelte": "^0.46.1",
 		"groq": "^3.38.0",
 		"lodash-es": "^4.17.21",
 		"postcss": "^8.4.32",

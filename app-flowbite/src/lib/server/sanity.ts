@@ -106,7 +106,7 @@ export async function getAttribute(name: string, type: string): Promise<Edge | S
 
 export async function getCharactersByUser(userId: string) {
   return await client.fetch(
-    groq`*[_type == 'playerCharacter']{
+    groq`*[_type == 'playerCharacterV2']{
       _id,
       name,
       player,
@@ -120,18 +120,31 @@ export async function getCharactersByUser(userId: string) {
   );
 }
 
+// v2 query
+// ...,
+// "bloodline": bloodline->{name,_id},
+// "origin": origin->{name,_id},
+// "post": post->{name,_id},
+// "edges": edges|order(name asc)->{name, _id},
+// "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id},
+// "languages": languages[]{ranks, "name": language->name, "_id": language->_id},
+// aspects[]->,
+// "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id},
+
 export async function getPlayerCharacterById(id: string) {
   const playerCharacter = await client.fetch(
-    groq`*[_type == 'playerCharacter' && _id == $id][0]{
+    groq`*[_type == 'playerCharacterV2' && _id == $id][0]{
       ...,
       "bloodline": bloodline->{name,_id},
       "origin": origin->{name,_id},
       "post": post->{name,_id},
+      "edges": edges|order(name asc)->{name, _id},
+      "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
+      "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
       aspects[]->,
-      "resources": resources[]->{name, "type": type->name, "typeId": type->_id},
-      "skills": skills[]->{ranks, "name": attribute->name, "_id": attribute->_id},
-      "languages": languages[]->{ranks, "name": attribute->name, "_id": attribute->_id},
-      "edges": edges|order(name asc)->{name, _id}
+      "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id, "_key": type._key},
+      drives[],
+      mires[]
     }`,
     {
       id
@@ -143,16 +156,18 @@ export async function getPlayerCharacterById(id: string) {
 
 export async function getPlayerCharacterByName(name: string) {
   const playerCharacter = await client.fetch(
-    groq`*[_type == 'playerCharacter' && name == $name][0]{
+    groq`*[_type == 'playerCharacterV2' && name == $name][0]{
       ...,
       "bloodline": bloodline->{name,_id},
       "origin": origin->{name,_id},
       "post": post->{name,_id},
+      "edges": edges|order(name asc)->{name, _id},
+      "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
+      "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
       aspects[]->,
-      "resources": resources[]->{name, "type": type->name, "typeId": type->_id},
-      "skills": skills[]->{ranks, "name": attribute->name, "_id": attribute->_id},
-      "languages": languages[]->{ranks, "name": attribute->name, "_id": attribute->_id},
-      "edges": edges|order(name asc)->{name, _id}
+      "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id, "_key": type._key},
+      drives[],
+      mires[]
     }`,
     {
       name
@@ -163,5 +178,18 @@ export async function getPlayerCharacterByName(name: string) {
 }
 
 export async function savePlayerCharacter(playerCharacter: PlayerCharacter) {
-  return await client.createIfNotExists(playerCharacter);
+  console.log('SAVING CHARACTER', playerCharacter);
+  
+  return await client.createOrReplace(playerCharacter)
+    .then((response) => {
+      console.log(`Created Character ${response._id}`);
+    })
+    .catch((error) => {
+      console.log(`Created Failed Because: ${error}`);
+      return error;
+    });
+}
+
+export async function saveSkillForCharacter(skill: Skill) {
+  return await client.createIfNotExists(skill);
 }

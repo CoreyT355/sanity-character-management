@@ -10,7 +10,7 @@
 </script>
 
 <div class="flex flex-row justify-between gap-4">
-  <Input {disabled} bind:value={description} />
+  <Input {disabled} bind:value={description} placeholder="Enter a Mire..." />
   {#if disabled}
     <Tooltip>{description}</Tooltip>
   {/if}

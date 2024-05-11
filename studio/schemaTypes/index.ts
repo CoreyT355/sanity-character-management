@@ -6,10 +6,10 @@ import edge from './edge';
 import keyValuePair from './keyValuePair';
 import language from './language';
 import playerCharacter from './player-character';
-import resource from './character-resource';
+import resource from './resource';
 import resourceType from './resource-type';
 import skill from './skill';
-
+import playerCharacterV2 from './player-character-v2';
 
 import bloodline from './bloodline';
 import origin from './origin';
@@ -29,5 +29,6 @@ export const schemaTypes = [
   skill,
   bloodline,
   origin,
-  post
+  post,
+  playerCharacterV2
 ];

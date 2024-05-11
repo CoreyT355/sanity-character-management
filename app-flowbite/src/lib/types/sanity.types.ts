@@ -131,6 +131,94 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
+export type PlayerCharacterV2 = {
+  _id: string;
+  _type: "playerCharacterV2";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  player?: string;
+  bloodline?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "bloodline";
+  };
+  origin?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "origin";
+  };
+  post?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "post";
+  };
+  edges?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "edge";
+  }>;
+  skills?: Array<{
+    skill?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "skill";
+    };
+    ranks?: number;
+    _key: string;
+  }>;
+  languages?: Array<{
+    language?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "language";
+    };
+    ranks?: number;
+    _key: string;
+  }>;
+  resources?: Array<{
+    text?: string;
+    tags?: Array<string>;
+    type?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "resourceType";
+    };
+    _key: string;
+  }>;
+  drives?: Array<string>;
+  mires?: Array<{
+    text?: string;
+    currentTrack?: Array<number>;
+    _key: string;
+  }>;
+  aspects?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterAspect";
+  }>;
+  majorMilestones?: Array<string>;
+  minorMilestones?: Array<string>;
+  temporaryTracks?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "characterAspect";
+  }>;
+};
+
 export type CharacterResource = {
   _id: string;
   _type: "characterResource";
