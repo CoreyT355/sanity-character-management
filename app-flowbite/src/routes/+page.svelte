@@ -1,5 +1,17 @@
 <script lang="ts">
+  import { Auth } from '@supabase/auth-ui-svelte';
+  import { ThemeSupa } from '@supabase/auth-ui-shared';
+
+  export let data;
 </script>
+
 <main class="p-4">
-  <span>lorem ipsum</span>
-</main> 
+  <span>lorem ipsum tacocat</span>
+  <Auth
+    supabaseClient={data.supabase}
+    view="magic_link"
+    redirectTo={`${data.url}/auth/callback`}
+    showLinks={false}
+    appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
+  />
+</main>
