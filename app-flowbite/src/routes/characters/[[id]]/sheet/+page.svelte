@@ -108,7 +108,7 @@
   <SheetCard class="w-full" label="Mires">
     <div class="flex flex-col gap-4">
       {#each characterFromSanity.mires || [] as mire}
-        <Mire disabled={!$isEditing} description={mire.text} currentTrack={[0, 0]} />
+        <Mire disabled={!$isEditing} description={mire.text} currentTrack={mire.currentTrack || [0,0]} />
       {:else}
       <span>No Mires Yet</span>
       {/each}
@@ -174,7 +174,7 @@
           {#each characterFromSanity.resources?.filter((r) => r.type === 'Salvage') || [] as salvage}
             <Input disabled={!$isEditing} bind:value={salvage.text} />
             {#if !$isEditing}
-              <Tooltip>{salvage.name}</Tooltip>
+              <Tooltip>{salvage.text}</Tooltip>
             {/if}
           {/each}
         </div>
@@ -182,9 +182,9 @@
       <SheetCard class="h-full w-full" label="Specimens">
         <div class="space-y-3">
           {#each characterFromSanity.resources?.filter((r) => r.type === 'Specimens') || [] as specimen}
-            <Input disabled={!$isEditing} bind:value={specimen.name} />
+            <Input disabled={!$isEditing} bind:value={specimen.text} />
             {#if !$isEditing}
-              <Tooltip>{specimen.name}</Tooltip>
+              <Tooltip>{specimen.text}</Tooltip>
             {/if}
           {/each}
         </div>
@@ -194,9 +194,9 @@
       <SheetCard class="h-full w-full" label="Whispers">
         <div class="space-y-3">
           {#each characterFromSanity.resources?.filter((r) => r.type === 'Whispers') || [] as whisper}
-            <Input disabled={!$isEditing} bind:value={whisper.name} />
+            <Input disabled={!$isEditing} bind:value={whisper.text} />
             {#if !$isEditing}
-              <Tooltip>{whisper.name}</Tooltip>
+              <Tooltip>{whisper.text}</Tooltip>
             {/if}
           {/each}
         </div>
@@ -204,9 +204,9 @@
       <SheetCard class="h-full w-full" label="Charts">
         <div class="space-y-3">
           {#each characterFromSanity.resources?.filter((r) => r.type === 'Charts') || [] as chart}
-            <Input disabled={!$isEditing} bind:value={chart.name} />
+            <Input disabled={!$isEditing} bind:value={chart.text} />
             {#if !$isEditing}
-              <Tooltip>{chart.name}</Tooltip>
+              <Tooltip>{chart.text}</Tooltip>
             {/if}
           {/each}
         </div>

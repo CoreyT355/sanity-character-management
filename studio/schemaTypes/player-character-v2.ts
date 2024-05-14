@@ -196,7 +196,57 @@ export default defineType({
       name: 'aspects',
       title: 'Aspects',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'characterAspect'}]}],
+      of: [{
+        type: 'object',
+        preview: {
+          select: {
+            title: 'name',
+          },
+        },
+        fields: [
+          {
+            name: 'name',
+            title: 'Name',
+            type: 'string',
+          },
+          {
+            name: 'description',
+            title: 'Description',
+            type: 'array', 
+            of: [{type: 'block'}]
+          },
+          {
+            name: 'type',
+            title: 'Type',
+            type: 'string',
+            options: {
+              list: [
+                {title: 'Companion', value: 'companion'},
+                {title: 'Gear', value: 'gear'},
+                {title: 'Trait', value: 'trait'}
+              ],
+              layout: 'radio'
+            }
+          },
+          {
+            name: 'isComplex',
+            title: 'Complex Track?',
+            type: 'boolean',
+            initialValue: false
+          },
+          {
+            name: 'trackLength',
+            title: 'Track Length',
+            type: 'number',
+          },
+          {
+            name: 'currentTrack',
+            title: 'Current Track',
+            type: 'array',
+            of: [{type: 'number'}],
+          },
+        ],
+      }],
     }),
     defineField({
       name: 'majorMilestones',

@@ -10,6 +10,9 @@
   export let currentTrack: number[];
   export let isComplex: boolean = false;
   export let disabled = false;
+
+  console.log('aspect', $$props);
+  
 </script>
 
 <div>

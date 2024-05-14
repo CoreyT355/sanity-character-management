@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client';
 import groq from 'groq';
-import type { Bloodline, Edge, Language, Origin, Post, Skill } from '$lib/types/sanity.types';
+import type { Bloodline, Edge, Language, Origin, PlayerCharacter, Post, Skill } from '$lib/types/sanity.types';
 
 import { PUBLIC_SANITY_DATASET, PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 import { API_TOKEN } from '$env/static/private';
@@ -141,7 +141,7 @@ export async function getPlayerCharacterById(id: string) {
       "edges": edges|order(name asc)->{name, _id},
       "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
       "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
-      aspects[]->,
+      aspects,
       "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id, "_key": type._key},
       drives[],
       mires[]
@@ -164,7 +164,7 @@ export async function getPlayerCharacterByName(name: string) {
       "edges": edges|order(name asc)->{name, _id},
       "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
       "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
-      aspects[]->,
+      aspects,
       "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id, "_key": type._key},
       drives[],
       mires[]
@@ -177,10 +177,10 @@ export async function getPlayerCharacterByName(name: string) {
   return playerCharacter;
 }
 
-export async function savePlayerCharacter(playerCharacter: PlayerCharacter) {
+export async function savePlayerCharacter(playerCharacter) {
   console.log('SAVING CHARACTER', playerCharacter);
   
-  return await client.createOrReplace(playerCharacter)
+  client.createOrReplace(playerCharacter)
     .then((response) => {
       console.log(`Created Character ${response._id}`);
     })
