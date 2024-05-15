@@ -6,6 +6,7 @@
   import { onMount } from 'svelte';
   import { goto, invalidate } from '$app/navigation';
 
+  /** @type {import('./$types').PageData} */
   export let data;
 
   let { supabase, session } = data;
@@ -20,10 +21,17 @@
 
     return () => data.subscription.unsubscribe();
   });
+
+  const handleSignOut = async () => {
+    if (session) {
+      await supabase.auth.signOut();
+      goto('/');
+    }
+  }
 </script>
 
 <header>
-  <MainNav />
+  <MainNav {session} on:signOut={() => handleSignOut()}/>
 </header>
 
 {#key data.url}
