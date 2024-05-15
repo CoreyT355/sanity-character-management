@@ -1,6 +1,6 @@
-import type { Edge, Language, Skill } from '$lib/types/sanity.types';
-import { getAttributes, getCharacterOptions } from '$lib/server/sanity';
-import type { LayoutServerLoad } from './$types';
+import type { Edge, Language, Skill } from "$lib/types/sanity.types";
+import { getAttributes, getCharacterOptions } from "$lib/utils/sanity";
+import type { LayoutServerLoad } from "./$types";
 
 const bloodlines = await getCharacterOptions('bloodline');
 const origins = await getCharacterOptions('origin');
@@ -10,9 +10,7 @@ const edges: Edge[] = (await getAttributes('edge')) as Edge[];
 const languages: Language[] = (await getAttributes('language')) as Language[];
 const skills: Skill[] = (await getAttributes('skill')) as Skill[];
 
-export const load: LayoutServerLoad = (async ({ url, locals: { safeGetSession } }) => {
-  const { session, user } = await safeGetSession();
-
+export const load = (async ({ url }) => {
   return {
     bloodlines,
     edges,
@@ -20,8 +18,6 @@ export const load: LayoutServerLoad = (async ({ url, locals: { safeGetSession } 
     origins,
     posts,
     skills,
-    url: url.pathname,
-    session,
-    user
-  };
-});
+    url: url.pathname
+  }
+}) satisfies LayoutServerLoad;
