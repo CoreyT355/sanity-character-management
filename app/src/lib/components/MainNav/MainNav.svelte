@@ -30,8 +30,8 @@
       <NavLi href="/" class="text-base">Home</NavLi>
       <!-- <NavLi href="/rules" class="text-base">Rules</NavLi> -->
       <NavLi href="/characters" class="text-base">Characters</NavLi>
-      <!-- <NavLi href="/campaigns" class="text-base">Campaigns</NavLi>
-      <NavLi href="/settings" class="text-base">Settings</NavLi> -->
+      <!-- <NavLi href="/campaigns" class="text-base">Campaigns</NavLi> -->
+      <NavLi href="/auth/account" class="text-base">Account</NavLi>
     </NavUl>
     <div class="ms-auto flex items-center gap-4 text-gray-500 sm:order-2 dark:text-gray-400">
       <DarkMode />
@@ -47,7 +47,7 @@
           <DropdownDivider />
           <DropdownItem class="rounded" on:click={() => dispatch('signOut')}>Sign Out</DropdownItem>
         {:else}
-          <DropdownItem class="rounded" href="/">Sign In</DropdownItem>
+          <DropdownItem class="rounded" href="/auth/login">Sign In</DropdownItem>
         {/if}
       </Dropdown>
     </div>

@@ -10,7 +10,7 @@ const edges: Edge[] = (await getAttributes('edge')) as Edge[];
 const languages: Language[] = (await getAttributes('language')) as Language[];
 const skills: Skill[] = (await getAttributes('skill')) as Skill[];
 
-export const load: LayoutServerLoad = (async ({ url, locals: { safeGetSession } }) => {
+export const load: LayoutServerLoad = (async ({ locals: { safeGetSession } }) => {
   const { session, user } = await safeGetSession();
 
   return {
@@ -20,7 +20,6 @@ export const load: LayoutServerLoad = (async ({ url, locals: { safeGetSession } 
     origins,
     posts,
     skills,
-    url: url.pathname,
     session,
     user
   };
