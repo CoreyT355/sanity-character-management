@@ -26,7 +26,7 @@
       <span class="pl-4 font-light">the</span>
       <span class="text-5xl font-semibold tracking-wider">wildsea</span>
     </div>
-    <NavUl {activeUrl}>
+    <NavUl {activeUrl} activeClass="underline">
       <NavLi href="/" class="text-base">Home</NavLi>
       <!-- <NavLi href="/rules" class="text-base">Rules</NavLi> -->
       <NavLi href="/characters" class="text-base">Characters</NavLi>

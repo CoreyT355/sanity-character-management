@@ -26,11 +26,11 @@
       await supabase.auth.signOut();
       goto('/');
     }
-  }
+  };
 </script>
 
 <header>
-  <MainNav {session} on:signOut={() => handleSignOut()}/>
+  <MainNav {session} on:signOut={() => handleSignOut()} />
 </header>
 
 {#key data.url}
