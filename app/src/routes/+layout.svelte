@@ -29,9 +29,7 @@
   };
 </script>
 
-<header>
-  <MainNav {session} on:signOut={() => handleSignOut()} />
-</header>
+<MainNav {session} on:signOut={() => handleSignOut()} />
 
 {#key data.url}
   <div
@@ -39,7 +37,7 @@
     in:fly={{ x: -200, duration: 200, delay: 50 }}
     out:fly={{ x: 200, duration: 200 }}
   >
-    <div class=" h-full w-full">
+    <div class="h-full w-full">
       <slot />
     </div>
   </div>

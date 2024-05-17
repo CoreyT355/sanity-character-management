@@ -6,7 +6,7 @@
   export let label: string;
 
   const sheetCardBaseClass =
-    'dark:bg-slate-900 bg-white border-2 rounded-b-md -mt-6 pt-10 pb-4 px-4 dark:text-white text-slate-900';
+    'dark:bg-slate-800 bg-white border-2 rounded-b-md -mt-6 pt-10 pb-4 px-4 dark:text-white text-slate-900';
   type SheetCardColor = keyof typeof colorClasses;
   export let color: SheetCardColor = 'default';
   const colorClasses = {

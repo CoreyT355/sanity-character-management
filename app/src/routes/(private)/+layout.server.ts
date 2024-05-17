@@ -5,4 +5,6 @@ export const load: LayoutServerLoad = (async ({ locals: { safeGetSession } }) =>
   const { session } = await safeGetSession();
 
   if (!session) redirect(303, '/auth/account');
+
+  return {};
 });

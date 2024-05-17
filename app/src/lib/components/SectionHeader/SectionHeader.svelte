@@ -8,7 +8,7 @@
   let showEdit = false;
 
   const sectionHeaderBaseClass =
-    'corner-cut uppercase overflow-hidden p-2 text-center h-min dark:text-white text-slate-900';
+    'corner-cut uppercase overflow-hidden p-2 text-center h-min dark:text-white text-white';
 
   type SectionHeaderColor = keyof typeof colorClasses;
   export let color: SectionHeaderColor = 'default';
