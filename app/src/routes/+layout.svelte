@@ -1,32 +1,46 @@
 <script>
-  import '../app.pcss';
-  import { ModeWatcher } from 'mode-watcher';
-  import MainNav from '$lib/components/ui/main-nav/main-nav.svelte';
-  import ModeToggle from '$lib/components/ui/mode-toggle/mode-toggle.svelte';
+  import MainNav from '$lib/components/MainNav/MainNav.svelte';
   import { fly } from 'svelte/transition';
+  import '../app.pcss';
+  import Footer from '$lib/components/Footer/Footer.svelte';
+  import { onMount } from 'svelte';
+  import { goto, invalidate } from '$app/navigation';
 
   export let data;
+
+  let { supabase, session } = data;
+  $: ({ supabase, session } = data);
+
+  onMount(() => {
+    const { data } = supabase.auth.onAuthStateChange((event, _session) => {
+      if (_session?.expires_at !== session?.expires_at) {
+        invalidate('supabase:auth');
+      }
+    });
+
+    return () => data.subscription.unsubscribe();
+  });
+
+  const handleSignOut = async () => {
+    if (session) {
+      await supabase.auth.signOut();
+      goto('/');
+    }
+  };
 </script>
 
-<ModeWatcher />
-<div class="root-layout flex h-screen flex-col">
-  <div class="flex items-center justify-between border-b px-6 py-3">
-    <!-- <TeamSwitcher /> -->
-    <MainNav />
-    <div class="flex items-center gap-4">
-      <ModeToggle />
-      <!-- <div class="flex h-8 w-8 justify-center rounded-full bg-slate-500 align-middle">
-        <div>ct</div>
-      </div> -->
+<MainNav {session} on:signOut={() => handleSignOut()} />
+
+{#key data.url}
+  <div
+    class="flex overflow-hidden"
+    in:fly={{ x: -200, duration: 200, delay: 50 }}
+    out:fly={{ x: 200, duration: 200 }}
+  >
+    <div class="h-full w-full">
+      <slot />
     </div>
   </div>
-  {#key data.url}
-    <main
-      class="h-screen p-6 pt-4"
-      in:fly={{ x: -200, duration: 300, delay: 100 }}
-      out:fly={{ x: 200, duration: 300 }}
-    >
-      <slot />
-    </main>
-  {/key}
-</div>
+{/key}
+
+<Footer />
