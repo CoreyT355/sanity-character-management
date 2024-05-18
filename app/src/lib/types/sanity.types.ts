@@ -139,6 +139,7 @@ export type PlayerCharacterV2 = {
   _rev: string;
   name?: string;
   player?: string;
+  userId?: string;
   bloodline?: {
     _ref: string;
     _type: "reference";

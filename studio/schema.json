@@ -741,6 +741,13 @@
         },
         "optional": true
       },
+      "userId": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "bloodline": {
         "type": "objectAttribute",
         "value": {

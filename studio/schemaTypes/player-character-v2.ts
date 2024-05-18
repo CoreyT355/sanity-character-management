@@ -21,6 +21,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'userId',
+      title: 'User Id',
+      hidden: true,
+      type: 'string',
+    }),
+    defineField({
       name: 'bloodline',
       title: 'Bloodline',
       type: 'reference',
