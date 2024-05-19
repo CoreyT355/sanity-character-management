@@ -14,14 +14,14 @@
     isEditing.set(false);
   });
 
-  const { bloodlines, edges, languages, origins, posts, skills, characterFromSanity } = data;
+  const { bloodlines, edges, languages, origins, posts, skills, characterFromSanity, currentCharacter } = data;
 
-  $: console.log('CHARACTER UPDATE', characterFromSanity);
+  $: console.log('CHARACTER FROM STORE', $currentCharacter);
 
   const handleRankClick = (type: string, _id: string, name: string, ranks: number) => {
-    characterFromSanity[type] = unionWith(
+    $currentCharacter[type] = unionWith(
       [{ _id, name, ranks }],
-      characterFromSanity[type],
+      $currentCharacter[type],
       (updatedItem, currentItem) => updatedItem.name === currentItem.name
     );
   };
@@ -43,7 +43,7 @@
             <RankInput
               disabled={!$isEditing}
               maxRanks={1}
-              currentRank={characterFromSanity.edges.map((e) => e.name).includes(edge.name) ? 1 : 0}
+              currentRank={$currentCharacter.edges?.map((e) => e._ref).includes(edge._id) ? 1 : 0}
               on:click={({ detail }) => handleRankClick('edges', edge._id, edge.name, detail)}
             />
           </div>
@@ -60,7 +60,7 @@
             <RankInput
               disabled={!$isEditing}
               maxRanks={3}
-              currentRank={characterFromSanity.languages.find((l) => l.name === language.name)
+              currentRank={$currentCharacter.languages?.find((l) => l.language?._ref === language._id)
                 ?.ranks}
               on:click={({ detail }) =>
                 handleRankClick('languages', language._id, language.name, detail)}
@@ -83,7 +83,7 @@
           <RankInput
             maxRanks={3}
             disabled={!$isEditing}
-            currentRank={characterFromSanity.skills.find((s) => s.name === skill.name)?.ranks}
+            currentRank={$currentCharacter.skills?.find((s) => s.skill?._ref === skill._id)?.ranks}
             on:click={({ detail }) => handleRankClick('skills', skill._id, skill.name, detail)}
           />
         </div>
@@ -93,7 +93,7 @@
   <!-- Drives -->
   <SheetCard class="w-full" label="Drives">
     <div class="flex flex-col gap-2">
-      {#each characterFromSanity.drives || [] as drive}
+      {#each $currentCharacter.drives || [] as drive}
         <Input disabled={!$isEditing} bind:value={drive} placeholder="Enter a Drive..." />
         {#if !$isEditing}
           <Tooltip>{drive}</Tooltip>
@@ -105,7 +105,7 @@
         <Button
           outline
           color="dark"
-          on:click={() => (characterFromSanity.drives = [...characterFromSanity.drives, ''])}
+          on:click={() => ($currentCharacter.drives = [...$currentCharacter.drives, ''])}
           >Add Drive</Button
         >
       {/if}
@@ -114,7 +114,7 @@
   <!-- Mires -->
   <SheetCard class="w-full" label="Mires">
     <div class="flex flex-col gap-4">
-      {#each characterFromSanity.mires || [] as mire}
+      {#each $currentCharacter.mires || [] as mire}
         <Mire
           disabled={!$isEditing}
           description={mire.text}
@@ -128,8 +128,8 @@
           outline
           color="dark"
           on:click={() =>
-            (characterFromSanity.mires = [
-              ...characterFromSanity.mires,
+            ($currentCharacter.mires = [
+              ...$currentCharacter.mires,
               { text: '', currentTrack: [0, 0] }
             ])}>Add Mire</Button
         >
@@ -147,7 +147,7 @@
         <Input
           disabled={!$isEditing}
           placeholder="Enter your character's name"
-          bind:value={characterFromSanity.name}
+          bind:value={$currentCharacter.name}
         />
       </div>
       <div class="flex h-10 flex-row items-center gap-4">
@@ -156,7 +156,7 @@
           disabled={!$isEditing}
           placeholder="Select a Bloodline..."
           items={bloodlines.map((b) => ({ name: b.name || '', value: b._id }))}
-          bind:value={characterFromSanity.bloodline._id}
+          bind:value={$currentCharacter.bloodline._id}
         />
       </div>
       <div class="flex flex-row items-center justify-between gap-4">
@@ -164,7 +164,7 @@
         <Input
           disabled={!$isEditing}
           placeholder="Enter your name"
-          bind:value={characterFromSanity.player}
+          bind:value={$currentCharacter.player}
         />
       </div>
       <div class="flex flex-row items-center justify-between gap-4">
@@ -173,7 +173,7 @@
           disabled={!$isEditing}
           placeholder="Select an Origin..."
           items={origins.map((origin) => ({ name: origin.name || '', value: origin._id }))}
-          bind:value={characterFromSanity.origin._id}
+          bind:value={$currentCharacter.origin._id}
         />
       </div>
       <div class="col-start-2 flex flex-row items-center justify-between gap-4">
@@ -182,7 +182,7 @@
           disabled={!$isEditing}
           placeholder="Select a Post..."
           items={posts.map((p) => ({ name: p.name || '', value: p._id }))}
-          bind:value={characterFromSanity.post._id}
+          bind:value={$currentCharacter.post._id}
         />
       </div>
     </div>
@@ -193,7 +193,7 @@
     <div class="flex w-full gap-4">
       <SheetCard class="h-full w-full" label="Salvage">
         <div class="space-y-3">
-          {#each characterFromSanity.salvage || [] as salvage}
+          {#each $currentCharacter.salvage || [] as salvage}
             <Input disabled={!$isEditing} bind:value={salvage.text} />
             {#if !$isEditing}
               <Tooltip>{salvage.text}</Tooltip>
@@ -203,7 +203,7 @@
       </SheetCard>
       <SheetCard class="h-full w-full" label="Specimens">
         <div class="space-y-3">
-          {#each characterFromSanity.specimens || [] as specimen}
+          {#each $currentCharacter.specimens || [] as specimen}
             <Input disabled={!$isEditing} bind:value={specimen.text} />
             {#if !$isEditing}
               <Tooltip>{specimen.text}</Tooltip>
@@ -215,7 +215,7 @@
     <div class="mt-4 flex w-full gap-4">
       <SheetCard class="h-full w-full" label="Whispers">
         <div class="space-y-3">
-          {#each characterFromSanity.whispers || [] as whisper}
+          {#each $currentCharacter.whispers || [] as whisper}
             <Input disabled={!$isEditing} bind:value={whisper.text} />
             {#if !$isEditing}
               <Tooltip>{whisper.text}</Tooltip>
@@ -225,7 +225,7 @@
       </SheetCard>
       <SheetCard class="h-full w-full" label="Charts">
         <div class="space-y-3">
-          {#each characterFromSanity.charts || [] as chart}
+          {#each $currentCharacter.charts || [] as chart}
             <Input disabled={!$isEditing} bind:value={chart.text} />
             {#if !$isEditing}
               <Tooltip>{chart.text}</Tooltip>
@@ -256,15 +256,15 @@
     <SectionHeader color="default" label="Milestones"></SectionHeader>
     <div class="flex w-full gap-4">
       <SheetCard class="h-full w-full" label="Major">
-        {#if characterFromSanity.majorMilestones}
-          {#each characterFromSanity.majorMilestones as majorMilestone}
+        {#if $currentCharacter.majorMilestones}
+          {#each $currentCharacter.majorMilestones as majorMilestone}
             <Input disabled={!$isEditing} bind:value={majorMilestone} />
           {/each}
         {/if}
       </SheetCard>
       <SheetCard class="h-full w-full" label="Minor">
-        {#if characterFromSanity.minorMilestones}
-          {#each characterFromSanity.minorMilestones as minorMilestone}
+        {#if $currentCharacter.minorMilestones}
+          {#each $currentCharacter.minorMilestones as minorMilestone}
             <Input disabled={!$isEditing} bind:value={minorMilestone} />
           {/each}
         {/if}

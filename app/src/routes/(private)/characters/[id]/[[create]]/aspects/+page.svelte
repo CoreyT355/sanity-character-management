@@ -5,13 +5,13 @@
 
   export let data;
 
-  const { aspects } = data.characterFromSanity;
+  const { currentCharacter } = data;
 </script>
 
 <div class="flex flex-col gap-4 w-full">
   <SectionHeader class="" label="Aspects" />
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    {#each aspects as aspect}
+    {#each $currentCharacter.aspects as aspect}
       <Aspect disabled={!$isEditing} {...aspect} />
     {/each}
   </div>

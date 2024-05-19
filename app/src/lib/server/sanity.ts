@@ -128,16 +128,31 @@ export async function getCharactersByUser(userId: string) {
   );
 }
 
-// v2 query
-// ...,
-// "bloodline": bloodline->{name,_id},
-// "origin": origin->{name,_id},
-// "post": post->{name,_id},
-// "edges": edges|order(name asc)->{name, _id},
-// "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id},
-// "languages": languages[]{ranks, "name": language->name, "_id": language->_id},
-// aspects[]->,
-// "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id},
+// export async function getPlayerCharacterById(id: string) {
+//   const playerCharacter = await client.fetch(
+//     groq`*[_type == 'playerCharacterV2' && _id == $id][0]{
+//       ...,
+//       "bloodline": bloodline->{name,_id},
+//       "origin": origin->{name,_id},
+//       "post": post->{name,_id},
+//       "edges": edges|order(name asc)->{name, _id},
+//       "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
+//       "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
+//       aspects,
+//       salvage[],
+//       specimens[],
+//       whispers[],
+//       charts[],
+//       drives[],
+//       mires[]
+//     }`,
+//     {
+//       id
+//     }
+//   );
+
+//   return playerCharacter;
+// }
 
 export async function getPlayerCharacterById(id: string) {
   const playerCharacter = await client.fetch(
@@ -146,9 +161,9 @@ export async function getPlayerCharacterById(id: string) {
       "bloodline": bloodline->{name,_id},
       "origin": origin->{name,_id},
       "post": post->{name,_id},
-      "edges": edges|order(name asc)->{name, _id},
-      "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
-      "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
+      edges[],
+      skills[],
+      languages[],
       aspects,
       salvage[],
       specimens[],

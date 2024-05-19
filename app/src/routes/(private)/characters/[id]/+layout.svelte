@@ -10,22 +10,17 @@
 
   export let data;
 
+  const { currentCharacter } = data;
+
   if ($page.url.searchParams.has('new')) {
     isEditing.set(true);
   }
 
   const handleSave = async () => {
-    // savePlayerCharacter(data.characterFromSanity)
-    //   .then(() => {
-    //     isEditing.set(false);
-    //   })
-    //   .catch((err) => {
-    //     console.log('ERROR', err);
-    //   });
     const response = await fetch('/api/characters', {
       method: 'POST',
       body: JSON.stringify({
-        character: data.characterFromSanity
+        character: currentCharacter
       })
     });
     const returnJson = await response.json();

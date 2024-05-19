@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
-import type { Edge, Language, PlayerCharacter, Skill } from '$lib/types/sanity.types';
+import type { Edge, Language, PlayerCharacterV2, Skill } from '$lib/types/sanity.types';
 import { getAttributes, getCharacterOptions, getPlayerCharacterById } from '$lib/server/sanity';
 
 const bloodlines = await getCharacterOptions('bloodline');
@@ -12,44 +12,40 @@ const languages: Language[] = (await getAttributes('language')) as Language[];
 const skills: Skill[] = (await getAttributes('skill')) as Skill[];
 
 export const load = (async ({ params }) => {
-
-  console.log('params', params);
-  
-
   if (!params.id) {
     throw error(404, 'Not found');
   }
 
-  let playerCharacter;
+  let playerCharacter: Partial<PlayerCharacterV2>;
 
   if (params.create) {
     playerCharacter = {
       _id: params.id,
-      player: null,
       _type: 'playerCharacterV2',
+      name: '',
+      player: '',
+      userId: '',
       drives: [],
       post: {
-        name: null,
-        _id: ''
+        _type: 'reference',
+        _ref: ''
       },
       bloodline: {
-        name: null,
-        _id: ''
+        _type: 'reference',
+        _ref: ''
+      },
+      origin: {
+        _type: 'reference',
+        _ref: ''
       },
       edges: [],
       mires: [],
-      resources: [],
       salvage: [],
       specimens: [],
       whispers: [],
       charts: [],
       skills: [],
-      name: '',
       languages: [],
-      origin: {
-        name: null,
-        _id: ''
-      },
       aspects: []
     };
   } else {
@@ -65,6 +61,4 @@ export const load = (async ({ params }) => {
     skills,
     characterFromSanity: playerCharacter
   };
-
-  throw error(404, 'Not found');
 }) satisfies LayoutServerLoad;
