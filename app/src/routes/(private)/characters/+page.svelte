@@ -1,6 +1,7 @@
 <script>
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import Icon from '@iconify/svelte';
+  import { Card } from 'flowbite-svelte';
   import { v4 as uuidv4 } from 'uuid';
 
   export let data;
@@ -54,10 +55,12 @@
       </a>
     {:else}
       <div class="flex flex-col justify-center">
-        <span class="text-white">No characters found. Go make some...</span>
+        <Card class="">
+          <span class="text-slate-900 dark:text-white">No characters found. Go make some...</span>
+        </Card>
       </div>
     {/each}
-    <a href={`/characters/${newCharacterId}/sheet?new=true`}>
+    <a href={`/characters/${newCharacterId}/create/sheet`}>
       <SheetCard color="success" label="create new character" class="w-96">
         <div class="relative grid grid-cols-[200px_1fr] gap-4">
           <div>

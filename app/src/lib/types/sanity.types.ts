@@ -185,15 +185,24 @@ export type PlayerCharacterV2 = {
     ranks?: number;
     _key: string;
   }>;
-  resources?: Array<{
+  salvage?: Array<{
     text?: string;
     tags?: Array<string>;
-    type?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "resourceType";
-    };
+    _key: string;
+  }>;
+  specimens?: Array<{
+    text?: string;
+    tags?: Array<string>;
+    _key: string;
+  }>;
+  whispers?: Array<{
+    text?: string;
+    tags?: Array<string>;
+    _key: string;
+  }>;
+  charts?: Array<{
+    text?: string;
+    tags?: Array<string>;
     _key: string;
   }>;
   drives?: Array<string>;

@@ -101,8 +101,11 @@
     <!-- <SpeedDialButton disabled name="Print">
       <Icon icon="ph:printer-light" class="w-8 h-8" />
     </SpeedDialButton> -->
-    <SpeedDialButton disabled={!$isEditing} name="Save" on:click={() => handleSave()}>
+    <SpeedDialButton name="Save" disabled={!$isEditing} on:click={() => handleSave()}>
       <Icon icon="ph:floppy-disk-back-light" class="h-8 w-8" />
+    </SpeedDialButton>
+    <SpeedDialButton name="Cancel" disabled={!$isEditing} on:click={() => isEditing.set(false)}>
+      <Icon icon="ph:x-light" class="h-8 w-8" />
     </SpeedDialButton>
     <SpeedDialButton name="Edit" on:click={() => isEditing.set(true)}>
       <Icon icon="ph:pencil-light" class="h-8 w-8" />

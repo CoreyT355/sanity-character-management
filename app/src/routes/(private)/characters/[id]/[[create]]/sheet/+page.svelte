@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Input, Select, Tooltip } from 'flowbite-svelte';
+  import { Button, Input, Select, Tooltip } from 'flowbite-svelte';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
   import { RankInput } from '$lib/components/RankInput';
@@ -101,16 +101,39 @@
       {:else}
         <span>No Drives Yet</span>
       {/each}
+      {#if $isEditing}
+        <Button
+          outline
+          color="dark"
+          on:click={() => (characterFromSanity.drives = [...characterFromSanity.drives, ''])}
+          >Add Drive</Button
+        >
+      {/if}
     </div>
   </SheetCard>
   <!-- Mires -->
   <SheetCard class="w-full" label="Mires">
     <div class="flex flex-col gap-4">
       {#each characterFromSanity.mires || [] as mire}
-        <Mire disabled={!$isEditing} description={mire.text} currentTrack={mire.currentTrack || [0,0]} />
+        <Mire
+          disabled={!$isEditing}
+          description={mire.text}
+          currentTrack={mire.currentTrack || [0, 0]}
+        />
       {:else}
-      <span>No Mires Yet</span>
+        <span>No Mires Yet</span>
       {/each}
+      {#if $isEditing}
+        <Button
+          outline
+          color="dark"
+          on:click={() =>
+            (characterFromSanity.mires = [
+              ...characterFromSanity.mires,
+              { text: '', currentTrack: [0, 0] }
+            ])}>Add Mire</Button
+        >
+      {/if}
     </div>
   </SheetCard>
 </div>
@@ -170,7 +193,7 @@
     <div class="flex w-full gap-4">
       <SheetCard class="h-full w-full" label="Salvage">
         <div class="space-y-3">
-          {#each characterFromSanity.resources?.filter((r) => r.type === 'Salvage') || [] as salvage}
+          {#each characterFromSanity.salvage || [] as salvage}
             <Input disabled={!$isEditing} bind:value={salvage.text} />
             {#if !$isEditing}
               <Tooltip>{salvage.text}</Tooltip>
@@ -180,7 +203,7 @@
       </SheetCard>
       <SheetCard class="h-full w-full" label="Specimens">
         <div class="space-y-3">
-          {#each characterFromSanity.resources?.filter((r) => r.type === 'Specimens') || [] as specimen}
+          {#each characterFromSanity.specimens || [] as specimen}
             <Input disabled={!$isEditing} bind:value={specimen.text} />
             {#if !$isEditing}
               <Tooltip>{specimen.text}</Tooltip>
@@ -192,7 +215,7 @@
     <div class="mt-4 flex w-full gap-4">
       <SheetCard class="h-full w-full" label="Whispers">
         <div class="space-y-3">
-          {#each characterFromSanity.resources?.filter((r) => r.type === 'Whispers') || [] as whisper}
+          {#each characterFromSanity.whispers || [] as whisper}
             <Input disabled={!$isEditing} bind:value={whisper.text} />
             {#if !$isEditing}
               <Tooltip>{whisper.text}</Tooltip>
@@ -202,7 +225,7 @@
       </SheetCard>
       <SheetCard class="h-full w-full" label="Charts">
         <div class="space-y-3">
-          {#each characterFromSanity.resources?.filter((r) => r.type === 'Charts') || [] as chart}
+          {#each characterFromSanity.charts || [] as chart}
             <Input disabled={!$isEditing} bind:value={chart.text} />
             {#if !$isEditing}
               <Tooltip>{chart.text}</Tooltip>
@@ -211,6 +234,22 @@
         </div>
       </SheetCard>
     </div>
+    {#if $isEditing}
+      <div class="flex flex-row gap-4">
+        <Input class="w-2/3" placeholder="Resource..." />
+        <Select
+          class="w-1/3"
+          placeholder="Resource type..."
+          items={[
+            { name: 'Salvage', value: 'salvage' },
+            { name: 'Specimen', value: 'specimens' },
+            { name: 'Whisper', value: 'whispers' },
+            { name: 'Chart', value: 'charts' }
+          ]}
+        />
+      </div>
+      <Button outline color="dark">Add Resource</Button>
+    {/if}
   </div>
 
   <div class="mt-10 flex flex-col gap-3">

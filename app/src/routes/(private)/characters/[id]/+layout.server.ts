@@ -11,7 +11,10 @@ const edges: Edge[] = (await getAttributes('edge')) as Edge[];
 const languages: Language[] = (await getAttributes('language')) as Language[];
 const skills: Skill[] = (await getAttributes('skill')) as Skill[];
 
-export const load = (async ({ params, url }) => {
+export const load = (async ({ params }) => {
+
+  console.log('params', params);
+  
 
   if (!params.id) {
     throw error(404, 'Not found');
@@ -19,7 +22,7 @@ export const load = (async ({ params, url }) => {
 
   let playerCharacter;
 
-  if (url.searchParams.get('new')) {
+  if (params.create) {
     playerCharacter = {
       _id: params.id,
       player: null,
@@ -34,16 +37,20 @@ export const load = (async ({ params, url }) => {
         _id: ''
       },
       edges: [],
-      mires: null,
-      resources: null,
+      mires: [],
+      resources: [],
+      salvage: [],
+      specimens: [],
+      whispers: [],
+      charts: [],
       skills: [],
-      name: null,
+      name: '',
       languages: [],
       origin: {
         name: null,
         _id: ''
       },
-      aspects: null
+      aspects: []
     };
   } else {
     playerCharacter = await getPlayerCharacterById(params.id);
