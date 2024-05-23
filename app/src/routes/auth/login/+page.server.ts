@@ -23,8 +23,6 @@ export const actions: Actions = {
       return redirect(303, '/auth/error');
     } else {
       console.log('DATA', data);
-      
-      return redirect(303, `/auth/callback`);
     }
   }
 };

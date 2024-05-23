@@ -31,7 +31,7 @@
       <div class="-ml-7">
         <Track {disabled} {trackLength} {currentTrack} />
       </div>
-      <div class="pt-2"><PortableText value={description} /></div>
+      <div class="pt-2">{description}</div>
     </div>
   </div>
 </div>

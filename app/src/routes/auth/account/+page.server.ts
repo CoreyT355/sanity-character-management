@@ -45,6 +45,8 @@ export const actions: Actions = {
     };
   },
   signout: async ({ locals: { supabase, safeGetSession } }) => {
+    console.log('SIGNING OUT');
+    
     const { session } = await safeGetSession();
     if (session) {
       await supabase.auth.signOut();

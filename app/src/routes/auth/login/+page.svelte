@@ -1,11 +1,23 @@
 <script lang="ts">
   import { applyAction, enhance } from '$app/forms';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
+  import { getToastStore } from '$lib/components/Toast/store.js';
+  import type { ToastSettings } from '$lib/components/Toast/types.js';
   import { Button, Label, Input, Spinner } from 'flowbite-svelte';
+  import type { PageData } from './$types';
 
-  export let data;
+  export const data: PageData;
 
   let loading = false;
+
+  const toastStore = getToastStore();
+
+  const toast: ToastSettings = {
+    message: 'Magic link sent. Please check your email (even the spam filter).',
+    position: 'bottom-left',
+    color: 'green',
+    hideDismiss: false
+  };
 </script>
 
 <main class="flex h-screen flex-row justify-center p-4">
@@ -22,6 +34,7 @@
         use:enhance={({ formElement, formData, action, cancel }) => {
           return async ({ result }) => {
             console.log('result', result);
+            toastStore.trigger(toast);
             await applyAction(result);
           };
         }}

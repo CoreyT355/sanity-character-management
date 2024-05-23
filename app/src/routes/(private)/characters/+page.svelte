@@ -6,7 +6,7 @@
 
   export let data;
 
-  $: console.log('URL', data.url);
+  $: console.log('URL', data);
 
   const newCharacterId = uuidv4();
   const { characters } = data ?? [];
@@ -16,7 +16,7 @@
   <div class="flex flex-row flex-wrap gap-4">
     {#each characters as character}
       {@const characterLabel = `${character.name} - Player: ${character.player}`}
-      <a href={`/characters/${character._id}/sheet`}>
+      <a href={`/characters/${character.id}/sheet`}>
         <SheetCard color="violet" label={characterLabel} class="w-96">
           <div class="relative grid grid-cols-[200px_1fr] gap-4">
             <div>

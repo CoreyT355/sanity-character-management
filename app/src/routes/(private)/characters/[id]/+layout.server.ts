@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
-import type { Edge, Language, PlayerCharacterV2, Skill } from '$lib/types/sanity.types';
-import { getAttributes, getCharacterOptions, getPlayerCharacterById } from '$lib/server/sanity';
+import type { Edge, Language, Skill } from '$lib/types/sanity.types';
+import { getAttributes, getCharacterOptions } from '$lib/server/sanity';
 
 const bloodlines = await getCharacterOptions('bloodline');
 const origins = await getCharacterOptions('origin');
@@ -11,45 +11,43 @@ const edges: Edge[] = (await getAttributes('edge')) as Edge[];
 const languages: Language[] = (await getAttributes('language')) as Language[];
 const skills: Skill[] = (await getAttributes('skill')) as Skill[];
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, locals: { supabase, safeGetSession } }) => {
   if (!params.id) {
     throw error(404, 'Not found');
   }
 
-  let playerCharacter: Partial<PlayerCharacterV2>;
+  const { session } = await safeGetSession();
+
+  let playerCharacterSupabase; //: Database['public']['Tables']['player_character']['Row'];
 
   if (params.create) {
-    playerCharacter = {
-      _id: params.id,
-      _type: 'playerCharacterV2',
+    playerCharacterSupabase = {
+      cargo: [],
+      charts: [],
+      created_at: null,
+      drives: [],
+      edges: {},
+      id: params.id,
+      languages: {},
+      major_milestones: [],
+      minor_milestones: [],
+      mires: {},
       name: '',
       player: '',
-      userId: '',
-      drives: [],
-      post: {
-        _type: 'reference',
-        _ref: ''
-      },
-      bloodline: {
-        _type: 'reference',
-        _ref: ''
-      },
-      origin: {
-        _type: 'reference',
-        _ref: ''
-      },
-      edges: [],
-      mires: [],
       salvage: [],
+      skills: {},
       specimens: [],
-      whispers: [],
-      charts: [],
-      skills: [],
-      languages: [],
-      aspects: []
+      updated_at: null,
+      user_id: session?.user.id,
+      whispers: []
     };
   } else {
-    playerCharacter = await getPlayerCharacterById(params.id);
+    ({ data: playerCharacterSupabase } = await supabase
+      .from('player_character')
+      .select('*')
+      .eq('id', params.id)
+      .eq('user_id', session?.user.id)
+      .single());
   }
 
   return {
@@ -59,6 +57,6 @@ export const load = (async ({ params }) => {
     origins,
     posts,
     skills,
-    characterFromSanity: playerCharacter
+    characterFromSanity: playerCharacterSupabase
   };
 }) satisfies LayoutServerLoad;

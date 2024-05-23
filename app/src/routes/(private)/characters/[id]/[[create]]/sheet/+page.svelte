@@ -14,261 +14,291 @@
     isEditing.set(false);
   });
 
-  const { bloodlines, edges, languages, origins, posts, skills, characterFromSanity, currentCharacter } = data;
+  const {
+    bloodlines,
+    edges,
+    languages,
+    origins,
+    posts,
+    skills,
+    characterFromSanity,
+    currentCharacter
+  } = data;
 
-  $: console.log('CHARACTER FROM STORE', $currentCharacter);
+  // $: console.log('CHARACTER FROM STORE', $currentCharacter);
 
-  const handleRankClick = (type: string, _id: string, name: string, ranks: number) => {
-    $currentCharacter[type] = unionWith(
-      [{ _id, name, ranks }],
-      $currentCharacter[type],
-      (updatedItem, currentItem) => updatedItem.name === currentItem.name
-    );
+  // const handleRankClick = (type: string, _ref: string, name: string, ranks: number) => {
+  //   console.log('ranks', {
+  //     _ref,
+  //     name,
+  //     ranks
+  //   });
+
+  //   $currentCharacter[type] = unionWith(
+  //     [{ _ref, name, ranks }],
+  //     $currentCharacter[type],
+  //     (updatedItem, currentItem) => updatedItem.name === currentItem.name
+  //   );
+  // };
+  const handleSave = async (event: CustomEvent) => {
+    console.log('EVENT', event);
+
+    // const response = await fetch('/api/characters', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     character: currentCharacter
+    //   })
+    // });
+    // const returnJson = await response.json();
+    // console.log('GOT IT', returnJson);
   };
 </script>
 
-<!-- Left Column -->
-<div class="h-full w-full space-y-4 md:w-5/12">
-  <!-- First Row -->
-  <div class="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_auto]">
-    <!-- Edges -->
-    <SheetCard color="success" label="Edges">
-      <div class="flex flex-row flex-wrap gap-2 md:flex-col">
-        {#each edges as edge}
-          <div class="flex max-w-60 flex-row items-center justify-between gap-3">
-            <span class="text-base leading-none">
-              {edge.displayName}
-            </span>
-            <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip>
-            <RankInput
+<form id="characterSheetForm" action="?/save" method="post" class="flex h-full w-full flex-col gap-3 ">
+  <div class="flex flex-col md:flex-row gap-3">
+    <!-- Left Column -->
+    <div class="h-full w-full space-y-4 md:w-5/12">
+      <!-- First Row -->
+      <div class="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_auto]">
+        <!-- Edges -->
+        <SheetCard color="success" label="Edges">
+          <div class="flex flex-row flex-wrap gap-2 md:flex-col">
+            {#each edges as edge}
+              <div class="flex max-w-60 flex-row items-center justify-between gap-3">
+                <span class="text-base leading-none">
+                  {edge.displayName}
+                </span>
+                <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip>
+                <RankInput
+                  name={edge.displayName}
+                  disabled={!$isEditing}
+                  maxRanks={1}
+                  currentRank={$currentCharacter?.edges[edge._id]}
+                />
+              </div>
+            {/each}
+          </div>
+        </SheetCard>
+        <!-- Languages -->
+        <SheetCard color="info" label="Languages">
+          <div class="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-2">
+            {#each languages as language}
+              <div class="flex max-w-72 flex-row items-center justify-between">
+                <span class="capitalize">{language.displayName}</span>
+                <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{language.description}</Tooltip>
+                <RankInput
+                  name={language._id}
+                  disabled={!$isEditing}
+                  maxRanks={3}
+                  currentRank={$currentCharacter.languages[language._id]}
+                />
+              </div>
+            {/each}
+          </div>
+        </SheetCard>
+      </div>
+      <!-- Skills -->
+      <SheetCard class="w-full" color="violet" label="Skills">
+        <div class="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+          {#each skills as skill}
+            <div class="flex max-w-64 flex-row items-center justify-between">
+              <span class="capitalize">{skill.name}</span>
+              <Tooltip defaultClass="py-2 px-3 w-80 z-10 flex flex-col gap-3">
+                <div><span class="text-base font-bold">Description:</span> {skill.description}</div>
+                <div><span class="text-base font-bold">Examples:</span> {skill.exampleUses}</div>
+              </Tooltip>
+              <RankInput
+                name={skill._id}
+                maxRanks={3}
+                disabled={!$isEditing}
+                currentRank={$currentCharacter.skills[skill._id]}
+              />
+            </div>
+          {/each}
+        </div>
+      </SheetCard>
+      <!-- Drives -->
+      <SheetCard class="w-full" label="Drives">
+        <div class="flex flex-col gap-2">
+          {#each $currentCharacter.drives as drive}
+            <Input disabled={!$isEditing} bind:value={drive} placeholder="Enter a Drive..." />
+            {#if !$isEditing}
+              <Tooltip>{drive}</Tooltip>
+            {/if}
+          {:else}
+            <span>No Drives Yet</span>
+          {/each}
+          {#if $isEditing}
+            <Button
+              outline
+              color="dark"
+              on:click={() => ($currentCharacter.drives = [...$currentCharacter.drives, ''])}
+              >Add Drive</Button
+            >
+          {/if}
+        </div>
+      </SheetCard>
+      <!-- Mires -->
+      <SheetCard class="w-full" label="Mires">
+        <div class="flex flex-col gap-4">
+          {#each $currentCharacter.mires as mire}
+            <Mire
               disabled={!$isEditing}
-              maxRanks={1}
-              currentRank={$currentCharacter.edges?.map((e) => e._ref).includes(edge._id) ? 1 : 0}
-              on:click={({ detail }) => handleRankClick('edges', edge._id, edge.name, detail)}
+              description={mire.text}
+              currentTrack={mire.currentTrack || [0, 0]}
+            />
+          {:else}
+            <span>No Mires Yet</span>
+          {/each}
+          {#if $isEditing}
+            <Button
+              outline
+              color="dark"
+              on:click={() =>
+                ($currentCharacter.mires = [
+                  ...$currentCharacter.mires,
+                  { text: '', currentTrack: [0, 0] }
+                ])}>Add Mire</Button
+            >
+          {/if}
+        </div>
+      </SheetCard>
+    </div>
+    <!-- Right Column -->
+    <div class="flex h-full w-full flex-col md:w-7/12">
+      <!-- Background Info -->
+      <SheetCard class="w-full" label="Background">
+        <div class="grid grid-cols-2 gap-x-6 gap-y-2">
+          <div class="flex h-10 flex-row items-center gap-4">
+            <span class="w-24 text-base">Name</span>
+            <Input
+              disabled={!$isEditing}
+              placeholder="Enter your character's name"
+              bind:value={$currentCharacter.name}
             />
           </div>
-        {/each}
-      </div>
-    </SheetCard>
-    <!-- Languages -->
-    <SheetCard color="info" label="Languages">
-      <div class="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-2">
-        {#each languages as language}
-          <div class="flex max-w-72 flex-row items-center justify-between">
-            <span class="capitalize">{language.displayName}</span>
-            <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{language.description}</Tooltip>
-            <RankInput
+          <div class="flex h-10 flex-row items-center gap-4">
+            <span class="w-24 text-base">Bloodline</span>
+            <Select
               disabled={!$isEditing}
-              maxRanks={3}
-              currentRank={$currentCharacter.languages?.find((l) => l.language?._ref === language._id)
-                ?.ranks}
-              on:click={({ detail }) =>
-                handleRankClick('languages', language._id, language.name, detail)}
+              placeholder="Select a Bloodline..."
+              items={bloodlines.map((b) => ({ name: b.name || '', value: b._id }))}
+              bind:value={$currentCharacter.bloodline}
             />
           </div>
-        {/each}
-      </div>
-    </SheetCard>
-  </div>
-  <!-- Skills -->
-  <SheetCard class="w-full" color="violet" label="Skills">
-    <div class="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
-      {#each skills as skill}
-        <div class="flex max-w-64 flex-row items-center justify-between">
-          <span class="capitalize">{skill.name}</span>
-          <Tooltip defaultClass="py-2 px-3 w-80 z-10 flex flex-col gap-3">
-            <div><span class="text-base font-bold">Description:</span> {skill.description}</div>
-            <div><span class="text-base font-bold">Examples:</span> {skill.exampleUses}</div>
-          </Tooltip>
-          <RankInput
-            maxRanks={3}
-            disabled={!$isEditing}
-            currentRank={$currentCharacter.skills?.find((s) => s.skill?._ref === skill._id)?.ranks}
-            on:click={({ detail }) => handleRankClick('skills', skill._id, skill.name, detail)}
-          />
+          <div class="flex flex-row items-center justify-between gap-4">
+            <span class="w-24 text-base">Player</span>
+            <Input
+              disabled={!$isEditing}
+              placeholder="Enter your name"
+              bind:value={$currentCharacter.player}
+            />
+          </div>
+          <div class="flex flex-row items-center justify-between gap-4">
+            <span class="w-24 text-base">Origin</span>
+            <Select
+              disabled={!$isEditing}
+              placeholder="Select an Origin..."
+              items={origins.map((origin) => ({ name: origin.name || '', value: origin._id }))}
+              bind:value={$currentCharacter.origin}
+            />
+          </div>
+          <div class="col-start-2 flex flex-row items-center justify-between gap-4">
+            <span class="w-24 text-base">Post</span>
+            <Select
+              disabled={!$isEditing}
+              placeholder="Select a Post..."
+              items={posts.map((p) => ({ name: p.name || '', value: p._id }))}
+              bind:value={$currentCharacter.post}
+            />
+          </div>
         </div>
-      {/each}
-    </div>
-  </SheetCard>
-  <!-- Drives -->
-  <SheetCard class="w-full" label="Drives">
-    <div class="flex flex-col gap-2">
-      {#each $currentCharacter.drives || [] as drive}
-        <Input disabled={!$isEditing} bind:value={drive} placeholder="Enter a Drive..." />
-        {#if !$isEditing}
-          <Tooltip>{drive}</Tooltip>
+      </SheetCard>
+      <div class="mt-10 flex flex-col gap-3">
+        <SectionHeader color="default" label="Resources"></SectionHeader>
+        <div class="flex w-full gap-4">
+          <SheetCard class="h-full w-full" label="Salvage">
+            <div class="space-y-3">
+              {#each $currentCharacter.salvage as salvage}
+                <Input disabled={!$isEditing} bind:value={salvage.text} />
+                {#if !$isEditing}
+                  <Tooltip>{salvage.text}</Tooltip>
+                {/if}
+              {/each}
+            </div>
+          </SheetCard>
+          <SheetCard class="h-full w-full" label="Specimens">
+            <div class="space-y-3">
+              {#each $currentCharacter.specimens as specimen}
+                <Input disabled={!$isEditing} bind:value={specimen.text} />
+                {#if !$isEditing}
+                  <Tooltip>{specimen.text}</Tooltip>
+                {/if}
+              {/each}
+            </div>
+          </SheetCard>
+        </div>
+        <div class="mt-4 flex w-full gap-4">
+          <SheetCard class="h-full w-full" label="Whispers">
+            <div class="space-y-3">
+              {#each $currentCharacter.whispers as whisper}
+                <Input disabled={!$isEditing} bind:value={whisper.text} />
+                {#if !$isEditing}
+                  <Tooltip>{whisper.text}</Tooltip>
+                {/if}
+              {/each}
+            </div>
+          </SheetCard>
+          <SheetCard class="h-full w-full" label="Charts">
+            <div class="space-y-3">
+              {#each $currentCharacter.charts as chart}
+                <Input disabled={!$isEditing} bind:value={chart.text} />
+                {#if !$isEditing}
+                  <Tooltip>{chart.text}</Tooltip>
+                {/if}
+              {/each}
+            </div>
+          </SheetCard>
+        </div>
+        {#if $isEditing}
+          <div class="flex flex-row gap-4">
+            <Input class="w-2/3" placeholder="Resource..." />
+            <Select
+              class="w-1/3"
+              placeholder="Resource type..."
+              items={[
+                { name: 'Salvage', value: 'salvage' },
+                { name: 'Specimen', value: 'specimens' },
+                { name: 'Whisper', value: 'whispers' },
+                { name: 'Chart', value: 'charts' }
+              ]}
+            />
+          </div>
+          <Button outline color="dark">Add Resource</Button>
         {/if}
-      {:else}
-        <span>No Drives Yet</span>
-      {/each}
-      {#if $isEditing}
-        <Button
-          outline
-          color="dark"
-          on:click={() => ($currentCharacter.drives = [...$currentCharacter.drives, ''])}
-          >Add Drive</Button
-        >
-      {/if}
-    </div>
-  </SheetCard>
-  <!-- Mires -->
-  <SheetCard class="w-full" label="Mires">
-    <div class="flex flex-col gap-4">
-      {#each $currentCharacter.mires || [] as mire}
-        <Mire
-          disabled={!$isEditing}
-          description={mire.text}
-          currentTrack={mire.currentTrack || [0, 0]}
-        />
-      {:else}
-        <span>No Mires Yet</span>
-      {/each}
-      {#if $isEditing}
-        <Button
-          outline
-          color="dark"
-          on:click={() =>
-            ($currentCharacter.mires = [
-              ...$currentCharacter.mires,
-              { text: '', currentTrack: [0, 0] }
-            ])}>Add Mire</Button
-        >
-      {/if}
-    </div>
-  </SheetCard>
-</div>
-<!-- Right Column -->
-<div class="flex h-full w-full flex-col md:w-7/12">
-  <!-- Background Info -->
-  <SheetCard class="w-full" label="Background">
-    <div class="grid grid-cols-2 gap-x-6 gap-y-2">
-      <div class="flex h-10 flex-row items-center gap-4">
-        <span class="w-24 text-base">Name</span>
-        <Input
-          disabled={!$isEditing}
-          placeholder="Enter your character's name"
-          bind:value={$currentCharacter.name}
-        />
       </div>
-      <div class="flex h-10 flex-row items-center gap-4">
-        <span class="w-24 text-base">Bloodline</span>
-        <Select
-          disabled={!$isEditing}
-          placeholder="Select a Bloodline..."
-          items={bloodlines.map((b) => ({ name: b.name || '', value: b._id }))}
-          bind:value={$currentCharacter.bloodline._id}
-        />
-      </div>
-      <div class="flex flex-row items-center justify-between gap-4">
-        <span class="w-24 text-base">Player</span>
-        <Input
-          disabled={!$isEditing}
-          placeholder="Enter your name"
-          bind:value={$currentCharacter.player}
-        />
-      </div>
-      <div class="flex flex-row items-center justify-between gap-4">
-        <span class="w-24 text-base">Origin</span>
-        <Select
-          disabled={!$isEditing}
-          placeholder="Select an Origin..."
-          items={origins.map((origin) => ({ name: origin.name || '', value: origin._id }))}
-          bind:value={$currentCharacter.origin._id}
-        />
-      </div>
-      <div class="col-start-2 flex flex-row items-center justify-between gap-4">
-        <span class="w-24 text-base">Post</span>
-        <Select
-          disabled={!$isEditing}
-          placeholder="Select a Post..."
-          items={posts.map((p) => ({ name: p.name || '', value: p._id }))}
-          bind:value={$currentCharacter.post._id}
-        />
-      </div>
-    </div>
-  </SheetCard>
-
-  <div class="mt-10 flex flex-col gap-3">
-    <SectionHeader color="default" label="Resources"></SectionHeader>
-    <div class="flex w-full gap-4">
-      <SheetCard class="h-full w-full" label="Salvage">
-        <div class="space-y-3">
-          {#each $currentCharacter.salvage || [] as salvage}
-            <Input disabled={!$isEditing} bind:value={salvage.text} />
-            {#if !$isEditing}
-              <Tooltip>{salvage.text}</Tooltip>
+      <div class="mt-10 flex flex-col gap-3">
+        <SectionHeader color="default" label="Milestones"></SectionHeader>
+        <div class="flex w-full gap-4">
+          <SheetCard class="h-full w-full" label="Major">
+            {#if $currentCharacter.majorMilestones}
+              {#each $currentCharacter.majorMilestones as majorMilestone}
+                <Input disabled={!$isEditing} bind:value={majorMilestone} />
+              {/each}
             {/if}
-          {/each}
-        </div>
-      </SheetCard>
-      <SheetCard class="h-full w-full" label="Specimens">
-        <div class="space-y-3">
-          {#each $currentCharacter.specimens || [] as specimen}
-            <Input disabled={!$isEditing} bind:value={specimen.text} />
-            {#if !$isEditing}
-              <Tooltip>{specimen.text}</Tooltip>
+          </SheetCard>
+          <SheetCard class="h-full w-full" label="Minor">
+            {#if $currentCharacter.minorMilestones}
+              {#each $currentCharacter.minorMilestones as minorMilestone}
+                <Input disabled={!$isEditing} bind:value={minorMilestone} />
+              {/each}
             {/if}
-          {/each}
+          </SheetCard>
         </div>
-      </SheetCard>
-    </div>
-    <div class="mt-4 flex w-full gap-4">
-      <SheetCard class="h-full w-full" label="Whispers">
-        <div class="space-y-3">
-          {#each $currentCharacter.whispers || [] as whisper}
-            <Input disabled={!$isEditing} bind:value={whisper.text} />
-            {#if !$isEditing}
-              <Tooltip>{whisper.text}</Tooltip>
-            {/if}
-          {/each}
-        </div>
-      </SheetCard>
-      <SheetCard class="h-full w-full" label="Charts">
-        <div class="space-y-3">
-          {#each $currentCharacter.charts || [] as chart}
-            <Input disabled={!$isEditing} bind:value={chart.text} />
-            {#if !$isEditing}
-              <Tooltip>{chart.text}</Tooltip>
-            {/if}
-          {/each}
-        </div>
-      </SheetCard>
-    </div>
-    {#if $isEditing}
-      <div class="flex flex-row gap-4">
-        <Input class="w-2/3" placeholder="Resource..." />
-        <Select
-          class="w-1/3"
-          placeholder="Resource type..."
-          items={[
-            { name: 'Salvage', value: 'salvage' },
-            { name: 'Specimen', value: 'specimens' },
-            { name: 'Whisper', value: 'whispers' },
-            { name: 'Chart', value: 'charts' }
-          ]}
-        />
       </div>
-      <Button outline color="dark">Add Resource</Button>
-    {/if}
-  </div>
-
-  <div class="mt-10 flex flex-col gap-3">
-    <SectionHeader color="default" label="Milestones"></SectionHeader>
-    <div class="flex w-full gap-4">
-      <SheetCard class="h-full w-full" label="Major">
-        {#if $currentCharacter.majorMilestones}
-          {#each $currentCharacter.majorMilestones as majorMilestone}
-            <Input disabled={!$isEditing} bind:value={majorMilestone} />
-          {/each}
-        {/if}
-      </SheetCard>
-      <SheetCard class="h-full w-full" label="Minor">
-        {#if $currentCharacter.minorMilestones}
-          {#each $currentCharacter.minorMilestones as minorMilestone}
-            <Input disabled={!$isEditing} bind:value={minorMilestone} />
-          {/each}
-        {/if}
-      </SheetCard>
     </div>
   </div>
-</div>
+  <div>
+    <Button type="submit">Save</Button>
+  </div>
+</form>

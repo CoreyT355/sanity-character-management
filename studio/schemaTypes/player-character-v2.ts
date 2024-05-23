@@ -57,8 +57,33 @@ export default defineType({
       name: 'edges',
       title: 'Edges',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'edge'}]}],
-      validation: (rule) => rule.max(3),
+      of: [
+        {
+          type: 'object',
+          preview: {
+            select: {
+              title: 'edge.name',
+            },
+          },
+          fields: [
+            {
+              name: 'edge',
+              title: 'Edge',
+              type: 'reference',
+              to: [{type: 'edge'}],
+              options: {
+                disableNew: true,
+              },
+            },
+            {
+              name: 'ranks',
+              title: 'Ranks',
+              type: 'number',
+              validation: (rule) => rule.max(1),
+            },
+          ],
+        },
+      ]
     }),
     defineField({
       name: 'skills',

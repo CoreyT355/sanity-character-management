@@ -4,6 +4,7 @@
   import { rankInputVariants, type Props } from '.';
   import { createEventDispatcher } from 'svelte';
 
+  export let name: string;
   export let variant: Props['variant'] = 'default';
   export let maxRanks = 3;
   export let currentRank = 0;
@@ -27,7 +28,7 @@
 <div class={cn('w-min', $$props.class)}>
   <div class="flex flex-row">
     {#each { length: maxRanks } as _, i}
-      <button {disabled} on:click={() => handleRankClick(i)}>
+      <button {name} {disabled} on:click|preventDefault={() => handleRankClick(i)}>
         {#if i + 1 <= currentRank}
           <Icon icon="ph:circle-fill" class={cn(rankInputVariants({ variant }), 'h-6 w-6')} />
         {:else}

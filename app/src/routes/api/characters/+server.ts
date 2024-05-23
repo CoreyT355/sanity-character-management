@@ -13,6 +13,8 @@ export async function POST({ request }) {
     error(400, 'missing data');
   }
 
+  console.log('JSON', await request.json());
+
   const { character } = await request.json();
 
   character.bloodline = {

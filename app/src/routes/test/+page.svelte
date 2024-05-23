@@ -2,6 +2,8 @@
   import { Button, TabItem, Tabs } from 'flowbite-svelte';
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
+  import { getToastStore } from '$lib/components/Toast/store';
+  import type { ToastSettings } from '$lib/components/Toast/types';
 
   const colors = [
     'default',
@@ -13,6 +15,16 @@
     'violet',
     'warning'
   ];
+
+  const toastStore = getToastStore();
+
+  const toastSettings: ToastSettings = {
+    message: 'This is a toast',
+    hideDismiss: false,
+    timeout: 5000,
+    position: 'top-left',
+    color: 'blue'
+  };
 </script>
 
 <div class="flex h-screen flex-col">
@@ -30,6 +42,15 @@
       {#each colors as color}
         <SheetCard label={color} {color} class="h-48 w-32"></SheetCard>
       {/each}
+    </div>
+  </div>
+
+  <div class="flex w-full flex-col gap-4 p-8">
+    <h3 class="text-lg font-medium text-black dark:text-white">Toasts</h3>
+    <div class="flex w-full flex-row gap-4">
+      <Button color="green" on:click={() => {
+        toastStore.trigger(toastSettings);
+      }}>Toast!</Button>
     </div>
   </div>
 

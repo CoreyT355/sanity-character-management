@@ -159,11 +159,14 @@ export type PlayerCharacterV2 = {
     [internalGroqTypeReferenceTo]?: "post";
   };
   edges?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
+    edge?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "edge";
+    };
+    ranks?: number;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "edge";
   }>;
   skills?: Array<{
     skill?: {

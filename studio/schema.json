@@ -845,28 +845,44 @@
           "of": {
             "type": "object",
             "attributes": {
-              "_ref": {
+              "edge": {
                 "type": "objectAttribute",
                 "value": {
-                  "type": "string"
-                }
+                  "type": "object",
+                  "attributes": {
+                    "_ref": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    },
+                    "_type": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string",
+                        "value": "reference"
+                      }
+                    },
+                    "_weak": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "boolean"
+                      },
+                      "optional": true
+                    }
+                  },
+                  "dereferencesTo": "edge"
+                },
+                "optional": true
               },
-              "_type": {
+              "ranks": {
                 "type": "objectAttribute",
                 "value": {
-                  "type": "string",
-                  "value": "reference"
-                }
-              },
-              "_weak": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "boolean"
+                  "type": "number"
                 },
                 "optional": true
               }
             },
-            "dereferencesTo": "edge",
             "rest": {
               "type": "object",
               "attributes": {
