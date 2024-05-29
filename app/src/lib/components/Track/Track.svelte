@@ -1,12 +1,12 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import { TrackMarker } from '../TrackMarker';
-  import { onMount } from 'svelte';
   import { Button } from 'flowbite-svelte';
 
   export let trackLength: number;
   export let currentTrack: number[] = Array(trackLength).fill(0);
   export let disabled = true;
+  export let name: string;
 
   const handleTrackClick = (e: CustomEvent, index: number) => {
     currentTrack[index] = e.detail.state;
@@ -18,6 +18,7 @@
 </script>
 
 <div class="flex flex-row items-center">
+  <input type="hidden" name={`${name}-track`} bind:value={currentTrack} />
   {#each Array(trackLength) as _, index (index)}
     <TrackMarker {disabled} state={currentTrack[index]} on:click={(e) => handleTrackClick(e, index)} />
     {#if index < trackLength - 1}

@@ -2,11 +2,14 @@
   import { Button, Input, Select, Tooltip } from 'flowbite-svelte';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
-  import { RankInput } from '$lib/components/RankInput';
+  import RankInput from '$lib/components/RankInput/RankInput.svelte';
   import Mire from '$lib/components/Mire/Mire.svelte';
   import { isEditing } from '$lib/store/characters.js';
-  import { unionWith } from 'lodash-es';
   import { beforeNavigate } from '$app/navigation';
+  import { getToastStore } from '$lib/components/Toast/store.js';
+  import type { ToastSettings } from '$lib/components/Toast/types.js';
+  import { enhance } from '$app/forms';
+  import { currentCharacter } from '$lib/store/characters.js';
 
   export let data;
 
@@ -14,52 +17,67 @@
     isEditing.set(false);
   });
 
-  const {
-    bloodlines,
-    edges,
-    languages,
-    origins,
-    posts,
-    skills,
-    characterFromSanity,
-    currentCharacter
-  } = data;
+  const { bloodlines, edges, languages, origins, posts, skills } = data;
 
   // $: console.log('CHARACTER FROM STORE', $currentCharacter);
 
-  // const handleRankClick = (type: string, _ref: string, name: string, ranks: number) => {
-  //   console.log('ranks', {
-  //     _ref,
-  //     name,
-  //     ranks
-  //   });
+  const toastStore = getToastStore();
 
-  //   $currentCharacter[type] = unionWith(
-  //     [{ _ref, name, ranks }],
-  //     $currentCharacter[type],
-  //     (updatedItem, currentItem) => updatedItem.name === currentItem.name
-  //   );
-  // };
-  const handleSave = async (event: CustomEvent) => {
-    console.log('EVENT', event);
-
-    // const response = await fetch('/api/characters', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     character: currentCharacter
-    //   })
-    // });
-    // const returnJson = await response.json();
-    // console.log('GOT IT', returnJson);
+  const toastError: ToastSettings = {
+    message: 'Failed to save character.',
+    position: 'bottom-left',
+    color: 'destructive',
+    hideDismiss: false
   };
+
+  const toastSuccess: ToastSettings = {
+    message: 'Character saved successfully.',
+    position: 'bottom-left',
+    color: 'green',
+    hideDismiss: false
+  };
+
+  const handleSave = async () => {
+    const response = await fetch('/api/characters', {
+      method: 'POST',
+      body: JSON.stringify({
+        character: $currentCharacter
+      })
+    });
+    const returnJson = response;
+    console.log('GOT IT', returnJson);
+  };
+
+  // const handleSave = async () => {
+  //   $currentCharacter.updated_at = new Date().toISOString();
+
+  //   const { data: saveData, error: upsertError } = await data.supabase
+  //     .from('player_character')
+  //     .update($currentCharacter)
+  //     .eq('id', $currentCharacter.id)
+  //     .select()
+  //     .single();
+
+  //   if (upsertError) {
+  //     toastStore.trigger(toastError);
+  //   } else {
+  //     toastStore.trigger(toastSuccess);
+  //   }
+  // };
 </script>
 
-<form id="characterSheetForm" action="?/save" method="post" class="flex h-full w-full flex-col gap-3 ">
-  <div class="flex flex-col md:flex-row gap-3">
+<form
+  id="characterForm"
+  use:enhance
+  method="post"
+  on:submit={() => handleSave()}
+  class="flex h-full w-full flex-col gap-3"
+>
+  <div class="flex flex-col gap-3 md:flex-row">
     <!-- Left Column -->
     <div class="h-full w-full space-y-4 md:w-5/12">
       <!-- First Row -->
-      <div class="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_auto]">
+      <div class="grid grid-cols-1 gap-4 xl:grid-cols-[auto_1fr]">
         <!-- Edges -->
         <SheetCard color="success" label="Edges">
           <div class="flex flex-row flex-wrap gap-2 md:flex-col">
@@ -70,10 +88,11 @@
                 </span>
                 <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip>
                 <RankInput
-                  name={edge.displayName}
+                  name={edge._id}
                   disabled={!$isEditing}
                   maxRanks={1}
                   currentRank={$currentCharacter?.edges[edge._id]}
+                  on:click={(event) => ($currentCharacter.edges[edge._id] = event.detail)}
                 />
               </div>
             {/each}
@@ -91,6 +110,7 @@
                   disabled={!$isEditing}
                   maxRanks={3}
                   currentRank={$currentCharacter.languages[language._id]}
+                  on:click={(event) => ($currentCharacter.languages[language._id] = event.detail)}
                 />
               </div>
             {/each}
@@ -112,6 +132,7 @@
                 maxRanks={3}
                 disabled={!$isEditing}
                 currentRank={$currentCharacter.skills[skill._id]}
+                on:click={(event) => ($currentCharacter.skills[skill._id] = event.detail)}
               />
             </div>
           {/each}
@@ -120,8 +141,13 @@
       <!-- Drives -->
       <SheetCard class="w-full" label="Drives">
         <div class="flex flex-col gap-2">
-          {#each $currentCharacter.drives as drive}
-            <Input disabled={!$isEditing} bind:value={drive} placeholder="Enter a Drive..." />
+          {#each $currentCharacter.drives as drive, i}
+            <Input
+              name="drive"
+              disabled={!$isEditing}
+              bind:value={drive}
+              placeholder="Enter a Drive..."
+            />
             {#if !$isEditing}
               <Tooltip>{drive}</Tooltip>
             {/if}
@@ -141,8 +167,9 @@
       <!-- Mires -->
       <SheetCard class="w-full" label="Mires">
         <div class="flex flex-col gap-4">
-          {#each $currentCharacter.mires as mire}
+          {#each $currentCharacter.mires as mire, i}
             <Mire
+              name={`mire-${i}`}
               disabled={!$isEditing}
               description={mire.text}
               currentTrack={mire.currentTrack || [0, 0]}
@@ -172,6 +199,7 @@
           <div class="flex h-10 flex-row items-center gap-4">
             <span class="w-24 text-base">Name</span>
             <Input
+              name="character-name"
               disabled={!$isEditing}
               placeholder="Enter your character's name"
               bind:value={$currentCharacter.name}
@@ -180,6 +208,7 @@
           <div class="flex h-10 flex-row items-center gap-4">
             <span class="w-24 text-base">Bloodline</span>
             <Select
+              name="bloodline"
               disabled={!$isEditing}
               placeholder="Select a Bloodline..."
               items={bloodlines.map((b) => ({ name: b.name || '', value: b._id }))}
@@ -189,6 +218,7 @@
           <div class="flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Player</span>
             <Input
+              name="player-name"
               disabled={!$isEditing}
               placeholder="Enter your name"
               bind:value={$currentCharacter.player}
@@ -197,6 +227,7 @@
           <div class="flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Origin</span>
             <Select
+              name="origin"
               disabled={!$isEditing}
               placeholder="Select an Origin..."
               items={origins.map((origin) => ({ name: origin.name || '', value: origin._id }))}
@@ -206,6 +237,7 @@
           <div class="col-start-2 flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Post</span>
             <Select
+              name="post"
               disabled={!$isEditing}
               placeholder="Select a Post..."
               items={posts.map((p) => ({ name: p.name || '', value: p._id }))}
@@ -219,8 +251,8 @@
         <div class="flex w-full gap-4">
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
-              {#each $currentCharacter.salvage as salvage}
-                <Input disabled={!$isEditing} bind:value={salvage.text} />
+              {#each $currentCharacter.salvage as salvage, i}
+                <Input name={`salvage-${i}`} disabled={!$isEditing} bind:value={salvage.text} />
                 {#if !$isEditing}
                   <Tooltip>{salvage.text}</Tooltip>
                 {/if}
@@ -229,8 +261,8 @@
           </SheetCard>
           <SheetCard class="h-full w-full" label="Specimens">
             <div class="space-y-3">
-              {#each $currentCharacter.specimens as specimen}
-                <Input disabled={!$isEditing} bind:value={specimen.text} />
+              {#each $currentCharacter.specimens as specimen, i}
+                <Input name={`specimen-${i}`} disabled={!$isEditing} bind:value={specimen.text} />
                 {#if !$isEditing}
                   <Tooltip>{specimen.text}</Tooltip>
                 {/if}
@@ -241,8 +273,8 @@
         <div class="mt-4 flex w-full gap-4">
           <SheetCard class="h-full w-full" label="Whispers">
             <div class="space-y-3">
-              {#each $currentCharacter.whispers as whisper}
-                <Input disabled={!$isEditing} bind:value={whisper.text} />
+              {#each $currentCharacter.whispers as whisper, i}
+                <Input name={`whisper-${i}`} disabled={!$isEditing} bind:value={whisper.text} />
                 {#if !$isEditing}
                   <Tooltip>{whisper.text}</Tooltip>
                 {/if}
@@ -251,8 +283,8 @@
           </SheetCard>
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
-              {#each $currentCharacter.charts as chart}
-                <Input disabled={!$isEditing} bind:value={chart.text} />
+              {#each $currentCharacter.charts as chart, i}
+                <Input name={`chart-${i}`} disabled={!$isEditing} bind:value={chart.text} />
                 {#if !$isEditing}
                   <Tooltip>{chart.text}</Tooltip>
                 {/if}
@@ -282,15 +314,23 @@
         <div class="flex w-full gap-4">
           <SheetCard class="h-full w-full" label="Major">
             {#if $currentCharacter.majorMilestones}
-              {#each $currentCharacter.majorMilestones as majorMilestone}
-                <Input disabled={!$isEditing} bind:value={majorMilestone} />
+              {#each $currentCharacter.majorMilestones as majorMilestone, i}
+                <Input
+                  name={`major-milestone-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={majorMilestone}
+                />
               {/each}
             {/if}
           </SheetCard>
           <SheetCard class="h-full w-full" label="Minor">
             {#if $currentCharacter.minorMilestones}
-              {#each $currentCharacter.minorMilestones as minorMilestone}
-                <Input disabled={!$isEditing} bind:value={minorMilestone} />
+              {#each $currentCharacter.minorMilestones as minorMilestone, i}
+                <Input
+                  name={`minor-milestone-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={minorMilestone}
+                />
               {/each}
             {/if}
           </SheetCard>

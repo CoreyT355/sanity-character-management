@@ -45,7 +45,7 @@
       color={t.color}
       position={t.position}
       dismissable={!t.hideDismiss}
-      divClass={`w-full max-w-xs p-4 text-gray-800 bg-gray-100 shadow dark:text-gray-200 dark:bg-gray-800 gap-3 border-2 border-${t.color}-500`}
+      divClass={`z-10 w-full max-w-xs p-4 text-gray-800 bg-gray-100 shadow dark:text-gray-200 dark:bg-gray-800 gap-3 border-2 border-${t.color}-500`}
     >
       {@html t.message}
     </Toast>

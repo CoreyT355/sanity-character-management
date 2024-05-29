@@ -4,6 +4,7 @@
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import { getToastStore } from '$lib/components/Toast/store';
   import type { ToastSettings } from '$lib/components/Toast/types';
+  import Toast from '$lib/components/Toast/Toast.svelte';
 
   const colors = [
     'default',
@@ -23,7 +24,7 @@
     hideDismiss: false,
     timeout: 5000,
     position: 'top-left',
-    color: 'blue'
+    color: 'green'
   };
 </script>
 
@@ -51,6 +52,15 @@
       <Button color="green" on:click={() => {
         toastStore.trigger(toastSettings);
       }}>Toast!</Button>
+    </div>
+  </div>
+
+  <div class="flex w-full flex-col gap-4 p-8">
+    <h3 class="text-lg font-medium text-black dark:text-white">Toasts</h3>
+    <div class="flex w-full flex-row gap-4">
+      <Toast>
+        Testing the toast
+      </Toast>
     </div>
   </div>
 

@@ -1,15 +1,31 @@
-import { redirect, type Actions } from "@sveltejs/kit";
+import { currentCharacter } from '$lib/store/characters';
+import { redirect, type Actions } from '@sveltejs/kit';
+import { get } from 'svelte/store';
 
 export const actions: Actions = {
-  save: async ({ request, locals: { supabase, safeGetSession } }) => {
+  test: async () => {
+
+  },
+  save: async ({ params, request, locals: { supabase, safeGetSession } }) => {
+    const { session } = await safeGetSession();
+
+    if (!session) redirect(303, '/auth/login');
+
     const formData = await request.formData();
 
     console.log('FORMDATA', formData);
 
-    const { session } = await safeGetSession();
-    if (session) {
-      // await supabase.auth.signOut();
-      // throw redirect(303, '/');
+    // console.log('REQUEST', get(currentCharacter));
+
+    const { data, error } = await supabase
+      .from('player_character')
+      .upsert(get(currentCharacter))
+      .select();
+
+    if (error) {
+      throw new Error(error.message);
+    } else {
+      return data;
     }
   }
 };
