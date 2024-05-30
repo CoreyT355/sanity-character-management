@@ -1,13 +1,10 @@
 <script lang="ts">
-  import { Button, Input, Select, Tooltip } from 'flowbite-svelte';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
   import RankInput from '$lib/components/RankInput/RankInput.svelte';
   import Mire from '$lib/components/Mire/Mire.svelte';
   import { isEditing } from '$lib/store/characters.js';
   import { beforeNavigate } from '$app/navigation';
-  import { getToastStore } from '$lib/components/Toast/store.js';
-  import type { ToastSettings } from '$lib/components/Toast/types.js';
   // import { currentCharacter } from '$lib/store/characters.js';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
   import { enhance } from '$app/forms';
@@ -25,34 +22,16 @@
     dataType: 'json'
   });
 
-  // $: console.log('CHARACTER FROM STORE', $form);
-
-  const toastStore = getToastStore();
-
-  const toastError: ToastSettings = {
-    message: 'Failed to save character.',
-    position: 'top-right',
-    color: 'destructive',
-    hideDismiss: false
-  };
-
-  const toastSuccess: ToastSettings = {
-    message: 'Character saved successfully.',
-    position: 'top-right',
-    color: 'green',
-    hideDismiss: false
-  };
+  $: console.log('CHARACTER FROM STORE', $form);
 </script>
 
 <form
   id="characterForm"
   use:enhance={() => {
-    return async ({result}) => {
+    return async ({ result }) => {
       if (result.type === 'success') {
         isEditing.set(false);
-        toastStore.trigger(toastSuccess);
       } else {
-        toastStore.trigger(toastError);
       }
     };
   }}
@@ -73,7 +52,7 @@
                 <span class="text-base w-20">
                   {edge.displayName}
                 </span>
-                <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip>
+                <!-- <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip> -->
                 <RankInput
                   class="place-self-end"
                   name={edge._id}
@@ -92,7 +71,7 @@
             {#each languages as language}
               <div class="flex max-w-72 flex-row items-center justify-start">
                 <span class="capitalize w-32">{language.displayName}</span>
-                <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{language.description}</Tooltip>
+                <!-- <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{language.description}</Tooltip> -->
                 <RankInput
                   name={language._id}
                   disabled={!$isEditing}
@@ -111,10 +90,10 @@
           {#each skills as skill}
             <div class="flex max-w-64 flex-row items-center justify-start">
               <span class="capitalize w-24">{skill.name}</span>
-              <Tooltip defaultClass="py-2 px-3 w-80 z-10 flex flex-col gap-3">
+              <!-- <Tooltip defaultClass="py-2 px-3 w-80 z-10 flex flex-col gap-3">
                 <div><span class="text-base font-bold">Description:</span> {skill.description}</div>
                 <div><span class="text-base font-bold">Examples:</span> {skill.exampleUses}</div>
-              </Tooltip>
+              </Tooltip> -->
               <RankInput
                 name={skill._id}
                 maxRanks={3}
@@ -130,24 +109,22 @@
       <SheetCard class="w-full" label="Drives">
         <div class="flex flex-col gap-2">
           {#each $form.drives as drive, i}
-            <Input
+            <input
               name="drive"
               disabled={!$isEditing}
               bind:value={drive}
               placeholder="Enter a Drive..."
             />
             {#if !$isEditing}
-              <Tooltip>{drive}</Tooltip>
+              <!-- <Tooltip>{drive}</Tooltip> -->
             {/if}
           {:else}
             <span>No Drives Yet</span>
           {/each}
           {#if $isEditing}
-            <Button
-              outline
-              color="dark"
-              on:click={() => ($form.drives = [...$form.drives, ''])}
-              >Add Drive</Button
+            <button
+              class="btn variant-outline-tertiary"
+              on:click={() => ($form.drives = [...$form.drives, ''])}>Add Drive</button
             >
           {/if}
         </div>
@@ -166,14 +143,10 @@
             <span>No Mires Yet</span>
           {/each}
           {#if $isEditing}
-            <Button
-              outline
-              color="dark"
-              on:click={() =>
-                ($form.mires = [
-                  ...$form.mires,
-                  { text: '', currentTrack: [0, 0] }
-                ])}>Add Mire</Button
+            <button
+              class="btn variant-outline-tertiary"
+              on:click={() => ($form.mires = [...$form.mires, { text: '', currentTrack: [0, 0] }])}
+              >Add Mire</button
             >
           {/if}
         </div>
@@ -185,52 +158,65 @@
       <SheetCard class="w-full" label="Background">
         <div class="grid grid-cols-2 gap-x-6 gap-y-2">
           <div class="flex h-10 flex-row items-center gap-4">
-            <span class="w-24 text-base">Name</span>
-            <Input
-              name="name"
-              disabled={!$isEditing}
-              placeholder="Enter your character's name"
-              bind:value={$form.name}
-            />
+            <label class="label">
+              <span class="w-24 text-base">Name</span>
+              <input
+                name="name"
+                disabled={!$isEditing}
+                placeholder="Enter your character's name"
+                bind:value={$form.name}
+              />
+            </label>
           </div>
           <div class="flex h-10 flex-row items-center gap-4">
             <span class="w-24 text-base">Bloodline</span>
-            <Select
+            <select
               name="bloodline"
               disabled={!$isEditing}
               placeholder="Select a Bloodline..."
-              items={bloodlines.map((b) => ({ name: b.name || '', value: b._id }))}
               bind:value={$form.bloodline}
-            />
+            >
+              {#each bloodlines as bloodline}
+                <option value={bloodline._id}>{bloodline.name}</option>
+              {/each}
+            </select>
           </div>
           <div class="flex flex-row items-center justify-between gap-4">
-            <span class="w-24 text-base">Player</span>
-            <Input
-              name="player"
-              disabled={!$isEditing}
-              placeholder="Enter your name"
-              bind:value={$form.player}
-            />
+            <label class="label">
+              <span class="w-24 text-base">Player</span>
+              <input
+                name="player"
+                disabled={!$isEditing}
+                placeholder="Enter your name"
+                bind:value={$form.player}
+              />
+            </label>
           </div>
           <div class="flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Origin</span>
-            <Select
+            <select
               name="origin"
               disabled={!$isEditing}
-              placeholder="Select an Origin..."
-              items={origins.map((origin) => ({ name: origin.name || '', value: origin._id }))}
+              placeholder="Select a Origin..."
               bind:value={$form.origin}
-            />
+            >
+              {#each origins as origin}
+                <option value={origin._id}>{origin.name}</option>
+              {/each}
+            </select>
           </div>
           <div class="col-start-2 flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Post</span>
-            <Select
+            <select
               name="post"
               disabled={!$isEditing}
               placeholder="Select a Post..."
-              items={posts.map((p) => ({ name: p.name || '', value: p._id }))}
               bind:value={$form.post}
-            />
+            >
+              {#each posts as post}
+                <option value={post._id}>{post.name}</option>
+              {/each}
+            </select>
           </div>
         </div>
       </SheetCard>
@@ -240,9 +226,9 @@
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
               {#each $form.salvage as salvage, i}
-                <Input name={`salvage-${i}`} disabled={!$isEditing} bind:value={salvage.text} />
+                <input name={`salvage-${i}`} disabled={!$isEditing} bind:value={salvage.text} />
                 {#if !$isEditing}
-                  <Tooltip>{salvage.text}</Tooltip>
+                  <!-- <Tooltip>{salvage.text}</Tooltip> -->
                 {/if}
               {/each}
             </div>
@@ -250,9 +236,9 @@
           <SheetCard class="h-full w-full" label="Specimens">
             <div class="space-y-3">
               {#each $form.specimens as specimen, i}
-                <Input name={`specimen-${i}`} disabled={!$isEditing} bind:value={specimen.text} />
+                <input name={`specimen-${i}`} disabled={!$isEditing} bind:value={specimen.text} />
                 {#if !$isEditing}
-                  <Tooltip>{specimen.text}</Tooltip>
+                  <!-- <Tooltip>{specimen.text}</Tooltip> -->
                 {/if}
               {/each}
             </div>
@@ -262,9 +248,9 @@
           <SheetCard class="h-full w-full" label="Whispers">
             <div class="space-y-3">
               {#each $form.whispers as whisper, i}
-                <Input name={`whisper-${i}`} disabled={!$isEditing} bind:value={whisper.text} />
+                <input name={`whisper-${i}`} disabled={!$isEditing} bind:value={whisper.text} />
                 {#if !$isEditing}
-                  <Tooltip>{whisper.text}</Tooltip>
+                  <!-- <Tooltip>{whisper.text}</Tooltip> -->
                 {/if}
               {/each}
             </div>
@@ -272,9 +258,9 @@
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
               {#each $form.charts as chart, i}
-                <Input name={`chart-${i}`} disabled={!$isEditing} bind:value={chart.text} />
+                <input name={`chart-${i}`} disabled={!$isEditing} bind:value={chart.text} />
                 {#if !$isEditing}
-                  <Tooltip>{chart.text}</Tooltip>
+                  <!-- <Tooltip>{chart.text}</Tooltip> -->
                 {/if}
               {/each}
             </div>
@@ -282,19 +268,15 @@
         </div>
         {#if $isEditing}
           <div class="flex flex-row gap-4">
-            <Input class="w-2/3" placeholder="Resource..." />
-            <Select
-              class="w-1/3"
-              placeholder="Resource type..."
-              items={[
-                { name: 'Salvage', value: 'salvage' },
-                { name: 'Specimen', value: 'specimens' },
-                { name: 'Whisper', value: 'whispers' },
-                { name: 'Chart', value: 'charts' }
-              ]}
-            />
+            <input class="w-2/3" placeholder="Resource..." />
+            <select class="w-1/3" placeholder="Resource type...">
+              <option>Salvage</option>
+              <option>Specimen</option>
+              <option>Whisper</option>
+              <option>Chart</option>
+            </select>
           </div>
-          <Button outline color="dark">Add Resource</Button>
+          <button class="btn variant-outline-tertiary">Add Resource</button>
         {/if}
       </div>
       <div class="mt-10 flex flex-col gap-3">
@@ -303,7 +285,7 @@
           <SheetCard class="h-full w-full" label="Major">
             {#if $form.majorMilestones}
               {#each $form.majorMilestones as majorMilestone, i}
-                <Input
+                <input
                   name={`major-milestone-${i}`}
                   disabled={!$isEditing}
                   bind:value={majorMilestone}
@@ -314,7 +296,7 @@
           <SheetCard class="h-full w-full" label="Minor">
             {#if $form.minorMilestones}
               {#each $form.minorMilestones as minorMilestone, i}
-                <Input
+                <input
                   name={`minor-milestone-${i}`}
                   disabled={!$isEditing}
                   bind:value={minorMilestone}
