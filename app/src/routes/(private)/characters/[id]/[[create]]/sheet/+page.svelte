@@ -8,8 +8,9 @@
   import { beforeNavigate } from '$app/navigation';
   import { getToastStore } from '$lib/components/Toast/store.js';
   import type { ToastSettings } from '$lib/components/Toast/types.js';
-  import { currentCharacter } from '$lib/store/characters.js';
+  // import { currentCharacter } from '$lib/store/characters.js';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
+  import { enhance } from '$app/forms';
 
   export let data;
 
@@ -19,25 +20,25 @@
 
   const { bloodlines, edges, languages, origins, posts, skills } = data;
 
-  const { form, enhance } = superForm(data.form, {
+  const { form } = superForm(data.form, {
     applyAction: true,
     dataType: 'json'
   });
 
-  // $: console.log('CHARACTER FROM STORE', $currentCharacter);
+  $: console.log('CHARACTER FROM STORE', $form);
 
   const toastStore = getToastStore();
 
   const toastError: ToastSettings = {
     message: 'Failed to save character.',
-    position: 'bottom-left',
+    position: 'top-right',
     color: 'destructive',
     hideDismiss: false
   };
 
   const toastSuccess: ToastSettings = {
     message: 'Character saved successfully.',
-    position: 'bottom-left',
+    position: 'top-right',
     color: 'green',
     hideDismiss: false
   };
@@ -45,26 +46,36 @@
 
 <form
   id="characterForm"
-  use:enhance
+  use:enhance={() => {
+    return async ({result}) => {
+      if (result.type === 'success') {
+        isEditing.set(false);
+        toastStore.trigger(toastSuccess);
+      } else {
+        toastStore.trigger(toastError);
+      }
+    };
+  }}
   method="post"
   action="?/save"
   class="flex h-full w-full flex-col gap-3"
 >
   <div class="flex flex-col gap-3 md:flex-row">
     <!-- Left Column -->
-    <div class="h-full w-full space-y-4 md:w-5/12">
+    <div class="h-full w-full space-y-4 lg:w-5/12">
       <!-- First Row -->
       <div class="grid grid-cols-1 gap-4 xl:grid-cols-[auto_1fr]">
         <!-- Edges -->
         <SheetCard color="success" label="Edges">
-          <div class="flex flex-row flex-wrap gap-2 md:flex-col">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-2">
             {#each edges as edge}
-              <div class="flex max-w-60 flex-row items-center justify-between gap-3">
-                <span class="text-base leading-none">
+              <div class="flex flex-row items-center justify-start gap-3">
+                <span class="text-base w-20">
                   {edge.displayName}
                 </span>
                 <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip>
                 <RankInput
+                  class="place-self-end"
                   name={edge._id}
                   disabled={!$isEditing}
                   maxRanks={1}
@@ -77,10 +88,10 @@
         </SheetCard>
         <!-- Languages -->
         <SheetCard color="info" label="Languages">
-          <div class="grid grid-cols-1 gap-x-4 gap-y-2 lg:grid-cols-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-2">
             {#each languages as language}
-              <div class="flex max-w-72 flex-row items-center justify-between">
-                <span class="capitalize">{language.displayName}</span>
+              <div class="flex max-w-72 flex-row items-center justify-start">
+                <span class="capitalize w-32">{language.displayName}</span>
                 <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{language.description}</Tooltip>
                 <RankInput
                   name={language._id}
@@ -96,10 +107,10 @@
       </div>
       <!-- Skills -->
       <SheetCard class="w-full" color="violet" label="Skills">
-        <div class="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-2">
           {#each skills as skill}
-            <div class="flex max-w-64 flex-row items-center justify-between">
-              <span class="capitalize">{skill.name}</span>
+            <div class="flex max-w-64 flex-row items-center justify-start">
+              <span class="capitalize w-24">{skill.name}</span>
               <Tooltip defaultClass="py-2 px-3 w-80 z-10 flex flex-col gap-3">
                 <div><span class="text-base font-bold">Description:</span> {skill.description}</div>
                 <div><span class="text-base font-bold">Examples:</span> {skill.exampleUses}</div>
@@ -169,7 +180,7 @@
       </SheetCard>
     </div>
     <!-- Right Column -->
-    <div class="flex h-full w-full flex-col md:w-7/12">
+    <div class="flex h-full w-full flex-col lg:w-7/12">
       <!-- Background Info -->
       <SheetCard class="w-full" label="Background">
         <div class="grid grid-cols-2 gap-x-6 gap-y-2">
@@ -315,7 +326,7 @@
       </div>
     </div>
   </div>
-  <div>
+  <!-- <div>
     <SuperDebug data={$form} />
-  </div>
+  </div> -->
 </form>

@@ -34,7 +34,7 @@ export const actions: Actions = {
     if (error) {
       throw new Error(error.message);
     } else {
-      return data;
+      return { form };
     }
   }
 };
