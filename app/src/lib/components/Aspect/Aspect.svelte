@@ -10,6 +10,9 @@
   export let currentTrack: number[];
   export let isComplex: boolean = false;
   export let disabled = false;
+
+  console.log('aspect', $$props);
+  
 </script>
 
 <div>
@@ -28,7 +31,7 @@
       <div class="-ml-7">
         <Track {disabled} {trackLength} {currentTrack} />
       </div>
-      <div class="pt-2"><PortableText value={description} /></div>
+      <div class="pt-2">{description}</div>
     </div>
   </div>
 </div>

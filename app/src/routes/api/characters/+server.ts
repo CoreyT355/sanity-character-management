@@ -1,99 +1,32 @@
 import { error } from '@sveltejs/kit';
-import { savePlayerCharacter, saveSkillForCharacter } from '$lib/server/sanity.ts';
-import { v4 as uuidv4 } from 'uuid';
+import { supabase } from '$lib/utils/supabase.js';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
-  let response = new Response({
-    status: 200,
-    message: 'did the thing'
-  });
-
   if (!request) {
     error(400, 'missing data');
   }
 
   const { character } = await request.json();
 
-  character.bloodline = {
-    _ref: character.bloodline._id,
-    _key: uuidv4()
-  };
+  character.updated_at = new Date().toISOString();
 
-  character.origin = {
-    _ref: character.origin._id,
-    _key: uuidv4()
-  };
+  console.log('JSON', character);
 
-  character.post = {
-    _ref: character.post._id,
-    _key: uuidv4()
-  };
+  const { data, error: upsertError } = await supabase
+    .from('player_character')
+    .update(character)
+    .eq('id', character.id)
+    .select()
+    .single();
 
-  character.edges = character.edges.map((edge) => {
-    return {
-      _key: uuidv4(),
-      _ref: edge._id
-    };
-  });
+  if (!upsertError) {
+    console.log('SAVE SUCCESS', data);
 
-  character.skills = character.skills.map((skill) => {
-    return {
-      ranks: skill.ranks,
-      _key: uuidv4(),
-      skill: {
-        _ref: skill._id
-      }
-    };
-  });
+    return new Response('success', { status: 200, statusText: 'save success' });
+  } else {
+    console.log('UPDATE ERROR', upsertError);
 
-  // character.languages = character.languages.map((language) => {
-  //   return {
-  //     ranks: language.ranks,
-  //     _key: uuidv4(),
-  //     language: {
-  //       _ref: language._id
-  //     }
-  //   };
-  // });
-
-  const characterToSave = {
-    name: 'Test Format',
-    player: 'Corey',
-    _type: 'playerCharacterV2',
-    bloodline: {
-      _key: uuidv4(),
-      _ref: 'import-bloodline-gau'
-    },
-    origin: {
-      _key: uuidv4(),
-      _ref: 'import-origin-rootless'
-    },
-    post: {
-      _key: uuidv4(),
-      _ref: 'import-post-char'
-    },
-    edges: [
-      { _ref: 'import-edge-grace', _key: uuidv4() },
-      { _ref: 'import-edge-iron', _key: uuidv4() },
-      { _ref: 'import-edge-teeth', _key: uuidv4() }
-    ],
-    languages: [],
-    mires: [''],
-    drives: ['Help others'],
-    resources: [],
-    aspects: [],
-    skills: []
+    return new Response('success', { status: 500, statusText: upsertError.message });
   }
-
-  try {
-    await savePlayerCharacter(characterToSave);
-  } catch (saveError) {
-    return new Response(JSON.stringify({
-      status: 500,
-      message: saveError
-    }));
-  }
-
-  return response;
 }

@@ -202,11 +202,30 @@ export type PlayerCharacterV2 = {
     _key: string;
   }>;
   aspects?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
+    name?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    type?: "companion" | "gear" | "trait";
+    isComplex?: boolean;
+    trackLength?: number;
+    currentTrack?: Array<number>;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "characterAspect";
   }>;
   majorMilestones?: Array<string>;
   minorMilestones?: Array<string>;

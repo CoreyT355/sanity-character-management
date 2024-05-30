@@ -1,10 +1,15 @@
 <script>
+  import Toast from '$lib/components/Toast/Toast.svelte';
   import MainNav from '$lib/components/MainNav/MainNav.svelte';
   import { fly } from 'svelte/transition';
   import '../app.pcss';
   import Footer from '$lib/components/Footer/Footer.svelte';
   import { onMount } from 'svelte';
   import { goto, invalidate } from '$app/navigation';
+
+  import { initializeToastStore } from '$lib/components/Toast/store';
+
+  initializeToastStore();
 
   export let data;
 
@@ -28,6 +33,8 @@
     }
   };
 </script>
+
+<Toast />
 
 <MainNav {session} on:signOut={() => handleSignOut()} />
 

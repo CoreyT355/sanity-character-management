@@ -1,6 +1,14 @@
 import { createClient } from '@sanity/client';
 import groq from 'groq';
-import type { Bloodline, Edge, Language, Origin, Post, Skill } from '$lib/types/sanity.types';
+import type {
+  Bloodline,
+  Edge,
+  Language,
+  Origin,
+  PlayerCharacter,
+  Post,
+  Skill
+} from '$lib/types/sanity.types';
 
 import { PUBLIC_SANITY_DATASET, PUBLIC_SANITY_PROJECT_ID } from '$env/static/public';
 import { API_TOKEN } from '$env/static/private';
@@ -106,7 +114,7 @@ export async function getAttribute(name: string, type: string): Promise<Edge | S
 
 export async function getCharactersByUser(userId: string) {
   return await client.fetch(
-    groq`*[_type == 'playerCharacterV2']{
+    groq`*[_type == 'playerCharacterV2' && userId == $userId]{
       _id,
       name,
       player,
@@ -120,16 +128,31 @@ export async function getCharactersByUser(userId: string) {
   );
 }
 
-// v2 query
-// ...,
-// "bloodline": bloodline->{name,_id},
-// "origin": origin->{name,_id},
-// "post": post->{name,_id},
-// "edges": edges|order(name asc)->{name, _id},
-// "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id},
-// "languages": languages[]{ranks, "name": language->name, "_id": language->_id},
-// aspects[]->,
-// "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id},
+// export async function getPlayerCharacterById(id: string) {
+//   const playerCharacter = await client.fetch(
+//     groq`*[_type == 'playerCharacterV2' && _id == $id][0]{
+//       ...,
+//       "bloodline": bloodline->{name,_id},
+//       "origin": origin->{name,_id},
+//       "post": post->{name,_id},
+//       "edges": edges|order(name asc)->{name, _id},
+//       "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
+//       "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
+//       aspects,
+//       salvage[],
+//       specimens[],
+//       whispers[],
+//       charts[],
+//       drives[],
+//       mires[]
+//     }`,
+//     {
+//       id
+//     }
+//   );
+
+//   return playerCharacter;
+// }
 
 export async function getPlayerCharacterById(id: string) {
   const playerCharacter = await client.fetch(
@@ -138,11 +161,14 @@ export async function getPlayerCharacterById(id: string) {
       "bloodline": bloodline->{name,_id},
       "origin": origin->{name,_id},
       "post": post->{name,_id},
-      "edges": edges|order(name asc)->{name, _id},
-      "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
-      "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
-      aspects[]->,
-      "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id, "_key": type._key},
+      edges[],
+      skills[],
+      languages[],
+      aspects,
+      salvage[],
+      specimens[],
+      whispers[],
+      charts[],
       drives[],
       mires[]
     }`,
@@ -164,8 +190,11 @@ export async function getPlayerCharacterByName(name: string) {
       "edges": edges|order(name asc)->{name, _id},
       "skills": skills[]{ranks, "name": skill->name, "_id": skill->_id, "_key": skill._key},
       "languages": languages[]{ranks, "name": language->name, "_id": language->_id, "_key": language._key},
-      aspects[]->,
-      "resources": resources[]{text, tags, "type": type->name, "typeId": type->_id, "_key": type._key},
+      aspects,
+      salvage[],
+      specimens[],
+      whispers[],
+      charts[],
       drives[],
       mires[]
     }`,
@@ -177,10 +206,11 @@ export async function getPlayerCharacterByName(name: string) {
   return playerCharacter;
 }
 
-export async function savePlayerCharacter(playerCharacter: PlayerCharacter) {
+export async function savePlayerCharacter(playerCharacter) {
   console.log('SAVING CHARACTER', playerCharacter);
-  
-  return await client.createOrReplace(playerCharacter)
+
+  client
+    .createOrReplace(playerCharacter)
     .then((response) => {
       console.log(`Created Character ${response._id}`);
     })

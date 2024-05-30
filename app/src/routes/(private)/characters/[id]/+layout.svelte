@@ -3,7 +3,7 @@
   import Icon from '@iconify/svelte';
   import { Drawer, SpeedDial, SpeedDialButton } from 'flowbite-svelte';
   import { fly } from 'svelte/transition';
-  import { isDrawerHidden, isEditing } from '$lib/store/characters';
+  import { currentCharacter, isDrawerHidden, isEditing } from '$lib/store/characters';
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import { page } from '$app/stores';
@@ -15,17 +15,10 @@
   }
 
   const handleSave = async () => {
-    // savePlayerCharacter(data.characterFromSanity)
-    //   .then(() => {
-    //     isEditing.set(false);
-    //   })
-    //   .catch((err) => {
-    //     console.log('ERROR', err);
-    //   });
     const response = await fetch('/api/characters', {
       method: 'POST',
       body: JSON.stringify({
-        character: data.characterFromSanity
+        character: $currentCharacter
       })
     });
     const returnJson = await response.json();
@@ -101,8 +94,11 @@
     <!-- <SpeedDialButton disabled name="Print">
       <Icon icon="ph:printer-light" class="w-8 h-8" />
     </SpeedDialButton> -->
-    <SpeedDialButton disabled={!$isEditing} name="Save" on:click={() => handleSave()}>
+    <SpeedDialButton name="Save" disabled={!$isEditing} form="characterForm" type="submit">
       <Icon icon="ph:floppy-disk-back-light" class="h-8 w-8" />
+    </SpeedDialButton>
+    <SpeedDialButton name="Cancel" disabled={!$isEditing} on:click={() => isEditing.set(false)}>
+      <Icon icon="ph:x-light" class="h-8 w-8" />
     </SpeedDialButton>
     <SpeedDialButton name="Edit" on:click={() => isEditing.set(true)}>
       <Icon icon="ph:pencil-light" class="h-8 w-8" />

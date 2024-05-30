@@ -26,6 +26,7 @@
 <button
   {disabled}
   on:click={() => handleClick()}
+  type="button"
   class={cn(
     trackMarkerVariants({ variant }),
     'h-7 w-7 rounded-full p-[2px]',

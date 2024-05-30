@@ -5,8 +5,6 @@
   export let href: string = '';
   export let label: string;
 
-  let showEdit = false;
-
   const sectionHeaderBaseClass =
     'corner-cut uppercase overflow-hidden p-2 text-center h-min dark:text-white text-white';
 
@@ -31,11 +29,7 @@
     {label}
   </a>
 {:else}
-  <div
-    class={sectionHeaderClass}
-    on:mouseenter={() => (showEdit = true)}
-    on:mouseleave={() => (showEdit = false)}
-  >
+  <div class={sectionHeaderClass}>
     <span>{label}</span>
   </div>
 {/if}

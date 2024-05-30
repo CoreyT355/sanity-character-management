@@ -57,8 +57,33 @@ export default defineType({
       name: 'edges',
       title: 'Edges',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'edge'}]}],
-      validation: (rule) => rule.max(3),
+      of: [
+        {
+          type: 'object',
+          preview: {
+            select: {
+              title: 'edge.name',
+            },
+          },
+          fields: [
+            {
+              name: 'edge',
+              title: 'Edge',
+              type: 'reference',
+              to: [{type: 'edge'}],
+              options: {
+                disableNew: true,
+              },
+            },
+            {
+              name: 'ranks',
+              title: 'Ranks',
+              type: 'number',
+              validation: (rule) => rule.max(1),
+            },
+          ],
+        },
+      ]
     }),
     defineField({
       name: 'skills',
@@ -127,8 +152,8 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'resources',
-      title: 'Resources',
+      name: 'salvage',
+      title: 'Salvage',
       type: 'array',
       of: [
         {
@@ -136,7 +161,6 @@ export default defineType({
           preview: {
             select: {
               title: 'text',
-              subtitle: 'type.name',
             },
           },
           fields: [
@@ -151,14 +175,89 @@ export default defineType({
               type: 'array',
               of: [{type: 'string'}],
             },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'specimens',
+      title: 'Specimens',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          preview: {
+            select: {
+              title: 'text',
+            },
+          },
+          fields: [
             {
-              name: 'type',
-              title: 'Type',
-              type: 'reference',
-              to: [{type: 'resourceType'}],
-              options: {
-                disableNew: true,
-              },
+              name: 'text',
+              title: 'Text',
+              type: 'string',
+            },
+            {
+              name: 'tags',
+              title: 'Tags',
+              type: 'array',
+              of: [{type: 'string'}],
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'whispers',
+      title: 'Whispers',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          preview: {
+            select: {
+              title: 'text',
+            },
+          },
+          fields: [
+            {
+              name: 'text',
+              title: 'Text',
+              type: 'string',
+            },
+            {
+              name: 'tags',
+              title: 'Tags',
+              type: 'array',
+              of: [{type: 'string'}],
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'charts',
+      title: 'Charts',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          preview: {
+            select: {
+              title: 'text',
+            },
+          },
+          fields: [
+            {
+              name: 'text',
+              title: 'Text',
+              type: 'string',
+            },
+            {
+              name: 'tags',
+              title: 'Tags',
+              type: 'array',
+              of: [{type: 'string'}],
             },
           ],
         },
@@ -202,7 +301,59 @@ export default defineType({
       name: 'aspects',
       title: 'Aspects',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'characterAspect'}]}],
+      of: [
+        {
+          type: 'object',
+          preview: {
+            select: {
+              title: 'name',
+            },
+          },
+          fields: [
+            {
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+            },
+            {
+              name: 'description',
+              title: 'Description',
+              type: 'array',
+              of: [{type: 'block'}],
+            },
+            {
+              name: 'type',
+              title: 'Type',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Companion', value: 'companion'},
+                  {title: 'Gear', value: 'gear'},
+                  {title: 'Trait', value: 'trait'},
+                ],
+                layout: 'radio',
+              },
+            },
+            {
+              name: 'isComplex',
+              title: 'Complex Track?',
+              type: 'boolean',
+              initialValue: false,
+            },
+            {
+              name: 'trackLength',
+              title: 'Track Length',
+              type: 'number',
+            },
+            {
+              name: 'currentTrack',
+              title: 'Current Track',
+              type: 'array',
+              of: [{type: 'number'}],
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'majorMilestones',

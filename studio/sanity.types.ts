@@ -159,11 +159,14 @@ export type PlayerCharacterV2 = {
     [internalGroqTypeReferenceTo]?: "post";
   };
   edges?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
+    edge?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "edge";
+    };
+    ranks?: number;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "edge";
   }>;
   skills?: Array<{
     skill?: {
@@ -185,15 +188,24 @@ export type PlayerCharacterV2 = {
     ranks?: number;
     _key: string;
   }>;
-  resources?: Array<{
+  salvage?: Array<{
     text?: string;
     tags?: Array<string>;
-    type?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "resourceType";
-    };
+    _key: string;
+  }>;
+  specimens?: Array<{
+    text?: string;
+    tags?: Array<string>;
+    _key: string;
+  }>;
+  whispers?: Array<{
+    text?: string;
+    tags?: Array<string>;
+    _key: string;
+  }>;
+  charts?: Array<{
+    text?: string;
+    tags?: Array<string>;
     _key: string;
   }>;
   drives?: Array<string>;
@@ -203,11 +215,30 @@ export type PlayerCharacterV2 = {
     _key: string;
   }>;
   aspects?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
+    name?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    type?: "companion" | "gear" | "trait";
+    isComplex?: boolean;
+    trackLength?: number;
+    currentTrack?: Array<number>;
     _key: string;
-    [internalGroqTypeReferenceTo]?: "characterAspect";
   }>;
   majorMilestones?: Array<string>;
   minorMilestones?: Array<string>;
