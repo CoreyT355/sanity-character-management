@@ -16,7 +16,7 @@
 </script>
 
 <div class="flex flex-row justify-between gap-4">
-  <input use:popup={trackTooltip} {disabled} name={`${name}-text`} bind:value={description} placeholder="Enter a Mire..." />
+  <input class="input" use:popup={trackTooltip} {disabled} name={`${name}-text`} bind:value={description} placeholder="Enter a Mire..." />
   {#if disabled}
     <div data-popup={`tooltip-${name}`}>{description}</div>
   {/if}

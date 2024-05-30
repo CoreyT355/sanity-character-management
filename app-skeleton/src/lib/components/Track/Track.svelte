@@ -30,6 +30,9 @@
       </div>
     {/if}
   {/each}
+  <div class="flex flex-col">
+    <div class="bg-white w-3 h-[2px]"></div>
+  </div>
   <button
     type="button"
     {disabled}
@@ -38,6 +41,6 @@
     class="btn-icon btn-icon-sm variant-filled"
     on:click={() => handleResetClick()}
   >
-    <Icon icon="ph:arrow-counter-clockwise" class="w-4 h-4" />
+    <Icon icon="ph:arrow-counter-clockwise" class="w-5 h-5" />
   </button>
 </div>

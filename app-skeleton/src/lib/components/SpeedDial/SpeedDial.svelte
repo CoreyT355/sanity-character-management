@@ -15,7 +15,7 @@
   };
 </script>
 
-<div class="fixed end-6 bottom-6 group">
+<div class="fixed end-6 bottom-16 group">
   <ul data-popup="speedDialPopup" class="space-y-2">
     <li>
       <button class="btn-icon variant-filled" name="Help - How to Play" on:click={() => dispatch('open-help')}>

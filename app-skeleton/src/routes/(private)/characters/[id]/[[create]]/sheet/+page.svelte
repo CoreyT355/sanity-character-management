@@ -110,6 +110,7 @@
         <div class="flex flex-col gap-2">
           {#each $form.drives as drive, i}
             <input
+              class="input"
               name="drive"
               disabled={!$isEditing}
               bind:value={drive}
@@ -158,19 +159,19 @@
       <SheetCard class="w-full" label="Background">
         <div class="grid grid-cols-2 gap-x-6 gap-y-2">
           <div class="flex h-10 flex-row items-center gap-4">
-            <label class="label">
-              <span class="w-24 text-base">Name</span>
-              <input
-                name="name"
-                disabled={!$isEditing}
-                placeholder="Enter your character's name"
-                bind:value={$form.name}
-              />
-            </label>
+            <span class="text-base">Name</span>
+            <input
+              class="input"
+              name="name"
+              disabled={!$isEditing}
+              placeholder="Enter your character's name"
+              bind:value={$form.name}
+            />
           </div>
           <div class="flex h-10 flex-row items-center gap-4">
             <span class="w-24 text-base">Bloodline</span>
             <select
+              class="select"
               name="bloodline"
               disabled={!$isEditing}
               placeholder="Select a Bloodline..."
@@ -182,19 +183,19 @@
             </select>
           </div>
           <div class="flex flex-row items-center justify-between gap-4">
-            <label class="label">
-              <span class="w-24 text-base">Player</span>
+            <span class="text-base">Player</span>
               <input
+                class="input"
                 name="player"
                 disabled={!$isEditing}
                 placeholder="Enter your name"
                 bind:value={$form.player}
               />
-            </label>
           </div>
           <div class="flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Origin</span>
             <select
+              class="select"
               name="origin"
               disabled={!$isEditing}
               placeholder="Select a Origin..."
@@ -208,6 +209,7 @@
           <div class="col-start-2 flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Post</span>
             <select
+              class="select"
               name="post"
               disabled={!$isEditing}
               placeholder="Select a Post..."
@@ -226,7 +228,12 @@
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
               {#each $form.salvage as salvage, i}
-                <input name={`salvage-${i}`} disabled={!$isEditing} bind:value={salvage.text} />
+                <input
+                  class="input"
+                  name={`salvage-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={salvage.text}
+                />
                 {#if !$isEditing}
                   <!-- <Tooltip>{salvage.text}</Tooltip> -->
                 {/if}
@@ -236,7 +243,12 @@
           <SheetCard class="h-full w-full" label="Specimens">
             <div class="space-y-3">
               {#each $form.specimens as specimen, i}
-                <input name={`specimen-${i}`} disabled={!$isEditing} bind:value={specimen.text} />
+                <input
+                  class="input"
+                  name={`specimen-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={specimen.text}
+                />
                 {#if !$isEditing}
                   <!-- <Tooltip>{specimen.text}</Tooltip> -->
                 {/if}
@@ -248,7 +260,12 @@
           <SheetCard class="h-full w-full" label="Whispers">
             <div class="space-y-3">
               {#each $form.whispers as whisper, i}
-                <input name={`whisper-${i}`} disabled={!$isEditing} bind:value={whisper.text} />
+                <input
+                  class="input"
+                  name={`whisper-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={whisper.text}
+                />
                 {#if !$isEditing}
                   <!-- <Tooltip>{whisper.text}</Tooltip> -->
                 {/if}
@@ -258,7 +275,12 @@
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
               {#each $form.charts as chart, i}
-                <input name={`chart-${i}`} disabled={!$isEditing} bind:value={chart.text} />
+                <input
+                  class="input"
+                  name={`chart-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={chart.text}
+                />
                 {#if !$isEditing}
                   <!-- <Tooltip>{chart.text}</Tooltip> -->
                 {/if}
@@ -268,8 +290,8 @@
         </div>
         {#if $isEditing}
           <div class="flex flex-row gap-4">
-            <input class="w-2/3" placeholder="Resource..." />
-            <select class="w-1/3" placeholder="Resource type...">
+            <input class="w-2/3 input" placeholder="Resource..." />
+            <select class="w-1/3 select" placeholder="Resource type...">
               <option>Salvage</option>
               <option>Specimen</option>
               <option>Whisper</option>
@@ -286,6 +308,7 @@
             {#if $form.majorMilestones}
               {#each $form.majorMilestones as majorMilestone, i}
                 <input
+                  class="input"
                   name={`major-milestone-${i}`}
                   disabled={!$isEditing}
                   bind:value={majorMilestone}
@@ -297,6 +320,7 @@
             {#if $form.minorMilestones}
               {#each $form.minorMilestones as minorMilestone, i}
                 <input
+                  class="input"
                   name={`minor-milestone-${i}`}
                   disabled={!$isEditing}
                   bind:value={minorMilestone}

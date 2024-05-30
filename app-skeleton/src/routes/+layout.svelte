@@ -6,7 +6,7 @@
   import { onMount } from 'svelte';
   import { goto, invalidate } from '$app/navigation';
   import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-  import { initializeStores, storePopup } from '@skeletonlabs/skeleton';
+  import { AppShell, initializeStores, storePopup } from '@skeletonlabs/skeleton';
 
   storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
   
@@ -35,18 +35,22 @@
   };
 </script>
 
-<MainNav {session} on:signOut={() => handleSignOut()} />
-
-{#key data.url}
-  <div
-    class="flex overflow-hidden"
-    in:fly={{ x: -200, duration: 200, delay: 50 }}
-    out:fly={{ x: 200, duration: 200 }}
-  >
-    <div class="h-full w-full">
-      <slot />
-    </div>
-  </div>
-{/key}
-
-<Footer />
+<AppShell>
+  <svelte:fragment slot="header">
+    <MainNav {session} on:signOut={() => handleSignOut()} />
+    </svelte:fragment>
+    {#key data.url}
+      <div
+        class="flex overflow-hidden"
+        in:fly={{ x: -200, duration: 200, delay: 50 }}
+        out:fly={{ x: 200, duration: 200 }}
+      >
+        <div class="h-full w-full">
+          <slot />
+        </div>
+      </div>
+    {/key}
+  <svelte:fragment slot="footer">
+    <Footer />
+  </svelte:fragment>
+</AppShell>

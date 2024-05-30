@@ -19,7 +19,7 @@
   const dispatch = createEventDispatcher();
 </script>
 
-<AppBar>
+<AppBar padding="px-4 py-3" shadow="shadow-md">
   <svelte:fragment slot="lead">
     <div class="mr-2 flex flex-col -space-y-1 uppercase">
       <span class="pl-4 font-light">the</span>
