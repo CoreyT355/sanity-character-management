@@ -28,6 +28,10 @@ export default {
             name: 'hamlindigo',
             enhancements: true,
           },
+          {
+            name: 'wintry',
+            enhancements: true,
+          }
         ],
       },
     }),

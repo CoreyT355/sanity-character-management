@@ -2,10 +2,24 @@
   import Aspect from '$lib/components/Aspect/Aspect.svelte';
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
   import { isEditing } from '$lib/store/characters.js';
+  import { getModalStore, type ModalSettings } from '@skeletonlabs/skeleton';
+
+  const modalStore = getModalStore();
 
   export let data;
 
-  const { aspects } = data;
+  const { aspects, form } = data;
+
+  const addAspectModal: ModalSettings ={
+    type: 'component',
+    title: 'Add New Aspect',
+    component: 'modalAspectForm',
+    meta: { aspectForm: form }
+  };
+
+  const handleAddAspectClick = () => {
+    modalStore.trigger(addAspectModal);
+  };
 </script>
 
 <div class="flex w-full flex-col gap-4">
@@ -22,4 +36,5 @@
       />
     {/each}
   </div>
+  <button class="btn variant-filled-primary w-40 place-self-center" on:click={() => handleAddAspectClick()}>Add Aspect</button>
 </div>

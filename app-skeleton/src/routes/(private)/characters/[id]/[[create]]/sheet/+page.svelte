@@ -5,7 +5,6 @@
   import Mire from '$lib/components/Mire/Mire.svelte';
   import { isEditing } from '$lib/store/characters.js';
   import { beforeNavigate } from '$app/navigation';
-  // import { currentCharacter } from '$lib/store/characters.js';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
   import { enhance } from '$app/forms';
 

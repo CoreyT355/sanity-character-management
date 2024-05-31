@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import MainNav from '$lib/components/MainNav/MainNav.svelte';
   import { fly } from 'svelte/transition';
   import '../app.postcss';
@@ -6,12 +6,17 @@
   import { onMount } from 'svelte';
   import { goto, invalidate } from '$app/navigation';
   import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-  import { AppShell, initializeStores, storePopup } from '@skeletonlabs/skeleton';
+  import { AppShell, Modal, Toast, initializeStores, storePopup, type ModalComponent } from '@skeletonlabs/skeleton';
+  import AspectForm from '$lib/components/Aspect/AspectForm.svelte';
+
+  const modalRegistry: Record<string, ModalComponent> = {
+    modalAspectForm: { ref: AspectForm }
+  };
 
   storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
-  
+
   initializeStores();
-  
+
   export let data;
 
   let { supabase, session } = data;
@@ -35,21 +40,23 @@
   };
 </script>
 
+<Modal components={modalRegistry} />
+<Toast />
 <AppShell>
   <svelte:fragment slot="header">
     <MainNav {session} on:signOut={() => handleSignOut()} />
-    </svelte:fragment>
-    {#key data.url}
-      <div
-        class="flex overflow-hidden"
-        in:fly={{ x: -200, duration: 200, delay: 50 }}
-        out:fly={{ x: 200, duration: 200 }}
-      >
-        <div class="h-full w-full">
-          <slot />
-        </div>
+  </svelte:fragment>
+  {#key data.url}
+    <div
+      class="flex overflow-hidden"
+      in:fly={{ x: -200, duration: 200, delay: 50 }}
+      out:fly={{ x: 200, duration: 200 }}
+    >
+      <div class="h-full w-full">
+        <slot />
       </div>
-    {/key}
+    </div>
+  {/key}
   <svelte:fragment slot="footer">
     <Footer />
   </svelte:fragment>
