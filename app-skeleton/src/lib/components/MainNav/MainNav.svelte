@@ -11,7 +11,13 @@
   const userPopupClick: PopupSettings = {
     event: 'click',
     target: 'userPopup',
-    placement: 'bottom-end'
+    placement: 'bottom-end',
+    middleware: {
+      offset: {
+        mainAxis: 10,
+        crossAxis: -20
+      }
+    }
   };
 
   const dispatch = createEventDispatcher();
@@ -47,12 +53,12 @@
         fontSize={175}
       />
     </span>
-    <div data-popup="userPopup" class="card variant-filled-primary">
+    <div data-popup="userPopup" class="card variant-filled-surface border border-graye-700">
       <dvi class="flex flex-col gap-2 py-2 px-4">
         {#if session}
           <div class="">
             <span class="text-sm font-light">Logged in as:</span>
-            <div>{session.user.email}</div>
+            <div class="font-light">{session.user.email}</div>
           </div>
           <a
             class="rounded hover:underline decoration-green-800 dark:decoration-green-300 decoration-2"
