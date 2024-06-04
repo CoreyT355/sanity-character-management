@@ -1,22 +1,13 @@
 <script lang="ts">
   import { isEditing } from '$lib/store/characters';
   import Icon from '@iconify/svelte';
-  import { getDrawerStore, popup, type PopupSettings } from '@skeletonlabs/skeleton';
   import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
-
-  const drawerStore = getDrawerStore();
-
-  const speedDialPopup: PopupSettings = {
-    event: 'click',
-    target: 'speedDialPopup',
-    placement: 'top'
-  };
 </script>
 
 <div class="fixed end-6 bottom-16 group">
-  <ul data-popup="speedDialPopup" class="space-y-2">
+  <ul class="space-y-3 invisible group-hover:visible mb-3">
     <li>
       <button
         class="btn-icon variant-filled-primary ring hover:ring-blue-500"
@@ -55,7 +46,6 @@
   </ul>
   <button
     class="btn-icon variant-filled-tertiary ring hover:ring-indigo-500"
-    use:popup={speedDialPopup}
   >
     <Icon icon="ph:plus" class="h-8 w-8 hover:rotate-45 transition-all" />
   </button>
