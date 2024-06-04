@@ -5,14 +5,20 @@ import { get } from 'svelte/store';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import type { PageServerLoad } from '../../../$types';
+import { request } from 'http';
+import { supabase } from '$lib/utils/supabase';
 
-export const load = (async () => {
-  const form = await superValidate(get(currentCharacter), zod(characterSheetSchema));
+// export const load = (async ({params, locals: { safeGetSession }}) => {
+//   const session = await safeGetSession();
 
-  return {
-    form
-  };
-}) satisfies PageServerLoad;
+//   const character = get(currentCharacter);
+
+//   const form = await superValidate(character, zod(characterSheetSchema));
+
+//   return {
+//     form
+//   };
+// }) satisfies PageServerLoad;
 
 export const actions: Actions = {
   save: async ({ params, request, locals: { supabase, safeGetSession } }) => {
@@ -20,22 +26,27 @@ export const actions: Actions = {
 
     if (!session) redirect(303, '/auth/login');
 
+    console.log('REQUEST', request);
+    
+
     const form = await superValidate(request, zod(characterSheetSchema));
 
     form.data.id = params.id;
     form.data.user_id = session.user.id;
     form.data.updated_at = new Date().toISOString();
 
-    const { data, error } = await supabase
-      .from('player_character')
-      .upsert(form.data)
-      .select()
-      .single();
+    console.log('TO BE SAVED', form.data);
 
-    if (error) {
-      throw new Error(error.message);
-    } else {
-      return { form };
-    }
+    // const { data, error } = await supabase
+    //   .from('player_character')
+    //   .upsert(form.data)
+    //   .select()
+    //   .single();
+
+    // if (error) {
+    //   throw new Error(error.message);
+    // } else {
+    //   return { form };
+    // }
   }
 };

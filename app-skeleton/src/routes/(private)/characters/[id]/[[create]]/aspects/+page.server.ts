@@ -30,9 +30,10 @@ export const actions: Actions = {
     
     const form = await superValidate(request, zod(aspectSchema));
     
-    console.log('GOT HERE', form.data);
     form.data.player_character_id = params.id;
     form.data.updated_at = new Date().toISOString();
+    
+    console.log('GOT HERE', form.data);
 
     const { data, error } = await supabase
       .from('aspects')

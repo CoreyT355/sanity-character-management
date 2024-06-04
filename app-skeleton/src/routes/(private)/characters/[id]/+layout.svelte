@@ -24,15 +24,15 @@
     rounded: 'rounded-xl'
   };
 
-  const handleSave = async () => {
-    const response = await fetch('/api/characters', {
-      method: 'POST',
-      body: JSON.stringify({
-        character: $currentCharacter
-      })
-    });
-    const returnJson = await response.json();
-  };
+  // const handleSave = async () => {
+  //   const response = await fetch('/api/characters', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       character: $currentCharacter
+  //     })
+  //   });
+  //   const returnJson = await response.json();
+  // };
 </script>
 
 <Drawer>

@@ -1,7 +1,8 @@
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 import type { Edge, Language, Skill } from '$lib/types/sanity.types';
 import { getAttributes, getCharacterOptions } from '$lib/server/sanity';
+import type { Database } from '$lib/types/supabase-types';
 
 const bloodlines = await getCharacterOptions('bloodline');
 const origins = await getCharacterOptions('origin');
@@ -18,7 +19,9 @@ export const load = (async ({ params, locals: { supabase, safeGetSession } }) =>
 
   const { session } = await safeGetSession();
 
-  let playerCharacterSupabase; //: Database['public']['Tables']['player_character']['Row'];
+  if (!session) redirect(303, '/auth/login');
+
+  let playerCharacterSupabase: Database['public']['Tables']['player_character']['Row'];
 
   if (params.create) {
     playerCharacterSupabase = {
@@ -31,7 +34,7 @@ export const load = (async ({ params, locals: { supabase, safeGetSession } }) =>
       languages: {},
       major_milestones: [],
       minor_milestones: [],
-      mires: {},
+      mires: [],
       name: '',
       player: '',
       salvage: [],
@@ -57,6 +60,6 @@ export const load = (async ({ params, locals: { supabase, safeGetSession } }) =>
     origins,
     posts,
     skills,
-    characterFromSanity: playerCharacterSupabase
+    character: playerCharacterSupabase
   };
 }) satisfies LayoutServerLoad;

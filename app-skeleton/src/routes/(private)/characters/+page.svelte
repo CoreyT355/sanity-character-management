@@ -5,7 +5,7 @@
 
   export let data;
 
-  $: console.log('URL', data);
+  // $: console.log('URL', data);
 
   const newCharacterId = uuidv4();
   const { characters } = data ?? [];

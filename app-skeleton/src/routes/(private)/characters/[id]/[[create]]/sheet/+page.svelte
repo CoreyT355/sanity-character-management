@@ -7,6 +7,8 @@
   import { beforeNavigate } from '$app/navigation';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
   import { enhance } from '$app/forms';
+  import ToolTip from '$lib/components/ToolTip/ToolTip.svelte';
+  import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
 
   export let data;
 
@@ -14,14 +16,14 @@
     isEditing.set(false);
   });
 
-  const { bloodlines, edges, languages, origins, posts, skills } = data;
+  const { bloodlines, edges, languages, origins, posts, skills, form: formData } = data;
 
-  const { form } = superForm(data.form, {
+  const { form } = superForm(formData, {
     applyAction: true,
     dataType: 'json'
   });
 
-  $: console.log('CHARACTER FROM STORE', $form);
+  // $: console.log('CHARACTER FROM STORE', $form);
 </script>
 
 <form
@@ -48,10 +50,23 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-2">
             {#each edges as edge}
               <div class="flex flex-row items-center justify-start gap-3">
-                <span class="text-base w-20">
+                <span
+                  class="text-base w-20"
+                  use:popup={{
+                    event: 'hover',
+                    target: `tooltip-${edge._id}`
+                  }}
+                >
                   {edge.displayName}
                 </span>
-                <!-- <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{edge.summary}</Tooltip> -->
+                <ToolTip popupName={`tooltip-${edge._id}`}
+                  ><div class="flex flex-col justify-start gap-2">
+                    <span class="uppercase font-semibold place-self-center">edge</span>
+                    <span class="border-b"></span>
+                    <span class="font-semibold">Name: {edge.displayName}</span>
+                    <span>{edge.description}</span>
+                  </div></ToolTip
+                >
                 <RankInput
                   class="place-self-end"
                   name={edge._id}
@@ -69,8 +84,23 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-2">
             {#each languages as language}
               <div class="flex max-w-72 flex-row items-center justify-start">
-                <span class="capitalize w-32">{language.displayName}</span>
-                <!-- <Tooltip defaultClass="py-2 px-3 max-w-64 z-10">{language.description}</Tooltip> -->
+                <span
+                  class="text-base w-32"
+                  use:popup={{
+                    event: 'hover',
+                    target: `tooltip-${language._id}`
+                  }}
+                >
+                  {language.displayName}
+                </span>
+                <ToolTip popupName={`tooltip-${language._id}`}
+                  ><div class="flex flex-col justify-start gap-2">
+                    <span class="uppercase font-semibold place-self-center">language</span>
+                    <span class="border-b"></span>
+                    <span class="font-semibold">Name: {language.displayName}</span>
+                    <span>{language.description}</span>
+                  </div></ToolTip
+                >
                 <RankInput
                   name={language._id}
                   disabled={!$isEditing}
@@ -88,11 +118,23 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-2">
           {#each skills as skill}
             <div class="flex max-w-64 flex-row items-center justify-start">
-              <span class="capitalize w-24">{skill.name}</span>
-              <!-- <Tooltip defaultClass="py-2 px-3 w-80 z-10 flex flex-col gap-3">
-                <div><span class="text-base font-bold">Description:</span> {skill.description}</div>
-                <div><span class="text-base font-bold">Examples:</span> {skill.exampleUses}</div>
-              </Tooltip> -->
+              <span
+                class="text-base w-32"
+                use:popup={{
+                  event: 'hover',
+                  target: `tooltip-${skill._id}`
+                }}
+              >
+                {skill.displayName}
+              </span>
+              <ToolTip popupName={`tooltip-${skill._id}`}
+                ><div class="flex flex-col justify-start gap-2">
+                  <span class="uppercase font-semibold place-self-center">skill</span>
+                  <span class="border-b"></span>
+                  <span class="font-semibold">Name: {skill.displayName}</span>
+                  <span>{skill.description}</span>
+                </div></ToolTip
+              >
               <RankInput
                 name={skill._id}
                 maxRanks={3}
@@ -114,9 +156,10 @@
               disabled={!$isEditing}
               bind:value={drive}
               placeholder="Enter a Drive..."
+              use:popup={{ event: 'hover', target: `tooltip-drive-${i}` }}
             />
             {#if !$isEditing}
-              <!-- <Tooltip>{drive}</Tooltip> -->
+              <ToolTip popupName={`tooltip-drive-${i}`}>{drive}</ToolTip>
             {/if}
           {:else}
             <span>No Drives Yet</span>
@@ -124,6 +167,7 @@
           {#if $isEditing}
             <button
               class="btn variant-outline-tertiary"
+              type="button"
               on:click={() => ($form.drives = [...$form.drives, ''])}>Add Drive</button
             >
           {/if}
@@ -145,6 +189,7 @@
           {#if $isEditing}
             <button
               class="btn variant-outline-tertiary"
+              type="button"
               on:click={() => ($form.mires = [...$form.mires, { text: '', currentTrack: [0, 0] }])}
               >Add Mire</button
             >
@@ -183,13 +228,13 @@
           </div>
           <div class="flex flex-row items-center justify-between gap-4">
             <span class="text-base">Player</span>
-              <input
-                class="input"
-                name="player"
-                disabled={!$isEditing}
-                placeholder="Enter your name"
-                bind:value={$form.player}
-              />
+            <input
+              class="input"
+              name="player"
+              disabled={!$isEditing}
+              placeholder="Enter your name"
+              bind:value={$form.player}
+            />
           </div>
           <div class="flex flex-row items-center justify-between gap-4">
             <span class="w-24 text-base">Origin</span>
@@ -232,9 +277,23 @@
                   name={`salvage-${i}`}
                   disabled={!$isEditing}
                   bind:value={salvage.text}
+                  use:popup={{ event: 'hover', target: `tooltip-salvage-${i}` }}
                 />
                 {#if !$isEditing}
-                  <!-- <Tooltip>{salvage.text}</Tooltip> -->
+                  <ToolTip popupName={`tooltip-salvage-${i}`}>
+                    <div class="flex flex-col justify-start gap-2">
+                      <span class="uppercase font-semibold place-self-center">salvage</span>
+                      <span class="border-b"></span>
+                      <span class="font-semibold">Name: {salvage.text}</span>
+                      <span
+                        >Tags: {#each salvage.tags as tag}
+                          {tag}
+                        {:else}
+                          <span>none</span>
+                        {/each}</span
+                      >
+                    </div>
+                  </ToolTip>
                 {/if}
               {/each}
             </div>
@@ -247,9 +306,23 @@
                   name={`specimen-${i}`}
                   disabled={!$isEditing}
                   bind:value={specimen.text}
+                  use:popup={{ event: 'hover', target: `tooltip-specimens-${i}` }}
                 />
                 {#if !$isEditing}
-                  <!-- <Tooltip>{specimen.text}</Tooltip> -->
+                  <ToolTip popupName={`tooltip-specimens-${i}`}>
+                    <div class="flex flex-col justify-start gap-2">
+                      <span class="uppercase font-semibold place-self-center">specimens</span>
+                      <span class="border-b"></span>
+                      <span class="font-semibold">Name: {specimen.text}</span>
+                      <span
+                        >Tags: {#each specimen.tags as tag}
+                          {tag}
+                        {:else}
+                          <span>none</span>
+                        {/each}</span
+                      >
+                    </div>
+                  </ToolTip>
                 {/if}
               {/each}
             </div>
@@ -264,9 +337,23 @@
                   name={`whisper-${i}`}
                   disabled={!$isEditing}
                   bind:value={whisper.text}
+                  use:popup={{ event: 'hover', target: `tooltip-whispers-${i}` }}
                 />
                 {#if !$isEditing}
-                  <!-- <Tooltip>{whisper.text}</Tooltip> -->
+                  <ToolTip popupName={`tooltip-whispers-${i}`}>
+                    <div class="flex flex-col justify-start gap-2">
+                      <span class="uppercase font-semibold place-self-center">whispers</span>
+                      <span class="border-b"></span>
+                      <span class="font-semibold">Name: {whisper.text}</span>
+                      <span
+                        >Tags: {#each whisper.tags as tag}
+                          {tag}
+                        {:else}
+                          <span>none</span>
+                        {/each}</span
+                      >
+                    </div>
+                  </ToolTip>
                 {/if}
               {/each}
             </div>
@@ -279,9 +366,23 @@
                   name={`chart-${i}`}
                   disabled={!$isEditing}
                   bind:value={chart.text}
+                  use:popup={{ event: 'hover', target: `tooltip-charts-${i}` }}
                 />
                 {#if !$isEditing}
-                  <!-- <Tooltip>{chart.text}</Tooltip> -->
+                  <ToolTip popupName={`tooltip-charts-${i}`}>
+                    <div class="flex flex-col justify-start gap-2">
+                      <span class="uppercase font-semibold place-self-center">charts</span>
+                      <span class="border-b"></span>
+                      <span class="font-semibold">Name: {chart.text}</span>
+                      <span
+                        >Tags: {#each chart.tags as tag}
+                          {tag}
+                        {:else}
+                          <span>none</span>
+                        {/each}</span
+                      >
+                    </div>
+                  </ToolTip>
                 {/if}
               {/each}
             </div>
