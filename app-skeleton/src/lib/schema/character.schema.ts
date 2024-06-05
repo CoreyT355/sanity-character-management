@@ -61,8 +61,8 @@ const resourceSchema = z.object({
 export const characterSheetSchema = z.object({
   id: z.string().regex(guidRegex).optional(),
   user_id: z.string().regex(guidRegex),
-  name: z.string(),
-  player: z.string(),
+  name: z.string().min(2, { message: 'Must be at least 2 characters long.' }),
+  player: z.string().min(2, { message: 'Must be at least 2 characters long.' }),
   // created_at: z.string(),
   updated_at: z.string(),
   bloodline: z.string(),

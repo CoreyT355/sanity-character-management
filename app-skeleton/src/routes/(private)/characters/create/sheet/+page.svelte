@@ -3,23 +3,18 @@
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
   import RankInput from '$lib/components/RankInput/RankInput.svelte';
   import Mire from '$lib/components/Mire/Mire.svelte';
-  import { currentCharacter, isEditing } from '$lib/store/characters.js';
-  import { beforeNavigate } from '$app/navigation';
+  import { isEditing } from '$lib/store/characters.js';
+  import { beforeNavigate, goto } from '$app/navigation';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
   import ToolTip from '$lib/components/ToolTip/ToolTip.svelte';
-  import {
-    InputChip,
-    getDrawerStore,
-    getModalStore,
-    popup,
-    type ModalSettings,
-    type PopupSettings
-  } from '@skeletonlabs/skeleton';
+  import { getDrawerStore, getModalStore, getToastStore, popup, type ModalSettings } from '@skeletonlabs/skeleton';
+  import { redirect } from '@sveltejs/kit';
 
   export let data;
 
   const drawerStore = getDrawerStore();
   const modalStore = getModalStore();
+  const toastStore = getToastStore();
 
   beforeNavigate(() => {
     isEditing.set(false);
@@ -28,8 +23,21 @@
   const { bloodlines, edges, languages, origins, posts, skills } = data;
 
   const { form, enhance } = superForm(data.form, {
-    applyAction: true,
-    dataType: 'json'
+    dataType: 'json',
+    onResult: ({ result }) => {
+      if (result.status === 200) {
+          toastStore.trigger({
+            message: 'Character saved successfully!',
+            background: 'variant-filled-success'
+          });
+          goto('/characters')
+        } else {
+          toastStore.trigger({
+            message: 'Oh no...Something went wrong.',
+            background: 'variant-filled-error'
+          });
+        }
+    }
   });
 
   $: console.log('CHARACTER FROM STORE', $form);
@@ -42,7 +50,10 @@
       if (!response) {
         modalStore.close();
       }
-      $form[response.type] = [...$form[response.type], { text: response.text, tags: response.tags }];
+      $form[response.type] = [
+        ...$form[response.type],
+        { text: response.text, tags: response.tags }
+      ];
       modalStore.close();
     }
   };
@@ -448,7 +459,7 @@
       <span class="icon-[ph--plus] h-8 w-8 hover:rotate-45 transition-all"></span>
     </button>
   </div>
-  <div>
+  <!-- <div>
     <SuperDebug data={$form} />
-  </div>
+  </div> -->
 </form>
