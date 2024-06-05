@@ -1,11 +1,9 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import { TrackMarker } from '../TrackMarker';
 
   export let trackLength: number;
   export let currentTrack: number[] = Array(trackLength).fill(0);
   export let disabled = true;
-  export let name: string;
 
   const handleTrackClick = (e: CustomEvent, index: number) => {
     currentTrack[index] = e.detail.state;
@@ -17,7 +15,7 @@
 </script>
 
 <div class="flex flex-row items-center">
-  <input type="hidden" name={`${name}-track`} bind:value={currentTrack} />
+  <input type="hidden" bind:value={currentTrack} />
   {#each Array(trackLength) as _, index (index)}
     <TrackMarker
       {disabled}
@@ -38,9 +36,9 @@
     {disabled}
     title="reset track"
     data-testid="reset-button"
-    class="btn-icon btn-icon-sm variant-filled"
+    class="btn-icon btn-icon-sm variant-filled-error"
     on:click={() => handleResetClick()}
   >
-    <Icon icon="ph:arrow-counter-clockwise" class="w-5 h-5" />
+    <span class="icon-[ph--arrow-counter-clockwise] h-5 w-5"></span>
   </button>
 </div>

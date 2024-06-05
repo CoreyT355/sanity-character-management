@@ -2,9 +2,6 @@
   import { applyAction, enhance } from '$app/forms';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
-  import type { PageData } from './$types';
-
-  export const data: PageData;
 
   let loading = false;
 

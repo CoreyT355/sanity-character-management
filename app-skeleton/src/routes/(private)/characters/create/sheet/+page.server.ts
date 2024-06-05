@@ -7,39 +7,34 @@ import { zod } from 'sveltekit-superforms/adapters';
 import type { PageServerLoad } from '../../../$types';
 import { request } from 'http';
 import { supabase } from '$lib/utils/supabase';
+import { v4 as uuidv4 } from 'uuid';
 
-// export const load = (async ({params, locals: { safeGetSession }}) => {
-//   const session = await safeGetSession();
+export const load = (async () => {
+  const form = await superValidate(zod(characterSheetSchema));
 
-//   const character = get(currentCharacter);
-
-//   const form = await superValidate(character, zod(characterSheetSchema));
-
-//   return {
-//     form
-//   };
-// }) satisfies PageServerLoad;
+  return {
+    form
+  };
+}) satisfies PageServerLoad;
 
 export const actions: Actions = {
-  save: async ({ params, request, locals: { supabase, safeGetSession } }) => {
+  save: async ({ request, locals: { supabase, safeGetSession } }) => {
     const { session } = await safeGetSession();
 
     if (!session) redirect(303, '/auth/login');
 
-    console.log('REQUEST', request);
-
-
     const form = await superValidate(request, zod(characterSheetSchema));
+    
+    console.log('TO BE SAVED', form);
 
-    form.data.id = params.id;
+    form.data.id = uuidv4();
     form.data.user_id = session.user.id;
     form.data.updated_at = new Date().toISOString();
 
-    console.log('TO BE SAVED', form.data);
 
     // const { data, error } = await supabase
     //   .from('player_character')
-    //   .upsert(form.data)
+    //   .insert(form.data)
     //   .select()
     //   .single();
 

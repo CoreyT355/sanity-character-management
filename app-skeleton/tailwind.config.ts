@@ -4,6 +4,7 @@ import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import { skeleton } from '@skeletonlabs/tw-plugin'
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import { addDynamicIconSelectors } from '@iconify/tailwind';
 
 export default {
   darkMode: 'class',
@@ -35,5 +36,6 @@ export default {
         ],
       },
     }),
+    addDynamicIconSelectors()
   ],
 } satisfies Config;

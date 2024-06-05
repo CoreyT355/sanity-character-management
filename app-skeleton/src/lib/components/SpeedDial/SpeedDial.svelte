@@ -1,6 +1,5 @@
 <script lang="ts">
   import { isEditing } from '$lib/store/characters';
-  import Icon from '@iconify/svelte';
   import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
@@ -14,18 +13,17 @@
         name="Help - How to Play"
         on:click={() => dispatch('open-help')}
       >
-        <Icon icon="ph:question-mark" class="h-8 w-8" />
+        <span class="icon-[ph--question-mark] h-8 w-8"></span>
       </button>
     </li>
     <li>
       <button
         class="btn-icon variant-filled-primary ring hover:ring-blue-500"
-        name="Save"
         disabled={!$isEditing}
-        form="characterForm"
+        form="createCharacterForm"
         type="submit"
       >
-        <Icon icon="ph:floppy-disk-back-light" class="h-8 w-8" />
+        <span class="icon-[ph--floppy-disk-back-light] h-8 w-8"></span>
       </button>
     </li>
     <li>
@@ -35,18 +33,20 @@
         disabled={!$isEditing}
         on:click={() => isEditing.set(false)}
       >
-        <Icon icon="ph:x-light" class="h-8 w-8" />
+        <span class="icon-[ph--x-light] h-8 w-8"></span>
       </button>
     </li>
     <li>
-      <button class="btn-icon variant-filled-primary ring hover:ring-blue-500" name="Edit" on:click={() => isEditing.set(true)}>
-        <Icon icon="ph:pencil-light" class="h-8 w-8" />
+      <button
+        class="btn-icon variant-filled-primary ring hover:ring-blue-500"
+        name="Edit"
+        on:click={() => isEditing.set(true)}
+      >
+        <span class="icon-[ph--pencil-light] h-8 w-8"></span>
       </button>
     </li>
   </ul>
-  <button
-    class="btn-icon variant-filled-tertiary ring hover:ring-indigo-500"
-  >
-    <Icon icon="ph:plus" class="h-8 w-8 hover:rotate-45 transition-all" />
+  <button class="btn-icon variant-filled-tertiary ring hover:ring-indigo-500">
+    <span class="icon-[ph--plus] h-8 w-8 hover:rotate-45 transition-all"></span>
   </button>
 </div>

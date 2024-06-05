@@ -1,13 +1,8 @@
-<script>
+<script lang="ts">
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
-  import Icon from '@iconify/svelte';
-  import { v4 as uuidv4 } from 'uuid';
 
   export let data;
 
-  // $: console.log('URL', data);
-
-  const newCharacterId = uuidv4();
   const { characters } = data ?? [];
 </script>
 
@@ -15,7 +10,7 @@
   <div class="flex flex-row flex-wrap gap-4">
     {#each characters as character}
       {@const characterLabel = `${character.name} - Player: ${character.player}`}
-      <a href={`/characters/${character.id}/sheet`}>
+      <a href={`/characters/${character.id}/sheet`} title="goto view character">
         <SheetCard color="violet" label={characterLabel} class="w-96">
           <div class="relative grid grid-cols-[200px_1fr] gap-4">
             <div>
@@ -27,15 +22,15 @@
             <div class="flex flex-col gap-6">
               <div class="flex flex-col">
                 <span class="text-lg font-medium">Bloodline:</span>
-                {character.bloodline}
+                {data.bloodlines.find((bloodline) => bloodline._id === character.bloodline)?.name}
               </div>
               <div class="flex flex-col">
                 <span class="text-lg font-medium">Origin:</span>
-                {character.origin}
+                {data.origins.find((origin) => origin._id === character.origin)?.name}
               </div>
               <div class="flex flex-col">
                 <span class="text-lg font-medium">Post:</span>
-                {character.post}
+                {data.posts.find((post) => post._id === character.post)?.name}
               </div>
               <div class="mt-auto flex flex-col">
                 <span class="text-lg font-medium">Player:</span>
@@ -45,8 +40,8 @@
             <div
               class="absolute inset-0 z-10 flex items-center justify-center text-6xl font-semibold text-white opacity-0 duration-300 hover:opacity-80"
             >
-              <div class="rounded-full bg-violet-500 p-2">
-                <Icon icon="ph:share-fat-light" class="h-12 w-12" />
+              <div class="btn-icon btn-icon-xl bg-violet-500">
+                <span class="icon-[ph--share-fat-light] h-8 w-8"></span>
               </div>
             </div>
           </div>
@@ -59,7 +54,7 @@
         </div>
       </div>
     {/each}
-    <a href={`/characters/${newCharacterId}/create/sheet`}>
+    <a href={`/characters/create/sheet`} title="goto create a new character">
       <SheetCard color="success" label="create new character" class="w-96">
         <div class="relative grid grid-cols-[200px_1fr] gap-4">
           <div>
@@ -86,8 +81,8 @@
           <div
             class="absolute inset-0 z-10 flex items-center justify-center text-6xl font-semibold text-white opacity-0 duration-300 hover:opacity-80"
           >
-            <div class="rounded-full bg-green-500 p-2">
-              <Icon icon="ph:plus" class="h-12 w-12" />
+            <div class="btn-icon btn-icon-xl bg-green-500">
+              <span class="icon-[ph--plus] h-8 w-8"></span>
             </div>
           </div>
         </div>

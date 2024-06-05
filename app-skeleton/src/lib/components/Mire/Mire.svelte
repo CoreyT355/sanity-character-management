@@ -21,12 +21,11 @@
     class="input"
     use:popup={trackTooltip}
     {disabled}
-    name={`${name}-text`}
     bind:value={description}
     placeholder="Enter a Mire..."
   />
   {#if disabled}
     <ToolTip popupName={`tooltip-${name}`}>{description}</ToolTip>
   {/if}
-  <Track {name} {disabled} {trackLength} {currentTrack} />
+  <Track {disabled} {trackLength} bind:currentTrack={currentTrack} />
 </div>

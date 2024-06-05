@@ -22,10 +22,11 @@
   };
 
   $: sectionHeaderClass = twMerge(sectionHeaderBaseClass, colorClasses[color], $$props.class);
+  $: anchorSectionHeaderClass= twMerge(sectionHeaderBaseClass, 'hover:underline decoration-2', colorClasses[color], $$props.class);
 </script>
 
 {#if href}
-  <a {href} target="_self" class={sectionHeaderClass}>
+  <a {href} target="_self" class={anchorSectionHeaderClass}>
     {label}
   </a>
 {:else}

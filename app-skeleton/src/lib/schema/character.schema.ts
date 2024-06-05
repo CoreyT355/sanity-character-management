@@ -73,7 +73,7 @@ export const characterSheetSchema = z.object({
   languages: languagesSchema,
   skills: skillsSchema,
   mires: mireSchema.array(),
-  salvage: resourceSchema.array(),
+  salvage: resourceSchema.array().default([]),
   specimens: resourceSchema.array(),
   whispers: resourceSchema.array(),
   charts: resourceSchema.array(),

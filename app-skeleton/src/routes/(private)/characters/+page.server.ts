@@ -6,12 +6,10 @@ export const load = (async ({ locals: { safeGetSession, supabase } }) => {
 
   if (!session) redirect(303, '/auth/account');
 
-  const userId = session.user.id;
-
   const { data: characters } = await supabase
     .from('player_character')
     .select('*')
-    .eq('user_id', userId);
+    .eq('user_id', session.user.id);
 
   return {
     characters

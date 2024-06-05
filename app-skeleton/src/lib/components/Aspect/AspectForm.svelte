@@ -9,8 +9,6 @@
 
   const aspectForm = $modalStore[0].meta.aspectForm;
 
-  console.log('ASPECT FORM', aspectForm);
-
   const { form } = superForm(aspectForm, {
     applyAction: true,
     dataType: 'json'

@@ -8,9 +8,11 @@
   import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
   import { AppShell, Modal, Toast, initializeStores, storePopup, type ModalComponent } from '@skeletonlabs/skeleton';
   import AspectForm from '$lib/components/Aspect/AspectForm.svelte';
+  import ResourceForm from '$lib/components/ResourceForm/ResourceForm.svelte';
 
   const modalRegistry: Record<string, ModalComponent> = {
-    modalAspectForm: { ref: AspectForm }
+    modalAspectForm: { ref: AspectForm },
+    modalResourceForm: { ref: ResourceForm }
   };
 
   storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });

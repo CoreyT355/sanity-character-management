@@ -1,6 +1,6 @@
-import type { Database } from "./supabase-types";
+import type { Tables } from "./supabase-types";
 
-export type PlayerCharacter = Database['public']['Tables']['player_character']['Row'];
+export type PlayerCharacter = Tables<'player_character'>;
 
 export type KeyRef = {
   _ref: string,

@@ -1,7 +1,6 @@
 <script lang="ts">
-  import CharacterSheetNav from '$lib/components/CharacterSheetNav/CharacterSheetNav.svelte';
   import { fly } from 'svelte/transition';
-  import { currentCharacter, isEditing } from '$lib/store/characters';
+  import { isEditing } from '$lib/store/characters';
   import SectionHeader from '$lib/components/SectionHeader/SectionHeader.svelte';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
   import { page } from '$app/stores';
@@ -12,9 +11,7 @@
 
   export let data;
 
-  if ($page.url.searchParams.has('new')) {
-    isEditing.set(true);
-  }
+  isEditing.set(true);
 
   const drawerSettings: DrawerSettings = {
     bgDrawer: 'bg-gray-900 text-white',
@@ -23,16 +20,6 @@
     padding: 'p-2',
     rounded: 'rounded-xl'
   };
-
-  // const handleSave = async () => {
-  //   const response = await fetch('/api/characters', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       character: $currentCharacter
-  //     })
-  //   });
-  //   const returnJson = await response.json();
-  // };
 </script>
 
 <Drawer>
@@ -80,7 +67,23 @@
 </Drawer>
 <div class="p-4">
   <div class="flex justify-center">
-    <CharacterSheetNav />
+    <nav class="flex flex-row justify-center gap-8 p-4 pt-0">
+      <SectionHeader
+        color="info"
+        class="w-32"
+        label="Main"
+      />
+      <SectionHeader
+        color="default"
+        class="w-32"
+        label="Aspects"
+      />
+      <SectionHeader
+        color="default"
+        class="w-32"
+        label="Notes"
+      />
+    </nav>
   </div>
   {#key data.url}
     <div

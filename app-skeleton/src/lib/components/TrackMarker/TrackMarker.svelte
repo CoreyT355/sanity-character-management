@@ -1,6 +1,5 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
-  import Icon from '@iconify/svelte';
   import { cn } from '$lib/utils';
   import { trackMarkerVariants, type Props } from '.';
 
@@ -34,8 +33,8 @@
   )}
 >
   {#if state === 2}
-    <Icon icon="ph:fire-simple-fill" inline class={cn('h-6 w-6 text-red-500')} />
+    <span class="icon-[ph--fire-simple-fill] h-6 w-6 text-red-500"></span>
   {:else if state === 1}
-    <Icon icon="ph:x-light" class={cn('h-6 w-6 text-black')} />
+    <span class="icon-[ph--x-light] h-6 w-6 text-black"></span>
   {/if}
 </button>
