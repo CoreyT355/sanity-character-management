@@ -19,7 +19,7 @@
   const { bloodlines, edges, languages, origins, posts, skills, form: formData } = data;
 
   const { form } = superForm(formData, {
-    applyAction: true,
+    applyAction: false,
     dataType: 'json'
   });
 
@@ -31,6 +31,8 @@
   use:enhance={() => {
     return async ({ result }) => {
       if (result.type === 'success') {
+        console.log('result', result);
+        
         isEditing.set(false);
       } else {
       }
@@ -69,11 +71,9 @@
                 >
                 <RankInput
                   class="place-self-end"
-                  name={edge._id}
                   disabled={!$isEditing}
-                  maxRanks={1}
-                  currentRank={$form.edges[edge._id]}
-                  on:click={(event) => ($form.edges[edge._id] = event.detail)}
+                  maxValue={1}
+                  bind:value={$form.edges[edge._id]}
                 />
               </div>
             {/each}
@@ -102,11 +102,9 @@
                   </div></ToolTip
                 >
                 <RankInput
-                  name={language._id}
                   disabled={!$isEditing}
-                  maxRanks={3}
-                  currentRank={$form.languages[language._id]}
-                  on:click={(event) => ($form.languages[language._id] = event.detail)}
+                  maxValue={3}
+                  bind:value={$form.languages[language._id]}
                 />
               </div>
             {/each}
@@ -135,13 +133,7 @@
                   <span>{skill.description}</span>
                 </div></ToolTip
               >
-              <RankInput
-                name={skill._id}
-                maxRanks={3}
-                disabled={!$isEditing}
-                currentRank={$form.skills[skill._id]}
-                on:click={(event) => ($form.skills[skill._id] = event.detail)}
-              />
+              <RankInput maxValue={3} disabled={!$isEditing} bind:value={$form.skills[skill._id]} />
             </div>
           {/each}
         </div>

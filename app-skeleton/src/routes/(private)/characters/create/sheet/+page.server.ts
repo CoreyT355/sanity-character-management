@@ -25,9 +25,9 @@ export const actions: Actions = {
 
     const form = await superValidate(request, zod(characterSheetSchema));
 
-    if (!form.valid) {
-      return fail(400, { form });
-    }
+    // if (!form.valid) {
+    //   return fail(400, { form });
+    // }
 
     form.data.id = uuidv4();
     form.data.user_id = session.user.id;
@@ -40,9 +40,9 @@ export const actions: Actions = {
       .single();
 
     if (error) {
-      throw new Error(error.message);
+      return message(form, error);
     } else {
-      return message(form, 'Character created!');
+      return { form };
     }
   }
 };

@@ -26,7 +26,7 @@
         action="?/login"
         use:enhance={({ formElement, formData, action, cancel }) => {
           return async ({ result }) => {
-            console.log('result', result);
+            // ('result', result);
             toastStore.trigger(toast);
             await applyAction(result);
           };

@@ -7,8 +7,13 @@
   import { beforeNavigate, goto } from '$app/navigation';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
   import ToolTip from '$lib/components/ToolTip/ToolTip.svelte';
-  import { getDrawerStore, getModalStore, getToastStore, popup, type ModalSettings } from '@skeletonlabs/skeleton';
-  import { redirect } from '@sveltejs/kit';
+  import {
+    getDrawerStore,
+    getModalStore,
+    getToastStore,
+    popup,
+    type ModalSettings
+  } from '@skeletonlabs/skeleton';
 
   export let data;
 
@@ -23,24 +28,25 @@
   const { bloodlines, edges, languages, origins, posts, skills } = data;
 
   const { form, enhance } = superForm(data.form, {
+    applyAction: true,
     dataType: 'json',
-    onResult: ({ result }) => {
-      if (result.status === 200) {
-          toastStore.trigger({
-            message: 'Character saved successfully!',
-            background: 'variant-filled-success'
-          });
-          goto('/characters')
-        } else {
-          toastStore.trigger({
-            message: 'Oh no...Something went wrong.',
-            background: 'variant-filled-error'
-          });
-        }
+    onUpdated: ({ form }) => {
+      if (form.posted) {
+        toastStore.trigger({
+          message: 'Character saved successfully!',
+          background: 'variant-filled-success'
+        });
+        goto(`/characters/${form.data.id}/sheet`);
+      } else {
+        toastStore.trigger({
+          message: 'Oh no...Something went wrong.',
+          background: 'variant-filled-error'
+        });
+      }
     }
   });
 
-  $: console.log('CHARACTER FROM STORE', $form);
+  // $: console.log('CHARACTER FROM STORE', $form);
 
   const modalResourceFormSettings: ModalSettings = {
     title: 'Add a new Resource',
@@ -390,6 +396,7 @@
         </div>
         {#if $isEditing}
           <button
+            type="button"
             class="btn variant-outline-tertiary"
             on:click={() => modalStore.trigger(modalResourceFormSettings)}>Add Resource</button
           >
@@ -459,7 +466,7 @@
       <span class="icon-[ph--plus] h-8 w-8 hover:rotate-45 transition-all"></span>
     </button>
   </div>
-  <!-- <div>
+  <div>
     <SuperDebug data={$form} />
-  </div> -->
+  </div>
 </form>
