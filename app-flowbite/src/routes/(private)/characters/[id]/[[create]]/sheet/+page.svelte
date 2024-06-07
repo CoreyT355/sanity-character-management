@@ -25,7 +25,7 @@
     dataType: 'json'
   });
 
-  $: console.log('CHARACTER FROM STORE', $form);
+  // $: console.log('CHARACTER FROM STORE', $form);
 
   const toastStore = getToastStore();
 

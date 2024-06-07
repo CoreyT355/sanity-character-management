@@ -1,15 +1,23 @@
-<script>
-  import Toast from '$lib/components/Toast/Toast.svelte';
+<script lang="ts">
   import MainNav from '$lib/components/MainNav/MainNav.svelte';
   import { fly } from 'svelte/transition';
-  import '../app.pcss';
+  import '../app.postcss';
   import Footer from '$lib/components/Footer/Footer.svelte';
   import { onMount } from 'svelte';
   import { goto, invalidate } from '$app/navigation';
+  import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+  import { AppShell, Modal, Toast, initializeStores, storePopup, type ModalComponent } from '@skeletonlabs/skeleton';
+  import AspectForm from '$lib/components/Aspect/AspectForm.svelte';
+  import ResourceForm from '$lib/components/ResourceForm/ResourceForm.svelte';
 
-  import { initializeToastStore } from '$lib/components/Toast/store';
+  const modalRegistry: Record<string, ModalComponent> = {
+    modalAspectForm: { ref: AspectForm },
+    modalResourceForm: { ref: ResourceForm }
+  };
 
-  initializeToastStore();
+  storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+
+  initializeStores();
 
   export let data;
 
@@ -34,20 +42,24 @@
   };
 </script>
 
+<Modal components={modalRegistry} />
 <Toast />
-
-<MainNav {session} on:signOut={() => handleSignOut()} />
-
-{#key data.url}
-  <div
-    class="flex overflow-hidden"
-    in:fly={{ x: -200, duration: 200, delay: 50 }}
-    out:fly={{ x: 200, duration: 200 }}
-  >
-    <div class="h-full w-full">
-      <slot />
+<AppShell>
+  <svelte:fragment slot="header">
+    <MainNav {session} on:signOut={() => handleSignOut()} />
+  </svelte:fragment>
+  {#key data.url}
+    <div
+      class="flex overflow-hidden"
+      in:fly={{ x: 200, duration: 200, delay: 100 }}
+      out:fly={{ x: -200, duration: 200 }}
+    >
+      <div class="h-full w-full">
+        <slot />
+      </div>
     </div>
-  </div>
-{/key}
-
-<Footer />
+  {/key}
+  <svelte:fragment slot="footer">
+    <Footer />
+  </svelte:fragment>
+</AppShell>

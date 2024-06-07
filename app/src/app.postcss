@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root [data-theme='hamlindigo'] {
+  --theme-rounded-base: 20px;
+  --theme-rounded-container: 4px;
+}
+
+html,
+body {
+  @apply h-full overflow-hidden;
+}
+
+.corner-cut {
+  clip-path: polygon(
+    0% 16px,
+    16px 0%,
+    100% 0%,
+    100% 0%,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0% 100%,
+    0% 100%
+  );
+}

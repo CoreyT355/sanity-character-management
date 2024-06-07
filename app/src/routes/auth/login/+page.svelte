@@ -1,12 +1,7 @@
 <script lang="ts">
   import { applyAction, enhance } from '$app/forms';
   import SheetCard from '$lib/components/SheetCard/SheetCard.svelte';
-  import { getToastStore } from '$lib/components/Toast/store.js';
-  import type { ToastSettings } from '$lib/components/Toast/types.js';
-  import { Button, Label, Input, Spinner } from 'flowbite-svelte';
-  import type { PageData } from './$types';
-
-  export const data: PageData;
+  import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton';
 
   let loading = false;
 
@@ -14,8 +9,6 @@
 
   const toast: ToastSettings = {
     message: 'Magic link sent. Please check your email (even the spam filter).',
-    position: 'bottom-left',
-    color: 'green',
     hideDismiss: false
   };
 </script>
@@ -33,7 +26,7 @@
         action="?/login"
         use:enhance={({ formElement, formData, action, cancel }) => {
           return async ({ result }) => {
-            console.log('result', result);
+            // ('result', result);
             toastStore.trigger(toast);
             await applyAction(result);
           };
@@ -41,17 +34,19 @@
       >
         <div class="flex flex-col justify-center gap-4">
           <div class="space-y-2">
-            <Label for="email" class="text-base text-black dark:text-white">Email</Label>
-            <Input name="email" type="email" placeholder="Please enter your email address..." />
+            <label class="label">
+              <span>Email</span>
+              <input name="email" type="email" placeholder="Please enter your email address..." />
+            </label>
           </div>
-          <Button color="green" type="submit" class="" disabled={loading}>
+          <button type="submit" class="btn variant-filled-primary" disabled={loading}>
             {#if loading}
-              <Spinner class="me-3" size="4" />
+              <span class="me-3"></span>
             {:else}
               <span class="me-3"></span>
             {/if}
             Send magic link...
-          </Button>
+          </button>
         </div>
       </form>
     </div>
