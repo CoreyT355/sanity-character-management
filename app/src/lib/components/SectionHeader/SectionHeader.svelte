@@ -12,7 +12,7 @@
   export let color: SectionHeaderColor = 'default';
   const colorClasses = {
     default: 'bg-slate-500 border-r border-slate-500',
-    destructive: 'bg-red-500 border-r border-red-500',
+    destructive: 'bg-red-500 border-r border-red-500 ',
     primary: 'bg-primary-500 border-r border-primary-500',
     secondary: 'bg-secondary border-r border-secondary',
     success: 'bg-green-500 border-r border-green-500',
@@ -22,10 +22,11 @@
   };
 
   $: sectionHeaderClass = twMerge(sectionHeaderBaseClass, colorClasses[color], $$props.class);
+  $: anchorSectionHeaderClass= twMerge(sectionHeaderBaseClass, 'hover:underline decoration-2', colorClasses[color], $$props.class);
 </script>
 
 {#if href}
-  <a {href} target="_self" class={sectionHeaderClass}>
+  <a {href} target="_self" class={anchorSectionHeaderClass}>
     {label}
   </a>
 {:else}

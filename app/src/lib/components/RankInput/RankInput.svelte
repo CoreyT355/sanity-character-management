@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import { createEventDispatcher } from 'svelte';
   import { twMerge } from 'tailwind-merge';
 
@@ -16,39 +15,40 @@
     violet: 'dark:text-violet text-violet'
   };
 
-  export let name: string;
-  export let maxRanks = 3;
-  export let currentRank = 0;
+  export let maxValue = 3;
   export let disabled = true;
+  export let value: number;
 
   const dispatch = createEventDispatcher();
 
   const handleRankClick = (rank: number) => {
-    if (rank === 0 && currentRank === 0) {
-      currentRank = 1;
-    } else if (rank === 0 && currentRank > 0) {
-      currentRank = 0;
+    if (rank === 0 && value === 0) {
+      value = 1;
+    } else if (rank === 0 && value > 0) {
+      value = 0;
     } else {
-      currentRank = rank + 1;
+      value = rank + 1;
     }
 
-    dispatch('click', currentRank);
+    dispatch('click', value);
   };
+
+  $: rankInputClasses = twMerge(rankInputBaseClass, $$props.class);
 </script>
 
-<div class={`${rankInputBaseClass} ${$$props.class}`}>
-  <input type="hidden" {name} bind:value={currentRank} />
+<div class={rankInputClasses}>
+  <input type="hidden" bind:value={value} />
   <div class="flex flex-row -space-x-1">
-    {#each { length: maxRanks } as _, i}
+    {#each { length: maxValue } as _, i}
       <button {disabled} on:click|preventDefault={() => handleRankClick(i)}>
-        {#if i + 1 <= currentRank}
-          <Icon icon="ph:circle-fill" class="h-6 w-6" />
+        {#if i + 1 <= value}
+          <span class="icon-[ph--circle-fill] h-6 w-6"></span>
         {:else}
-          <Icon icon="ph:circle-light" class="h-6 w-6" />
+          <span class="icon-[ph--circle-light] h-6 w-6"></span>
         {/if}
       </button>
-      {#if i < maxRanks - 1}
-        <Icon icon="bi:dash-lg" class="h-6 w-4" />
+      {#if i < maxValue - 1}
+        <span class="icon-[bi--dash-lg] h-6 w-4"></span>
       {/if}
     {/each}
   </div>

@@ -9,19 +9,19 @@
 <nav class="flex flex-row justify-center gap-8 p-4 pt-0">
   <SectionHeader
     color={currentPath === '/sheet' ? 'info' : 'default'}
-    class="w-32"
+    class="w-32 hover:underline decoration-2"
     label="Main"
     href={`/characters/${characterId}/sheet`}
   />
   <SectionHeader
     color={currentPath === '/aspects' ? 'info' : 'default'}
-    class="w-32"
+    class="w-32 hover:underline decoration-2"
     label="Aspects"
     href={`/characters/${characterId}/sheet/aspects`}
   />
   <SectionHeader
     color={currentPath === '/notes' ? 'info' : 'default'}
-    class="w-32"
+    class="w-32 hover:underline decoration-2"
     label="Notes"
     href={`/characters/${characterId}/sheet/notes`}
   />

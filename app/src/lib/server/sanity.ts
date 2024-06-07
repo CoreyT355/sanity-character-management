@@ -207,7 +207,7 @@ export async function getPlayerCharacterByName(name: string) {
 }
 
 export async function savePlayerCharacter(playerCharacter) {
-  console.log('SAVING CHARACTER', playerCharacter);
+  // console.log('SAVING CHARACTER', playerCharacter);
 
   client
     .createOrReplace(playerCharacter)

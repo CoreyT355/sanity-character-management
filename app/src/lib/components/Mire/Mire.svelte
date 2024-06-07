@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { Input, Tooltip } from "flowbite-svelte";
-  import Track from "../Track/Track.svelte";
+  import ToolTip from '../ToolTip/ToolTip.svelte';
+  import Track from '../Track/Track.svelte';
+  import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
 
   export let currentTrack: number[];
   export let description: string;
@@ -8,12 +9,23 @@
   export let name: string;
 
   let trackLength: number = 2;
+
+  const trackTooltip: PopupSettings = {
+    event: 'hover',
+    target: `tooltip-${name}`
+  };
 </script>
 
 <div class="flex flex-row justify-between gap-4">
-  <Input {disabled} name={`${name}-text`} bind:value={description} placeholder="Enter a Mire..." />
+  <input
+    class="input"
+    use:popup={trackTooltip}
+    {disabled}
+    bind:value={description}
+    placeholder="Enter a Mire..."
+  />
   {#if disabled}
-    <Tooltip>{description}</Tooltip>
+    <ToolTip popupName={`tooltip-${name}`}>{description}</ToolTip>
   {/if}
-  <Track {name} {disabled} {trackLength} {currentTrack} />
+  <Track {disabled} {trackLength} bind:currentTrack={currentTrack} />
 </div>
