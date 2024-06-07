@@ -6,9 +6,6 @@ import { zod } from "sveltekit-superforms/adapters";
 export const load = async ({ parent, data }) => {
   const form = await superValidate((await parent()).character, zod(characterSheetSchema));
 
-  console.log('LOADED CHAR', form.data);
-  
-
   return {
     form
   };

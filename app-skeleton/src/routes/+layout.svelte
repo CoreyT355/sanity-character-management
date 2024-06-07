@@ -51,8 +51,8 @@
   {#key data.url}
     <div
       class="flex overflow-hidden"
-      in:fly={{ x: -200, duration: 200, delay: 50 }}
-      out:fly={{ x: 200, duration: 200 }}
+      in:fly={{ x: 200, duration: 200, delay: 100 }}
+      out:fly={{ x: -200, duration: 200 }}
     >
       <div class="h-full w-full">
         <slot />

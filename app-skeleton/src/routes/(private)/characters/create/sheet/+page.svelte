@@ -368,12 +368,19 @@
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
               {#each $form.charts as chart, i}
-                <input
-                  class="input"
-                  disabled={!$isEditing}
-                  bind:value={chart.text}
-                  use:popup={{ event: 'hover', target: `tooltip-charts-${i}` }}
-                />
+                <div class="input-group grid-cols-[auto_1fr_auto]">
+                  <input
+                    class="input"
+                    disabled={!$isEditing}
+                    bind:value={chart.text}
+                    use:popup={{ event: 'hover', target: `tooltip-charts-${i}` }}
+                  />
+                  <div class="flex flex-col gap-2">
+                    {#each chart.tags as tag}
+                       <span>{tag}</span>
+                    {/each}
+                  </div>
+                </div>
                 {#if !$isEditing}
                   <ToolTip popupName={`tooltip-charts-${i}`}>
                     <div class="flex flex-col justify-start gap-2">
