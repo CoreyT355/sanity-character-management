@@ -15,13 +15,15 @@
 
 <main class="flex h-screen flex-row justify-center p-4">
   <SheetCard color="info" label="login">
-    <div class="flex flex-col gap-6">
-      <div>
-        <h3>Welcome to The Wildsea Character Manager</h3>
-        <p>To start please login using your email below.</p>
+    <div class="flex flex-col gap-6 w-120">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-xl !font-semibold pb-2">Welcome to The Wildsea Character Manager</h1>
+        <p >To start please login using your email below.</p>
+        <p>We'll send you a link to log in. No passwords to remember, nice and simple.</p>
+        <p class="text-sm font-light">We don't log any information, but we need an account so we can keep track of the characters you make.</p>
       </div>
       <form
-        class="flex w-96 flex-col justify-center"
+        class="flex flex-col justify-center"
         method="POST"
         action="?/login"
         use:enhance={({ formElement, formData, action, cancel }) => {
@@ -35,8 +37,7 @@
         <div class="flex flex-col justify-center gap-4">
           <div class="space-y-2">
             <label class="label">
-              <span>Email</span>
-              <input name="email" type="email" placeholder="Please enter your email address..." />
+              <input class="input" name="email" type="email" placeholder="Please enter your email address..." />
             </label>
           </div>
           <button type="submit" class="btn variant-filled-primary" disabled={loading}>

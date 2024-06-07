@@ -4,7 +4,7 @@ import { redirect, type Actions } from '@sveltejs/kit';
 export const load = (async ({ locals: { safeGetSession, supabase } }) => {
   const { session } = await safeGetSession();
 
-  if (!session) redirect(303, '/auth/account');
+  if (!session) redirect(303, '/auth/login');
 
   const { data: characters } = await supabase
     .from('player_character')
