@@ -4,68 +4,46 @@
   import RankInput from '$lib/components/RankInput/RankInput.svelte';
   import Mire from '$lib/components/Mire/Mire.svelte';
   import { isEditing } from '$lib/store/characters.js';
-  import { beforeNavigate, goto } from '$app/navigation';
+  import { beforeNavigate } from '$app/navigation';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
+  import { enhance } from '$app/forms';
   import ToolTip from '$lib/components/ToolTip/ToolTip.svelte';
-  import {
-    getDrawerStore,
-    getModalStore,
-    getToastStore,
-    popup,
-    type ModalSettings
-  } from '@skeletonlabs/skeleton';
+  import { getDrawerStore, popup, type PopupSettings } from '@skeletonlabs/skeleton';
 
   export let data;
 
   const drawerStore = getDrawerStore();
-  const modalStore = getModalStore();
-  const toastStore = getToastStore();
 
   beforeNavigate(() => {
     isEditing.set(false);
   });
 
-  const { bloodlines, edges, languages, origins, posts, skills } = data;
+  const { bloodlines, edges, languages, origins, posts, skills, form: formData } = data;
 
-  const { form, enhance } = superForm(data.form, {
-    applyAction: true,
-    dataType: 'json',
-    onUpdated: ({ form }) => {
-      if (form.posted) {
-        toastStore.trigger({
-          message: 'Character saved successfully!',
-          background: 'variant-filled-success'
-        });
-        goto(`/characters/${form.data.id}/sheet`);
-      } else {
-        toastStore.trigger({
-          message: 'Oh no...Something went wrong.',
-          background: 'variant-filled-error'
-        });
-      }
-    }
+  const { form } = superForm(formData, {
+    applyAction: false,
+    dataType: 'json'
   });
 
   // $: console.log('CHARACTER FROM STORE', $form);
-
-  const modalResourceFormSettings: ModalSettings = {
-    title: 'Add a new Resource',
-    type: 'component',
-    component: 'modalResourceForm',
-    response(response) {
-      if (!response) {
-        modalStore.close();
-      }
-      $form[response.type] = [
-        ...$form[response.type],
-        { text: response.text, tags: response.tags }
-      ];
-      modalStore.close();
-    }
-  };
 </script>
 
-<form use:enhance method="POST" action="?/save" class="flex h-full w-full flex-col gap-3">
+<form
+  id="characterForm"
+  use:enhance={() => {
+    return async ({ result }) => {
+      if (result.type === 'success') {
+        console.log('result', result);
+
+        isEditing.set(false);
+      } else {
+      }
+    };
+  }}
+  method="post"
+  action="?/save"
+  class="flex h-full w-full flex-col gap-3"
+>
   <div class="flex flex-col gap-3 md:flex-row">
     <!-- Left Column -->
     <div class="h-full w-full space-y-4 lg:w-5/12">
@@ -73,9 +51,9 @@
       <div class="grid grid-cols-1 gap-4 xl:grid-cols-[auto_1fr]">
         <!-- Edges -->
         <SheetCard color="success" label="Edges">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-1">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-2">
             {#each edges as edge}
-              <div class="flex flex-row justify-start gap-3">
+              <div class="flex flex-row items-center justify-start gap-3">
                 <span
                   class="text-base w-20"
                   use:popup={{
@@ -107,7 +85,7 @@
         <SheetCard color="info" label="Languages">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 lg:grid-cols-2">
             {#each languages as language}
-              <div class="flex max-w-72 flex-row justify-start">
+              <div class="flex max-w-72 flex-row items-center justify-start">
                 <span
                   class="text-base w-32"
                   use:popup={{
@@ -139,7 +117,7 @@
       <SheetCard class="w-full" color="violet" label="Skills">
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-2">
           {#each skills as skill}
-            <div class="flex max-w-64 flex-row justify-start">
+            <div class="flex max-w-64 flex-row items-center justify-start">
               <span
                 class="text-base w-32"
                 use:popup={{
@@ -168,6 +146,7 @@
           {#each $form.drives as drive, i}
             <input
               class="input"
+              name="drive"
               disabled={!$isEditing}
               bind:value={drive}
               placeholder="Enter a Drive..."
@@ -195,8 +174,8 @@
             <Mire
               name={`mire-${i}`}
               disabled={!$isEditing}
-              bind:description={$form.mires[i].text}
-              bind:currentTrack={$form.mires[i].currentTrack}
+              description={mire.text}
+              currentTrack={mire.currentTrack || [0, 0]}
             />
           {:else}
             <span>No Mires Yet</span>
@@ -221,6 +200,7 @@
             <span class="text-base">Name</span>
             <input
               class="input"
+              name="name"
               disabled={!$isEditing}
               placeholder="Enter your character's name"
               bind:value={$form.name}
@@ -230,11 +210,11 @@
             <span class="w-24 text-base">Bloodline</span>
             <select
               class="select"
+              name="bloodline"
               disabled={!$isEditing}
               placeholder="Select a Bloodline..."
               bind:value={$form.bloodline}
             >
-              <option value="">Select a Bloodline...</option>
               {#each bloodlines as bloodline}
                 <option value={bloodline._id}>{bloodline.name}</option>
               {/each}
@@ -244,6 +224,7 @@
             <span class="text-base">Player</span>
             <input
               class="input"
+              name="player"
               disabled={!$isEditing}
               placeholder="Enter your name"
               bind:value={$form.player}
@@ -253,11 +234,11 @@
             <span class="w-24 text-base">Origin</span>
             <select
               class="select"
+              name="origin"
               disabled={!$isEditing}
               placeholder="Select a Origin..."
               bind:value={$form.origin}
             >
-              <option value="">Select an Origin...</option>
               {#each origins as origin}
                 <option value={origin._id}>{origin.name}</option>
               {/each}
@@ -267,11 +248,11 @@
             <span class="w-24 text-base">Post</span>
             <select
               class="select"
+              name="post"
               disabled={!$isEditing}
               placeholder="Select a Post..."
               bind:value={$form.post}
             >
-              <option value="">Select a Post...</option>
               {#each posts as post}
                 <option value={post._id}>{post.name}</option>
               {/each}
@@ -285,12 +266,20 @@
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
               {#each $form.salvage as salvage, i}
-                <input
-                  class="input"
-                  disabled={!$isEditing}
-                  bind:value={salvage.text}
-                  use:popup={{ event: 'hover', target: `tooltip-salvage-${i}` }}
-                />
+                <div class="input-group grid-cols-[1fr_auto]">
+                  <input
+                    class="input"
+                    name={`salvage-${i}`}
+                    disabled={!$isEditing}
+                    bind:value={salvage.text}
+                    use:popup={{ event: 'hover', target: `tooltip-salvage-${i}` }}
+                  />
+                  <div class="flex flex-row gap-2 py-2">
+                    {#each salvage.tags as tag}
+                      <span class="badge variant-filled-secondary">{tag}</span>
+                    {/each}
+                  </div>
+                </div>
                 {#if !$isEditing}
                   <ToolTip popupName={`tooltip-salvage-${i}`}>
                     <div class="flex flex-col justify-start gap-2">
@@ -313,12 +302,20 @@
           <SheetCard class="h-full w-full" label="Specimens">
             <div class="space-y-3">
               {#each $form.specimens as specimen, i}
-                <input
-                  class="input"
-                  disabled={!$isEditing}
-                  bind:value={specimen.text}
-                  use:popup={{ event: 'hover', target: `tooltip-specimens-${i}` }}
-                />
+                <div class="input-group grid-cols-[1fr_auto]">
+                  <input
+                    class="input"
+                    name={`specimen-${i}`}
+                    disabled={!$isEditing}
+                    bind:value={specimen.text}
+                    use:popup={{ event: 'hover', target: `tooltip-specimens-${i}` }}
+                  />
+                  <div class="flex flex-row gap-2 py-2">
+                    {#each specimen.tags as tag}
+                      <span class="badge variant-filled-secondary">{tag}</span>
+                    {/each}
+                  </div>
+                </div>
                 {#if !$isEditing}
                   <ToolTip popupName={`tooltip-specimens-${i}`}>
                     <div class="flex flex-col justify-start gap-2">
@@ -343,12 +340,20 @@
           <SheetCard class="h-full w-full" label="Whispers">
             <div class="space-y-3">
               {#each $form.whispers as whisper, i}
-                <input
-                  class="input"
-                  disabled={!$isEditing}
-                  bind:value={whisper.text}
-                  use:popup={{ event: 'hover', target: `tooltip-whispers-${i}` }}
-                />
+                <dic class="input-group grid-cols-[1fr_auto]">
+                  <input
+                    class="input"
+                    name={`whisper-${i}`}
+                    disabled={!$isEditing}
+                    bind:value={whisper.text}
+                    use:popup={{ event: 'hover', target: `tooltip-whispers-${i}` }}
+                  />
+                  <div class="flex flex-row gap-2 py-2">
+                    {#each whisper.tags as tag}
+                      <span class="badge variant-filled-secondary">{tag}</span>
+                    {/each}
+                  </div>
+                </dic>
                 {#if !$isEditing}
                   <ToolTip popupName={`tooltip-whispers-${i}`}>
                     <div class="flex flex-col justify-start gap-2">
@@ -371,16 +376,16 @@
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
               {#each $form.charts as chart, i}
-                <div class="input-group grid-cols-[auto_1fr_auto]">
+                <div class="input-group grid-cols-[1fr_auto]">
                   <input
                     class="input"
                     disabled={!$isEditing}
                     bind:value={chart.text}
                     use:popup={{ event: 'hover', target: `tooltip-charts-${i}` }}
                   />
-                  <div class="flex flex-col gap-2">
+                  <div class="flex flex-row gap-2 py-2">
                     {#each chart.tags as tag}
-                      <span>{tag}</span>
+                      <span class="badge variant-filled-secondary">{tag}</span>
                     {/each}
                   </div>
                 </div>
@@ -405,11 +410,16 @@
           </SheetCard>
         </div>
         {#if $isEditing}
-          <button
-            type="button"
-            class="btn variant-outline-tertiary"
-            on:click={() => modalStore.trigger(modalResourceFormSettings)}>Add Resource</button
-          >
+          <div class="flex flex-row gap-4">
+            <input class="w-2/3 input" placeholder="Resource..." />
+            <select class="w-1/3 select" placeholder="Resource type...">
+              <option>Salvage</option>
+              <option>Specimen</option>
+              <option>Whisper</option>
+              <option>Chart</option>
+            </select>
+          </div>
+          <button class="btn variant-outline-tertiary">Add Resource</button>
         {/if}
       </div>
       <div class="mt-10 flex flex-col gap-3">
@@ -418,14 +428,24 @@
           <SheetCard class="h-full w-full" label="Major">
             {#if $form.majorMilestones}
               {#each $form.majorMilestones as majorMilestone, i}
-                <input class="input" disabled={!$isEditing} bind:value={majorMilestone} />
+                <input
+                  class="input"
+                  name={`major-milestone-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={majorMilestone}
+                />
               {/each}
             {/if}
           </SheetCard>
           <SheetCard class="h-full w-full" label="Minor">
             {#if $form.minorMilestones}
               {#each $form.minorMilestones as minorMilestone, i}
-                <input class="input" disabled={!$isEditing} bind:value={minorMilestone} />
+                <input
+                  class="input"
+                  name={`minor-milestone-${i}`}
+                  disabled={!$isEditing}
+                  bind:value={minorMilestone}
+                />
               {/each}
             {/if}
           </SheetCard>

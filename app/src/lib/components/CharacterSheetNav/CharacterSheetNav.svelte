@@ -17,12 +17,12 @@
     color={currentPath === '/aspects' ? 'info' : 'default'}
     class="w-32 hover:underline decoration-2"
     label="Aspects"
-    href={`/characters/${characterId}/sheet/aspects`}
+    href={`/characters/${characterId}/aspects`}
   />
   <SectionHeader
     color={currentPath === '/notes' ? 'info' : 'default'}
     class="w-32 hover:underline decoration-2"
     label="Notes"
-    href={`/characters/${characterId}/sheet/notes`}
+    href={`/characters/${characterId}/notes`}
   />
 </nav>

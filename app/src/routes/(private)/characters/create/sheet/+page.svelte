@@ -234,6 +234,7 @@
               placeholder="Select a Bloodline..."
               bind:value={$form.bloodline}
             >
+              <option value="">Select a Bloodline...</option>
               {#each bloodlines as bloodline}
                 <option value={bloodline._id}>{bloodline.name}</option>
               {/each}
@@ -256,6 +257,7 @@
               placeholder="Select a Origin..."
               bind:value={$form.origin}
             >
+              <option value="">Select an Origin...</option>
               {#each origins as origin}
                 <option value={origin._id}>{origin.name}</option>
               {/each}
@@ -269,6 +271,7 @@
               placeholder="Select a Post..."
               bind:value={$form.post}
             >
+              <option value="">Select a Post...</option>
               {#each posts as post}
                 <option value={post._id}>{post.name}</option>
               {/each}
@@ -377,7 +380,7 @@
                   />
                   <div class="flex flex-col gap-2">
                     {#each chart.tags as tag}
-                       <span>{tag}</span>
+                      <span>{tag}</span>
                     {/each}
                   </div>
                 </div>
@@ -434,6 +437,7 @@
     <ul class="space-y-3 invisible group-hover:visible mb-3">
       <li>
         <button
+          type="button"
           class="btn-icon variant-filled-primary ring hover:ring-blue-500"
           name="Help - How to Play"
           on:click={() => drawerStore.open()}
@@ -451,6 +455,7 @@
       </li>
       <li>
         <button
+          type="button"
           class="btn-icon variant-filled-primary ring hover:ring-blue-500"
           name="Cancel"
           disabled={!$isEditing}
@@ -461,6 +466,7 @@
       </li>
       <li>
         <button
+          type="button"
           class="btn-icon variant-filled-primary ring hover:ring-blue-500"
           name="Edit"
           on:click={() => isEditing.set(true)}
@@ -473,7 +479,7 @@
       <span class="icon-[ph--plus] h-8 w-8 hover:rotate-45 transition-all"></span>
     </button>
   </div>
-  <div>
+  <!-- <div>
     <SuperDebug data={$form} />
-  </div>
+  </div> -->
 </form>
