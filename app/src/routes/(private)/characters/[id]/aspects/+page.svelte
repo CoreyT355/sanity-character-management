@@ -17,14 +17,30 @@
 
   export let data;
 
-  const { aspects, form, supabase } = data;
+  let { aspects, form, supabase } = data;
+  $: ({ aspects, form, supabase } = data);
+
+  const refreshAspectsList = async () => {
+    const { data } = await supabase
+      .from('aspects')
+      .select()
+      .eq('player_character_id', $page.params.id);
+    aspectsList.set(data);
+  };
 
   const addAspectModal: ModalSettings = {
     type: 'component',
     title: 'Add New Aspect',
     component: 'modalAspectForm',
-    meta: { aspectForm: form }
+    meta: { aspectForm: form },
+    response(r) {
+      if (r.status === 200) {
+        refreshAspectsList();
+      }
+    }
   };
+
+  // const addAspect = () => {};
 
   const handleAddAspectClick = async () => {
     modalStore.trigger(addAspectModal);
@@ -40,11 +56,7 @@
         message: 'Something went wrong.'
       });
     }
-    const { data } = await supabase
-      .from('aspects')
-      .select()
-      .eq('player_character_id', $page.params.id);
-    aspectsList.set(data);
+    refreshAspectsList();
   };
 
   const handleDeleteAspectClick = async (aspectId: string) => {
@@ -56,6 +68,7 @@
         if (response) {
           deleteAspect(aspectId);
           toastStore.trigger({
+            background: 'variant-filled-success',
             message: 'Aspect deleted successfully.'
           });
         }

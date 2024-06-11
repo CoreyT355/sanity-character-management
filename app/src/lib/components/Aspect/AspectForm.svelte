@@ -1,5 +1,4 @@
 <script>
-  import { enhance } from '$app/forms';
   import { page } from '$app/stores';
   import { getModalStore, getToastStore, SlideToggle } from '@skeletonlabs/skeleton';
   import SuperDebug, { superForm } from 'sveltekit-superforms';
@@ -9,30 +8,30 @@
 
   const aspectForm = $modalStore[0].meta.aspectForm;
 
-  const { form } = superForm(aspectForm, {
+  const { enhance, form } = superForm(aspectForm, {
     applyAction: true,
-    dataType: 'json'
+    dataType: 'json',
+    onUpdated: ({ form }) => {
+      if (form.posted) {
+        toastStore.trigger({
+          message: 'Aspect saved successfully!',
+          background: 'variant-filled-success'
+        });
+      } else {
+        toastStore.trigger({
+          message: 'Oh no...Something went wrong.',
+          background: 'variant-filled-error'
+        });
+      }
+      $modalStore[0].response({ status: 200 });
+      modalStore.close();
+    }
   });
 </script>
 
 <div class="card flex flex-col gap-2 px-6 py-3 w-[500px]">
   <form
-    use:enhance={() => {
-      return async ({ result }) => {
-        if (result.type === 'success') {
-          modalStore.close();
-          toastStore.trigger({
-            message: 'Aspect saved successfully!',
-            background: 'variant-filled-success'
-          });
-        } else {
-          toastStore.trigger({
-            message: 'Something went wrong.',
-            background: 'variant-filled-error'
-          });
-        }
-      };
-    }}
+    use:enhance
     method="post"
     action={`/characters/${$page.params.id}/aspects?/save`}
   >
