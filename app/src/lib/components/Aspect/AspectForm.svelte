@@ -34,7 +34,7 @@
       };
     }}
     method="post"
-    action={`/characters/${$page.params.id}/sheet/aspects?/save`}
+    action={`/characters/${$page.params.id}/aspects?/save`}
   >
     <span class="text-xl font-semibold">Add New Aspect</span>
     <div class="flex flex-col gap-4 border-t border-b py-4 my-3">

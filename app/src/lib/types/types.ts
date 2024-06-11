@@ -1,6 +1,7 @@
 import type { Tables } from "./supabase-types";
 
 export type PlayerCharacter = Tables<'player_character'>;
+export type Aspect = Tables<'aspects'>;
 
 export type KeyRef = {
   _ref: string,
