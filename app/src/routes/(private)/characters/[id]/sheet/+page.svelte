@@ -285,56 +285,74 @@
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
               {#each $form.salvage as salvage, i}
-                <input
-                  class="input"
-                  disabled={!$isEditing}
-                  bind:value={salvage.text}
-                  use:popup={{ event: 'hover', target: `tooltip-salvage-${i}` }}
-                />
-                {#if !$isEditing}
-                  <ToolTip popupName={`tooltip-salvage-${i}`}>
-                    <div class="flex flex-col justify-start gap-2">
-                      <span class="uppercase font-semibold place-self-center">salvage</span>
-                      <span class="border-b"></span>
-                      <span class="font-semibold">Name: {salvage.text}</span>
-                      <span
-                        >Tags: {#each salvage.tags as tag}
-                          {tag}
-                        {:else}
-                          <span>none</span>
-                        {/each}</span
-                      >
-                    </div>
-                  </ToolTip>
-                {/if}
+                <div class="input-group grid-cols-[1fr_auto]">
+                  <input
+                    class="input"
+                    name={`salvage-${i}`}
+                    disabled={!$isEditing}
+                    bind:value={salvage.text}
+                    use:popup={{
+                      event: 'hover',
+                      target: !$isEditing ? `tooltip-salvage-${i}` : ''
+                    }}
+                  />
+                  <div class="flex flex-row gap-2 py-2">
+                    {#each salvage.tags as tag}
+                      <span class="badge variant-filled-secondary">{tag}</span>
+                    {/each}
+                  </div>
+                </div>
+                <ToolTip popupName={`tooltip-salvage-${i}`}>
+                  <div class="flex flex-col justify-start gap-2">
+                    <span class="uppercase font-semibold place-self-center">salvage</span>
+                    <span class="border-b"></span>
+                    <span class="font-semibold">Name: {salvage.text}</span>
+                    <span
+                      >Tags: {#each salvage.tags as tag}
+                        <span class="badge variant-filled-secondary">{tag}</span>
+                      {:else}
+                        <span>none</span>
+                      {/each}</span
+                    >
+                  </div>
+                </ToolTip>
               {/each}
             </div>
           </SheetCard>
           <SheetCard class="h-full w-full" label="Specimens">
             <div class="space-y-3">
               {#each $form.specimens as specimen, i}
-                <input
-                  class="input"
-                  disabled={!$isEditing}
-                  bind:value={specimen.text}
-                  use:popup={{ event: 'hover', target: `tooltip-specimens-${i}` }}
-                />
-                {#if !$isEditing}
-                  <ToolTip popupName={`tooltip-specimens-${i}`}>
-                    <div class="flex flex-col justify-start gap-2">
-                      <span class="uppercase font-semibold place-self-center">specimens</span>
-                      <span class="border-b"></span>
-                      <span class="font-semibold">Name: {specimen.text}</span>
-                      <span
-                        >Tags: {#each specimen.tags as tag}
-                          {tag}
-                        {:else}
-                          <span>none</span>
-                        {/each}</span
-                      >
-                    </div>
-                  </ToolTip>
-                {/if}
+                <div class="input-group grid-cols-[1fr_auto]">
+                  <input
+                    class="input"
+                    name={`specimen-${i}`}
+                    disabled={!$isEditing}
+                    bind:value={specimen.text}
+                    use:popup={{
+                      event: 'hover',
+                      target: !$isEditing ? `tooltip-specimen-${i}` : ''
+                    }}
+                  />
+                  <div class="flex flex-row gap-2 py-2">
+                    {#each specimen.tags as tag}
+                      <span class="badge variant-filled-secondary">{tag}</span>
+                    {/each}
+                  </div>
+                </div>
+                <ToolTip popupName={`tooltip-specimen-${i}`}>
+                  <div class="flex flex-col justify-start gap-2">
+                    <span class="uppercase font-semibold place-self-center">specimens</span>
+                    <span class="border-b"></span>
+                    <span class="font-semibold">Name: {specimen.text}</span>
+                    <span
+                      >Tags: {#each specimen.tags as tag}
+                        <span class="badge variant-filled-secondary">{tag}</span>
+                      {:else}
+                        <span>none</span>
+                      {/each}</span
+                    >
+                  </div>
+                </ToolTip>
               {/each}
             </div>
           </SheetCard>
@@ -343,63 +361,71 @@
           <SheetCard class="h-full w-full" label="Whispers">
             <div class="space-y-3">
               {#each $form.whispers as whisper, i}
-                <input
-                  class="input"
-                  disabled={!$isEditing}
-                  bind:value={whisper.text}
-                  use:popup={{ event: 'hover', target: `tooltip-whispers-${i}` }}
-                />
-                {#if !$isEditing}
-                  <ToolTip popupName={`tooltip-whispers-${i}`}>
-                    <div class="flex flex-col justify-start gap-2">
-                      <span class="uppercase font-semibold place-self-center">whispers</span>
-                      <span class="border-b"></span>
-                      <span class="font-semibold">Name: {whisper.text}</span>
-                      <span
-                        >Tags: {#each whisper.tags as tag}
-                          {tag}
-                        {:else}
-                          <span>none</span>
-                        {/each}</span
-                      >
-                    </div>
-                  </ToolTip>
-                {/if}
+                <div class="input-group grid-cols-[1fr_auto]">
+                  <input
+                    class="input"
+                    name={`whisper-${i}`}
+                    disabled={!$isEditing}
+                    bind:value={whisper.text}
+                    use:popup={{
+                      event: 'hover',
+                      target: !$isEditing ? `tooltip-whisper-${i}` : ''
+                    }}
+                  />
+                  <div class="flex flex-row gap-2 py-2">
+                    {#each whisper.tags as tag}
+                      <span class="badge variant-filled-secondary">{tag}</span>
+                    {/each}
+                  </div>
+                </div>
+                <ToolTip popupName={`tooltip-whisper-${i}`}>
+                  <div class="flex flex-col justify-start gap-2">
+                    <span class="uppercase font-semibold place-self-center">whispers</span>
+                    <span class="border-b"></span>
+                    <span class="font-semibold">Name: {whisper.text}</span>
+                    <span
+                      >Tags: {#each whisper.tags as tag}
+                        <span class="badge variant-filled-secondary">{tag}</span>
+                      {:else}
+                        <span>none</span>
+                      {/each}</span
+                    >
+                  </div>
+                </ToolTip>
               {/each}
             </div>
           </SheetCard>
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
               {#each $form.charts as chart, i}
-                <div class="input-group grid-cols-[auto_1fr_auto]">
+                <div class="input-group grid-cols-[1fr_auto]">
                   <input
                     class="input"
+                    name={`chart-${i}`}
                     disabled={!$isEditing}
                     bind:value={chart.text}
-                    use:popup={{ event: 'hover', target: `tooltip-charts-${i}` }}
+                    use:popup={{ event: 'hover', target: !$isEditing ? `tooltip-chart-${i}` : '' }}
                   />
-                  <div class="flex flex-col gap-2">
+                  <div class="flex flex-row gap-2 py-2">
                     {#each chart.tags as tag}
-                      <span>{tag}</span>
+                      <span class="badge variant-filled-secondary">{tag}</span>
                     {/each}
                   </div>
                 </div>
-                {#if !$isEditing}
-                  <ToolTip popupName={`tooltip-charts-${i}`}>
-                    <div class="flex flex-col justify-start gap-2">
-                      <span class="uppercase font-semibold place-self-center">charts</span>
-                      <span class="border-b"></span>
-                      <span class="font-semibold">Name: {chart.text}</span>
-                      <span
-                        >Tags: {#each chart.tags as tag}
-                          {tag}
-                        {:else}
-                          <span>none</span>
-                        {/each}</span
-                      >
-                    </div>
-                  </ToolTip>
-                {/if}
+                <ToolTip popupName={`tooltip-chart-${i}`}>
+                  <div class="flex flex-col justify-start gap-2">
+                    <span class="uppercase font-semibold place-self-center">charts</span>
+                    <span class="border-b"></span>
+                    <span class="font-semibold">Name: {chart.text}</span>
+                    <span
+                      >Tags: {#each chart.tags as tag}
+                        <span class="badge variant-filled-secondary">{tag}</span>
+                      {:else}
+                        <span>none</span>
+                      {/each}</span
+                    >
+                  </div>
+                </ToolTip>
               {/each}
             </div>
           </SheetCard>
