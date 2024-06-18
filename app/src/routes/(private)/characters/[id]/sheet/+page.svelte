@@ -25,7 +25,7 @@
     isEditing.set(false);
   });
 
-  const { bloodlines, edges, languages, origins, posts, skills } = data;
+  const { bloodlines, edges, languages, origins, posts, skills, session, supabase } = data;
 
   const { form, enhance } = superForm(data.form, {
     applyAction: true,
@@ -63,6 +63,40 @@
       modalStore.close();
     }
   };
+
+  // const deleteResource = async (characterId: string, resource: any) => {
+  //   const { error } = await supabase.from('player_character').update({
+
+  //   }).eq('id', characterId);
+  //   if (error) {
+  //     console.log('Error deleting character', error);
+  //     toastStore.trigger({
+  //       message: 'Something went wrong.'
+  //     });
+  //   }
+  //   const { data } = await supabase
+  //     .from('player_character')
+  //     .select()
+  //     .eq('user_id', session?.user.id);
+  // };
+
+  // const handleDeleteResource = async (characterId: string) => {
+  //   const deleteConfirm: ModalSettings = {
+  //     type: 'confirm',
+  //     title: 'Please Confirm',
+  //     body: 'Are you sure you want to delete this character? This action cannot be undone.',
+  //     response(response) {
+  //       if (response) {
+  //         deleteCharacter(characterId);
+  //         toastStore.trigger({
+  //           message: 'Character deleted successfully.'
+  //         });
+  //       }
+  //     }
+  //   };
+
+  //   modalStore.trigger(deleteConfirm);
+  // };
 </script>
 
 <form use:enhance method="POST" action="?/save" class="flex h-full w-full flex-col gap-3">
@@ -285,7 +319,7 @@
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
               {#each $form.salvage as salvage, i}
-                <div class="input-group grid-cols-[1fr_auto]">
+                <div class="input-group group grid-cols-[1fr_auto]">
                   <input
                     class="input"
                     name={`salvage-${i}`}
@@ -296,12 +330,31 @@
                       target: !$isEditing ? `tooltip-salvage-${i}` : ''
                     }}
                   />
+                  <div class="absolute top-1 right-0 group-hover:opacity-100 opacity-0">
+                    <div class="flex flex-row gap-2">
+                      <!-- <button
+                        type="button"
+                        title="edit resource"
+                        class="btn-icon btn-icon-sm !px-[0.5rem] bg-blue-600 ring ring-blue-600 hover:ring-blue-500"
+                      >
+                        <span class="icon-[ph--pencil-light] h-5 w-5"></span>
+                      </button> -->
+                      <button
+                        type="button"
+                        title="delete resource"
+                        class="btn-icon btn-icon-sm !px-[0.5rem] bg-red-600 ring ring-red-600 hover:ring-red-500"
+                      >
+                        <span class="icon-[ph--trash-light] h-5 w-5"></span>
+                      </button>
+                    </div>
+                  </div>
                   <div class="flex flex-row gap-2 py-2">
                     {#each salvage.tags as tag}
                       <span class="badge variant-filled-secondary">{tag}</span>
                     {/each}
                   </div>
                 </div>
+
                 <ToolTip popupName={`tooltip-salvage-${i}`}>
                   <div class="flex flex-col justify-start gap-2">
                     <span class="uppercase font-semibold place-self-center">salvage</span>

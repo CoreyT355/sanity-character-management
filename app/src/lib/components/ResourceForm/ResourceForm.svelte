@@ -28,6 +28,7 @@
       bind:value={resourceTags}
       name="newResourceTags"
       placeholder="Tags (press enter to add each one)"
+      chips="variant-filled-primary rounded-full"
     />
     <select class="select" placeholder="Resource type..." bind:value={selectedType}>
       <option value="">Select a Resource Type...</option>

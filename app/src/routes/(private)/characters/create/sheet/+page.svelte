@@ -58,7 +58,7 @@
       }
       $form[response.type] = [
         ...$form[response.type],
-        { text: response.text, tags: response.tags }
+        { text: response.text, tags: response.tags, type: response.type }
       ];
       modalStore.close();
     }

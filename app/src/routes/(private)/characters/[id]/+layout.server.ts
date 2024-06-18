@@ -15,12 +15,21 @@ export const load = (async ({ params, locals: { supabase, safeGetSession } }) =>
 
   ({ data: playerCharacterSupabase } = await supabase
     .from('player_character')
-    .select('*')
+    .select(`*, player_character_resources (*)`)
     .eq('id', params.id)
     .eq('user_id', session?.user.id)
     .single());
 
+  const characterToReturn = {
+    ...playerCharacterSupabase,
+    salvage: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'salvage'),
+    specimens: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'specimens'),
+    whispers: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'whispers'),
+    charts: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'charts'),
+    cargo: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'cargo')
+  };
+
   return {
-    character: playerCharacterSupabase
+    character: characterToReturn
   };
 }) satisfies LayoutServerLoad;

@@ -1,4 +1,6 @@
-export type Json =
+Need to install the following packages:
+supabase@1.176.10
+Ok to proceed? (y) export type Json =
   | string
   | number
   | boolean
@@ -15,6 +17,7 @@ export type Database = {
           current_track: number[] | null
           description: string | null
           id: string
+          is_complex: boolean | null
           name: string | null
           player_character_id: string | null
           track_length: number | null
@@ -26,6 +29,7 @@ export type Database = {
           current_track?: number[] | null
           description?: string | null
           id?: string
+          is_complex?: boolean | null
           name?: string | null
           player_character_id?: string | null
           track_length?: number | null
@@ -37,6 +41,7 @@ export type Database = {
           current_track?: number[] | null
           description?: string | null
           id?: string
+          is_complex?: boolean | null
           name?: string | null
           player_character_id?: string | null
           track_length?: number | null
@@ -56,8 +61,8 @@ export type Database = {
       player_character: {
         Row: {
           bloodline: string | null
-          cargo: string[] | null
-          charts: string[] | null
+          cargo: Json | null
+          charts: Json | null
           created_at: string | null
           drives: string[] | null
           edges: Json | null
@@ -70,17 +75,17 @@ export type Database = {
           origin: string | null
           player: string | null
           post: string | null
-          salvage: string[] | null
+          salvage: Json | null
           skills: Json | null
-          specimens: string[] | null
+          specimens: Json | null
           updated_at: string | null
           user_id: string | null
-          whispers: string[] | null
+          whispers: Json | null
         }
         Insert: {
           bloodline?: string | null
-          cargo?: string[] | null
-          charts?: string[] | null
+          cargo?: Json | null
+          charts?: Json | null
           created_at?: string | null
           drives?: string[] | null
           edges?: Json | null
@@ -93,17 +98,17 @@ export type Database = {
           origin?: string | null
           player?: string | null
           post?: string | null
-          salvage?: string[] | null
+          salvage?: Json | null
           skills?: Json | null
-          specimens?: string[] | null
+          specimens?: Json | null
           updated_at?: string | null
           user_id?: string | null
-          whispers?: string[] | null
+          whispers?: Json | null
         }
         Update: {
           bloodline?: string | null
-          cargo?: string[] | null
-          charts?: string[] | null
+          cargo?: Json | null
+          charts?: Json | null
           created_at?: string | null
           drives?: string[] | null
           edges?: Json | null
@@ -116,12 +121,12 @@ export type Database = {
           origin?: string | null
           player?: string | null
           post?: string | null
-          salvage?: string[] | null
+          salvage?: Json | null
           skills?: Json | null
-          specimens?: string[] | null
+          specimens?: Json | null
           updated_at?: string | null
           user_id?: string | null
-          whispers?: string[] | null
+          whispers?: Json | null
         }
         Relationships: [
           {
@@ -129,6 +134,44 @@ export type Database = {
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      player_character_resources: {
+        Row: {
+          created_at: string
+          id: number
+          player_character_id: string
+          tags: string[] | null
+          text: string | null
+          type: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          player_character_id: string
+          tags?: string[] | null
+          text?: string | null
+          type?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          player_character_id?: string
+          tags?: string[] | null
+          text?: string | null
+          type?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "player_character_resources_player_character_id_fkey"
+            columns: ["player_character_id"]
+            isOneToOne: false
+            referencedRelation: "player_character"
             referencedColumns: ["id"]
           },
         ]
