@@ -9,7 +9,8 @@ export const load = (async ({ locals: { safeGetSession, supabase } }) => {
   const { data: characters } = await supabase
     .from('player_character')
     .select('*')
-    .eq('user_id', session.user.id);
+    .eq('user_id', session.user.id)
+    .order('updated_at', { ascending: false });
 
   return {
     characters

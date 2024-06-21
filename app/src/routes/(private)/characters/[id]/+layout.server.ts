@@ -1,6 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
-import type { Database } from '$lib/types/supabase-types';
 
 export const load = (async ({ params, locals: { supabase, safeGetSession } }) => {
   // if (!params.id) {
@@ -11,22 +10,20 @@ export const load = (async ({ params, locals: { supabase, safeGetSession } }) =>
 
   if (!session) redirect(303, '/auth/login');
 
-  let playerCharacterSupabase: Database['public']['Tables']['player_character']['Row'];
-
-  ({ data: playerCharacterSupabase } = await supabase
+  const { data } = await supabase
     .from('player_character')
     .select(`*, player_character_resources (*)`)
     .eq('id', params.id)
     .eq('user_id', session?.user.id)
-    .single());
+    .single();
 
   const characterToReturn = {
-    ...playerCharacterSupabase,
-    salvage: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'salvage'),
-    specimens: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'specimens'),
-    whispers: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'whispers'),
-    charts: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'charts'),
-    cargo: playerCharacterSupabase['player_character_resources'].filter((r) => r.type === 'cargo')
+    ...data,
+    salvage: data.player_character_resources.filter((r) => r.type === 'salvage'),
+    specimens: data.player_character_resources.filter((r) => r.type === 'specimens'),
+    whispers: data.player_character_resources.filter((r) => r.type === 'whispers'),
+    charts: data.player_character_resources.filter((r) => r.type === 'charts'),
+    cargo: data.player_character_resources.filter((r) => r.type === 'cargo')
   };
 
   return {

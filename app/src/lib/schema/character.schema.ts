@@ -55,7 +55,7 @@ const mireSchema = z.object({
 
 export const characterSheetSchema = z.object({
   id: z.string().regex(guidRegex).optional(),
-  user_id: z.string().regex(guidRegex),
+  user_id: z.string().regex(guidRegex).optional(),
   name: z.string().min(2, { message: 'Must be at least 2 characters long.' }),
   player: z.string().min(2, { message: 'Must be at least 2 characters long.' }),
   // created_at: z.string(),
@@ -68,11 +68,7 @@ export const characterSheetSchema = z.object({
   languages: languagesSchema,
   skills: skillsSchema,
   mires: mireSchema.array(),
-  salvage: resourceSchema.array().default([]),
-  specimens: resourceSchema.array().default([]),
-  whispers: resourceSchema.array().default([]),
-  charts: resourceSchema.array().default([]),
-  cargo: resourceSchema.array().default([]),
   major_milestones: z.string().array(),
-  minor_milestones: z.string().array()
+  minor_milestones: z.string().array(),
+  player_character_resources: resourceSchema.array().default([])
 });

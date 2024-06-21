@@ -56,8 +56,8 @@
       if (!response) {
         modalStore.close();
       }
-      $form[response.type] = [
-        ...$form[response.type],
+      $form.player_character_resources = [
+        ...$form.player_character_resources,
         { text: response.text, tags: response.tags, type: response.type }
       ];
       modalStore.close();
@@ -284,7 +284,7 @@
         <div class="flex w-full gap-4">
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
-              {#each $form.salvage as salvage, i}
+              {#each $form.player_character_resources.filter((salvage) => salvage.type === 'salvage') as salvage, i}
                 <input
                   class="input"
                   disabled={!$isEditing}
@@ -312,7 +312,7 @@
           </SheetCard>
           <SheetCard class="h-full w-full" label="Specimens">
             <div class="space-y-3">
-              {#each $form.specimens as specimen, i}
+              {#each $form.player_character_resources.filter((specimen) => specimen.type === 'specimens') as specimen, i}
                 <input
                   class="input"
                   disabled={!$isEditing}
@@ -342,7 +342,7 @@
         <div class="mt-4 flex w-full gap-4">
           <SheetCard class="h-full w-full" label="Whispers">
             <div class="space-y-3">
-              {#each $form.whispers as whisper, i}
+              {#each $form.player_character_resources.filter((whisper) => whisper.type === 'whispers') as whisper, i}
                 <input
                   class="input"
                   disabled={!$isEditing}
@@ -370,7 +370,7 @@
           </SheetCard>
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
-              {#each $form.charts as chart, i}
+              {#each $form.player_character_resources.filter((chart) => chart.type === 'charts') as chart, i}
                 <div class="input-group grid-cols-[auto_1fr_auto]">
                   <input
                     class="input"

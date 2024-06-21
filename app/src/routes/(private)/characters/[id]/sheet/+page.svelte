@@ -14,6 +14,8 @@
     popup,
     type ModalSettings
   } from '@skeletonlabs/skeleton';
+  import { page } from '$app/stores';
+  import { fade } from 'svelte/transition';
 
   export let data;
 
@@ -46,7 +48,7 @@
     }
   });
 
-  // $: console.log('CHARACTER FROM STORE', $form);
+  $: console.log('CHARACTER FROM STORE', $form);
 
   const modalResourceFormSettings: ModalSettings = {
     title: 'Add a new Resource',
@@ -56,47 +58,54 @@
       if (!response) {
         modalStore.close();
       }
-      $form[response.type] = [
-        ...$form[response.type],
-        { text: response.text, tags: response.tags }
+      $form.player_character_resources = [
+        ...$form.player_character_resources,
+        {
+          player_character_id: response.player_character_id,
+          text: response.text,
+          tags: response.tags,
+          type: response.type
+        }
       ];
       modalStore.close();
     }
   };
 
-  // const deleteResource = async (characterId: string, resource: any) => {
-  //   const { error } = await supabase.from('player_character').update({
+  const deleteResource = async (resourceId: string) => {
+    const { error } = await supabase
+      .from('player_character_resources')
+      .delete()
+      .eq('id', resourceId);
+    if (error) {
+      console.log('Error deleting resource', error);
+      toastStore.trigger({
+        message: 'Something went wrong.'
+      });
+    }
+    const { data } = await supabase
+      .from('player_character_resources')
+      .select()
+      .eq('player_character_id', $page.params.id);
+  };
 
-  //   }).eq('id', characterId);
-  //   if (error) {
-  //     console.log('Error deleting character', error);
-  //     toastStore.trigger({
-  //       message: 'Something went wrong.'
-  //     });
-  //   }
-  //   const { data } = await supabase
-  //     .from('player_character')
-  //     .select()
-  //     .eq('user_id', session?.user.id);
-  // };
+  const handleDeleteResource = async (resourceId: string) => {
+    console.log('TACOCAT handle ID', resourceId);
+    const deleteConfirm: ModalSettings = {
+      type: 'confirm',
+      title: 'Please Confirm',
+      body: 'Are you sure you want to delete this resource? This action cannot be undone.',
+      response(response) {
+        if (response) {
+          deleteResource(resourceId);
+          toastStore.trigger({
+            message: 'Resource deleted successfully.'
+          });
+        }
+      }
+    };
 
-  // const handleDeleteResource = async (characterId: string) => {
-  //   const deleteConfirm: ModalSettings = {
-  //     type: 'confirm',
-  //     title: 'Please Confirm',
-  //     body: 'Are you sure you want to delete this character? This action cannot be undone.',
-  //     response(response) {
-  //       if (response) {
-  //         deleteCharacter(characterId);
-  //         toastStore.trigger({
-  //           message: 'Character deleted successfully.'
-  //         });
-  //       }
-  //     }
-  //   };
-
-  //   modalStore.trigger(deleteConfirm);
-  // };
+    modalStore.trigger(deleteConfirm);
+  };
 </script>
 
 <form use:enhance method="POST" action="?/save" class="flex h-full w-full flex-col gap-3">
@@ -119,14 +128,14 @@
                 >
                   {edge.displayName}
                 </span>
-                <ToolTip popupName={`tooltip-${edge._id}`}
-                  ><div class="flex flex-col justify-start gap-2">
+                <ToolTip popupName={`tooltip-${edge._id}`}>
+                  <div class="flex flex-col justify-start gap-2">
                     <span class="uppercase font-semibold place-self-center">edge</span>
                     <span class="border-b"></span>
                     <span class="font-semibold">Name: {edge.displayName}</span>
                     <span>{edge.description}</span>
-                  </div></ToolTip
-                >
+                  </div>
+                </ToolTip>
                 <RankInput
                   class="place-self-end"
                   disabled={!$isEditing}
@@ -318,41 +327,49 @@
         <div class="flex w-full gap-4">
           <SheetCard class="h-full w-full" label="Salvage">
             <div class="space-y-3">
-              {#each $form.salvage as salvage, i}
-                <div class="input-group group grid-cols-[1fr_auto]">
-                  <input
-                    class="input"
-                    name={`salvage-${i}`}
-                    disabled={!$isEditing}
-                    bind:value={salvage.text}
-                    use:popup={{
-                      event: 'hover',
-                      target: !$isEditing ? `tooltip-salvage-${i}` : ''
-                    }}
-                  />
-                  <div class="absolute top-1 right-0 group-hover:opacity-100 opacity-0">
-                    <div class="flex flex-row gap-2">
+              {#each $form.player_character_resources.filter((salvage) => salvage.type === 'salvage') as salvage, i}
+                <div class="flex flex-row gap-3">
+                  <div class="input-group group grid-cols-[1fr_auto]">
+                    <input
+                      class="input"
+                      name={`salvage-${i}`}
+                      disabled={!$isEditing}
+                      bind:value={salvage.text}
+                      use:popup={{
+                        event: 'hover',
+                        target: !$isEditing ? `tooltip-salvage-${i}` : ''
+                      }}
+                    />
+                    <div class="flex flex-row gap-2 py-2">
+                      {#each salvage.tags as tag}
+                        <span class="badge variant-filled-secondary">{tag}</span>
+                      {/each}
+                    </div>
+                  </div>
+                  {#if $isEditing}
+                    <div
+                      class="flex flex-row gap-3 items-center"
+                      in:fade={{ duration: 500 }}
+                      out:fade={{ duration: 250 }}
+                    >
                       <!-- <button
                         type="button"
-                        title="edit resource"
-                        class="btn-icon btn-icon-sm !px-[0.5rem] bg-blue-600 ring ring-blue-600 hover:ring-blue-500"
+                        title="delete resource"
+                        class="bg-blue-600 ring h-8 w-8 rounded-full p-1 ring-blue-600 hover:ring-blue-500"
+                        on:click={() => handleDeleteResource(salvage.id)}
                       >
-                        <span class="icon-[ph--pencil-light] h-5 w-5"></span>
+                        <span class="icon-[ph--pencil-light] h-6 w-6"></span>
                       </button> -->
                       <button
                         type="button"
                         title="delete resource"
-                        class="btn-icon btn-icon-sm !px-[0.5rem] bg-red-600 ring ring-red-600 hover:ring-red-500"
+                        class="bg-red-600 ring h-8 w-8 rounded-full p-1 ring-red-600 hover:ring-red-500"
+                        on:click={() => handleDeleteResource(salvage.id)}
                       >
-                        <span class="icon-[ph--trash-light] h-5 w-5"></span>
+                        <span class="icon-[ph--trash-light] h-6 w-6"></span>
                       </button>
                     </div>
-                  </div>
-                  <div class="flex flex-row gap-2 py-2">
-                    {#each salvage.tags as tag}
-                      <span class="badge variant-filled-secondary">{tag}</span>
-                    {/each}
-                  </div>
+                  {/if}
                 </div>
 
                 <ToolTip popupName={`tooltip-salvage-${i}`}>
@@ -374,7 +391,7 @@
           </SheetCard>
           <SheetCard class="h-full w-full" label="Specimens">
             <div class="space-y-3">
-              {#each $form.specimens as specimen, i}
+              {#each $form.player_character_resources.filter((specimen) => specimen.type === 'specimens') as specimen, i}
                 <div class="input-group grid-cols-[1fr_auto]">
                   <input
                     class="input"
@@ -413,7 +430,7 @@
         <div class="mt-4 flex w-full gap-4">
           <SheetCard class="h-full w-full" label="Whispers">
             <div class="space-y-3">
-              {#each $form.whispers as whisper, i}
+              {#each $form.player_character_resources.filter((whisper) => whisper.type === 'whispers') as whisper, i}
                 <div class="input-group grid-cols-[1fr_auto]">
                   <input
                     class="input"
@@ -450,7 +467,7 @@
           </SheetCard>
           <SheetCard class="h-full w-full" label="Charts">
             <div class="space-y-3">
-              {#each $form.charts as chart, i}
+              {#each $form.player_character_resources.filter((chart) => chart.type === 'charts') as chart, i}
                 <div class="input-group grid-cols-[1fr_auto]">
                   <input
                     class="input"
