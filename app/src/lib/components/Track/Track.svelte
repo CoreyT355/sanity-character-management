@@ -36,7 +36,7 @@
     {disabled}
     title="reset track"
     data-testid="reset-button"
-    class="btn-icon btn-icon-sm variant-filled-error"
+    class="btn-icon btn-icon-sm bg-red-600"
     on:click={() => handleResetClick()}
   >
     <span class="icon-[ph--arrow-counter-clockwise] h-5 w-5"></span>

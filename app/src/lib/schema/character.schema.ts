@@ -1,6 +1,6 @@
 import { z } from 'zod';
-
-const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+import { resourceSchema } from './resource.schema';
+import { guidRegex } from '$lib/utils/utils';
 
 const edgesSchema = z.object({
   'import-edge-iron': z.number(),
@@ -53,14 +53,9 @@ const mireSchema = z.object({
   currentTrack: z.number().array()
 });
 
-const resourceSchema = z.object({
-  text: z.string(),
-  tags: z.string().array()
-});
-
 export const characterSheetSchema = z.object({
   id: z.string().regex(guidRegex).optional(),
-  user_id: z.string().regex(guidRegex),
+  user_id: z.string().regex(guidRegex).optional(),
   name: z.string().min(2, { message: 'Must be at least 2 characters long.' }),
   player: z.string().min(2, { message: 'Must be at least 2 characters long.' }),
   // created_at: z.string(),
@@ -73,11 +68,7 @@ export const characterSheetSchema = z.object({
   languages: languagesSchema,
   skills: skillsSchema,
   mires: mireSchema.array(),
-  salvage: resourceSchema.array().default([]),
-  specimens: resourceSchema.array(),
-  whispers: resourceSchema.array(),
-  charts: resourceSchema.array(),
-  cargo: resourceSchema.array(),
   major_milestones: z.string().array(),
-  minor_milestones: z.string().array()
+  minor_milestones: z.string().array(),
+  player_character_resources: resourceSchema.array().default([])
 });

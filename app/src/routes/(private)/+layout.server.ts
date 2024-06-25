@@ -4,7 +4,7 @@ import { redirect } from '@sveltejs/kit';
 export const load: LayoutServerLoad = (async ({ locals: { safeGetSession } }) => {
   const { session } = await safeGetSession();
 
-  if (!session) redirect(303, '/auth/account');
+  if (!session) redirect(303, '/auth/login');
 
   return {};
 });

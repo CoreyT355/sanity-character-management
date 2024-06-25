@@ -35,7 +35,9 @@
   // };
 </script>
 
-<Drawer>
+<Drawer width="w-128"
+  padding="p-4"
+  rounded="rounded-md">
   <div class="p-5">
     <SectionHeader class="mb-3" label="How to play" />
     <div class="flex flex-col gap-4">

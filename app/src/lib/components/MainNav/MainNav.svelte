@@ -46,11 +46,11 @@
       <Avatar
         class="cursor-pointer hover:opacity-75 border-4 border-surface-300-600-token hover:!border-green-500"
         id="userAvatar"
-        initials="WS"
         rounded="rounded-full"
         width="w-12"
-        fontSize={175}
-      />
+        fontSize={175}>
+          <span class="icon-[ph--user-light] h-8 w-8"></span>
+      </Avatar>
     </span>
     <div data-popup="userPopup" class="card variant-filled-surface border border-graye-700">
       <dvi class="flex flex-col gap-2 py-2 px-4">

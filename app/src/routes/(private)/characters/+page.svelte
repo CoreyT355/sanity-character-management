@@ -25,7 +25,8 @@
     const { data } = await supabase
       .from('player_character')
       .select()
-      .eq('user_id', session?.user.id);
+      .eq('user_id', session?.user.id)
+      .order('updated_at', { ascending: false });
     characterList.set(data);
   };
 

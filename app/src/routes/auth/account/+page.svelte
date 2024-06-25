@@ -15,7 +15,6 @@
   let fullName: string = profile?.full_name ?? '';
   let avatarUrl: string = profile?.avatar_url ?? '';
 
-
   const handleSubmit: SubmitFunction = () => {
     loading = true;
     return async () => {
@@ -45,7 +44,7 @@
         <div class="space-y-2">
           <label class="label">
             <span>Email</span>
-            <input id="email" type="text" value={session.user.email} disabled />
+            <input id="email" name="email" class="input" type="text" value={session.user.email} disabled />
           </label>
         </div>
         <div class="space-y-2">
@@ -54,6 +53,7 @@
             <input
               id="fullName"
               name="fullName"
+              class="input"
               type="text"
               placeholder="Enter your name..."
               value={form?.fullName ?? fullName}

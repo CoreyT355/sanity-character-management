@@ -1,12 +1,14 @@
 import { writable } from 'svelte/store';
 
-import type { PlayerCharacter } from '$lib/types/types';
+import type { Aspect, PlayerCharacter } from '$lib/types/types';
 
 export const isEditing = writable(false);
 
 export const isDrawerHidden = writable(true);
 
 export const characterList = writable(Array<PlayerCharacter>());
+
+export const aspectsList = writable(Array<Aspect>());
 
 export const currentCharacter = writable({
   id: '',
